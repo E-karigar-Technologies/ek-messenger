@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+   <ion-toolbar
+    style="
+      display: flex;
+      padding-top: 20px;
+      flex-direction: column;
+      --background: white;
+    "
+  >
+
+    <!-- Top Row: Logo and Icons -->
+    <div style="display: flex">
+      <ion-title>
+        <h2
+          style="font-family: Montserrat-bold; font-size: 20px"
+          class="heading"
+        >
+          Calls
+        </h2>
+      </ion-title>
+
+       <ion-buttons slot="end" style="display: flex; margin-right: 10px">
+        <ion-button fill="clear">
+          <i class="fa-solid fa-qrcode homemainicons"></i>
+        </ion-button>
+        <!-- <ion-button fill="clear">
+          <img src="assets/images/camera.svg" style="width: 24px; height: 24px;" />
+        </ion-button> -->
+        <ion-button fill="clear" (click)="presentPopover($event)">
+          <!-- <img src="assets/images/dots (1).svg" style="width: 24px; height: 24px;" /> -->
+           <i class="fa-solid fa-camera homemainicons"></i>
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <!-- Bottom Row: Search Bar -->
+    <!-- <div class="main-header" style="width: 100%; display: flex; justify-content: center;padding: 0px 0px 10px 0px;">
+      <div class="container" style="width: 92%;">
+        <input type="text" id="searchInput" placeholder="Ask  or Search" style="
+    width: 100%;
+    height: 46px;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: white;
+    background-image: url(https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png);
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 8px 20px 8px 40px;
+    color: #444343;
+    border: 1px solid black;
+    font-family: 'Segoe UI';
+    font-weight: 700;
+        " />
+      </div>
+    </div> -->
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let chat of chatList">
+      <ion-avatar slot="start">
+        <img src="assets/images/user.jfif" />
+      </ion-avatar>
+      <ion-label>
+        <h2 class="chat-message">{{ chat.name }}</h2>
+        <p
+          [innerHTML]="chat.message"
+          style="
+            color: #444343;
+            font-family: Montserrat-Medium;
+            font-size: 14px;
+          "
+        ></p>
+      </ion-label>
+      <div slot="end" class="chat-meta">
+        <ion-icon
+          name="videocam-outline"
+          style="width: 27px; height: 27px"
+          class="call_icon"
+        ></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+  <!-- <div class="work-img">
+  <img src="assets/images/workinprogress.jpg" alt="">
+</div> -->
+</ion-content>
+
+<app-footer-tabs></app-footer-tabs>

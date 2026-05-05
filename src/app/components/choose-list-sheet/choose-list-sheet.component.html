@@ -1,0 +1,94 @@
+<!-- src/app/components/choose-list-sheet/choose-list-sheet.component.html -->
+
+<div class="sheet-wrap">
+
+  <!-- ── Drag handle ── -->
+  <div class="drag-handle"></div>
+
+  <!-- ── Title ── -->
+  <h2 class="sheet-title">Choose list</h2>
+
+  <!-- ── New list row ── -->
+  <div class="new-list-row" (click)="!showNewListInput && openNewListInput()">
+    <div class="nl-icon-wrap">
+      <ion-icon name="add-outline" class="nl-icon"></ion-icon>
+    </div>
+    <span class="nl-label">New list</span>
+  </div>
+
+  <!-- ── New list inline input ── -->
+  <div class="new-list-input-wrap" *ngIf="showNewListInput">
+    <div class="nli-field">
+      <ion-icon name="list-outline" class="nli-prefix"></ion-icon>
+      <input
+        class="nli-input"
+        [(ngModel)]="newListName"
+        placeholder="e.g. Work, Family…"
+        maxlength="30"
+        autofocus
+        (keyup.enter)="confirmNewList()"
+      />
+      <ion-icon
+        *ngIf="newListName"
+        name="close-circle"
+        class="nli-clear"
+        (click)="newListName = ''; newListNameError = ''"
+      ></ion-icon>
+    </div>
+
+    <p *ngIf="newListNameError" class="nli-error">{{ newListNameError }}</p>
+
+    <div class="nli-actions">
+      <button class="nli-btn nli-cancel" (click)="cancelNewList()">Cancel</button>
+      <button
+        class="nli-btn nli-create"
+        [disabled]="!newListName.trim()"
+        (click)="confirmNewList()"
+      >
+        Create
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Divider ── -->
+  <div class="sheet-divider"></div>
+
+  <!-- ── List items ── -->
+  <div class="list-items">
+    <div
+      class="list-item"
+      *ngFor="let item of items"
+      (click)="toggleItem(item)"
+    >
+      <!-- Left icon -->
+      <div class="li-icon-wrap" [class.li-icon-fav]="item.isFavourite">
+        <ion-icon [name]="item.icon" class="li-icon"></ion-icon>
+      </div>
+
+      <!-- Label -->
+      <span class="li-label">{{ item.label }}</span>
+
+      <!-- Checkmark -->
+      <div class="li-check" [class.li-check-active]="item.isSelected">
+        <ion-icon
+          *ngIf="item.isSelected"
+          name="checkmark-outline"
+          class="li-check-icon"
+        ></ion-icon>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Done button ── -->
+  <div class="sheet-footer">
+    <button
+      class="done-btn"
+      (click)="onDone()"
+      [disabled]="isSaving"
+    >
+      <span *ngIf="!isSaving">Done</span>
+      <ion-spinner *ngIf="isSaving" name="crescent" class="done-spinner"></ion-spinner>
+    </button>
+  </div>
+
+</div>

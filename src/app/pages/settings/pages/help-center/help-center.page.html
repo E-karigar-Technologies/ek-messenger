@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar class="ion_toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/help-feedback"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">Help Center</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="help-center-content">
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="logo-wrapper">
+      <img src="assets/images/app-new-icon.svg" alt="Logo" class="app-logo" />
+    </div>
+    <h2 class="hero-title">How can we help?</h2>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-wrapper">
+    <ion-searchbar
+      [(ngModel)]="searchQuery"
+      placeholder="Search Help Center"
+      class="help-searchbar"
+      [debounce]="200"
+      animated>
+    </ion-searchbar>
+  </div>
+
+  <!-- Help Topics -->
+  <p class="section-label">Help topics</p>
+  <ion-list lines="full" class="topics-list">
+    <ion-item
+      *ngFor="let topic of filteredTopics"
+      button
+      detail
+      class="topic-item">
+      <ion-icon slot="start" [name]="topic.icon" class="topic-icon"></ion-icon>
+      <ion-label class="topic-label">{{ topic.label }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Popular Articles -->
+  <p class="section-label" *ngIf="!searchQuery.trim()">Popular articles</p>
+  <p class="section-label" *ngIf="searchQuery.trim()">Search results</p>
+  <ion-list lines="none" class="articles-list">
+    <ion-item
+      *ngFor="let article of filteredArticles"
+      button
+      class="article-item">
+      <ion-icon slot="start" name="document-text-outline" class="article-icon"></ion-icon>
+      <ion-label class="article-label">{{ article.title }}</ion-label>
+    </ion-item>
+
+    <!-- Show more -->
+    <ion-item
+      *ngIf="!showAllArticles && !searchQuery.trim()"
+      button
+      lines="none"
+      class="show-more-item"
+      (click)="showAllArticles = true">
+      <ion-label class="show-more-label">Show more</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="bottom-spacer"></div>
+
+</ion-content>
+
+<!-- Contact us FAB -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" class="contact-fab">
+  <ion-fab-button (click)="contactUs()" class="contact-btn">
+    <div class="fab-inner">
+      <ion-icon name="help-circle-outline"></ion-icon>
+      <span>Contact us</span>
+    </div>
+  </ion-fab-button>
+</ion-fab>

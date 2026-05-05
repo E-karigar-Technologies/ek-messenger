@@ -1,0 +1,52 @@
+<ion-header [translucent]="true" class="header-red">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/social-links"
+        [attr.aria-label]="'common.back' | translate">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'addInstagram.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="add-instagram-content">
+  <div class="form-row">
+    <label class="input-label">{{ 'addInstagram.usernameLabel' | translate }}</label>
+
+    <div class="input-wrapper">
+      <div class="at-icon">&#64;</div>
+      <ion-input
+        type="text"
+        [(ngModel)]="username"
+        [placeholder]="'addInstagram.usernamePlaceholder' | translate"
+        autocomplete="off"
+        autocapitalize="off"
+        [attr.aria-label]="'addInstagram.usernameLabel' | translate">
+      </ion-input>
+    </div>
+  </div>
+
+  <div class="hint">
+    <p>
+      {{ 'addInstagram.hint.text' | translate }}
+      <a class="learn-more">{{ 'addInstagram.hint.learnMore' | translate }}</a>
+    </p>
+  </div>
+
+  <div class="save-bar">
+    <!-- <ion-button
+      expand="block"
+      shape="round"
+      (click)="save()"
+      [attr.aria-label]="'addInstagram.save' | translate">
+      {{ 'addInstagram.save' | translate }}
+    </ion-button> -->
+       <button
+      type="submit"
+       class="save_button" (click)="save()"
+      [attr.aria-label]="'addInstagram.save' | translate">
+      {{ 'addInstagram.save' | translate }}
+    </button>
+  </div>
+</ion-content>

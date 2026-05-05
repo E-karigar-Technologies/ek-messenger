@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'add_existing_groups_page.header' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="showSearch = !showSearch; searchText = ''; onSearchChange()">
+        <ion-icon [name]="showSearch ? 'close-outline' : 'search-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Search bar — sirf tab dikhao jab showSearch = true -->
+  <ion-toolbar *ngIf="showSearch" class="search-toolbar">
+    <div class="search-bar-wrap">
+      <ion-icon name="search-outline" class="search-icon-inside"></ion-icon>
+      <input
+        type="text"
+        class="search-input"
+        [(ngModel)]="searchText"
+        (ngModelChange)="onSearchChange()"
+        placeholder="Search groups..."
+        autofocus
+      />
+      <ion-icon
+        *ngIf="searchText"
+        name="close-circle-outline"
+        class="search-clear-icon"
+        (click)="clearSearch()"
+      ></ion-icon>
+    </div>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <div class="sub-title">
+      {{ selectedCount }} {{ 'add_existing_groups_page.of' | translate }}
+      {{ totalGroups }} {{ 'add_existing_groups_page.selected' | translate }}
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Banner -->
+  <div class="banner-text">
+    {{ 'add_existing_groups_page.banner' | translate }}
+  </div>
+
+  <!-- Selected chips row -->
+  <div *ngIf="selectedCount > 0" class="chips-row">
+    <ng-container *ngFor="let s of selectedGroups">
+      <div class="chip-wrap">
+        <ion-avatar class="chip-avatar">
+          <ng-container *ngIf="s.avatar; else chipInitialTpl">
+            <img [src]="s.avatar" [alt]="s.name" (error)="s.avatar = null" />
+          </ng-container>
+          <ng-template #chipInitialTpl>
+            <div class="avatar-section chip-size">
+              {{ s.name?.charAt(0)?.toUpperCase() || '?' }}
+            </div>
+          </ng-template>
+        </ion-avatar>
+        <button type="button" class="chip-remove-btn" (click)="toggleSelect(s)">
+          <ion-icon name="close-outline" class="chip-remove-icon"></ion-icon>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+
+  <ion-list lines="none" class="groups-list">
+    <ion-list-header class="list-header">
+      {{ 'add_existing_groups_page.listHeader' | translate }}
+    </ion-list-header>
+
+    <!-- Loading -->
+    <div *ngIf="loading" class="state-container">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+      <p class="state-text">{{ 'add_existing_groups_page.loading' | translate }}</p>
+    </div>
+
+    <!-- Empty state -->
+    <div *ngIf="!loading && groups.length === 0 && !searchText" class="state-container">
+      <ion-icon name="people-outline" class="state-icon"></ion-icon>
+      <p class="state-text">{{ 'add_existing_groups_page.empty' | translate }}</p>
+    </div>
+
+    <!-- No search results -->
+    <div *ngIf="!loading && groups.length === 0 && searchText" class="state-container">
+      <ion-icon name="search-outline" class="state-icon"></ion-icon>
+      <p class="state-text">No groups found for "{{ searchText }}"</p>
+    </div>
+
+    <!-- Group list -->
+    <ion-item
+      *ngFor="let g of groups"
+      lines="none"
+      class="group-item"
+      (click)="toggleSelect(g)"
+    >
+      <ion-checkbox
+        slot="start"
+        [(ngModel)]="g.selected"
+        (ionChange)="onSelectChange()"
+        (click)="$event.stopPropagation()"
+        color="primary"
+      ></ion-checkbox>
+
+      <ion-avatar slot="start" class="group-avatar">
+        <ng-container *ngIf="g.avatar; else listInitialTpl">
+          <img [src]="g.avatar" [alt]="g.name" (error)="g.avatar = null" />
+        </ng-container>
+        <ng-template #listInitialTpl>
+          <div class="avatar-section">
+            {{ g.name?.charAt(0)?.toUpperCase() || '?' }}
+          </div>
+        </ng-template>
+      </ion-avatar>
+
+      <ion-label class="group-label">
+        <h2 class="group-name">{{ g.name }}</h2>
+        <p class="group-preview">{{ g.membersPreview }}</p>
+      </ion-label>
+
+      <ion-icon
+        *ngIf="g.selected"
+        name="checkmark-circle"
+        color="primary"
+        slot="end"
+        class="check-icon"
+      ></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <!-- FAB -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button
+      color="primary"
+      (click)="confirmSelection()"
+      [disabled]="selectedCount === 0"
+    >
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

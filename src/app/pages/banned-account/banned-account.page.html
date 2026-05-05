@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true" class="ion-padding ion-text-center banned-container">
+  <div class="main">
+    <div class="telldemm-img">
+      <img src="/assets/icons/Tiara_logo.png" alt=" Logo">
+    </div>
+
+    <div class="content-wrapper">
+      <div class="icon-section">
+        <ion-icon name="ban" color="danger" class="ban-icon"></ion-icon>
+      </div>
+
+      <div class="text-section">
+        <h1 class="main-title">Account Banned</h1>
+        <p class="description">
+          This account can no longer use app. We have completed your review and found this account's activity did not follow app guidelines.
+        </p>
+      </div>
+
+      <div class="button-section">
+        <button (click)="registerNewNumber()" class="register-btn">
+          Register new number
+        </button>
+      </div>
+    </div>
+  </div>
+</ion-content>

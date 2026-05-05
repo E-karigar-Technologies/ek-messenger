@@ -1,0 +1,10 @@
+<ion-list class="custom-list">
+  <ion-item lines="none"
+    button
+    class="itemHeader"
+    *ngFor="let option of menuOptions"
+    (click)="selectOption(option)"
+    [attr.aria-label]="option.labelKey | translate">
+    {{ option.labelKey | translate }}
+  </ion-item>
+</ion-list>

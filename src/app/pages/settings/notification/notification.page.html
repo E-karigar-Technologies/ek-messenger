@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar class="ion_toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/settings"
+        [attr.aria-label]="'common.back' | translate">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">{{ 'notifications.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list lines="none">
+    <!-- High priority notifications / Permission Toggle -->
+    <ion-item>
+      <ion-label>
+        <h2 class="itemHeader">Off app level all notifications</h2>
+        <!-- <p>{{ 'notifications.highPriority.desc' | translate }}</p> -->
+      </ion-label>
+      <ion-toggle
+        slot="end"
+        [(ngModel)]="highPriority"
+        (ionChange)="onToggleChange($event)"
+        [attr.aria-label]="'notifications.highPriority.title' | translate">
+      </ion-toggle>
+    </ion-item>
+
+    <!-- Message notifications -->
+    <!--
+<ion-item 
+  button 
+  detail 
+  (click)="openMessageNotifications()"
+  [disabled]="!highPriority"
+  [attr.aria-label]="'notifications.message.title' | translate">
+
+  <ion-icon 
+    slot="start" 
+    name="chatbubble-ellipses-outline"
+    aria-hidden="true" 
+    class="setting_icons">
+  </ion-icon>
+
+  <ion-label [color]="highPriority ? '' : 'medium'">
+    <h2>{{ 'notifications.message.title' | translate }}</h2>
+    <p>{{ 'notifications.message.desc' | translate }}</p>
+  </ion-label>
+</ion-item>
+
+<!-- Group chat notifications
+<ion-item 
+  button 
+  detail 
+  (click)="openGroupNotifications()"
+  [disabled]="!highPriority"
+  [attr.aria-label]="'notifications.group.title' | translate">
+
+  <ion-icon 
+    slot="start" 
+    name="people-outline"
+    aria-hidden="true" 
+    class="setting_icons">
+  </ion-icon>
+
+  <ion-label [color]="highPriority ? '' : 'medium'">
+    <h2>{{ 'notifications.group.title' | translate }}</h2>
+    <p>{{ 'notifications.group.desc' | translate }}</p>
+  </ion-label>
+</ion-item>
+
+<!-- Call notifications
+<ion-item 
+  button 
+  detail 
+  (click)="openCallNotifications()"
+  [disabled]="!highPriority"
+  [attr.aria-label]="'notifications.call.title' | translate">
+
+  <ion-icon 
+    slot="start" 
+    name="call-outline"
+    aria-hidden="true" 
+    class="setting_icons">
+  </ion-icon>
+
+  <ion-label [color]="highPriority ? '' : 'medium'">
+    <h2>{{ 'notifications.call.title' | translate }}</h2>
+    <p>{{ 'notifications.call.desc' | translate }}</p>
+  </ion-label>
+</ion-item>
+    -->
+  </ion-list>
+</ion-content>

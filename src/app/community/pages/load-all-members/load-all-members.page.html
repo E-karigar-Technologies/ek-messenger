@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New group</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSearch()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="showSearchBar" class="search-toolbar">
+    <ion-input #searchInput clearInput placeholder="Search contacts" [(ngModel)]="searchTerm" (ionChange)="filterList()"></ion-input>
+  </ion-toolbar>
+
+  <!-- Selected chips row - UPDATED: With cross button like add-members -->
+  <div *ngIf="selectedCount > 0" class="selected-chip-row">
+    <ion-chip *ngFor="let user of selectedMembers" (click)="toggleSelect(user)">
+      <ion-avatar>
+        <ng-container *ngIf="user.profile; else chipInitials">
+          <img [src]="user.profile" />
+        </ng-container>
+        <ng-template #chipInitials>
+          <div class="chip-initial">{{ getInitial(user.name) }}</div>
+        </ng-template>
+      </ion-avatar>
+      <ion-label>{{ user.name }}</ion-label>
+      <ion-icon name="close-circle" (click)="toggleSelect(user); $event.stopPropagation()"></ion-icon>
+    </ion-chip>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="isLoading">
+    <ion-item *ngFor="let i of [1,2,3,4,5]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated style="width: 48px; height: 48px; border-radius: 50%"></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3><ion-skeleton-text animated style="width:50%"></ion-skeleton-text></h3>
+        <p><ion-skeleton-text animated style="width:80%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="!isLoading">
+    <ion-item *ngFor="let u of filteredUsers" (click)="toggleSelect(u)" button lines="full">
+      <ion-avatar slot="start">
+        <ng-container *ngIf="u.profile; else initialsTpl">
+          <img [src]="u.profile" />
+        </ng-container>
+        <ng-template #initialsTpl>
+          <div class="avatar-initial">{{ getInitial(u.name) }}</div>
+        </ng-template>
+      </ion-avatar>
+
+      <ion-label>
+        <h3>{{ u.name }}</h3>
+        <p *ngIf="u.bio">{{ u.bio }}</p>
+      </ion-label>
+
+      <div slot="end" class="select-indicator">
+        <ng-container *ngIf="u.selected; else notSelected">
+          <div class="check-circle">
+            <ion-icon name="checkmark-outline"></ion-icon>
+          </div>
+        </ng-container>
+        <ng-template #notSelected>
+          <div class="empty-circle"></div>
+        </ng-template>
+      </div>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<!-- forward FAB -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="success" (click)="confirmSelection()" [disabled]="selectedCount===0">
+    <ion-icon name="arrow-forward-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

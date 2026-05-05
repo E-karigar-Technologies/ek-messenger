@@ -1,0 +1,48 @@
+page-notification {
+  /* Base list surface */
+  ion-list {
+    background: var(--ion-background-color);
+    --ion-item-background: var(--ion-item-background, var(--ion-background-color));
+    --ion-item-color: var(--ion-text-color);
+  }
+
+  /* Notification description text */
+  .description {
+    font-size: 0.8em;
+    max-width: 60%;
+    margin-right: 10px;
+    color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+  }
+
+  /* Compact toggle rows */
+  ion-item {
+    --inner-padding-end: 0;
+  }
+
+  /* Toggle styles */
+  ion-toggle {
+    margin-left: -10px;
+
+    /* use theme primary by default (blue fallback if not set) */
+    --handle-background: var(--ion-color-primary, #007aff);
+    --handle-background-checked: var(--ion-color-primary, #007aff);
+
+    /* subtle track tint */
+    --track-background: color-mix(in srgb, var(--ion-color-primary) 15%, transparent);
+    --track-background-checked: color-mix(in srgb, var(--ion-color-primary) 25%, transparent);
+  }
+
+  /* Accessibility */
+  ion-toggle:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 999px;
+  }
+}
+
+.setting_icons {
+  color: white !important;
+}
+.itemHeader{
+  color:var(--ion-text-color) ;
+}

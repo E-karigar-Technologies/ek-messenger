@@ -1,0 +1,70 @@
+<ion-content class="ion-padding">
+  
+  <!-- Step 3: Terms View -->
+  <div *ngIf="step === 'terms'" class="modal-view terms-view">
+    <div class="header-section">
+      <ion-icon name="shield-checkmark" class="main-icon"></ion-icon>
+      <h2>about being an admin for this channel</h2>
+    </div>
+
+    <div class="info-list">
+      <div class="info-item">
+        <ion-icon name="create-outline"></ion-icon>
+        <div class="info-text">
+          <p>admins can send updates, admins can also change the channel's profile and settings</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <ion-icon name="globe-outline"></ion-icon>
+        <div class="info-text">
+          <p>anyone can discover this channel are public, so anyone can find them and see 30 days of history.</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <ion-icon name="eye-outline"></ion-icon>
+        <div class="info-text">
+          <p>you are visible to other admins, admins for this channel can see your phone number, profile picture and name but followers can not.</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <div class="info-text">
+          <p>you are responsible for this channel, this channel needs to follow our guidelines and is reviewed against them.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <p>by continuing, you agree to continue</p>
+      <ion-button expand="block" shape="round" (click)="agreeAndContinue()">
+        Agree And Continue
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Step 4: Preview/Accept View -->
+  <div *ngIf="step === 'preview'" class="modal-view preview-view">
+    <div class="channel-preview-card">
+      <ion-avatar class="channel-dp">
+        <img [src]="inviteData?.channelDp || 'assets/images/user.jfif'" (error)="setDefaultAvatar($event)" />
+      </ion-avatar>
+      <h3>{{ inviteData?.channelName }}</h3>
+      <p class="invite-label">{{ inviteData?.isFollowerInvite ? 'Channel invitation' : 'channel admin invite' }}</p>
+      <p *ngIf="!inviteData?.isFollowerInvite" class="expiry-text">expires in {{ inviteData?.expiryDays || 7 }} days</p>
+    </div>
+
+    <div class="action-buttons">
+      <ion-button expand="block" shape="round" (click)="acceptInvite()" [disabled]="isProcessing">
+        <ion-spinner *ngIf="isProcessing" name="crescent" slot="start"></ion-spinner>
+        {{ inviteData?.isFollowerInvite ? 'Follow channel' : 'Accept invite' }}
+      </ion-button>
+      <ion-button expand="block" fill="clear" (click)="viewChannel()">
+        View channel
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>

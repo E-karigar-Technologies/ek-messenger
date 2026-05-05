@@ -1,0 +1,303 @@
+// ── Page ──────────────────────────────────────────────────
+ion-header ion-toolbar {
+  --background: var(--ion-toolbar-background, #ffffff);
+  --color: var(--ion-toolbar-color, #0b0b0b);
+
+  ion-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ion-toolbar-color, #0b0b0b);
+  }
+
+  .back-icon {
+    color: var(--ion-toolbar-color, #0b0b0b);
+  }
+}
+
+ion-content {
+  --background: #f5f5f5;
+}
+
+ion-list-header.section-header {
+  --background: #f5f5f5;
+  padding-top: 20px;
+  padding-bottom: 4px;
+
+  ion-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+ion-item {
+  --background: #ffffff;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+
+  h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ion-text-color, #0b0b0b);
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: 13px;
+    color: #888888;
+    margin: 0;
+  }
+
+  &::part(native) {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+// ── Backdrop ──────────────────────────────────────────────
+.cs-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  animation: fade-in 0.2s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+// ── Bottom sheet ──────────────────────────────────────────
+.cs-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-radius: 16px 16px 0 0;
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  max-height: 70vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+
+  &.open {
+    transform: translateY(0);
+  }
+}
+
+.cs-handle {
+  width: 36px;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  margin: 12px auto 0;
+  flex-shrink: 0;
+}
+
+.cs-body {
+  padding: 12px 20px 32px;
+}
+
+.cs-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ion-text-color, #0b0b0b);
+  margin: 0 0 6px;
+}
+
+.cs-subtitle {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+// ── Options ───────────────────────────────────────────────
+.cs-option {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  .cs-option-text {
+    flex: 1;
+
+    .cs-label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ion-text-color, #0b0b0b);
+      margin: 0 0 3px;
+    }
+
+    .cs-desc {
+      font-size: 13px;
+      color: #888;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+}
+
+// ── Custom radio ──────────────────────────────────────────
+.cs-radio {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  transition: border-color 0.2s ease;
+
+  &.active {
+    border-color: var(--ion-color-primary);
+
+    .cs-radio-dot {
+      display: block;
+    }
+  }
+
+  .cs-radio-dot {
+    display: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ion-color-primary);
+    animation: pop-in 0.15s ease;
+  }
+}
+
+@keyframes pop-in {
+  0%   { transform: scale(0); }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+// ── Save button ───────────────────────────────────────────
+.cs-save-btn {
+  margin-top: 20px;
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
+  --color: #ffffff;
+  --border-radius: 10px;
+  height: 48px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+// ── Modal styles ──────────────────────────────────────────
+.modal-header {
+  --background: #ffffff;
+  --min-height: auto;
+  box-shadow: none !important;
+}
+
+.modal-handle {
+  width: 36px;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  margin: 12px auto 8px;
+}
+
+.modal-content {
+  padding: 4px 20px 32px;
+
+  .modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ion-text-color, #0b0b0b);
+    margin: 0 0 16px;
+  }
+
+  .modal-desc {
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.5;
+    margin: 0 0 16px;
+  }
+}
+
+.option-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  .option-text {
+    flex: 1;
+
+    .option-label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ion-text-color, #0b0b0b);
+      margin: 0 0 3px;
+    }
+
+    .option-desc {
+      font-size: 13px;
+      color: #888888;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+}
+
+.radio-circle {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 2px solid #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  transition: border-color 0.2s ease;
+  flex-shrink: 0;
+
+  &.selected {
+    border-color: var(--ion-color-primary);
+  }
+
+  .radio-inner {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ion-color-primary);
+    animation: pop-in 0.15s ease;
+  }
+}
+
+.save-btn {
+  margin-top: 20px;
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
+  --color: #ffffff;
+  --border-radius: 10px;
+  height: 48px;
+  font-size: 15px;
+  font-weight: 600;
+}

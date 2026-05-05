@@ -1,0 +1,47 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/home"
+        [attr.aria-label]="'common.back' | translate">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">{{ 'socialLinks.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content-red">
+  <div class="intro">
+    <p>{{ 'socialLinks.intro' | translate }}</p>
+  </div>
+
+  <ion-list lines="none">
+    <ion-item button (click)="openAddInstagram()"
+              [attr.aria-label]="'socialLinks.instagram.title' | translate">
+      <ion-icon name="logo-instagram" slot="start" class="platform-icon" aria-hidden="true"></ion-icon>
+      <ion-label>
+        <h2>{{ 'socialLinks.instagram.title' | translate }}</h2>
+
+        <p *ngIf="instagramUsername; else noLink">
+          {{ ('@' + instagramUsername) }}
+        </p>
+
+        <ng-template #noLink>
+          <p class="empty-text">{{ 'socialLinks.instagram.add' | translate }}</p>
+        </ng-template>
+      </ion-label>
+
+      <ion-button slot="end" fill="clear" (click)="openAddInstagram()"
+                  [attr.aria-label]="(instagramUsername ? 'socialLinks.actions.edit' : 'socialLinks.actions.add') | translate">
+        <ion-icon [name]="instagramUsername ? 'create-outline' : 'add-outline'"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div class="privacy-note">
+    <p>
+      {{ 'socialLinks.privacy.note' | translate }}
+      <a class="privacy-link">{{ 'socialLinks.privacy.link' | translate }}</a>
+    </p>
+  </div>
+</ion-content>

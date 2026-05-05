@@ -1,0 +1,31 @@
+page-help-feedback {
+  /* List surface + item colors */
+  ion-list {
+    background: var(--ion-background-color);
+    --ion-item-background: var(--ion-item-background, var(--ion-background-color));
+    --ion-item-color: var(--ion-text-color);
+  }
+
+  /* Secondary text */
+  .sub-label {
+    font-size: 0.9em;
+    color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+  }
+
+  /* Optional: highlight selected/help topic */
+  ion-item.current {
+    font-weight: 600;
+    --color: var(--ion-color-primary);
+  }
+
+  /* Accessibility */
+  ion-item:focus-visible,
+  .sub-label:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 8px;
+  }
+}
+.itemHeader{
+  color:var(--ion-text-color) ;
+}

@@ -1,0 +1,104 @@
+<ion-header translucent="true">
+  <ion-toolbar class="modal-header">
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Edit Favorites</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- ── LOADING SKELETON ─────────────────────────────── -->
+  <ng-container *ngIf="isLoading">
+    <ion-list>
+      <ion-item *ngFor="let i of [1,2,3]" lines="none">
+        <ion-avatar slot="start">
+          <ion-skeleton-text
+            animated
+            style="width:44px;height:44px;border-radius:50%;"
+          ></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width:55%;"></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <!-- ── EMPTY STATE ──────────────────────────────────── -->
+  <ng-container *ngIf="!isLoading && favoriteList.length === 0">
+    <div class="empty-state">
+      <ion-icon name="heart-outline" class="empty-icon"></ion-icon>
+      <p class="empty-title">No favourites yet</p>
+      <p class="empty-subtitle">
+        Long press a chat &rarr; &#8942; More &rarr; Add to Favourites
+      </p>
+    </div>
+  </ng-container>
+
+  <!-- ── FILLED STATE ─────────────────────────────────── -->
+  <ng-container *ngIf="!isLoading && favoriteList.length > 0">
+
+    <div class="info-text">
+      Remove chats using the trash icon.
+    </div>
+
+    <div class="section-title">Included</div>
+
+    <!-- Add people -->
+    <ion-item lines="none" button (click)="addPeople()" class="add-item">
+      <div class="add-icon" slot="start">
+        <ion-icon name="add"></ion-icon>
+      </div>
+      <ion-label>Add people or groups</ion-label>
+    </ion-item>
+
+    <!-- Favourite list -->
+    <ion-list>
+      <ion-item
+        *ngFor="let chat of favoriteList"
+        lines="none"
+        class="fav-item"
+      >
+        <!-- Avatar -->
+        <ion-avatar slot="start">
+          <ng-container *ngIf="chat.image; else initials">
+            <img [src]="chat.image" />
+          </ng-container>
+          <ng-template #initials>
+            <div class="avatar-initials">
+              {{ chat.name?.charAt(0)?.toUpperCase() || '?' }}
+            </div>
+          </ng-template>
+        </ion-avatar>
+
+        <ion-label>{{ chat.name }}</ion-label>
+
+        <!-- Delete icon -->
+        <ion-icon
+          name="trash-outline"
+          slot="end"
+          class="delete-icon"
+          (click)="remove(chat, $event)"
+        ></ion-icon>
+
+      </ion-item>
+    </ion-list>
+
+    <div class="footer-text">
+      You can edit favorites here or reorder how they appear in the Chats tab.
+    </div>
+
+  </ng-container>
+
+</ion-content>

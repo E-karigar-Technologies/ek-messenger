@@ -1,0 +1,269 @@
+// .page-content {
+// --background: #ffffff;
+// }
+
+
+.container {
+max-width: 720px;
+margin: 24px auto;
+padding: 0 16px;
+}
+
+
+.center-card {
+// background: #fff;
+border-radius: 14px;
+text-align: center;
+padding: 32px 20px;
+box-shadow: none;
+}
+
+
+.icon-section {
+margin-bottom: 16px;
+}
+
+
+.email-icon {
+font-size: 72px;
+color: var(--ion-color-primary);
+}
+
+
+.center-text {
+margin: 0 0 20px 0;
+font-size: 14px;
+color: #666;
+}
+
+
+.email-info {
+text-align: left;
+margin-top: 20px;
+}
+
+
+.email-info label {
+font-size: 14px;
+color: #999;
+}
+
+
+.email-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 16px;
+margin-top: 6px;
+}
+
+
+.email-row strong {
+font-weight: 600;
+}
+
+
+.verified {
+display: flex;
+align-items: center;
+gap: 6px;
+margin-top: 10px;
+color: var(--ion-color-primary);
+font-size: 14px;
+}
+
+
+.verified-icon {
+font-size: 18px;
+}
+
+.not-verified {
+display: flex;
+align-items: center;
+gap: 6px;
+margin-top: 10px;
+color: var(--ion-color-warning, #f5a623);
+font-size: 14px;
+}
+
+.not-verified-icon {
+font-size: 18px;
+}
+
+
+.edit-form {
+margin-top: 20px;
+text-align: left;
+}
+
+
+.actions {
+display: flex;
+gap: 12px;
+margin-top: 16px;
+}
+
+
+.actions ion-button {
+flex: 1;
+}
+
+.validation {
+margin-top: 6px;
+}
+
+.error {
+color: var(--ion-color-danger);
+font-size: 12px;
+}
+
+/* =========================================
+   OTP Popup Overlay  (matches login screen)
+   ========================================= */
+
+.blurred {
+  filter: blur(1px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.otp-popup-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in srgb, var(--ion-text-color) 12%, transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backgrounds {
+  background: var(--ion-card-background);
+  width: 90%;
+  max-width: 380px;
+  border-radius: 14px;
+  box-shadow: 4px 4px 18px color-mix(in srgb, var(--ion-text-color) 20%, transparent);
+  padding: 20px 16px;
+}
+
+.otp-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.otp-header p:first-child {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}
+
+.otp-sub {
+  margin: 6px 0 0 0;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--ion-text-color) 65%, transparent);
+}
+
+.otp-input-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.custom-otp-input,
+ion-input-otp {
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 1.6vw, 14px);
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+}
+
+.custom-otp-input input,
+ion-input-otp input,
+.custom-otp-input ::ng-deep input {
+  width: clamp(38px, 6vw, 52px);
+  height: clamp(38px, 6vw, 52px);
+  font-size: clamp(18px, 3vw, 28px);
+  line-height: 1;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid var(--ion-border-color);
+  background: transparent;
+  color: var(--ion-text-color) !important;
+  -webkit-text-fill-color: var(--ion-text-color) !important;
+  caret-color: var(--ion-color-primary);
+  box-sizing: border-box;
+  outline: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.custom-otp-input input:focus,
+.custom-otp-input ::ng-deep input:focus {
+  border-color: var(--ion-color-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ion-color-primary) 20%, transparent);
+}
+
+.submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+.submit button {
+  height: 45px;
+  width: 76%;
+  border-radius: 30px;
+  font-weight: 700;
+  color: var(--ion-color-primary-contrast);
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  background: var(--ion-color-primary);
+}
+
+.submit button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.resend-section {
+  text-align: center;
+  color: var(--ion-color-medium, #888);
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.resend-section p {
+  margin: 4px 0;
+}
+
+.resend-section span {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.dismiss-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.dismiss-btn {
+  background: transparent;
+  border: none;
+  color: var(--ion-color-medium, #888);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 12px;
+}

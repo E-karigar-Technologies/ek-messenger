@@ -1,0 +1,115 @@
+<ion-header>
+  <!-- Normal toolbar -->
+  <ion-toolbar class="ion_toolbar" *ngIf="!showSearchBar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="ion_title">{{ 'invite.header' | translate }}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="toggleSearch()" [attr.aria-label]="'invite.actions.search' | translate">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Search toolbar -->
+  <ion-toolbar *ngIf="showSearchBar">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="toggleSearch()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar
+      [(ngModel)]="searchTerm"
+      class="searchBarClass"
+      (ionInput)="filterContactsWithDebounce()"
+      placeholder="Find by name or number..."
+      [debounce]="0"
+      animated
+      autofocus
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- ── Quick Actions ────────────────────────────────────────────────────── -->
+  <ion-list lines="none">
+    <ion-item button detail (click)="shareLink()" [attr.aria-label]="'invite.actions.shareLink' | translate">
+      <ion-icon slot="start" name="share-social-outline" class="setting_icons"></ion-icon>
+      <ion-label>
+        <h2 class="itemHeader">{{ 'invite.share.title' | translate }}</h2>
+        <p>{{ 'invite.share.subtitle' | translate }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- ── Skeleton loader ──────────────────────────────────────────────────── -->
+  <ng-container *ngIf="isLoading">
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>{{ 'invite.contacts.header' | translate }}</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let i of [1,2,3,4,5]">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated class="skeleton-avatar"></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3><ion-skeleton-text animated style="width: 120px;"></ion-skeleton-text></h3>
+          <p><ion-skeleton-text animated style="width: 160px;"></ion-skeleton-text></p>
+        </ion-label>
+        <ion-skeleton-text animated slot="end" class="skeleton-invite-btn"></ion-skeleton-text>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <!-- ── Suggested contacts (non-platform) ───────────────────────────────── -->
+  <ng-container *ngIf="!isLoading">
+
+    <ion-list lines="inset" *ngIf="filteredContacts.length > 0">
+      <ion-list-header>
+        <ion-label>{{ 'invite.contacts.header' | translate }}</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let contact of filteredContacts">
+        <!-- Avatar: show initial letter (no profile pic for non-platform users) -->
+        <ion-avatar slot="start">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--ion-color-primary);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:600;flex-shrink:0;">
+            {{ (contact.username || '?').substring(0, 1) | uppercase }}
+          </div>
+        </ion-avatar>
+
+        <ion-label>
+          <h2>{{ contact.username }}</h2>
+          <p>{{ contact.phoneNumber }}</p>
+          <p>{{ 'invite.contacts.notOnApp' | translate }}</p>
+        </ion-label>
+
+        <ion-button
+          slot="end"
+          fill="outline"
+          size="small"
+          color="success"
+          class="invite-btn"
+          (click)="inviteContact(contact); $event.stopPropagation()"
+        >
+          {{ 'invite.actions.invite' | translate }}
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- ── Empty state ───────────────────────────────────────────────────── -->
+    <div *ngIf="filteredContacts.length === 0" class="empty-state">
+      <ion-icon name="people-outline"></ion-icon>
+      <p>
+        <span *ngIf="searchTerm">No contacts match "{{ searchTerm }}".</span>
+        <span *ngIf="!searchTerm">All your contacts are already on app 🎉</span>
+      </p>
+    </div>
+
+  </ng-container>
+
+</ion-content>

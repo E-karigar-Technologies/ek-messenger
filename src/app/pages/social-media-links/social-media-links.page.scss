@@ -1,0 +1,69 @@
+.header-red ion-toolbar {
+  --background: var(--ion-color-danger, #b71c1c); /* deep red */
+  --color: var(--ion-color-danger-contrast, #fff);
+}
+
+/* page content */
+.content-red {
+  --background: var(--ion-background-color, #fff);
+  padding: 0;
+}
+
+/* intro section */
+.intro {
+  padding: 18px 16px;
+  font-size: 15px;
+  color: color-mix(in srgb, var(--ion-text-color) 75%, transparent);
+}
+
+/* platform icons */
+.platform-icon {
+  font-size: 28px;
+  color: var(--ion-color-danger, #b71c1c);
+}
+
+/* list labels */
+ion-label h2 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ion-text-color);
+}
+
+ion-label p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+}
+
+/* empty state text */
+.empty-text {
+  color: color-mix(in srgb, var(--ion-text-color) 35%, transparent);
+  font-style: italic;
+}
+
+/* privacy note section */
+.privacy-note {
+  margin-top: 0px;
+  padding: 18px 16px;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--ion-text-color) 65%, transparent);
+  border-top: 1px solid var(--ion-border-color, rgba(0,0,0,0.04));
+}
+
+/* privacy link */
+.privacy-link {
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+.ion_title{
+    color: var(--ion-color-primary);
+    padding: 0px !important;
+    // padding-bottom: 28px !important;
+}
+
+// ion-toolbar {
+//   padding-top: 28px !important;
+// }

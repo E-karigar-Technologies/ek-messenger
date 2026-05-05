@@ -1,0 +1,36 @@
+<header class="flex items-center justify-between bg-white border-b border-gray-200 px-4 py-3">
+
+  <!-- LEFT SIDE -->
+  <div class="flex items-center gap-3">
+    <!-- Back Button -->
+    <button
+      *ngIf="config?.showBackButton"
+      class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 transition"
+      (click)="onBack()"
+    >
+      <ion-icon name="arrow-back-outline" class="text-xl text-gray-700"></ion-icon>
+    </button>
+
+    <!-- Title or Custom HTML -->
+    <div *ngIf="config?.customHtml; else titleTpl" [innerHTML]="config.customHtml"></div>
+
+    <ng-template #titleTpl>
+      <h1 class="text-lg font-semibold text-gray-800 truncate max-w-[200px]">
+        {{ config?.title }}
+      </h1>
+    </ng-template>
+  </div>
+
+  <!-- RIGHT SIDE ACTIONS -->
+  <div class="flex items-center space-x-2">
+    <ng-container *ngFor="let action of config?.actions">
+      <button
+        class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 transition"
+        [attr.aria-label]="action.label || action.icon"
+        (click)="handleAction(action)"
+      >
+        <ion-icon [name]="action.icon" class="text-xl text-gray-700"></ion-icon>
+      </button>
+    </ng-container>
+  </div>
+</header>

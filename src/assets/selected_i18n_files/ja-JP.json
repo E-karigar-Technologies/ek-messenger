@@ -1,0 +1,751 @@
+{
+  "meta": {
+    "generatedAt": "2025-09-25T06:49:05.846991Z",
+    "note": "Translations for email-edit page.",
+    "translated": true,
+    "locale": "ja-JP"
+  },
+  "emailEdit": {
+    "title": "メールアドレス",
+    "description": "メールはアカウントへのアクセスに役立ちます。他のユーザーには表示されません。",
+    "label": "メール",
+    "verified": "確認済み",
+    "placeholder": "you@example.com",
+    "edit": "編集",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "savedSuccess": "メールが正常に保存されました。",
+    "validation": {
+      "required": "メールは必須です。",
+      "invalid": "有効なメールアドレスを入力してください。",
+      "maxlength": "メールが長すぎます（最大254文字）。"
+    }
+  },
+  "helpPage": {
+    "title": "ヘルプ",
+    "helpCenter": {
+      "title": "ヘルプセンター",
+      "description": "ヘルプ、よくある質問、お問い合わせ先。"
+    },
+    "terms": {
+      "title": "利用規約とプライバシーポリシー",
+      "description": "利用規約とデータポリシーをご確認ください。"
+    },
+    "channelReports": {
+      "title": "チャンネルレポート",
+      "description": "レポートの管理と表示。"
+    },
+    "appInfo": {
+      "title": "アプリ情報",
+      "description": "バージョン、法的および技術的な詳細。"
+    }
+  },
+  "common": { "ok": "OK", "cancel": "キャンセル", "logout": "ログアウト", "reset": "リセット" },
+  "settingsPage": {
+  "title": "設定",
+  "account": {
+    "title": "アカウント",
+    "description": "プライバシー、セキュリティ、番号変更"
+  },
+  "privacy": {
+    "title": "プライバシー",
+    "description": "プライバシー設定を制御する"
+  },
+  "avatar": {
+    "title": "プロフィール写真",
+    "description": "プロフィール写真を変更する"
+  },
+  "chats": {
+    "title": "チャット",
+    "description": "テーマ、壁紙、バックアップ"
+  },
+  "accessibility": {
+    "title": "アクセシビリティ",
+    "description": "テキストサイズと表示オプションを調整する"
+  },
+  "notifications": {
+    "title": "通知",
+    "description": "メッセージ、グループ、通話のアラートを管理する"
+  },
+  "storage": {
+    "title": "ストレージとデータ",
+    "description": "ストレージとネットワーク使用量を管理する"
+  },
+  "appLanguage": {
+    "title": "アプリ言語",
+    "description": "アプリの言語を選択する"
+  },
+  "help": {
+    "title": "ヘルプ",
+    "description": "ヘルプセンター、お問い合わせ、アプリ情報"
+  },
+  "updates": {
+    "title": "アプリ更新",
+    "description": "更新を確認し、オートアップデートを有効にする"
+  },
+  "invite": {
+    "title": "友達を招待",
+    "description": "アプリを連絡先と共有する"
+  },
+  "logout": {
+    "title": "ログアウト",
+    "description": "アプリデータをクリアしてサインアウトする",
+    "confirmHeader": "ログアウトを確認",
+    "confirmMessage": "本当にログアウトしてアプリデータをクリアしますか？",
+    "loadingHeader": "ログアウト中",
+    "loadingMessage": "しばらくお待ちください...",
+    "successHeader": "ログアウト完了",
+    "successMessage": "正常にログアウトしました。"
+  },
+  "defaultStatus": "利用可能"
+},
+  "appUpdates": {
+    "title": "アプリの更新",
+    "version": "バージョン",
+    "latestAvailable": "最新の利用可能バージョン",
+    "status": "ステータス",
+    "statusMessages": {
+      "updateAvailable": "アップデートがあります。",
+      "upToDate": "最新バージョンを利用中です。"
+    },
+    "badge": {
+      "updateAvailable": "アップデートあり",
+      "upToDate": "最新"
+    },
+    "checkForUpdates": {
+      "title": "更新を確認",
+      "description": "新しいバージョンがあるか手動で確認します"
+    },
+    "checking": "確認中…",
+    "toast": {
+      "latest": "最新バージョンを利用しています。",
+      "updateAvailable": "アップデートあり: {{version}}",
+      "error": "更新を確認できませんでした。後でもう一度お試しください。"
+    }
+  },
+  "accountPage": {
+    "title": "アカウント",
+    "securityNotifications": "セキュリティ通知",
+    "passkeys": "パスキー",
+    "emailAddress": "メールアドレス",
+    "twoStep": "2段階認証",
+    "changeNumber": "番号を変更",
+    "requestInfo": "アカウント情報をリクエスト",
+    "addAccount": "アカウントを追加",
+    "deleteAccount": "アカウントを削除",
+    "confirmDelete": {
+      "title": "アカウントを削除しますか？",
+      "message": "この操作により、アカウントとデータは完全に削除されます。",
+      "confirm": "削除",
+      "cancel": "キャンセル",
+      "log": "アカウント削除モーダルが開きました"
+    }
+  },
+  "accessibility": {
+    "title": "アクセシビリティ",
+    "groups": {
+      "displayMotion": "表示と動き",
+      "interaction": "操作"
+    },
+    "increaseContrast": {
+      "title": "コントラストを強調",
+      "desc": "ライトモードでの読みやすさを向上させるために、主要な色を濃くします。"
+    },
+    "reduceMotion": {
+      "title": "動きを減らす",
+      "desc": "アニメーションステッカー、GIF、トランジションを最小限にします。"
+    },
+    "largeText": {
+      "title": "大きな文字",
+      "desc": "読みやすくするためにシステムフォントサイズを大きくします。"
+    },
+    "simpleAnimations": {
+      "title": "簡易アニメーション",
+      "desc": "操作しやすくするために複雑なアニメーションを減らします。"
+    },
+    "grayscale": {
+      "title": "グレースケールモード",
+      "desc": "目の疲れを軽減するため、すべてのインターフェイスの色をグレーに変換します。"
+    }
+  },
+  "privacyPage": {
+    "title": "プライバシー",
+    "groups": {
+      "whoCanSee": "誰が自分の情報を見られるか",
+      "other": "その他"
+    },
+    "lastSeen": {
+      "title": "最終表示とオンライン",
+      "desc": "最終表示時刻とオンライン状況を誰が見られるかを管理します"
+    },
+    "profilePhoto": {
+      "title": "プロフィール写真",
+      "desc": "写真を誰が見られるかを選択します"
+    },
+    "about": {
+      "title": "情報",
+      "desc": "自己紹介情報を誰が見られるかを管理します"
+    },
+    "status": {
+      "title": "ステータス",
+      "desc": "ステータス更新を誰が見られるかを管理します"
+    },
+    "blocked": {
+      "title": "ブロックした連絡先",
+      "desc": "ブロックしたユーザーを表示および管理します"
+    },
+    "options": {
+      "everyone": "全員",
+      "contacts": "自分の連絡先",
+      "nobody": "誰も"
+    }
+  },
+  "avatarPage": {
+    "title": "アバターを作成",
+    "previewAlt": "アバターのプレビュー",
+    "sections": {
+      "customization": "カスタマイズオプション"
+    },
+    "fields": {
+      "hair": "髪",
+      "accessories": "アクセサリー",
+      "hairColor": "髪の色",
+      "eyes": "目",
+      "mouth": "口",
+      "clothes": "服",
+      "skin": "肌"
+    },
+    "placeholders": {
+      "hair": "髪型を選択",
+      "accessories": "アクセサリーを選択",
+      "hairColor": "髪の色を選択",
+      "eyes": "目のスタイルを選択",
+      "mouth": "口のスタイルを選択",
+      "clothes": "服を選択",
+      "skin": "肌の色を選択"
+    },
+    "buttons": {
+      "download": "ダウンロード",
+      "downloading": "ダウンロード中…",
+      "save": "保存"
+    },
+    "toast": {
+      "saved": "アバターの選択がローカルに保存されました。",
+      "downloadError": "ダウンロードに失敗しました。もう一度お試しください。"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "highPriority": {
+      "title": "高優先度通知を使用",
+      "desc": "おやすみモード中でも音とプレビュー付きで通知を受け取ります"
+    },
+    "message": {
+      "title": "メッセージ通知",
+      "desc": "メッセージの通知をカスタマイズ"
+    },
+    "group": {
+      "title": "グループチャット通知",
+      "desc": "グループチャットの通知を管理"
+    },
+    "call": {
+      "title": "通話通知",
+      "desc": "着信音とバイブレーションの設定"
+    }
+  },
+  "storage": {
+    "title": "ストレージとデータ",
+    "totalUsedHuman": "{{used}} MB / {{total}} MB",
+    "cards": {
+      "usage": {
+        "title": "ストレージ使用状況",
+        "used": "{{mb}} MB 使用済み",
+        "total": "合計 {{mb}} MB"
+      }
+    },
+    "sections": {
+      "network": "ネットワーク使用状況",
+      "manage": "管理"
+    },
+    "network": {
+      "sent": {
+        "title": "送信データ",
+        "subtitle": "{{val}}"
+      },
+      "received": {
+        "title": "受信データ",
+        "subtitle": "{{val}}"
+      }
+    },
+    "manage": {
+      "title": "ストレージを管理",
+      "desc": "大きなファイル、チャット、メディアを確認して削除"
+    },
+    "autoDownload": {
+      "title": "メディア自動ダウンロード",
+      "desc": "モバイル/Wi-Fi/ローミングで何をダウンロードするかを制御"
+    },
+    "actions": {
+      "analyze": "分析",
+      "clearCache": "キャッシュをクリア",
+      "resetStats": "統計をリセット"
+    },
+    "toast": {
+      "cleared": "{{mb}} MB のキャッシュをクリアしました",
+      "statsReset": "ネットワーク統計がリセットされました"
+    }
+  },
+ 
+  "chats": {
+    "title": "チャット",
+    "sections": {
+      "appearance": "外観",
+      "behavior": "メッセージの動作",
+      "management": "チャット管理",
+      "translation": "翻訳"
+    },
+    "items": {
+      "theme": {
+        "title": "テーマ",
+        "sub": "システムのデフォルト"
+      },
+      "chatTheme": {
+        "title": "デフォルトチャットテーマ",
+        "sub": "壁紙またはテーマを選択"
+      },
+      "fontSize": {
+        "title": "文字サイズ",
+        "sub": "中"
+      },
+      "enterToSend": {
+        "title": "Enter で送信",
+        "sub": "Enter キーでメッセージを送信"
+      },
+      "mediaVisibility": {
+        "title": "メディアの表示",
+        "sub": "新しくダウンロードしたメディアをギャラリーに表示"
+      },
+      "keepArchived": {
+        "title": "チャットをアーカイブしたままにする",
+        "sub": "新しいメッセージが届いてもアーカイブは維持されます"
+      },
+      "transcripts": {
+        "title": "音声メッセージの文字起こし",
+        "sub": "新しい音声メッセージを自動で文字起こし"
+      },
+      "translation": {
+        "title": "翻訳を有効にする",
+        "sub": "送信するメッセージを翻訳する",
+        "notice": "翻訳されたメッセージは、正確性のため外部サービスで処理される場合があります。データは保存されず、非公開のままです。",
+        "reset": {
+          "title": "同意をリセット",
+          "sub": "翻訳の同意をクリアし、この機能を無効にします"
+        }
+      },
+      "backup": {
+        "title": "チャットのバックアップ",
+        "sub": "メッセージをクラウドストレージにバックアップ"
+      },
+      "transfer": {
+        "title": "チャットを転送",
+        "sub": "デバイス間でチャットを移動"
+      },
+      "history": {
+        "title": "チャット履歴",
+        "sub": "すべてのチャットをエクスポート、アーカイブ、消去、または削除"
+      }
+    },
+    "toasts": {
+      "enter": {
+        "enabled": "Enter 送信が有効になりました",
+        "disabled": "Enter 送信が無効になりました"
+      },
+      "media": {
+        "on": "メディア表示オン",
+        "off": "メディア表示オフ"
+      },
+      "archived": {
+        "enabled": "アーカイブ保持が有効",
+        "disabled": "アーカイブ保持が無効"
+      },
+      "transcripts": {
+        "enabled": "音声文字起こしが有効",
+        "disabled": "音声文字起こしが無効"
+      },
+      "translation": {
+        "enabled": "翻訳が有効になりました",
+        "disabled": "翻訳が無効になりました",
+        "consentDeclined": "翻訳の同意が拒否されました",
+        "consentReset": "翻訳の同意がリセットされました"
+      },
+      "backup": {
+        "starting": "バックアップを開始しています…",
+        "done": "バックアップ完了"
+      }
+    },
+    "dialogs": {
+      "translationConsent": {
+        "header": "翻訳にはメッセージ内容を外部サービスへ送信する必要があります",
+        "message": "翻訳を提供するために、メッセージ内容を外部の翻訳サービスへ送信します。アカウントの個人情報は一切収集されません。送信されるのはメッセージ内容のみです。同意すると、翻訳が取得されローカルに保存されます。同意はいつでも取り消せます。",
+        "decline": "拒否",
+        "accept": "同意"
+      },
+      "resetTranslationConsent": {
+        "header": "翻訳の同意をリセット",
+        "message": "翻訳の同意をクリアし機能を無効にします。後で再度有効にできます。"
+      }
+    }
+  }
+
+,
+  "profilePage": {
+    "title": "プロフィール",
+    "imageAlt": "プロフィール画像",
+    "buttons": {
+      "edit": "編集",
+      "addLinks": "リンクを追加",
+      "cancel": "キャンセル"
+    },
+    "fields": {
+      "name": "名前",
+      "about": "自己紹介",
+      "phone": "電話番号",
+      "links": "リンク"
+    },
+    "actions": {
+      "source": {
+        "header": "画像ソースを選択",
+        "camera": "カメラ",
+        "gallery": "ギャラリー",
+        "cancel": "キャンセル"
+      }
+    },
+    "loading": {
+      "openingCamera": "カメラを開いています...",
+      "processing": "画像を処理中...",
+      "updating": "プロフィール画像を更新しています..."
+    },
+    "validation": {
+      "size": "画像サイズは5MB未満である必要があります",
+      "type": "有効な画像ファイルを選択してください (JPEG, PNG, WebP)"
+    },
+    "toast": {
+      "loadFailed": "プロフィールデータの読み込みに失敗しました",
+      "imageLoadFailed": "プロフィール画像の読み込みに失敗しました",
+      "selectFailed": "画像の選択に失敗しました。再試行してください。",
+      "processFailed": "画像の処理中にエラーが発生しました。再試行してください。",
+      "noUser": "ユーザーIDが見つかりません",
+      "updated": "プロフィール画像が正常に更新されました！",
+      "updateFailed": "プロフィール画像の更新に失敗しました"
+    }
+  },
+  "footerTabs": {
+    "chat": "チャット",
+    "updates": "更新",
+    "communities": "コミュニティ",
+    "calls": "通話",
+    "badges": {
+      "unreadChats": "{{count}} 未読 チャット",
+      "unreadUpdates": "{{count}} 更新"
+    }
+  },
+  "socialLinks": {
+    "title": "リンク",
+    "intro": "プロフィールにリンクを追加すると、連絡先が他のプロフィールに簡単にアクセスできます。",
+    "instagram": {
+      "title": "Instagram",
+      "add": "Instagram を追加"
+    },
+    "actions": {
+      "add": "追加",
+      "edit": "編集",
+      "cancel": "キャンセル"
+    },
+    "privacy": {
+      "note": "リンクの公開範囲を管理するには、",
+      "link": "プライバシー設定"
+    }
+  },
+  "addInstagram": {
+    "title": "Instagram を追加",
+    "loading": "読み込み中...",
+    "saving": "保存中...",
+    "usernameLabel": "Instagram ユーザー名",
+    "usernamePlaceholder": "username",
+    "hint": {
+      "text": "Instagram のユーザー名を追加すると、プロフィールに表示されます。",
+      "learnMore": "詳細"
+    },
+    "save": "保存",
+    "validation": {
+      "required": "Instagram のユーザー名を入力してください",
+      "invalid": "有効なユーザー名を入力してください（空白なし、最大 30 文字）"
+    },
+    "toast": {
+      "fetchFailed": "Instagram リンクの取得に失敗しました",
+      "saved": "Instagram を保存しました！",
+      "saveFailed": "Instagram リンクの更新に失敗しました。もう一度お試しください。"
+    }
+  },
+  "home": {
+    "search": {
+      "placeholder": "質問または検索"
+    },
+    "filters": {
+      "all": "すべて",
+      "read": "既読",
+      "unread": "未読",
+      "groups": "グループ"
+    },
+    "groupCreator": {
+      "placeholder": "グループ 名を入力"
+    },
+    "typing": "入力中...",
+    "time": {
+      "yesterday": "昨日"
+    },
+    "preview": {
+      "deleted": "このメッセージは削除されました",
+      "encrypted": "[暗号化済み]",
+      "media": {
+        "photo": "PicTell (写真)",
+        "video": "ClipTell (ビデオ)",
+        "audio": "VoiceTell (オーディオ)",
+        "file": "FileTell (添付ファイル)",
+        "generic": "[メディア]"
+      }
+    },
+    "actions": {
+      "scan": "DemmCodeをスキャン",
+      "camera": "カメラを開く",
+      "menu": "メニューを開く",
+      "contacts": "DemmList (連絡先)"
+    },
+    "scan": {
+      "onlyDevice": "バーコードスキャンは実際のデバイスでのみ動作します。",
+      "permission": "バーコードをスキャンするにはカメラの許可が必要です。",
+      "notFound": "バーコードが見つかりませんでした。",
+      "error": "スキャン中にエラーが発生しました。"
+    },
+    "logout": {
+      "header": "ログアウト",
+      "message": "セッションがタイムアウト/期限切れです。"
+    },
+    "alt": {
+      "profile": "プロフィール"
+    }
+  },
+  "menu": {
+    "newGroup": "新しいグループ",
+    "newCommunity": "新しいコミュニティ",
+    "newBroadcast": "新しいブロードキャスト (WIP)",
+    "starred": "スター付き (WIP)",
+    "readAll": "すべて既読にする (WIP)",
+    "settings": "設定",
+    "createChannels": "チャンネルを作成 (WIP)",
+    "statusPrivacy": "ステータスのプライバシー (WIP)",
+    "clearCallLogs": "通話履歴を消去 (WIP)"
+  },
+  "userabout": {
+    "members": "メンバー",
+    "group": "グループ",
+    "groups": "グループ",
+    "inCommon": "共通",
+    "toolbar": {
+      "message": "メッセージ",
+      "call": "通話",
+      "video": "ビデオ",
+      "add": "追加"
+    },
+    "defaults": {
+      "heyThere": "こんにちは！Telldemmを使っています。",
+      "noGroupDescription": "グループの説明はありません。",
+      "unknown": "不明",
+      "unknownDate": "不明な日付",
+      "unnamedGroup": "無名グループ"
+    },
+    "updatedOn": "更新日",
+    "createdByOn": "{{name}} が作成した日",
+    "media": {
+      "title": "メディア、リンク、ドキュメント"
+    },
+    "notifications": "通知",
+    "mediaVisibility": "メディアの表示",
+    "encryption": {
+      "title": "暗号化",
+      "subtitle": "メッセージと通話はエンドツーエンドで暗号化されています。タップして確認してください。"
+    },
+    "disappearing": "消えるメッセージ",
+    "chatLock": {
+      "title": "チャットロック",
+      "subtitle": "このデバイスでこのチャットをロックして非表示にします。"
+    },
+    "advancedPrivacy": {
+      "title": "高度なチャットプライバシー",
+      "off": "オフ"
+    },
+    "createGroupWith": "{{name}} とグループを作成",
+    "commonGroupWith": "{{name}} と共通のグループ",
+    "groupMembers": "グループメンバー",
+    "addMembers": "メンバーを追加",
+    "groupAdmin": "グループ管理者",
+    "viewPastMembers": "過去のメンバーを見る",
+    "addToFavourites": "お気に入りに追加",
+    "addToList": "リストに追加",
+    "block": "{{name}} をブロック",
+    "unblock": "{{name}} のブロックを解除",
+    "report": "{{name}} を報告",
+    "actions": {
+      "message": "メッセージ",
+      "dismissAdmin": "管理者から削除",
+      "makeAdmin": "管理者にする",
+      "removeFromGroup": "グループから削除"
+    },
+    "toasts": {
+      "madeAdmin": "{{name}} は管理者になりました",
+      "dismissedAdmin": "{{name}} は管理者ではなくなりました",
+      "removedFromGroup": "{{name}} はグループから削除されました",
+      "blocked": "{{name}} はブロックされました。",
+      "unblocked": "{{name}} のブロックを解除しました。",
+      "reported": "{{name}} は報告されました。",
+      "reportedAndBlocked": "{{name}} は報告され、ブロックされました。"
+    },
+    "errors": {
+      "makeAdmin": "{{name}} を管理者にできませんでした",
+      "dismissAdmin": "{{name}} を管理者から削除できませんでした",
+      "removeMember": "メンバーの削除中にエラーが発生しました"
+    },
+    "alerts": {
+      "block": {
+        "header": "連絡先をブロック",
+        "message": "{{name}} からのメッセージや通話は受信しなくなります。",
+        "cta": "ブロック"
+      },
+      "unblock": {
+        "header": "連絡先のブロックを解除",
+        "message": "{{name}} のブロックを解除してもよろしいですか？"
+      },
+      "report": {
+        "header": "連絡先を報告",
+        "message": "{{name}} からの直近5件のメッセージが報告されます。このユーザーをブロックしますか？",
+        "alsoBlock": "連絡先もブロック",
+        "cta": "報告"
+      }
+    }
+  },
+  "invite": {
+    "header": "友達を招待",
+    "actions": {
+      "search": "連絡先を検索",
+      "shareLink": "アプリリンクを共有",
+      "fromContacts": "連絡先から招待",
+      "invite": "招待"
+    },
+    "share": {
+      "title": "このアプリで一緒に使おう！",
+      "subtitle": "任意のアプリでダウンロードリンクを送信",
+      "body": "この素晴らしいアプリをチェックしてね。ここからダウンロード：",
+      "button": "共有",
+      "success": "リンクを共有しました",
+      "copied": "リンクをコピーしました"
+    },
+    "contacts": {
+      "title": "連絡先から",
+      "subtitle": "電話帳から直接招待",
+      "header": "連絡先から",
+      "notOnApp": "まだアプリにいません"
+    },
+    "title": "このアプリで一緒に使おう！",
+    "text": "この素晴らしいアプリをチェックしてね。ここからダウンロード：",
+    "dialogTitle": "アプリリンクを共有",
+    "toasts": {
+      "openContacts": "連絡先を開いています...",
+      "searchContacts": "連絡先検索をタップしました。",
+      "invited": "{{phone}} に招待を送りました"
+    },
+    "errors": {
+      "shareFailed": "共有シートを開けませんでした。"
+    }
+  },
+  "community": {
+    "manageGroups": {
+      "title": "グループを管理",
+      "groups": "グループ",
+      "createNew": "新しいグループを作成",
+      "addExisting": "既存のグループを追加",
+      "info": "メンバーは既存のグループを管理者承認用に提案でき、新しいグループを直接追加できます。表示:",
+      "settingsLink": "コミュニティ設定",
+      "listHeader": "このコミュニティのグループ",
+      "loading": "グループを読み込み中...",
+      "empty": "このコミュニティにはグループが見つかりません",
+      "members": "メンバー",
+      "unnamedGroup": "名前のないグループ",
+      "remove": {
+        "header": "コミュニティからグループを削除",
+        "message": "このグループをコミュニティから削除しますか？ グループは残りますが、コミュニティには属しません。",
+        "alsoRemoveMembers": "このグループのメンバーもコミュニティとグループから削除する",
+        "cta": "削除",
+        "aria": "コミュニティからグループを削除"
+      },
+      "toasts": {
+        "removed": "グループがコミュニティから削除され、メンバーが更新されました",
+        "removeFailed": "グループの削除に失敗しました。もう一度お試しください。"
+      }
+    },
+    "title": "コミュニティ",
+    "actions": {
+      "qr": "QRアクションを開く",
+      "menu": "メニューを開く"
+    },
+    "newCommunity": "新しいコミュニティ",
+    "unnamedCommunity": "名前のないコミュニティ",
+    "viewAll": "すべて表示",
+    "groupType": {
+      "normal": "通常グループ",
+      "announcement": "お知らせグループ",
+      "general": "一般グループ"
+    },
+    "newGroup": {
+      "header": "新しいグループ",
+      "placeholder": "グループ名",
+      "create": "作成"
+    },
+    "toasts": {
+      "groupCreated": "グループが作成されました"
+    }
+  },
+  "community_menu_component": {
+    "info": "コミュニティ情報",
+    "invite": "メンバーを招待",
+    "settings": "コミュニティ設定"
+  },
+  "group_preview_modal_component": {
+    "close": "閉じる",
+    "groupIcon": "グループアイコン",
+    "createdBy": "{{name}} によって作成",
+    "noMembers": "まだメンバーがいません",
+    "noDescription": "説明なし",
+    "communityLabel": "コミュニティ:",
+    "joinNote": "参加するとすぐにメンバーになります。",
+    "joinCta": "グループに参加"
+  },
+  "add_existing_groups_page": {
+    "header": "既存のグループを追加",
+    "actions": {
+      "search": "グループを検索",
+      "confirm": "選択を確認",
+      "removeChip": "選択したグループを削除"
+    },
+    "of": "の",
+    "selected": "選択済み",
+    "banner": "グループ内の全員がコミュニティに追加されます。",
+    "listHeader": "あなたが管理者のグループ",
+    "loading": "グループを読み込み中...",
+    "empty": "管理者グループが見つかりません",
+    "checkboxLabel": "グループを選択",
+    "unnamedGroup": "名前のないグループ",
+    "toasts": {
+      "selectAtLeastOne": "少なくとも1つのグループを選択してください"
+    }
+  }
+}

@@ -1,0 +1,205 @@
+// ── Uses global variables.scss — no hardcoded brand colors ───────
+:host {
+  --brand:        var(--ion-color-primary);
+  --brand-dark:   var(--ion-color-primary-shade);
+  --brand-light:  var(--ion-color-primary-tint);
+  --brand-soft:   #fdf4e3;
+  --brand-muted:  rgba(188, 140, 44, 0.10);
+  --brand-border: rgba(188, 140, 44, 0.22);
+  --text-primary: var(--ion-text-color);
+  --text-secondary: #6b6b6b;
+  --surface:      var(--ion-item-background);
+  --bg:           #f5f0e8;
+  --radius:       16px;
+  --shadow:       0 2px 16px rgba(188, 140, 44, 0.09);
+}
+
+// ── Toolbar ───────────────────────────────────────────────────────
+.custom-toolbar {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+  --border-color: transparent;
+  box-shadow: 0 2px 12px rgba(188, 140, 44, 0.32);
+
+  .back-btn {
+    --color: var(--ion-color-primary-contrast);
+    font-size: 22px;
+    margin-left: 4px;
+  }
+
+  .toolbar-title {
+    padding: 0;
+
+    .title-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.2;
+    }
+
+    .title-main {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ion-color-primary-contrast);
+      letter-spacing: 0.2px;
+    }
+
+    .title-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.80);
+      font-weight: 400;
+      margin-top: 1px;
+    }
+  }
+}
+
+// ── Content background ────────────────────────────────────────────
+.permissions-content {
+  --background: #f5f0e8;
+}
+
+// ── Section Labels ────────────────────────────────────────────────
+.section-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ion-color-primary-shade);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 22px 20px 8px 20px;
+
+  &.admins-label {
+    padding-top: 26px;
+  }
+}
+
+// ── Card ──────────────────────────────────────────────────────────
+.permissions-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  margin: 0 14px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--brand-border);
+  overflow: hidden;
+}
+
+// ── Permission Item ───────────────────────────────────────────────
+.permission-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px 16px 16px 14px;
+  gap: 12px;
+  transition: background 0.15s ease;
+
+  &:active {
+    background: var(--brand-muted);
+  }
+}
+
+// ── Icon Wrap ─────────────────────────────────────────────────────
+.perm-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--brand-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  .perm-icon {
+    font-size: 18px;
+    color: var(--brand);
+  }
+}
+
+// ── Body Text ─────────────────────────────────────────────────────
+.perm-body {
+  flex: 1;
+  min-width: 0;
+
+  .perm-title {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .perm-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+
+  .learn-more {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand);
+    margin-top: 5px;
+    cursor: pointer;
+    display: inline-block;
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+// ── Toggle — uses --ion-color-primary automatically ───────────────
+.custom-toggle {
+  --handle-background-checked: var(--ion-color-primary-contrast);
+  --track-background-checked:  var(--ion-color-primary);
+  --handle-background:         #ffffff;
+  --track-background:          #c8c8c8;
+  --handle-width:              22px;
+  --handle-height:             22px;
+  --handle-border-radius:      50%;
+  --handle-box-shadow:         0 2px 6px rgba(0, 0, 0, 0.20);
+  --track-border-radius:       14px;
+  width: 50px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+// ── Divider ───────────────────────────────────────────────────────
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--brand-border) 15%,
+    var(--brand-border) 85%,
+    transparent 100%
+  );
+  margin: 0 14px;
+}
+
+// ── Save Button ───────────────────────────────────────────────────
+.save-wrap {
+  padding: 28px 20px 40px 20px;
+}
+
+.save-btn {
+  --background:           var(--ion-color-primary);
+  --background-hover:     var(--ion-color-primary-shade);
+  --background-activated: var(--ion-color-primary-shade);
+  --color:                var(--ion-color-primary-contrast);
+  --border-radius:        14px;
+  --box-shadow:           0 4px 18px rgba(188, 140, 44, 0.35);
+  height: 52px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+
+  &::part(native) {
+    border-radius: 14px;
+  }
+
+  .save-spinner {
+    --color: var(--ion-color-primary-contrast);
+    width: 20px;
+    height: 20px;
+  }
+}

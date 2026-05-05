@@ -1,0 +1,274 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar style="display: flex; flex-direction: column; align-items: stretch; --background: white;">
+    <ion-buttons slot="start" style="color: black; width: 8%; margin-top: 15px;">
+      <ion-back-button defaultHref="/home-screen"></ion-back-button>
+    </ion-buttons>
+
+    <div style="display: flex;padding-top: 30px;">
+      <ion-title>
+        <h2 style="color:#FF1414;font-family: Montserrat-bold;font-size:20px">
+          {{ 'settingsPage.title' | translate }}
+        </h2>
+      </ion-title>
+    </div>
+
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar
+    style="--background: var(--ion-toolbar-background); --color: var(--ion-toolbar-color);"
+  >
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/home-screen"
+        [attr.aria-label]="'common.back' | translate"
+        class="backIcon"
+      >
+      </ion-back-button>
+      <!-- <ion-icon name="chevron-back-outline" class="backIcon" (click)="goBack()" [attr.aria-label]="'common.back' | translate"></ion-icon> -->
+    </ion-buttons>
+    <ion-title class="ion_title">{{ 'settingsPage.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: var(--ion-background-color)">
+  <div style="padding: 5%">
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+      "
+      (click)="goToProfile()"
+    >
+      <div style="display: flex; align-items: center; gap: 15px">
+        <div class="profile-image-container">
+          <ion-spinner
+            name="circular"
+            *ngIf="isLoading"
+            style="width: 65px; height: 65px"
+          ></ion-spinner>
+          <img
+            *ngIf="!isLoading"
+            [src]="profileImageUrl"
+            alt="user_image"
+            (error)="onImageError($event)"
+            style="
+              width: 65px;
+              height: 65px;
+              border-radius: 50px;
+              object-fit: cover;
+            "
+          />
+        </div>
+        <div>
+          <p
+            style="
+              color: var(--ion-text-color);
+              font-family: 'Montserrat-bold';
+              font-size: 20px;
+              margin: 0;
+            "
+          >
+            {{ sender_name }}
+          </p>
+          <p
+            style="
+              color: var(--ion-text-color);
+              font-family: Montserrat, Medium;
+              font-size: 14px;
+              margin: 0;
+            "
+          >
+            {{ dpStatus }}
+          </p>
+        </div>
+      </div>
+      <div>
+        <img src="assets/images/barcode-scan.svg" alt="barcode-scan-img" class="barcode-scan" />
+      </div>
+    </div>
+
+    <!-- Settings List -->
+    <ion-list lines="inset" class="settings-list">
+      <ion-item button detail lines="none" (click)="goToAccount()">
+        <ion-icon
+          slot="start"
+          name="person-circle-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.account.title' | translate }}</h2>
+          <p>{{ 'settingsPage.account.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button detail lines="none" (click)="goToPrivacy()">
+        <ion-icon
+          slot="start"
+          name="lock-closed-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.privacy.title' | translate }}</h2>
+          <p>{{ 'settingsPage.privacy.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button detail lines="none" (click)="goToAvatar()">
+        <ion-icon
+          slot="start"
+          name="image-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.avatar.title' | translate }}</h2>
+          <p>{{ 'settingsPage.avatar.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button detail lines="none" (click)="goToChats()">
+        <ion-icon
+          slot="start"
+          name="chatbubble-ellipses-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.chats.title' | translate }}</h2>
+          <p>{{ 'settingsPage.chats.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button detail lines="none" (click)="goToAccessibility()">
+        <ion-icon
+          slot="start"
+          name="accessibility-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.accessibility.title' | translate }}</h2>
+          <p>{{ 'settingsPage.accessibility.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button detail lines="none" (click)="goToNotifications()">
+        <ion-icon
+          slot="start"
+          name="notifications-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.notifications.title' | translate }}</h2>
+          <p>{{ 'settingsPage.notifications.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <!-- <ion-item button detail lines="none" (click)="goToStorageData()">
+        <ion-icon
+          slot="start"
+          name="cloud-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2>{{ 'settingsPage.storage.title' | translate }}</h2>
+          <p>{{ 'settingsPage.storage.description' | translate }}</p>
+        </ion-label>
+      </ion-item> -->
+
+      <ion-item button detail lines="none" (click)="goToAppLanguage()">
+        <ion-icon
+          slot="start"
+          name="globe-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.appLanguage.title' | translate }}</h2>
+          <p>{{ 'settingsPage.appLanguage.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button detail lines="none" (click)="goToHelpFeedback()">
+        <ion-icon
+          slot="start"
+          name="help-circle-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.help.title' | translate }}</h2>
+          <p>{{ 'settingsPage.help.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button detail lines="none" (click)="goToAppUpdates()">
+        <ion-icon
+          slot="start"
+          name="download-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.updates.title' | translate }}</h2>
+          <p>{{ 'settingsPage.updates.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button detail lines="none" (click)="goToInviteFriend()">
+        <ion-icon
+          slot="start"
+          name="person-add-outline"
+          class="setting_icons"
+        ></ion-icon>
+        <ion-label>
+          <h2 class="itemHeader">{{ 'settingsPage.invite.title' | translate }}</h2>
+          <p>{{ 'settingsPage.invite.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item button detail lines="none" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline" class="setting_icons"></ion-icon>
+        <ion-label>
+          <h2 style="color: #a30808;">{{ 'settingsPage.logout.title' | translate }}</h2>
+          <p>{{ 'settingsPage.logout.description' | translate }}</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+    <!-- <div
+      style="
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        /* padding: 20px 0px 0px 5px; */
+        cursor: pointer;
+        margin-left: 16px;
+      "
+      (click)="logout()"
+    >
+      <ion-icon name="log-out-outline" class="logout_icon"></ion-icon>
+      <div>
+        <p
+          style="
+            color: #a30808;
+            font-family: 'Montserrat, SemiBold';
+            font-size: 18px;
+            margin: 0;
+          "
+          class="logout_text"
+        >
+          {{ 'settingsPage.logout.title' | translate }}
+        </p>
+        <p
+          style="
+            color: var(--ion-text-color);
+            font-family: Montserrat, Medium;
+            font-size: 14px;
+            margin: 0;
+          "
+        >
+          {{ 'settingsPage.logout.description' | translate }}
+        </p>
+      </div>
+    </div> -->
+  </div>
+</ion-content>

@@ -1,0 +1,50 @@
+.toolbar {
+  --background: var(--ion-color-primary);
+  --color: #ffffff;
+
+  ion-back-button {
+    color: #ffffff;
+  }
+}
+
+.stats-container {
+  padding: 16px;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.sent h1,
+.remaining h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.sent p,
+.remaining p {
+  margin: 0;
+  color: gray;
+}
+
+.limit-text {
+  font-size: 13px;
+  color: gray;
+  margin-top: 10px;
+}
+
+.learn {
+  color: var(--ion-color-primary);
+  font-weight: 500;
+}
+
+.fab-btn {
+  --background: var(--ion-color-primary);
+}

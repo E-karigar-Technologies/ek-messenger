@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon
+        name="arrow-back-outline"
+        class="back-icon"
+        (click)="back()"
+        style="font-size: 24px; cursor: pointer; padding: 0 8px"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Community settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header class="section-header">
+    <ion-label>Community permissions</ion-label>
+  </ion-list-header>
+
+  <ion-item button lines="full" (click)="openAddMembersModal()">
+    <ion-label>
+      <h2>Who can add new members</h2>
+      <p>{{ addMembersLabel }}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item button lines="none" (click)="openAddGroupsModal()">
+    <ion-label>
+      <h2>Who can add new groups</h2>
+      <p>{{ addGroupsLabel }}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>
+
+<!-- ═══════════════════════════════════════════════════
+     MODAL 1 — Who can add new members
+═══════════════════════════════════════════════════ -->
+<ion-modal
+  [isOpen]="showAddMembersModal"
+  (didDismiss)="closeAddMembersModal()"
+  [breakpoints]="[0, 0.5]"
+  [initialBreakpoint]="0.5"
+  [backdropDismiss]="true"
+  cssClass="settings-bottom-modal"
+>
+  <ng-template>
+    <ion-header class="ion-no-border modal-header">
+      <div class="modal-handle"></div>
+    </ion-header>
+
+    <ion-content [fullscreen]="true" [scrollY]="true">
+      <div class="modal-content">
+        <h2 class="modal-title">Who can add new members</h2>
+
+        <div class="option-row" (click)="tempAddMembers = 'everyone'">
+          <div class="option-text">
+            <p class="option-label">Everyone</p>
+            <p class="option-desc">All community members can directly add other members.</p>
+          </div>
+          <div class="radio-circle" [class.selected]="tempAddMembers === 'everyone'">
+            <div class="radio-inner" *ngIf="tempAddMembers === 'everyone'"></div>
+          </div>
+        </div>
+
+        <div class="option-row" (click)="tempAddMembers = 'only_admins'">
+          <div class="option-text">
+            <p class="option-label">Only admins</p>
+            <p class="option-desc">Only group and community admins can add new members.</p>
+          </div>
+          <div class="radio-circle" [class.selected]="tempAddMembers === 'only_admins'">
+            <div class="radio-inner" *ngIf="tempAddMembers === 'only_admins'"></div>
+          </div>
+        </div>
+
+        <ion-button expand="block" class="save-btn" (click)="saveAddMembers()">
+          Save
+        </ion-button>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- ═══════════════════════════════════════════════════
+     MODAL 2 — Who can add new groups
+═══════════════════════════════════════════════════ -->
+<ion-modal
+  [isOpen]="showAddGroupsModal"
+  (didDismiss)="closeAddGroupsModal()"
+  [breakpoints]="[0, 0.6]"
+  [initialBreakpoint]="0.6"
+  [backdropDismiss]="true"
+  cssClass="settings-bottom-modal"
+>
+  <ng-template>
+    <ion-header class="ion-no-border modal-header">
+      <div class="modal-handle"></div>
+    </ion-header>
+
+    <ion-content [fullscreen]="true" [scrollY]="true">
+      <div class="modal-content">
+        <h2 class="modal-title">Who can add new groups</h2>
+
+        <p class="modal-desc">
+          Members can always suggest groups for admin approval. Community admins can remove any group.
+        </p>
+
+        <div class="option-row" (click)="tempAddGroups = 'everyone'">
+          <div class="option-text">
+            <p class="option-label">Everyone</p>
+            <p class="option-desc">All community members can add groups.</p>
+          </div>
+          <div class="radio-circle" [class.selected]="tempAddGroups === 'everyone'">
+            <div class="radio-inner" *ngIf="tempAddGroups === 'everyone'"></div>
+          </div>
+        </div>
+
+        <div class="option-row" (click)="tempAddGroups = 'only_admins'">
+          <div class="option-text">
+            <p class="option-label">Only community admins</p>
+            <p class="option-desc">Only community admins can add groups. Members can suggest groups for admin approval.</p>
+          </div>
+          <div class="radio-circle" [class.selected]="tempAddGroups === 'only_admins'">
+            <div class="radio-inner" *ngIf="tempAddGroups === 'only_admins'"></div>
+          </div>
+        </div>
+
+        <ion-button expand="block" class="save-btn" (click)="saveAddGroups()">
+          Save
+        </ion-button>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,76 @@
+<ion-header  class="ion-header">
+  <ion-toolbar>
+    <p class="headerhead">Profile info</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-content">
+    <form #profileForm="ngForm" (ngSubmit)="onSubmit()">
+      <div>
+        <div class="main-provide">
+          <div class="inner-main">
+            <p class="Please">
+              Please provide your name and an optional Profile photo
+            </p>
+          </div>
+        </div>
+
+        <div class="camera-main">
+          <div class="camera-inner">
+            <img
+              class="avatar-image"
+              [src]="imageData || 'assets/images/cameraplus.png'"
+              alt="Avatar"
+              (click)="fileInput.click()"
+              style="cursor: pointer"
+            />
+          </div>
+        </div>
+
+        <input
+          type="file"
+          #fileInput
+          hidden
+          (change)="onImageSelected($event)"
+          accept="image/*"
+        />
+
+        <div class="line-main">
+          <input
+            type="text"
+            class="line-content no-focus-border"
+            name="name"
+            [(ngModel)]="name"
+            placeholder="Enter your name"
+            maxlength="25"
+            required
+            (input)="onInputChange($event)"
+          />
+
+          <div class="main-emoji">
+            <p class="emoji-text">{{ remainingCount }}</p>
+            <ion-icon name="happy-outline" (click)="openEmojiKeyboard()"></ion-icon>
+          </div>
+        </div>
+        <div class="line"></div>
+      </div>
+      <div class="main-button">
+        <button
+          class="btn"
+          expand="block"
+          type="submit"
+          [disabled]="!profileForm.form.valid || isSubmitting"
+          (click)="onSubmit()"
+        >
+          <ng-container *ngIf="!isSubmitting">Next</ng-container>
+          <ion-spinner
+            *ngIf="isSubmitting"
+            name="crescent"
+            color="light"
+          ></ion-spinner>
+        </button>
+      </div>
+    </form>
+  </div>
+</ion-content>

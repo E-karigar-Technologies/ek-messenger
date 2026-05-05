@@ -1,0 +1,10 @@
+<ion-list lines="none">
+  <ion-item
+    class="menu-item"
+    [class.danger-item]="option.danger"
+    *ngFor="let option of menuOptions"
+    (click)="dismiss(option.label)">
+    <ion-icon slot="start" [name]="option.icon" [class.danger-icon]="option.danger"></ion-icon>
+    {{ option.label }}
+  </ion-item>
+</ion-list>

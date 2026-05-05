@@ -1,0 +1,48 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.section-label {
+  font-size: 13px;
+  color: var(--ion-color-medium);
+  text-transform: none;
+  margin: 12px 0 4px 4px;
+  letter-spacing: 0.1px;
+}
+
+.radio-list {
+  background: transparent;
+  padding: 0;
+
+  .radio-item {
+    --background: transparent;
+    --inner-border-width: 0;
+    --border-width: 0;
+    --padding-start: 4px;
+    --min-height: 48px;
+
+    ion-radio {
+      margin-inline-end: 14px;
+    }
+
+    ion-label {
+      font-size: 15px;
+      color: var(--ion-text-color);
+    }
+  }
+}
+
+ion-footer {
+  ion-toolbar {
+    padding: 8px 16px 12px;
+  }
+   ion-button {
+    --border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    --color: var(--ion-text-color) !important;
+    --box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    
+  }
+ 
+}

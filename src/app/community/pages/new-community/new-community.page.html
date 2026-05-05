@@ -1,0 +1,39 @@
+<ion-header>
+   <ion-toolbar style="display: flex; padding-top:5px; flex-direction: column;">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="close()">
+        <ion-icon name="close-outline" class="cross"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="illustration">
+    <img
+      src="assets/images/community_icon.svg"
+      alt="Community Illustration"
+    />
+  </div>
+
+  <h2 class="title">Create a new community</h2>
+  <p class="description">
+    Bring together a neighbourhood, school or more. Create topic-based groups
+    for members, and easily send them admin announcements.
+  </p>
+
+  <!-- <p class="example-link">
+    <a href="#">See example communities &gt;</a>
+  </p> -->
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <!-- <ion-button expand="block" shape="round" (click)="getStarted()" class="start" (click)="goToNewCommunityForm()" > -->
+      <button class="get_started" (click)="goToNewCommunityForm()">
+      Get started
+      </button>
+    <!-- </ion-button> -->
+  </ion-toolbar>
+</ion-footer>
+

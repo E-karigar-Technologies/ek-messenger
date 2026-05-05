@@ -1,0 +1,97 @@
+.profile-page {
+  ion-content {
+    --background: var(--ion-background-color);
+  }
+
+  /* Avatar + edit */
+  .profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--ion-border-color);
+      background: var(--ion-item-background);
+      display: block;
+    }
+
+    .edit-text {
+      margin-top: 8px;
+      color: var(--ion-color-primary);
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover { text-decoration: underline; }
+      &:focus-visible {
+        outline: none;
+        box-shadow: var(--focus-ring);
+        border-radius: 6px;
+      }
+    }
+  }
+
+  /* List item typography */
+  ion-item h2 {
+    font-size: 14px;
+    color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+    margin-bottom: 4px;
+    margin-top: 0;
+  }
+
+  ion-item p {
+    font-size: 16px;
+    color: var(--ion-text-color);
+    margin: 0;
+  }
+
+  /* “Add links” action */
+  .add-links {
+    color: var(--ion-color-success, var(--ion-color-primary));
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover { text-decoration: underline; }
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+      border-radius: 6px;
+    }
+  }
+
+  /* Optional: compact on small screens */
+  @media (max-width: 380px) {
+    .profile-image-container img { width: 100px; height: 100px; }
+    ion-item p { font-size: 15px; }
+  }
+
+  /* Dark-mode polish */
+  @media (prefers-color-scheme: dark) {
+    .profile-image-container img {
+      border-color: color-mix(in srgb, var(--ion-border-color) 85%, transparent);
+    }
+  }
+}
+
+
+
+.ion_title{
+    color: var(--ion-color-primary);
+    padding: 0px !important;
+}
+
+.setting_icons {
+  background: var(--ion-color-primary);
+  color: white;
+  padding: 4px;
+  border-radius: 50px;
+  font-size: 26px;
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

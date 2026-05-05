@@ -1,0 +1,131 @@
+<ion-header translucent="true">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home-screen"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Favorites</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!isLoading && favoriteList.length > 0" (click)="toggleEdit()">
+        <i class="fa-solid fa-pen homemainicons"></i>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- ── LOADING SKELETON ─────────────────────────────── -->
+  <ng-container *ngIf="isLoading">
+    <ion-list>
+      <ion-item *ngFor="let i of [1,2,3]" lines="none">
+        <ion-avatar slot="start">
+          <ion-skeleton-text
+            animated
+            style="width:44px;height:44px;border-radius:50%;"
+          ></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width:55%;"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width:35%;"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <!-- ── EMPTY STATE ──────────────────────────────────── -->
+  <ng-container *ngIf="!isLoading && favoriteList.length === 0">
+    <div class="empty-state">
+      <ion-icon name="heart-outline" class="empty-icon"></ion-icon>
+      <h3 class="empty-title">No favourites yet</h3>
+      <p class="empty-subtitle">
+        Long press a chat &rarr; &#8942; More &rarr; Add to Favourites
+      </p>
+    </div>
+  </ng-container>
+
+  <!-- ── FILLED STATE ─────────────────────────────────── -->
+  <ng-container *ngIf="!isLoading && favoriteList.length > 0">
+
+    <!-- Info text -->
+    <div class="info-text">
+      Use the pencil to reorder how your lists appear in the Chats tab.
+    </div>
+
+    <!-- ── Notifications Section ────────────────────────── -->
+    <div class="section-title">Notifications</div>
+
+    <ion-item lines="none" class="mute-item">
+      <ion-label>
+        <h2>Mute</h2>
+        <!-- Show "Until today, 6:03 PM" or "Always" when muted -->
+        <p *ngIf="isMuted && muteUntilLabel" class="mute-until-label">
+          {{ muteUntilLabel }}
+        </p>
+      </ion-label>
+      <ion-toggle
+        slot="end"
+        [checked]="isMuted"
+        (ionChange)="onMuteToggleChange($event)"
+        color="success"
+      ></ion-toggle>
+    </ion-item>
+
+    <!-- ── Included Section ─────────────────────────────── -->
+    <div class="section-title">Included</div>
+
+    <!-- Add People -->
+    <ion-item button lines="none" (click)="addPeople()" class="add-item">
+      <div class="add-icon" slot="start">
+        <ion-icon name="add"></ion-icon>
+      </div>
+      <ion-label>Add people or groups</ion-label>
+    </ion-item>
+
+    <!-- Favourite chats list -->
+    <ion-list>
+      <ion-item
+        *ngFor="let chat of favoriteList"
+        lines="none"
+        class="fav-item"
+      >
+        <!-- Avatar -->
+        <ion-avatar slot="start">
+          <ng-container *ngIf="chat.image; else initials">
+            <img [src]="chat.image" />
+          </ng-container>
+          <ng-template #initials>
+            <div class="avatar-initials">
+              {{ chat.name?.charAt(0)?.toUpperCase() || '?' }}
+            </div>
+          </ng-template>
+        </ion-avatar>
+
+        <ion-label>
+          <h3>{{ chat.name }}</h3>
+          <p *ngIf="chat.lastMessage">{{ chat.lastMessage }}</p>
+        </ion-label>
+
+        <!-- Remove button — visible only in edit mode -->
+        <ion-button
+          *ngIf="isEditMode"
+          fill="clear"
+          color="danger"
+          slot="end"
+          (click)="removeFromFavourites(chat, $event)"
+        >
+          <ion-icon name="heart-dislike-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- Footer text -->
+    <div class="footer-text">
+      You can edit favourites here or reorder how they appear in the Calls tab.
+    </div>
+
+  </ng-container>
+</ion-content>

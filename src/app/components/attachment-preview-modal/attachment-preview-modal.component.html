@@ -1,0 +1,169 @@
+<ion-header [translucent]="true" *ngIf="showUI">
+  <ion-toolbar>
+    <!-- Left: Back Button -->
+    <ion-buttons slot="start" style="color: black; width: 8%; margin-top: 15px">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Center: Chat Avatar and Name OR Search Input -->
+    <ng-container>
+      <ion-buttons class="user-head">
+        <ion-item
+          lines="none"
+          style="
+            --padding-start: 0;
+            --background: white;
+            color: black;
+            margin-top: 15px;
+          "
+          detail="false"
+        >
+          <ion-label
+            style="
+              width: auto;
+              max-width: 120px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              cursor: pointer;
+            "
+          >
+            <h2 style="margin: 0; font-size: 16px">{{ receiver_name }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-buttons>
+    </ng-container>
+
+    <!-- Search Bar -->
+    <ng-template #searchBar>
+      <ion-item
+        lines="none"
+        style="
+          margin-top: 10px;
+          padding: 10px 15px;
+          --border-radius: 25px;
+          --background: #f5f5f5;
+          width: 100%;
+        "
+      >
+        <ion-icon
+          name="arrow-back-outline"
+          slot="start"
+          style="font-size: 24px; cursor: pointer; margin-right: 10px"
+        ></ion-icon>
+        <ion-input
+          placeholder="Search messages..."
+          style="margin-left: 10px; flex: 1"
+        >
+        </ion-input>
+        <ion-buttons slot="end">
+          <ion-button>
+            <ion-icon name="calendar-outline"></ion-icon>
+          </ion-button>
+          <ion-button>
+            <ion-icon name="arrow-up-outline"></ion-icon>
+          </ion-button>
+          <ion-button>
+            <ion-icon name="arrow-down-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ng-template>
+
+    <!-- Right: Action Icons (only when not in search mode) -->
+    <ion-buttons slot="end" style="margin-top: 15px">
+      <ion-button style="color: black">
+        <!-- <ion-icon name="videocam-outline" style="font-size: 35px;"></ion-icon> -->
+        <ion-icon name="star-outline" style="font-size: 28px"></ion-icon>
+      </ion-button>
+      <ion-button style="color: black">
+        <!-- <ion-icon name="call-outline" style="font-size: 28px;"></ion-icon> -->
+        <ion-icon
+          name="share-social-outline"
+          style="font-size: 28px"
+        ></ion-icon>
+      </ion-button>
+      <ion-button style="color: black">
+        <ion-icon
+          name="ellipsis-vertical-outline"
+          style="font-size: 28px"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  [fullscreen]="true"
+  class="ion-padding"
+  style="display: flex; justify-content: center; align-items: center"
+>
+  <div class="view-content">
+    <ng-container *ngIf="attachment?.type === 'image'">
+      <img
+        [src]="attachment.url"
+        alt="Preview"
+        (click)="toggleUI()"
+        style="max-width: 100%; border-radius: 10px"
+      />
+    </ng-container>
+
+    <ng-container *ngIf="attachment?.type === 'video'">
+      <video
+        controls
+        (click)="toggleUI()"
+        style="width: 100%; border-radius: 10px"
+      >
+        <source
+          [src]="attachment.url"
+          [type]="attachment.mimeType || 'video/mp4'"
+        />
+      </video>
+    </ng-container>
+
+    <ng-container *ngIf="attachment?.type === 'audio'">
+      <audio controls style="width: 100%">
+        <source
+          [src]="attachment.url"
+          [type]="attachment.mimeType || 'audio/mpeg'"
+        />
+      </audio>
+    </ng-container>
+
+    <ng-container *ngIf="attachment?.type === 'file'">
+      <ion-icon name="document-outline" size="large"></ion-icon>
+      <p>{{ attachment.fileName }}</p>
+      <a
+        [href]="attachment.url"
+        [download]="attachment.fileName"
+        target="_blank"
+        rel="noopener"
+      >
+        <ion-button expand="block">Download</ion-button>
+      </a>
+    </ng-container>
+
+    <p *ngIf="attachment?.caption" style="margin-top: 10px; text-align: center">
+      {{ attachment.caption }}
+    </p>
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="showUI">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="smile">
+        <ion-icon name="happy-outline" class="smile-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button class="reply" (click)="onReply()">
+        <ion-icon name="arrow-undo-outline" class="reply-icon"></ion-icon>
+        Reply
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

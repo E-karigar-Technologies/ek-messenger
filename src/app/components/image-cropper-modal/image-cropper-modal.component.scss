@@ -1,0 +1,147 @@
+
+.crop-content {
+  // Ensure content takes up full space and allows scrolling if needed, but not on image.
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; // Prevent scrolling of ion-content itself during interaction
+}
+
+.crop-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-container {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.crop-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; // Ensures image fits within container without distortion
+  display: block;
+}
+
+.crop-overlay {
+  position: absolute;
+  border: 2px solid var(--ion-color-primary, #3880ff);
+  box-sizing: border-box;
+  cursor: move; // Drag cursor
+  transition: box-shadow 0.2s ease-out; // Smooth shadow change
+l
+  // Semi-transparent overlay outside the crop area (optional for better focus)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &.visible {
+    // You might want to remove the transition property from x, y, width, height 
+    // to keep the movement instant, as the RAF handles the smoothness.
+    // transition: transform 0.1s linear; // Optional: Use transition for smooth visual feedback on the overlay itself.
+  }
+}
+
+.resize-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--ion-color-light, #f4f5f8);
+  border: 1px solid var(--ion-color-primary, #3880ff);
+  z-index: 10; // Make sure handles are above the overlay
+
+  &.corner {
+    border-radius: 50%;
+  }
+
+  // Cursors for Free Transform (standard resize cursors)
+  &.top-left {
+    top: -10px;
+    left: -10px;
+    cursor: nwse-resize; 
+  }
+  &.top-right {
+    top: -10px;
+    right: -10px;
+    cursor: nesw-resize;
+  }
+  &.bottom-left {
+    bottom: -10px;
+    left: -10px;
+    cursor: nesw-resize;
+  }
+  &.bottom-right {
+    bottom: -10px;
+    right: -10px;
+    cursor: nwse-resize;
+  }
+}
+
+.drag-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--ion-color-primary, #3880ff);
+  opacity: 0.7;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 100;
+}
+
+.instructions {
+    position: absolute;
+    bottom: 20px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 4px;
+    z-index: 50;
+    .instruction-text {
+        margin: 0;
+        font-size: 0.9em;
+        display: flex;
+        align-items: center;
+        .info-icon {
+            margin-right: 5px;
+        }
+    }
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: space-around;
+}

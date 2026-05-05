@@ -1,0 +1,28 @@
+<ion-header>
+     <ion-toolbar class="ion_toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">App Language</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" >
+ 
+
+  <ion-item lines="none">
+    <ion-searchbar class="searchBarClass" placeholder="Search languages" [(ngModel)]="searchTerm" (ionInput)="filterLanguages()"></ion-searchbar>
+  </ion-item>
+
+  <ion-list lines="none">
+    <ion-radio-group [(ngModel)]="selectedLanguage" (ionChange)="changeLanguage($event)">
+      <ion-item *ngFor="let lang of filteredLanguages" lines="none">
+        <ion-label>
+          <div class="itemHeader">{{ lang.label }}</div>
+          <small style="opacity:0.7">{{ lang.code }}</small>
+        </ion-label>
+        <ion-radio slot="end" [value]="lang.code"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

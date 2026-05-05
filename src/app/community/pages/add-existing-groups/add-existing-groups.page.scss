@@ -1,0 +1,216 @@
+// .avatar-section{
+//     width:40px; 
+//     height:40px; 
+//     background: var(--ion-color-primary);
+//     display:flex; 
+//     align-items:center; 
+//     justify-content:center; 
+//     font-size:18px; 
+//     font-weight:600; 
+//     color:#fff; 
+//     border-radius:50%;
+// }
+
+// ── Avatar ───────────────────────────────────────────────────────────
+.avatar-section {
+  width: 40px;
+  height: 40px;
+  background: var(--ion-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 50%;
+
+  &.chip-size {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    border-radius: 50%;
+  }
+}
+
+// ── Header ───────────────────────────────────────────────────────────
+.sub-title {
+  padding: 6px 16px;
+  font-size: 13px;
+  color: var(--ion-color-medium, #888);
+}
+
+.search-toolbar {
+  --background: var(--ion-background-color);
+  padding: 4px 12px 8px;
+}
+
+.search-bar-wrap {
+  display: flex;
+  align-items: center;
+  background: #f4f4f4;
+  border-radius: 12px;
+  padding: 6px 12px;
+  gap: 8px;
+}
+
+.search-icon-inside {
+  font-size: 18px;
+  color: var(--ion-color-medium, #888);
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  color: var(--ion-text-color);
+
+  &::placeholder {
+    color: #aaa;
+  }
+}
+
+.search-clear-icon {
+  font-size: 18px;
+  color: var(--ion-color-medium, #888);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+// ── Banner ───────────────────────────────────────────────────────────
+.banner-text {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--ion-color-medium, #888);
+  text-align: center;
+}
+
+// ── Chips Row ────────────────────────────────────────────────────────
+.chips-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px 4px;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.chip-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.chip-avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.chip-remove-btn {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.chip-remove-icon {
+  font-size: 13px;
+  color: #666;
+}
+
+// ── List ─────────────────────────────────────────────────────────────
+.groups-list {
+  padding: 0 8px;
+}
+
+.list-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ion-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-left: 8px;
+}
+
+.group-item {
+  --border-radius: 12px;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --inner-padding-end: 8px;
+  margin-bottom: 4px;
+  border-radius: 12px;
+  transition: background 0.15s ease;
+
+  &.item-has-focus,
+  &:active {
+    --background: #f9f4ec;
+  }
+}
+
+.group-avatar {
+  width: 44px;
+  height: 44px;
+  margin-right: 10px;
+}
+
+.group-label {
+  h2.group-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ion-text-color);
+    margin: 0 0 2px;
+  }
+
+  p.group-preview {
+    font-size: 12px;
+    color: var(--ion-color-medium, #888);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.check-icon {
+  font-size: 22px;
+}
+
+// ── Empty / Loading state ─────────────────────────────────────────────
+.state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px;
+  gap: 12px;
+}
+
+.state-icon {
+  font-size: 48px;
+  color: var(--ion-color-primary);
+  opacity: 0.5;
+}
+
+.state-text {
+  font-size: 14px;
+  color: var(--ion-color-medium, #888);
+  text-align: center;
+  margin: 0;
+}

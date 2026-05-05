@@ -1,0 +1,1858 @@
+<ion-header class="chat-header" [translucent]="true">
+  <ion-toolbar>
+    <ng-container *ngIf="selectedMessages.length > 0; else defaultHeader">
+      <ion-title>{{ selectedMessages.length }} selected</ion-title>
+      <ion-buttons slot="end">
+        <!-- Only ONE TEXT MESSAGE -->
+        <ng-container *ngIf="isOnlyOneTextMessage()">
+          <ion-button (click)="replyToMessages()">
+            <i class="fa-solid fa-reply homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="copySelectedMessages()">
+            <i class="fa-solid fa-copy homemainicons"></i>
+          </ion-button>
+
+          <ion-button *ngIf="!hasInviteSelected()" (click)="onForward()">
+            <i class="fa-solid fa-share homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="deleteSelectedMessages()">
+            <i class="fa-solid fa-trash homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="onMore($event)">
+            <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+          </ion-button>
+        </ng-container>
+
+        <!-- MULTIPLE TEXT MESSAGES -->
+        <ng-container *ngIf="isMultipleTextMessages()">
+          <ion-button *ngIf="!hasInviteSelected()" (click)="onForward()">
+            <i class="fa-solid fa-share homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="copySelectedMessages()">
+            <i class="fa-solid fa-copy homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="deleteSelectedMessages()">
+            <i class="fa-solid fa-trash homemainicons"></i>
+          </ion-button>
+        </ng-container>
+
+        <!-- SINGLE ATTACHMENT -->
+        <ng-container *ngIf="isOnlyOneAttachment()">
+          <ion-button (click)="replyToMessages()">
+            <i class="fa-solid fa-reply homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="deleteSelectedMessages()">
+            <i class="fa-solid fa-trash homemainicons"></i>
+          </ion-button>
+
+          <ion-button *ngIf="!hasInviteSelected()" (click)="onForward()">
+            <i class="fa-solid fa-share homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="onMore($event)">
+            <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+          </ion-button>
+        </ng-container>
+
+        <!-- MULTIPLE ATTACHMENTS -->
+        <ng-container *ngIf="isMultipleAttachments()">
+          <ion-button *ngIf="!hasInviteSelected()" (click)="onForward()">
+            <i class="fa-solid fa-share homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="deleteSelectedMessages()">
+            <i class="fa-solid fa-trash homemainicons"></i>
+          </ion-button>
+        </ng-container>
+
+        <!-- MIXED SELECTION -->
+        <ng-container *ngIf="isMixedSelection()">
+          <ion-button *ngIf="!hasInviteSelected()" (click)="onForward()">
+            <i class="fa-solid fa-share homemainicons"></i>
+          </ion-button>
+
+          <ion-button (click)="deleteSelectedMessages()">
+            <i class="fa-solid fa-trash homemainicons"></i>
+          </ion-button>
+        </ng-container>
+      </ion-buttons>
+    </ng-container>
+
+    <!-- 🔁 Default Chat Header -->
+    <ng-template #defaultHeader>
+      <ion-buttons
+        *ngIf="!showSearchBar"
+        slot="start"
+        style="color: none; width: 8%"
+      >
+        <ion-icon
+          name="arrow-back-outline"
+          class="back-icon"
+          (click)="onBack()"
+          style="font-size: 24px; cursor: pointer"
+        >
+        </ion-icon>
+      </ion-buttons>
+
+      <ng-container *ngIf="!showSearchBar; else searchBar">
+        <ion-buttons>
+          <ion-item
+            lines="none"
+            style="--padding-start: 0; "
+            detail="false"
+          >
+            <!-- ✅ Avatar with fallback to initial letter (Hidden if blocked) -->
+            <ng-container
+              *ngIf="(currentConv?.avatar || receiverProfile) && 
+         (currentConv?.avatar || receiverProfile) !== 'assets/images/default-avatar.png' && 
+         !theyBlocked; else headerInitialsTpl"
+            >
+              <ion-avatar style="margin-left: 10px" slot="start">
+                <img
+                  [src]="currentConv?.avatar || receiverProfile"
+                  alt="User Avatar"
+                  (error)="setDefaultAvatar($event)"
+                />
+              </ion-avatar>
+            </ng-container>
+
+            <!-- <ng-template #headerInitialsTpl>
+              <ion-avatar style="margin-left: 10px" slot="start">
+                <div class="header-avatar-initial">
+                  {{ currentConv?.title?.charAt(0)?.toUpperCase() || '?' }}
+                </div>
+              </ion-avatar>
+            </ng-template>
+
+            <ion-label
+              (click)="goToProfile()"
+              style="
+                width: auto;
+                max-width: 120px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                cursor: pointer;
+              "
+            >
+              <h2>{{ currentConv?.title||"Chat title" }}</h2> -->
+
+            <!--display user name or phone number -->
+            <!-- <ng-template #headerInitialsTpl>
+              <ion-avatar style="margin-left: 10px" slot="start">
+                <div class="header-avatar-initial">
+                  {{ currentConv?.title?.charAt(0)?.toUpperCase() || '?' }}
+                </div>
+              </ion-avatar>
+            </ng-template> -->
+
+            <ng-template #headerInitialsTpl>
+              <ion-avatar style="margin-left: 10px" slot="start">
+                <div class="header-avatar-initial">
+                  {{ chatTitle?.charAt(0)?.toUpperCase() ||
+                  currentConv?.title?.charAt(0)?.toUpperCase() || '?' }}
+                </div>
+              </ion-avatar>
+            </ng-template>
+
+            <ion-label
+              (click)="goToProfile()"
+              style="
+                width: auto;
+                max-width: 120px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                cursor: pointer;
+              "
+            >
+              <!-- <h2>{{ currentConv?.title||"Chat title" }}</h2> -->
+
+              <!-- chartitle added for fetch username  -->
+              <h2 class="itemHeader">{{ chatTitle || currentConv?.title || 'Chat title' }}</h2>
+
+              <!-- ✅ UPDATED: Presence & Typing Status (Hidden if blocked) -->
+              <div
+                *ngIf="!theyBlocked || currentConv?.type !== 'private'"
+                style="
+                  font-size: 12px;
+                  margin-top: 4px;
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+                "
+              >
+                <!-- ✅ Private Chat -->
+                <ng-container *ngIf="currentConv?.type === 'private'">
+                  <!-- Check if typing users exist using the new method -->
+                  <ng-container
+                    *ngIf="currentConv && currentConv.roomId && (getTypingStatusForConv(currentConv.roomId) | async) as users"
+                  >
+                    <ng-container *ngIf="users.length > 0">
+                      <!-- Show typing indicator -->
+                      <span style="color: var(--ion-color-primary)"
+                        >typing…</span
+                      >
+                    </ng-container>
+
+                    <!-- Show online/last seen when NOT typing -->
+                    <ng-container *ngIf="users.length === 0">
+                      <ng-container
+                        *ngIf="receiverStatus === 'online'; else lastSeenTpl"
+                      >
+                        <span class="online-dot" aria-hidden="true"></span>
+                        <span style="color: var(--ion-color-primary)"
+                          >Online</span
+                        >
+                      </ng-container>
+
+                      <ng-template #lastSeenTpl>
+                        <span class="last-seen-text" *ngIf="lastSeenTime">
+                          {{ lastSeenTime }}
+                        </span>
+                      </ng-template>
+                    </ng-container>
+                  </ng-container>
+
+                  <!-- Fallback when roomId is not available -->
+                  <ng-container *ngIf="!currentConv || !currentConv.roomId">
+                    <ng-container
+                      *ngIf="receiverStatus === 'online'; else lastSeenTpl2"
+                    >
+                      <span class="online-dot" aria-hidden="true"></span>
+                      <span style="color: var(--ion-color-primary)"
+                        >Online</span
+                      >
+                    </ng-container>
+
+                    <ng-template #lastSeenTpl2>
+                      <span class="last-seen-text" *ngIf="lastSeenTime">
+                        {{ lastSeenTime }}
+                      </span>
+                    </ng-template>
+                  </ng-container>
+                </ng-container>
+
+                <!-- ✅ Group/Community Chat -->
+                <ng-container
+                  *ngIf="currentConv?.type === 'group' || currentConv?.type === 'community'"
+                >
+                  <!-- Check if typing users exist using the new method -->
+                  <ng-container
+                    *ngIf="currentConv && currentConv.roomId && (getTypingStatusForConv(currentConv.roomId) | async) as users"
+                  >
+                    <ng-container *ngIf="users.length > 0">
+                      <!-- Show typing count -->
+                      <span style="color: var(--ion-color-primary)">
+                        {{ users.length }} {{ users.length === 1 ? 'person is' :
+                        'people are' }} typing…
+                      </span>
+                    </ng-container>
+
+                    <!-- Show member count when NOT typing -->
+                    <ng-container *ngIf="users.length === 0">
+                      <span style="color: var(--ion-color-medium)">
+                        {{ currentConv.members?.length || 0 }} members
+                      </span>
+                    </ng-container>
+                  </ng-container>
+
+                  <!-- Fallback when roomId is not available -->
+                  <ng-container *ngIf="!currentConv || !currentConv.roomId">
+                    <span style="color: var(--ion-color-medium)">
+                      {{ currentConv?.members?.length || 0 }} members
+                    </span>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-buttons>
+      </ng-container>
+
+      <ng-template #searchBar>
+        <ion-item
+          lines="none"
+          class="searchItem"
+        >
+          <ion-icon
+            name="arrow-back-outline"
+            slot="start"
+            style="font-size: 24px; cursor: pointer; margin-right: 10px"
+            (click)="cancelSearch()"
+          ></ion-icon>
+          <ion-input
+            placeholder="Search messages..."
+            [(ngModel)]="searchText"
+            (ionInput)="onSearchInput()"
+            style="margin-left: 10px; flex: 1"
+          >
+          </ion-input>
+          <ion-buttons slot="end">
+            <!-- <ion-button (click)="openDatePicker()">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </ion-button> -->
+            <ion-button (click)="openPopover($event)">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="navigateSearch('up')">
+              <ion-icon name="arrow-up-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="navigateSearch('down')">
+              <ion-icon name="arrow-down-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ng-template>
+
+      <ion-buttons *ngIf="!showSearchBar" slot="end" style="margin-top: 15px">
+        <ion-button style="color: none" class="chat_ion_button">
+          <i class="fa-solid fa-video homemainicons"></i>
+        </ion-button>
+
+        <ion-button
+          (click)="goToCallingScreen()"
+          style="color: none"
+          class="chat_ion_button"
+        >
+          <i class="fa-solid fa-phone homemainicons"></i>
+        </ion-button>
+
+        <ion-button
+          (click)="openOptions($event)"
+          style="color: none"
+          class="chat_ion_button"
+        >
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ion-buttons>
+    </ng-template>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Pinned Message Banner -->
+<div
+  *ngIf="pinnedMessages.length > 0 && getCurrentPinnedMessageDetails()"
+  class="pinned-message-banner"
+>
+  <div class="pinned-message-content">
+    <!-- Navigation Arrow Left -->
+    <ion-button
+      *ngIf="pinnedMessages.length > 1"
+      fill="clear"
+      size="small"
+      class="nav-arrow-button"
+      (click)="previousPinnedMessage(); $event.stopPropagation()"
+    >
+      <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Pinned Message Preview (Clickable) -->
+    <div class="pinned-message-info" (click)="onPinnedMessageClick()">
+      <div class="pinned-message-label">
+        Pinned Message
+        <span *ngIf="pinnedMessages.length > 1" class="pinned-count">
+          ({{ currentPinnedIndex + 1 }}/{{ pinnedMessages.length }})
+        </span>
+      </div>
+      <div class="pinned-message-preview">
+        <span
+          *ngIf="getCurrentPinnedMessageDetails()?.text"
+          class="pinned-text"
+        >
+          {{ getPinnedMessagePreview(getCurrentPinnedMessageDetails()) }}
+        </span>
+        <span
+          *ngIf="getCurrentPinnedMessageDetails()?.attachment && !getCurrentPinnedMessageDetails()?.text"
+          class="pinned-attachment"
+        >
+          <ion-icon
+            [name]="getAttachmentIcon(getCurrentPinnedMessageDetails().attachment.type)"
+          ></ion-icon>
+          {{
+          getAttachmentPreviewText(getCurrentPinnedMessageDetails().attachment)
+          }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Navigation Arrow Right -->
+    <ion-button
+      *ngIf="pinnedMessages.length > 1"
+      fill="clear"
+      size="small"
+      class="nav-arrow-button"
+      (click)="nextPinnedMessage(); $event.stopPropagation()"
+    >
+      <ion-icon name="chevron-forward-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Unpin Button -->
+    <!-- <ion-button fill="clear" size="small" class="unpin-button" (click)="unpinMessage(); $event.stopPropagation()">
+      <ion-icon name="close" slot="icon-only"></ion-icon>
+    </ion-button> -->
+  </div>
+</div>
+
+<!-- <div *ngIf="isShowingSyncLoader" class="syncing-loader">
+  <ion-spinner name="crescent"></ion-spinner>
+  <p>Syncing from server...</p>
+</div> -->
+
+<ion-content class="chat-background" [fullscreen]="true" [scrollEvents]="true">
+  <!-- Pinned Message Banner (Alternative/Mobile View) -->
+  <!-- <div class="fordark"><img src="/assets/images/chat_bg.jpg" alt="" /></div> -->
+  <div class="chat-background"></div>
+
+  <div
+    #scrollContainer
+    class="chat-messages"
+    *ngIf="!isCacheEmpty || batchesComplete"
+    style="padding: 10px 10px 10px 10px; overflow-y: auto; min-height: 100%"
+  >
+    <ion-spinner
+      name="dots"
+      *ngIf="isLoadingMore"
+      style="margin: 8px auto; display: block"
+    ></ion-spinner>
+
+    <!-- Non-virtual list (≤ 100 items) -->
+    <ng-container *ngIf="flatListForView.length <= VIRTUAL_SCROLL_THRESHOLD">
+      <div *ngFor="let group of groupedMessages">
+        <div
+          class="date-divider"
+          [id]="'date-group-' + group.date"
+          *ngIf="group.messages && group.messages.length > 0"
+        >
+          <div class="text-bg-white date-label">{{ group.date }}</div>
+        </div>
+        <ng-container *ngFor="let msg of group.messages">
+          <ng-container
+            *ngTemplateOutlet="messageRowTpl; context: { msg: msg }"
+          ></ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <!-- Virtual list (> 100 items) -->
+    <!-- <cdk-virtual-scroll-viewport *ngIf="flatListForView.length > VIRTUAL_SCROLL_THRESHOLD" itemSize="88" class="chat-virtual-viewport" (scroll)="onVirtualViewportScroll($event)">
+      <div *cdkVirtualFor="let item of flatListForView; trackBy: trackByFlatItem" [ngSwitch]="item.type">
+        <div *ngSwitchCase="'date'" class="date-divider">
+          <div class="text-bg-white date-label">{{ $any(item).date }}</div>
+        </div>
+        <ng-container *ngSwitchCase="'message'">
+          <ng-container *ngTemplateOutlet="messageRowTpl; context: { msg: $any(item).message }"></ng-container>
+        </ng-container>
+      </div>
+    </cdk-virtual-scroll-viewport> -->
+
+    <cdk-virtual-scroll-viewport
+      *ngIf="flatListForView.length > VIRTUAL_SCROLL_THRESHOLD"
+      itemSize="88"
+      class="chat-virtual-viewport"
+      (scroll)="onVirtualViewportScroll($event)"
+      style="height: 100%; min-height: 100vh"
+    >
+      <div
+        *cdkVirtualFor="let item of flatListForView; trackBy: trackByFlatItem"
+        [ngSwitch]="item.type"
+      >
+        <div *ngSwitchCase="'date'" class="date-divider">
+          <div class="text-bg-white date-label">{{ $any(item).date }}</div>
+        </div>
+        <ng-container *ngSwitchCase="'message'">
+          <ng-container
+            *ngTemplateOutlet="messageRowTpl; context: { msg: $any(item).message }"
+          ></ng-container>
+        </ng-container>
+      </div>
+    </cdk-virtual-scroll-viewport>
+
+    <ng-template #messageRowTpl let-msg="msg">
+      <div
+        *ngIf="msg.isSystemMessage || msg.type === 'system'"
+        class="system-msg-center"
+        (click)="msg.disappearingAction ? openDefaultTimer() : null"
+        [style.cursor]="msg.disappearingAction ? 'pointer' : 'default'"
+      >
+        <span>{{ msg.text }}</span>
+      </div>
+      <div
+        class="msg-row"
+        [ngClass]="{
+          'align-end': (msg.isMe !== undefined ? msg.isMe : (msg.sender === senderId)),
+          'align-start': !(msg.isMe !== undefined ? msg.isMe : (msg.sender === senderId)),
+          'selected': isSelected(msg)
+        }"
+        *ngIf="!isMessageHiddenForUser(msg) && msg.type !== 'system' && !msg.isSystemMessage"
+        style="display: flex; flex-direction: column; margin: 5px 0"
+        (touchstart)="startLongPress(msg, $event)"
+        (touchend)="cancelLongPress()"
+        (touchmove)="onMessageTouchMove($event)"
+        (click)="onMessageClick(msg)"
+      >
+        <ng-container
+          *ngIf="msg.deletedFor?.everyone && !$any(msg).uiHoldEveryone"
+        >
+          <div
+            class="message-bubble deleted-message"
+            [class.my-message]="(msg.isMe !== undefined ? msg.isMe : (msg.sender === senderId))"
+            [class.sender-message]="(msg.isMe !== undefined ? msg.isMe : (msg.sender === senderId))"
+            [class.receiver-message]="!(msg.isMe !== undefined ? msg.isMe : (msg.sender === senderId))"
+            [attr.data-msg-key]="msg.msgId"
+          >
+            <div class="deleted-content">
+              <ion-icon name="trash-outline" class="deleted-icon"></ion-icon>
+              <span class="deleted-text"
+                >{{ getDeletedPlaceholderText(msg) }}</span
+              >
+              <span class="deleted-timestamp">{{ msg.time }}</span>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container
+          *ngIf="!msg.deletedFor?.everyone || $any(msg).uiHoldEveryone"
+        >
+          <!-- ================= AUDIO ONLY (NO MESSAGE BUBBLE) ================= -->
+          <ng-container
+            *ngIf="msg.attachment?.type === 'audio'; else normalMessage"
+          >
+            <div
+              class="wa-audio-wrapper"
+              [class.my-audio]="msg.isMe"
+              [class.other-audio]="!msg.isMe"
+              [ngClass]="msg.fadeOut ? 'fade-out' : ''"
+              [attr.data-msg-key]="msg.msgId"
+              (click)="$event.stopPropagation()"
+            >
+              <!-- ▶ Play / Pause -->
+              <button
+                class="wa-play-btn"
+                (click)="toggleMsgAudio(msg, audioEl)"
+              >
+                <ion-icon [name]="msg._isPlaying ? 'pause' : 'play'"></ion-icon>
+              </button>
+
+              <!-- Fake Waveform -->
+              <div class="wa-waveform">
+                <span
+                  class="dot"
+                  *ngFor="let i of [].constructor(28)"
+                  [class.active]="msg._isPlaying"
+                ></span>
+              </div>
+
+              <!-- Current Time / duration (hide until known) -->
+              <span
+                class="wa-time"
+                *ngIf="msg._duration && msg._duration !== '00:00'"
+              >
+                {{ msg._isPlaying ? msg._currentTime : msg._duration }}
+              </span>
+
+              <!-- Speed / Avatar -->
+              <ng-container *ngIf="!msg._isPlaying; else speedTpl">
+                <div class="wa-dp">
+                  <img
+                    [src]="currentConv?.avatar || 'assets/images/default-avatar.png'"
+                    (error)="setDefaultAvatar($event)"
+                  />
+                  <ion-icon name="mic" class="mic-icon"></ion-icon>
+                </div>
+              </ng-container>
+
+              <ng-template #speedTpl>
+                <button class="wa-speed" (click)="toggleMsgSpeed(msg, audioEl)">
+                  {{ msg._speed || '1x' }}
+                </button>
+              </ng-template>
+
+              <!-- ✅ TIME + PIN ICON + TICKS INSIDE AUDIO -->
+              <div class="wa-audio-meta">
+                <span class="time">{{ msg.time }}</span>
+
+                <ion-icon
+                  *ngIf="msg.isPinned"
+                  name="pin"
+                  class="pin-indicator-timestamp"
+                ></ion-icon>
+
+                <ng-container
+                  *ngIf="getStatusIconDescriptorByMsgId(msg.msgId) as icon"
+                >
+                  <ion-icon [name]="icon.name" [ngClass]="icon.cls"></ion-icon>
+                </ng-container>
+              </div>
+
+              <!-- Hidden Audio -->
+              <audio
+                #audioEl
+                [src]="msg.attachment?.localUrl?.startsWith('https://')
+            ? msg.attachment?.localUrl
+            : escapeUrl(msg.attachment?.cdnUrl)"
+                preload="metadata"
+                (loadedmetadata)="onMsgAudioLoaded(msg, audioEl)"
+                (timeupdate)="updateMsgAudioTime(msg, audioEl)"
+                (pause)="onMsgAudioPaused(msg)"
+                (ended)="resetMsgAudio(msg)"
+              ></audio>
+
+              <div
+                class="reaction-badges audio-reactions"
+                *ngIf="msg.reactions && getReactionsCount(msg) > 0"
+                [class.right]="msg.sender === senderId"
+                [class.left]="msg.sender !== senderId"
+              >
+                <ng-container *ngFor="let b of msg.reactions">
+                  <div
+                    *ngIf="b.emoji"
+                    [class.mine]="b.userId === senderId"
+                    (click)="onReactionBadgeClick($event, msg, b)"
+                  >
+                    <span class="audio_emoji">{{ b.emoji }}</span>
+                  </div>
+                </ng-container>
+
+                <span class="cnt" *ngIf="getReactionsCount(msg) > 1">
+                  {{ getReactionsCount(msg) }}
+                </span>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- ================= NORMAL MESSAGE (UNCHANGED) ================= -->
+          <ng-template #normalMessage>
+            <div
+              class="message-bubble"
+              (click)="!msg.isDisappeared && openAttachmentModal(msg)"
+              [attr.data-msg-key]="msg.msgId"
+              [class.my-message]="msg.isMe"
+              [ngClass]="[
+      msg.isMe ? 'sender-message' : 'receiver-message',
+      msg.fadeOut ? 'fade-out' : ''
+    ]"
+            >
+              <!-- ✅ DISAPPEARED — receiver sees nothing, no bubble rendered -->
+              <ng-container *ngIf="msg.isDisappeared && !msg.isMe">
+              </ng-container>
+
+              <!-- ✅ DISAPPEARED — sender sees faint placeholder only -->
+              <ng-container *ngIf="msg.isDisappeared && msg.isMe">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    padding: 2px 4px;
+                    opacity: 0.55;
+                  "
+                >
+                  <ion-icon
+                    name="timer-outline"
+                    style="font-size: 14px; color: gray"
+                  ></ion-icon>
+                  <span style="font-size: 13px; color: gray; font-style: italic"
+                    >Message disappeared</span
+                  >
+                  <span style="font-size: 11px; color: gray; margin-left: 4px"
+                    >{{ msg.time }}</span
+                  >
+                </div>
+              </ng-container>
+
+              <!-- ✅ NORMAL CONTENT — only when not disappeared -->
+              <ng-container *ngIf="!msg.isDisappeared">
+                <!-- Forwarded Label -->
+                <div *ngIf="msg.isForwarded" class="forwarded-label">
+                  <ion-icon
+                    name="arrow-undo-outline"
+                    class="forwarded-icon"
+                  ></ion-icon>
+                  Forwarded
+                </div>
+
+                <!-- Channel Invite Bubble -->
+                <div *ngIf="msg.channel_invite" class="channel-invite-bubble">
+                  <div class="invite-header">
+                    <ion-avatar class="small-dp">
+                      <img
+                        [src]="msg.channel_invite.channelDp || 'assets/images/user.jfif'"
+                        (error)="setDefaultAvatar($event)"
+                      />
+                    </ion-avatar>
+                    <div class="header-info">
+                      <span class="channel-name"
+                        >{{ msg.channel_invite.channelName }}</span
+                      >
+                      <span class="invite-tag">
+                        {{ msg.channel_invite.isFollowerInvite ? 'Channel
+                        invitation' : 'channel admin invite' }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="invite-body">
+                    <p>
+                      {{ msg.channel_invite.isFollowerInvite ? "I'd like to
+                      invite you to follow my channel, " +
+                      msg.channel_invite.channelName : "accept this invitation
+                      to be admin for my channel, " +
+                      msg.channel_invite.channelName }}
+                    </p>
+                  </div>
+                  <div class="invite-footer">
+                    <ion-button
+                      size="small"
+                      expand="block"
+                      fill="clear"
+                      (click)="viewChannelInvite($event, msg.channel_invite)"
+                    >
+                      {{ msg.channel_invite.isFollowerInvite ? 'view invitation'
+                      : 'view invite' }}
+                    </ion-button>
+                  </div>
+                </div>
+
+                <!-- Group Sender Name -->
+                <span
+                  *ngIf="chatType === 'group' && msg.sender !== senderId && !msg.channel_invite"
+                  style="font-size: 10px; color: var(--ion-color-primary)"
+                >
+                  {{ getSenderDisplayName(msg) }}
+                </span>
+
+                <!-- Replied Message -->
+                <div
+                  class="replied-message"
+                  *ngIf="msg.replyToMsgId"
+                  (click)="scrollToRepliedMessage(msg.replyToMsgId)"
+                >
+                  <ng-container
+                    *ngIf="{ reply: getRepliedMessage(msg.replyToMsgId) } as vm"
+                  >
+                    <div
+                      class="replied-container"
+                      *ngIf="vm.reply"
+                      (click)="scrollToRepliedMessage(msg.replyToMsgId)"
+                    >
+                      <div class="replied-header">
+                        <ion-icon
+                          name="arrow-undo-outline"
+                          class="reply-icon"
+                        ></ion-icon>
+                        <span class="replied-sender">
+                          <ng-container
+                            *ngIf="chatType === 'group' || chatType === 'community'; else privateReplySender"
+                          >
+                            {{ vm.reply.isMe ? 'You' :
+                            getSenderDisplayName(vm.reply) }}
+                          </ng-container>
+                          <ng-template #privateReplySender>
+                            {{ vm.reply.isMe ? 'You' : (chatTitle ||
+                            currentConv?.title || vm.reply.sender_phone || '')
+                            }}
+                          </ng-template>
+                        </span>
+                      </div>
+                      <div class="replied-content">
+                        <div
+                          class="replied-text"
+                          *ngIf="vm.reply.text"
+                          [style.font-style]="$any(vm.reply)._deletedForEveryone ? 'italic' : 'normal'"
+                          [style.color]="$any(vm.reply)._deletedForEveryone ? 'black' : ''"
+                        >
+                          {{ getReplyPreviewText(vm.reply) }}
+                        </div>
+                        <div
+                          class="replied-attachment"
+                          *ngIf="vm.reply.attachment && !vm.reply.text"
+                        >
+                          <ion-icon name="attach-outline"></ion-icon>
+                          {{ getReplyPreviewText(vm.reply) }}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="replied-container replied-placeholder"
+                      *ngIf="!vm.reply"
+                    >
+                      <ion-icon
+                        name="trash-outline"
+                        class="reply-icon"
+                      ></ion-icon>
+                      <span
+                        class="replied-sender"
+                        style="color: gray; font-style: italic"
+                      >
+                        This message was deleted
+                      </span>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <!-- Normal Message -->
+                <ng-container *ngIf="!msg.isDeleted && !msg.channel_invite">
+                  <!-- Text only -->
+                  <ng-container
+                    *ngIf="msg.text && (!msg.attachment || isEmptyObject(msg.attachment))"
+                  >
+                    <!-- Translation Bar -->
+                    <div
+                      class="translation-bar"
+                      *ngIf="msg.translations && hasMultipleTranslations(msg)"
+                      (click)="$event.stopPropagation()"
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 4px 8px;
+                        background: rgba(0, 0, 0, 0.05);
+                        border-radius: 6px 6px 0 0;
+                        font-size: 11px;
+                      "
+                    >
+                      <div style="color: #666">
+                        <small
+                          *ngIf="getActiveTranslationLabel(msg) as activeLabel"
+                        >
+                          {{ activeLabel }}
+                        </small>
+                      </div>
+                      <button
+                        (click)="cycleTranslation(msg); $event.stopPropagation()"
+                        title="Translate"
+                        aria-label="Translate"
+                        style="
+                          background: transparent;
+                          border: none;
+                          font-size: 18px;
+                          cursor: pointer;
+                          padding: 2px 6px;
+                          color: #3880ff;
+                          display: flex;
+                          align-items: center;
+                        "
+                      >
+                        <ion-icon name="language-outline"></ion-icon>
+                      </button>
+                    </div>
+
+                    <!-- Visible Text -->
+                    <ng-container
+                      *ngIf="getInviteLinkFromText(msg.translations ? getDisplayedText(msg) : msg.text) as foundLink;
+           else plainTextBlock"
+                    >
+                      <!-- Message has an invite link — render parts separately -->
+                      <ng-container
+                        *ngIf="parseMessageWithLink(msg.translations ? getDisplayedText(msg) : msg.text) as parts"
+                      >
+                        <!-- Text before the link -->
+                        <span
+                          *ngIf="parts.before"
+                          class="message-text"
+                          style="display: block; word-break: break-word"
+                          (click)="$event.stopPropagation()"
+                          >{{ parts.before }}</span
+                        >
+
+                        <!-- ✅ Clickable invite link -->
+                        <span
+                          class="invite-link-chip"
+                          (click)="onInviteLinkTap(parts.link!, $event)"
+                          style="
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 6px;
+                            color: #1565c0;
+                            background: rgba(21, 101, 192, 0.08);
+                            border: 1px solid rgba(21, 101, 192, 0.2);
+                            border-radius: 8px;
+                            padding: 6px 10px;
+                            margin: 4px 0;
+                            cursor: pointer;
+                            word-break: break-all;
+                            font-size: 12.5px;
+                            font-weight: 500;
+                            line-height: 1.4;
+                          "
+                        >
+                          <ion-icon
+                            name="people-outline"
+                            style="
+                              font-size: 15px;
+                              flex-shrink: 0;
+                              color: #1565c0;
+                            "
+                          ></ion-icon>
+                          <span
+                            style="
+                              text-decoration: underline;
+                              text-underline-offset: 2px;
+                            "
+                          >
+                            {{ parts.link }}
+                          </span>
+                          <ion-icon
+                            name="chevron-forward-outline"
+                            style="
+                              font-size: 13px;
+                              flex-shrink: 0;
+                              color: #1565c0;
+                              margin-left: 2px;
+                            "
+                          ></ion-icon>
+                        </span>
+
+                        <!-- Text after the link -->
+                        <span
+                          *ngIf="parts.after"
+                          class="message-text"
+                          style="display: block; word-break: break-word"
+                          (click)="$event.stopPropagation()"
+                          >{{ parts.after }}</span
+                        >
+                      </ng-container>
+                    </ng-container>
+
+                    <!-- Plain text (no invite link) — original behavior -->
+                    <ng-template #plainTextBlock>
+                      <ion-text
+                        class="message-text"
+                        (click)="$event.stopPropagation()"
+                      >
+                        {{ msg.translations ? getDisplayedText(msg) : msg.text
+                        }}
+                      </ion-text>
+                    </ng-template>
+                  </ng-container>
+
+                  <!-- Attachment -->
+                  <ng-container
+                    *ngIf="msg.attachment && !isEmptyObject(msg.attachment)"
+                  >
+                    <img
+                      *ngIf="msg.attachment.type === 'image'"
+                      [src]="msg.attachment.localUrl?.startsWith('https://')
+              ? msg.attachment.localUrl
+              : escapeUrl(msg.attachment.cdnUrl)"
+                      alt="Image"
+                      style="
+                        max-width: 200px;
+                        border-radius: 10px;
+                        margin: 5px 0;
+                      "
+                    />
+                    <video
+                      *ngIf="msg.attachment.type === 'video'"
+                      controls
+                      style="
+                        max-width: 200px;
+                        border-radius: 10px;
+                        margin: 5px 0;
+                      "
+                    >
+                      <source
+                        [src]="msg.attachment.localUrl?.startsWith('https://')
+                ? msg.attachment.localUrl
+                : escapeUrl(msg.attachment.cdnUrl)"
+                        [type]="msg.attachment.mimeType || 'video/mp4'"
+                      />
+                    </video>
+                    <audio
+                      *ngIf="msg.attachment.type === 'audio'"
+                      controls
+                      style="margin: 5px 0"
+                    >
+                      <source
+                        [src]="msg.attachment.localUrl?.startsWith('https://')
+                ? msg.attachment.localUrl
+                : escapeUrl(msg.attachment.cdnUrl)"
+                        [type]="msg.attachment.mimeType || 'audio/mpeg'"
+                      />
+                    </audio>
+                    <div
+                      *ngIf="msg.attachment.type === 'file'"
+                      style="margin: 5px 0"
+                    >
+                      <ion-icon
+                        name="document-outline"
+                        style="margin-right: 5px"
+                      ></ion-icon>
+                      <a
+                        [href]="msg.attachment.previewUrl"
+                        [download]="msg.attachment.fileName || 'file'"
+                        target="_blank"
+                        rel="noopener"
+                        >{{ msg.attachment.fileName || 'Download File' }}</a
+                      >
+                    </div>
+                    <ion-text
+                      class="message-text"
+                      *ngIf="msg.text"
+                      style="margin-top: 5px"
+                    >
+                      {{ msg.text }}
+                    </ion-text>
+                  </ng-container>
+                </ng-container>
+
+                <!-- Timestamp -->
+                <p class="time-stamp status-container">
+                  <ion-icon
+                    *ngIf="msg.isPinned"
+                    name="pin"
+                    class="pin-indicator-timestamp"
+                  ></ion-icon>
+                  {{ msg.time }}
+                  <span
+                    *ngIf="msg.isEdit"
+                    style="font-size: 11px; color: gray; margin-left: 4px"
+                  >
+                    (edited)
+                  </span>
+                  <ng-container
+                    *ngIf="getStatusIconDescriptorByMsgId(msg.msgId) as icon"
+                  >
+                    <ion-icon
+                      [name]="icon.name"
+                      [ngClass]="icon.cls"
+                      [attr.title]="icon.title"
+                    ></ion-icon>
+                  </ng-container>
+                </p>
+
+                <!-- Reaction Badges -->
+                <div
+                  class="reaction-badges"
+                  *ngIf="msg.reactions && msg.reactions.length > 0 && getReactionsCount(msg) > 0"
+                  [class.right]="msg.sender === senderId"
+                  [class.left]="msg.sender !== senderId"
+                >
+                  <ng-container *ngFor="let b of msg.reactions">
+                    <div
+                      *ngIf="b.emoji"
+                      class="badge"
+                      [class.mine]="b.userId == senderId"
+                      (click)="onReactionBadgeClick($event, msg, b)"
+                    >
+                      <span class="emoji">{{ b.emoji }}</span>
+                    </div>
+                  </ng-container>
+                  <span class="cnt" *ngIf="getReactionsCount(msg) > 1">
+                    {{ getReactionsCount(msg) }}
+                  </span>
+                </div>
+              </ng-container>
+              <!-- end !msg.isDisappeared -->
+            </div>
+          </ng-template>
+        </ng-container>
+
+        <!-- Floating Reaction Bar (UNCHANGED) -->
+        <div
+          class="reaction-bar"
+          *ngIf="isQuickReactionOpen(msg)"
+          [class.right]="msg.sender === senderId"
+          [class.left]="msg.sender !== senderId"
+          (click)="$event.stopPropagation()"
+          style="z-index: 1000"
+        >
+          <button
+            class="react-btn"
+            (click)="addReaction(msg, '👍'); $event.stopPropagation()"
+          >
+            👍
+          </button>
+          <button
+            class="react-btn"
+            (click)="addReaction(msg, '❤️'); $event.stopPropagation()"
+          >
+            ❤️
+          </button>
+          <button
+            class="react-btn"
+            (click)="addReaction(msg, '😂'); $event.stopPropagation()"
+          >
+            😂
+          </button>
+          <button
+            class="react-btn"
+            (click)="addReaction(msg, '😮'); $event.stopPropagation()"
+          >
+            😮
+          </button>
+          <button
+            class="react-btn"
+            (click)="addReaction(msg, '😢'); $event.stopPropagation()"
+          >
+            😢
+          </button>
+          <button
+            class="react-btn"
+            (click)="addReaction(msg, '🙏'); $event.stopPropagation()"
+          >
+            🙏
+          </button>
+          <button
+            class="react-btn more"
+            (click)="openEmojiKeyboard(msg); $event.stopPropagation()"
+          >
+            ＋
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>
+
+<ion-modal [isOpen]="showPreviewModal" (didDismiss)="showPreviewModal = false">
+  <ng-template>
+    <ion-header [translucent]="true" class="model-header">
+      <ion-toolbar class="model-toll">
+        <ion-buttons slot="start">
+          <ion-icon
+            (click)="cancelAttachment()"
+            name="close"
+            style="font-size: 25px"
+          ></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end" class="pre-icons">
+          <!-- Show pencil icon only for images -->
+
+          <img
+            *ngIf="selectedAttachment?.type === 'image'"
+            src="assets/images/crop-simple-solid-full.svg"
+            alt="pencil"
+            (click)="openCropperModal()"
+            style="cursor: pointer"
+          />
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="">
+      <div class="pre-model">
+        <div class="mine2">
+          <div
+            *ngIf="selectedAttachment?.type === 'image'"
+            class="cropped-image"
+          >
+            <img [src]="selectedAttachment?.previewUrl" class="preview-image" />
+          </div>
+          <div *ngIf="selectedAttachment?.type === 'video'">
+            <video
+              controls
+              [src]="selectedAttachment?.previewUrl"
+              class="preview-video"
+            ></video>
+          </div>
+          <div *ngIf="selectedAttachment?.type === 'file'" class="preview-file">
+            <ion-icon
+              name="document-attach-outline"
+              style="font-size: 48px"
+            ></ion-icon>
+            <p>{{ selectedAttachment?.fileName }}</p>
+          </div>
+        </div>
+        <div class="mine ion-padding">
+          <ion-textarea
+            [(ngModel)]="messageText"
+            placeholder="Type your message here..."
+            class="pre-message"
+          ></ion-textarea>
+          <div class="sendbtn">
+            <!-- <p>{{ receiver_name }}</p> -->
+            <ion-icon
+              name="send-outline"
+              (click)="sendMessage()"
+              class="mediasend"
+              [class.sending]="isSending"
+              [style.pointer-events]="isSending ? 'none' : 'auto'"
+              [style.opacity]="isSending ? '0.5' : '1'"
+            >
+            </ion-icon>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- ✅ Message Input Footer -->
+<!-- ========================= -->
+<!-- Message Input Footer (updated) -->
+<div class="footer-fixed" [class.typing-state]="showCompressedActions">
+  <!-- Normal footer: typing indicator, reply preview, input row -->
+
+  <div
+    *ngIf="!isCurrentUserMember()"
+    style="
+      padding: 16px;
+      text-align: center;
+      background: #f5f5f5;
+      border-top: 1px solid #ddd;
+    "
+  >
+    <ion-text color="medium">
+      <p style="margin: 0">You are not a member of this group</p>
+    </ion-text>
+  </div>
+
+  <div *ngIf="isCurrentUserMember()">
+    <!-- ✅ Blocked Banner (Only for the Blocker) -->
+    <div
+      *ngIf="iBlocked"
+      class="blocked-banner"
+      style="
+        background: var(--ion-color-light);
+        padding: 15px;
+        text-align: center;
+        border-top: 1px solid var(--ion-color-step-150);
+        margin-bottom: env(safe-area-inset-bottom);
+      "
+    >
+      <p style="margin: 0; font-size: 14px; color: var(--ion-color-dark)">
+        You blocked this contact.
+        <ion-text
+          color="primary"
+          (click)="unblockFromChat()"
+          style="font-weight: bold; cursor: pointer"
+        >
+          Unblock
+        </ion-text>
+        to continue.
+      </p>
+    </div>
+
+    <!-- ✅ Typing indicator & Input logic (only if NOT the blocker) -->
+    <div *ngIf="!iBlocked">
+      <!-- ✅ Send permission banner — shown when member but cannot send -->
+      <div
+        *ngIf="isCurrentUserMember() && !iBlocked && !canSendMessage"
+        style="
+          padding: 12px 16px;
+          text-align: center;
+          background: #fff8e1;
+          border-top: 1px solid #ffe082;
+        "
+      >
+        <ion-text>
+          <p style="margin: 0; font-size: 13px; color: #f57f17">
+            <ion-icon
+              name="lock-closed-outline"
+              style="vertical-align: middle; margin-right: 4px"
+            ></ion-icon>
+            Only admins can send messages in this group
+          </p>
+        </ion-text>
+      </div>
+      <!-- ✅ Typing indicator (above keyboard) -->
+      <div
+        class="typing-indicator-wrapper"
+        *ngIf="!theyBlocked && (isReceiverTyping || typingCount > 0)"
+      >
+        <!-- PRIVATE CHAT layout -->
+        <div
+          *ngIf="currentConv?.type === 'private' && isReceiverTyping"
+          class="typing-indicator-content private"
+        >
+          <div
+            class="typing-dots center-only"
+            aria-hidden="true"
+            role="status"
+            aria-label="typing"
+          >
+            <span class="dot"></span><span class="dot"></span
+            ><span class="dot"></span>
+          </div>
+        </div>
+
+        <!-- GROUP CHAT layout -->
+        <div
+          *ngIf="currentConv?.type === 'group' && typingCount > 0"
+          class="typing-indicator-content group"
+        >
+          <div class="typing-text">
+            <div class="typing-avatars">
+              <!-- Single user typing -->
+              <ng-container
+                *ngIf="typingCount === 1 && typingUsers.length >= 1"
+              >
+                <img
+                  class="typing-avatar single"
+                  [src]="typingUsers[0].avatar || 'assets/images/default-avatar.png'"
+                  (error)="setDefaultAvatar($event)"
+                  [alt]="typingUsers[0].name || 'User'"
+                />
+              </ng-container>
+
+              <!-- Multiple users typing -->
+              <ng-container *ngIf="typingCount >= 2">
+                <div class="avatar-stack">
+                  <img
+                    *ngFor="let u of typingUsers.slice(0,3); let i = index"
+                    class="typing-avatar stacked idx-{{i}}"
+                    [src]="u.avatar || 'assets/images/default-avatar.png'"
+                    (error)="setDefaultAvatar($event)"
+                    [alt]="u.name || 'User'"
+                  />
+                  <div class="more-badge" *ngIf="typingCount > 3">
+                    +{{ typingCount - 3 }}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <div
+            class="typing-dots"
+            aria-hidden="true"
+            role="status"
+            aria-label="typing"
+          >
+            <span class="dot"></span><span class="dot"></span
+            ><span class="dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================= -->
+
+      <!-- REPLY PREVIEW -->
+      <div class="reply-preview" *ngIf="replyToMessage">
+        <div class="reply-header">
+          <span class="reply-to-text"
+            >Replying to {{ replyTo?.sender?.username || "You"}}</span
+          >
+          <ion-button fill="clear" size="small" (click)="cancelReply()">
+            <ion-icon name="close" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
+        <div class="reply-content">
+          <div class="reply-line"></div>
+          <div class="reply-message">
+            {{ getReplyPreviewText(replyToMessage) }}
+          </div>
+        </div>
+      </div>
+
+      <!-- INPUT ROW -->
+      <ion-row
+        class="footer-row"
+        style="align-items: center"
+        *ngIf="canSendMessage"
+      >
+        <ion-col
+          class="message-input-container"
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 8px;
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 8px">
+            <ion-icon
+              name="happy-outline"
+              class="icon-left"
+              (click)="openEmojiKeyboardForInput()"
+            ></ion-icon>
+
+            <!-- <ion-textarea [disabled]="iBlocked" [autoGrow]="true" [(ngModel)]="messageText" placeholder="Message"
+            (ionInput)="onMessageInput($event)" (ionFocus)="onInputFocus()" (ionBlur)="onInputBlur()"
+            (keyup.enter)="sendMessage()" class="message-input" labelPlacement="fixed"></ion-textarea> -->
+            <ion-textarea
+              class="message-input"
+              [(ngModel)]="messageText"
+              placeholder="Message"
+              [autoGrow]="true"
+              rows="1"
+              labelPlacement="fixed"
+              (ionInput)="onMessageInput($event)"
+              (ionFocus)="onInputFocus()"
+              (ionBlur)="onInputBlur()"
+              (keydown)="onEnterKey($event)"
+              [disabled]="iBlocked"
+              style="
+                --padding-top: 10px;
+                --padding-bottom: 10px;
+                --padding-start: 0px;
+                --padding-end: 0px;
+                --line-height: 20px;
+                min-height: 44px;
+              "
+            >
+            </ion-textarea>
+
+            <ion-icon
+              *ngIf="currentConv?.type === 'private'"
+              name="language-outline"
+              class="icon-left action-icon"
+              (click)="toggleTranslationOptions()"
+              style="font-size: 22px"
+            >
+            </ion-icon>
+
+            <ion-icon
+              name="attach-outline"
+              (click)="pickAttachment()"
+              class="icon-right action-icon"
+              [hidden]="iBlocked"
+            ></ion-icon>
+            <ion-icon
+              name="camera-outline"
+              class="icon-right action-icon"
+              (click)="openCamera()"
+              [hidden]="iBlocked"
+            ></ion-icon>
+            <!-- COMPRESSED ICON (TYPING STATE) -->
+            <ion-icon
+              name="ellipsis-horizontal-outline"
+              class="compressed-menu-icon"
+              (click)="openMoreActions()"
+            >
+            </ion-icon>
+          </div>
+
+          <!-- 🌐 Translation Options -->
+          <div
+            *ngIf="showTranslationOptions && currentConv?.type === 'private'"
+            class="translation-options"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+             
+              border-radius: 12px;
+              padding: 6px 10px;
+              margin-top: 4px;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+              gap: 8px;
+            "
+          >
+            <!-- ✅ Custom Language Dropdown -->
+            <ion-select
+              interface="popover"
+              placeholder="Translate to..."
+              (ionChange)="onSelectTranslateLanguage($event)"
+              [disabled]="isTranslatingCustom || isTranslatingToReceiver"
+              style="flex: 1; max-width: 60%"
+            >
+              <ion-select-option
+                *ngFor="let lang of languagesList"
+                [value]="lang"
+              >
+                {{ lang.label }}
+              </ion-select-option>
+            </ion-select>
+
+            <!-- ✅ Translate to Receiver Button -->
+            <ion-button
+              size="small"
+              fill="outline"
+              color="medium"
+              (click)="translateTo('receiver')"
+              [disabled]="isTranslatingCustom || isTranslatingToReceiver"
+              style="flex: 1; --padding-start: 8px; --padding-end: 8px"
+            >
+              <ion-spinner
+                *ngIf="isTranslatingToReceiver"
+                name="crescent"
+                slot="start"
+                style="width: 14px; height: 14px"
+              ></ion-spinner>
+              <span *ngIf="!isTranslatingToReceiver" style="font-size: 11px">
+                Demmlang ({{receiverLangLabel}})
+              </span>
+              <span *ngIf="isTranslatingToReceiver" style="font-size: 11px">
+                Translating...
+              </span>
+            </ion-button>
+          </div>
+
+          <!-- 🌐 TRANSLATION CARD - Shows up to 3 translations -->
+          <div
+            *ngIf="translationCard?.visible"
+            class="translation-card"
+            role="region"
+            aria-label="Translation preview"
+            style="
+              background: white;
+              border-radius: 12px;
+              padding: 12px;
+              margin-top: 8px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              border-left: 3px solid #3880ff;
+            "
+          >
+            <!-- CARD HEADER -->
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 6px">
+                <ion-icon
+                  name="language-outline"
+                  style="font-size: 18px; color: #3880ff"
+                ></ion-icon>
+                <strong style="font-size: 13px; color: #333">
+                  <ng-container *ngIf="translationCard?.items?.length as count">
+                    <strong style="font-size: 13px; color: #333">
+                      {{ count }} Translation{{ count > 1 ? 's' : '' }} Ready
+                    </strong>
+                  </ng-container>
+
+                  <ng-container *ngIf="!(translationCard?.items?.length)">
+                    <strong style="font-size: 13px; color: #333">
+                      0 Translations Ready
+                    </strong>
+                  </ng-container>
+                </strong>
+              </div>
+              <small style="color: #666; font-size: 11px">
+                {{ translationCard?.createdAt | date: 'shortTime' }}
+              </small>
+            </div>
+
+            <!-- CARD BODY - All Translations -->
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 10px;
+              "
+            >
+              <div
+                *ngFor="let t of (translationCard?.items || []); let i = index"
+                style="
+                  background: #f8f9fa;
+                  border-radius: 8px;
+                  padding: 8px 10px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 4px;
+                "
+                [style.border-left]="i === 0 ? '3px solid #28a745' : (t.label.includes('Receiver') ? '3px solid #ff6b6b' : '3px solid #3880ff')"
+              >
+                <!-- Language Label & Code -->
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="font-size: 11px; font-weight: 600"
+                    [style.color]="i === 0 ? '#28a745' : (t.label.includes('Receiver') ? '#ff6b6b' : '#3880ff')"
+                  >
+                    {{ t.label }}
+                  </span>
+                  <span
+                    style="
+                      font-size: 10px;
+                      background: #e0e0e0;
+                      padding: 2px 6px;
+                      border-radius: 4px;
+                      color: #666;
+                    "
+                  >
+                    {{ t.code }}
+                  </span>
+                </div>
+
+                <!-- Translated Text -->
+                <div style="font-size: 13px; color: #333; line-height: 1.4">
+                  {{ t.text }}
+                </div>
+              </div>
+
+              <!-- EMPTY STATE -->
+              <div
+                *ngIf="!(translationCard?.items?.length)"
+                style="
+                  text-align: center;
+                  padding: 12px;
+                  color: #999;
+                  font-size: 12px;
+                "
+              >
+                No translations available
+              </div>
+            </div>
+
+            <!-- CARD ACTIONS -->
+            <div style="display: flex; justify-content: flex-end; gap: 8px">
+              <ion-button
+                size="small"
+                fill="clear"
+                color="medium"
+                (click)="closeTranslationCard()"
+                [disabled]="isSendingFromTranslationCard"
+                style="--padding-start: 10px; --padding-end: 10px"
+              >
+                Cancel
+              </ion-button>
+
+              <!-- ✅ UPDATED: Send Button with Loader Animation -->
+              <ion-button
+                size="small"
+                color="primary"
+                (click)="sendFromTranslationCard()"
+                [disabled]="isSendingFromTranslationCard"
+                style="--padding-start: 12px; --padding-end: 12px"
+              >
+                <!-- LOADING STATE -->
+                <ng-container *ngIf="isSendingFromTranslationCard">
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                      animation: pulse 1.5s ease-in-out infinite;
+                    "
+                  >
+                    <ion-spinner
+                      name="crescent"
+                      style="width: 16px; height: 16px"
+                    ></ion-spinner>
+                    <span>Sending...</span>
+                  </div>
+                </ng-container>
+
+                <!-- NORMAL STATE -->
+                <ng-container *ngIf="!isSendingFromTranslationCard">
+                  <div style="display: flex; align-items: center; gap: 4px">
+                    <ion-icon
+                      name="send-outline"
+                      style="font-size: 16px"
+                    ></ion-icon>
+                    <span>Send</span>
+                  </div>
+                </ng-container>
+              </ion-button>
+            </div>
+          </div>
+        </ion-col>
+
+        <!-- ✅ UPDATED: Disabled when translation card is visible -->
+        <ion-col size="auto" style="display: flex; align-items: center">
+          <!-- ✅ MIC BUTTON (when no text) -->
+          <ion-button
+            *ngIf="!showSendButton"
+            class="mic-button"
+            shape="round"
+            [disabled]="iBlocked || translationCard?.visible"
+            (touchstart)="startRecording($event)"
+            (touchmove)="onRecordingTouchMove($event)"
+            (touchend)="stopRecording()"
+            (touchcancel)="cancelRecording()"
+            (mousedown)="startRecording($event)"
+            (mouseup)="stopRecording()"
+            [class.recording]="isRecording"
+          >
+            <ion-icon slot="icon-only" name="mic"></ion-icon>
+          </ion-button>
+
+          <!-- ✅ SEND BUTTON WITH SPINNER -->
+          <ion-button
+            *ngIf="showSendButton"
+            fill="clear"
+            class="send-btn"
+            shape="round"
+            (click)="sendMessage()"
+            [disabled]="iBlocked || translationCard?.visible || isSending"
+            [style.opacity]="translationCard?.visible || isSending ? '0.5' : '1'"
+            [style.pointer-events]="isSending ? 'none' : 'auto'"
+          >
+            <!-- ✅ Show spinner when sending -->
+            <ion-spinner
+              *ngIf="isSending"
+              name="crescent"
+              slot="icon-only"
+              style="--color: white"
+            ></ion-spinner>
+
+            <!-- ✅ Show send icon when not sending -->
+            <ion-icon
+              *ngIf="!isSending"
+              slot="icon-only"
+              name="send"
+            ></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</div>
+<!-- ========================= -->
+
+<!-- 🎤 Recording Overlay (shown when not in preview mode) -->
+<div class="recording-overlay" *ngIf="isRecording && !showRecordingPreview">
+  <div class="recording-content">
+    <div class="recording-timer">
+      <div class="recording-pulse"></div>
+      <span class="recording-time">{{ recordingTime }}</span>
+    </div>
+    <div class="recording-actionys">
+      <ion-button fill="clear" color="danger" (click)="cancelRecording()">
+        <!-- class="cancel-recordyingz-btn" -->
+
+        <!-- <ion-icon name="close-circle" slot="start"></ion-icon> -->
+      </ion-button>
+      <div class="slide-cancel-hint">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        <span>Slide left to cancel</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 📤 FOOTER AUDIO SENDING LOADER -->
+<div class="footer-audio-sending-loader" *ngIf="isAudioSending">
+  <div class="footer-audio-sending-content">
+    <div class="footer-audio-sending-spinner">
+      <ion-spinner name="circles" color="primary"></ion-spinner>
+    </div>
+    <div class="footer-audio-sending-info">
+      <p class="footer-audio-sending-message">{{ audioSendingMessage }}</p>
+      <div class="footer-audio-sending-progress-bar">
+        <div
+          class="footer-audio-sending-progress-fill"
+          [style.width.%]="audioSendingProgress"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🎤 WhatsApp-style Recording Preview -->
+<div
+  class="recording-preview-overlay"
+  [class.paused]="isRecordingPaused"
+  *ngIf="showRecordingPreview"
+>
+  <div
+    class="recording-preview-container"
+    [style.opacity]="isAudioSending ? 0.5 : 1"
+  >
+    <!-- First Row: Timer and Waveform -->
+    <div class="recording-preview-row-1">
+      <!-- ▶️ LISTEN PLAY / PAUSE (ONLY AFTER RECORDING) -->
+      <ion-button
+        *ngIf="recordingPhase !== 'recording'"
+        fill="outline"
+        size="small"
+        class="preview-listen-btn"
+        (click)="toggleListen()"
+      >
+        <ion-icon
+          [name]="recordingPhase === 'listening' ? 'pause' : 'play'"
+          slot="icon-only"
+        >
+        </ion-icon>
+      </ion-button>
+
+      <div class="waveform-container">
+        <div
+          class="waveform"
+          [class.recording]="isRecording && !isRecordingPaused"
+          [class.playing]="recordingPhase === 'listening'"
+          [class.listening]="recordingPhase === 'listening'"
+        >
+          <div class="waveform-bar" *ngFor="let i of [].constructor(40)"></div>
+        </div>
+        <div class="recording-preview-timer">
+          <span class="timer-text">{{ recordingTime }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Row: Delete, Play, Send -->
+    <div class="recording-preview-row-2">
+      <ion-button
+        fill="clear"
+        color="danger"
+        (click)="deleteRecordingPreview()"
+        class="preview-delete-btn"
+        [disabled]="isAudioSending"
+      >
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+
+      <!-- ▶ RESUME / PLAY (|| style) -->
+      <div
+        *ngIf="recordingPhase !== 'paused'"
+        class="preview-resume-bars"
+        (click)="recordingPhase === 'recording'
+      ? pauseRecording()
+       : toggleListen()"
+        [style.opacity]="isAudioSending ? 0.5 : 1"
+      >
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- 🎙 MIC (ONLY WHEN PAUSED) -->
+      <div
+        *ngIf="recordingPhase === 'paused'"
+        class="preview-mic-only"
+        (click)="onPreviewMicTap()"
+        [style.opacity]="isAudioSending ? 0.5 : 1"
+      >
+        <ion-icon name="mic"></ion-icon>
+      </div>
+
+      <ion-button
+        fill="clear"
+        color="primary"
+        (click)="sendRecordingFromPreview()"
+        class="preview-send-btn"
+        [disabled]="isAudioSending"
+      >
+        <ion-icon
+          [name]="isAudioSending ? 'hourglass' : 'send'"
+          slot="icon-only"
+        ></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Hidden audio element for playback (only when recording is stopped) -->
+    <audio
+      #previewAudio
+      *ngIf="selectedAttachment?.type === 'audio' && !isRecording"
+      [src]="selectedAttachment?.previewUrl"
+      (loadedmetadata)="onPreviewLoadedMetadata()"
+      (timeupdate)="onPreviewTimeUpdate()"
+      (ended)="onPreviewEnded()"
+      style="display: none"
+    ></audio>
+  </div>
+</div>
+
+<ion-popover
+  [isOpen]="showPopover"
+  [event]="popoverEvent"
+  (didDismiss)="showPopover = false"
+  style="--width: 300px; --height: 400px"
+>
+  <ng-template>
+    <ion-datetime
+      presentation="date"
+      (ionChange)="onDateSelected($event)"
+      [value]="selectedDate"
+      [max]="maxDate"
+      showDefaultButtons="true"
+    ></ion-datetime>
+  </ng-template>
+</ion-popover>

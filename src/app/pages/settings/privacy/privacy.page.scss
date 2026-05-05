@@ -1,0 +1,60 @@
+page-privacy {
+  /* List surface uses theme background */
+  ion-list {
+    background: var(--ion-background-color);
+    --ion-item-background: var(--ion-item-background, var(--ion-background-color));
+    --ion-item-color: var(--ion-text-color);
+  }
+
+  /* Optional: section headers inside privacy list */
+  ion-list-header {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: color-mix(in srgb, var(--ion-text-color) 65%, transparent);
+    padding-top: 12px;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  /* Optional: muted description text */
+  .sub-label {
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--ion-text-color) 55%, transparent);
+  }
+
+  /* Focus accessibility */
+  ion-item:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 8px;
+  }
+}
+
+
+
+.ion_toolbar{
+    // --background: #ffffff;
+    background: var(--ion-color-primary);
+
+    --color:  var(--ion-color-primary);
+    // padding-top: 28px !important;
+}  
+.ion_title{
+    color: var(--ion-color-primary) !important;
+    padding: 0px;
+}
+.setting_icons{
+    background: var(--ion-color-primary);
+    color: white;
+    padding: 4px;
+    border-radius: 50px;
+    font-size: 26px;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.itemHeader,ion-select-option{
+  color:var(--ion-text-color) ;
+}

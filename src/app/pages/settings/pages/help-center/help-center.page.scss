@@ -1,0 +1,191 @@
+:host {
+  display: block;
+}
+
+/* Page-level background: slightly grey so lists look like cards */
+.help-center-content {
+  --background: var(--ion-background-color-dark, #f5f5f5);
+}
+
+/* ── Hero Section ─────────────────────────── */
+.hero-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px 28px;
+  background: var(--ion-background-color);
+}
+
+.logo-wrapper {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--ion-background-color);
+  border: 2px solid rgba(0, 106, 79, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 106, 79, 0.20);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.app-logo {
+  width: 70px;
+  height: 70px;
+  background-position: center;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ion-text-color);
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Search Bar ────────────────────────────── */
+.search-wrapper {
+  padding: 2px 12px 14px;
+  background: var(--ion-background-color);
+}
+
+.help-searchbar {
+  --background: var(--searchbar-bg, #ebebeb);
+  --border-radius: 12px;
+  --placeholder-color: #999999;
+  --icon-color: #999999;
+  --color: var(--ion-text-color);
+  --box-shadow: none;
+  padding: 0;
+}
+
+/* ── Section Labels ────────────────────────── */
+.section-label {
+  margin: 0;
+  padding: 16px 16px 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #888888;
+  background: transparent;
+}
+
+/* ── Topics List ───────────────────────────── */
+.topics-list {
+  margin: 0;
+  background: var(--ion-item-background);
+
+  ion-item {
+    --background: var(--ion-item-background);
+    --color: var(--ion-text-color);
+    --min-height: 52px;
+    --padding-start: 16px;
+    --inner-border-width: 0 0 1px 0;
+    --border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  ion-item:last-child {
+    --inner-border-width: 0;
+  }
+}
+
+.topic-icon {
+  font-size: 1.3rem;
+  color: var(--ion-color-primary);
+  margin-right: 4px;
+}
+
+.topic-label {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--ion-text-color);
+}
+
+/* ── Articles List ─────────────────────────── */
+.articles-list {
+  margin: 0;
+  background: var(--ion-item-background);
+
+  ion-item {
+    --background: var(--ion-item-background);
+    --color: var(--ion-text-color);
+    --min-height: 52px;
+    --padding-start: 16px;
+    --inner-border-width: 0 0 1px 0;
+    --border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  ion-item:last-child {
+    --inner-border-width: 0;
+  }
+}
+
+.article-icon {
+  font-size: 1.15rem;
+  color: #888888;
+  margin-right: 4px;
+}
+
+.article-label {
+  font-size: 0.93rem;
+  color: var(--ion-text-color);
+  white-space: normal;
+  line-height: 1.45;
+}
+
+.show-more-item {
+  --background: var(--ion-item-background);
+  --inner-border-width: 0;
+  --padding-start: 16px;
+  --min-height: 48px;
+}
+
+.show-more-label {
+  color: var(--ion-color-primary);
+  font-weight: 500;
+  font-size: 0.93rem;
+}
+
+/* ── Bottom spacer for FAB ─────────────────── */
+.bottom-spacer {
+  height: 90px;
+}
+
+/* ── Contact FAB ───────────────────────────── */
+.contact-fab {
+  margin-bottom: 10px;
+  margin-right: 8px;
+}
+
+.contact-btn {
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
+  --border-radius: 28px;
+  width: auto;
+  height: 48px;
+  min-width: 148px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --box-shadow: 0 4px 16px rgba(0, 106, 79, 0.38);
+}
+
+.fab-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 600;
+
+  ion-icon {
+    font-size: 1.2rem;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,151 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home-screen"></ion-back-button>
+    </ion-buttons>
+
+    <!-- Dynamic list name in header -->
+    <ion-title>{{ listName }}</ion-title>
+
+    <ion-buttons slot="end">
+      <!-- Delete list icon -->
+      <ion-button (click)="deleteList()">
+        <i class="fa-solid fa-trash header-icon"></i>
+      </ion-button>
+      <!-- Rename / edit pencil -->
+      <ion-button (click)="openEditModal()">
+  <i class="fa-solid fa-pen header-icon"></i>
+</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- ── LOADING SKELETON ─────────────────────────────────────────────────── -->
+  <ng-container *ngIf="isLoading">
+    <ion-list>
+      <ion-item *ngFor="let i of [1,2,3]" lines="none">
+        <ion-avatar slot="start">
+          <ion-skeleton-text
+            animated
+            style="width:44px;height:44px;border-radius:50%;"
+          ></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width:55%;"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width:35%;"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <!-- ── EMPTY STATE ──────────────────────────────────────────────────────── -->
+  <ng-container *ngIf="!isLoading && chatList.length === 0">
+    <div class="empty-state">
+      <ion-icon name="list-outline" class="empty-icon"></ion-icon>
+      <h3 class="empty-title">No chats in "{{ listName }}"</h3>
+      <p class="empty-subtitle">
+        Tap "Add people or groups" to add chats to this list.
+      </p>
+      <ion-button
+        class="add-first-btn"
+        (click)="addPeople()"
+        expand="block"
+      >
+        Add people or groups
+      </ion-button>
+    </div>
+  </ng-container>
+
+  <!-- ── FILLED STATE ─────────────────────────────────────────────────────── -->
+  <ng-container *ngIf="!isLoading && chatList.length > 0">
+
+    <!-- Info text -->
+    <div class="info-text">
+      Manage the chats included in your "{{ listName }}" list.
+    </div>
+
+    <!-- ── Notifications Section ─────────────────────────────────────────── -->
+    <div class="section-title">Notifications</div>
+
+    <ion-item lines="none" class="mute-item">
+      <ion-label>
+        <h2>Mute</h2>
+        <p *ngIf="isMuted && muteUntilLabel" class="mute-until-label">
+          {{ muteUntilLabel }}
+        </p>
+      </ion-label>
+      <ion-toggle
+        slot="end"
+        [checked]="isMuted"
+        (ionChange)="onMuteToggleChange($event)"
+        color="success"
+      ></ion-toggle>
+    </ion-item>
+
+    <!-- ── Included Section ──────────────────────────────────────────────── -->
+    <div class="section-title">Included</div>
+
+    <!-- Add People button -->
+    <ion-item button lines="none" (click)="addPeople()" class="add-item">
+      <div class="add-icon" slot="start">
+        <ion-icon name="add"></ion-icon>
+      </div>
+      <ion-label>Add people or groups</ion-label>
+    </ion-item>
+
+    <!-- Chat list -->
+    <ion-list>
+      <ion-item
+        *ngFor="let chat of chatList"
+        lines="none"
+        class="chat-item"
+      >
+        <!-- Avatar -->
+        <ion-avatar slot="start">
+          <ng-container *ngIf="chat.image; else initials">
+            <img [src]="chat.image" />
+          </ng-container>
+          <ng-template #initials>
+            <div class="avatar-initials">
+              {{ chat.name?.charAt(0)?.toUpperCase() || '?' }}
+            </div>
+          </ng-template>
+        </ion-avatar>
+
+        <ion-label>
+          <h3>{{ chat.name }}</h3>
+          <p *ngIf="chat.lastMessage">{{ chat.lastMessage }}</p>
+        </ion-label>
+
+        <!-- Remove button — edit mode only -->
+        <ion-button
+          *ngIf="isEditMode"
+          fill="clear"
+          color="danger"
+          slot="end"
+          (click)="removeFromList(chat, $event)"
+        >
+          <ion-icon name="remove-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- Edit / Done toggle -->
+    <div class="edit-toggle-row" (click)="toggleEdit()">
+      <span>{{ isEditMode ? 'Done' : 'Edit list members' }}</span>
+    </div>
+
+    <!-- Footer text -->
+    <div class="footer-text">
+      You can rename or delete this list from the header icons above.
+    </div>
+
+  </ng-container>
+
+</ion-content>

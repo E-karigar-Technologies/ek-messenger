@@ -1,0 +1,76 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.telldemm-img {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.telldemm-img img { max-width: 70%; }
+
+.welcome-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(90%, 420px);
+  text-align: center;
+}
+
+.welcome h2 {
+  color: var(--ion-color-primary);
+  width: 100%;
+  margin: 0 auto;
+  font-size: clamp(20px, 5.4vw, 26px);
+  line-height: 1.2;
+  font-weight: bold;
+  font-family: Montserrat-bold;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.welcome p {
+  color: var(--ion-text-color);
+  font-size: 18px;
+  text-align: center;
+  font-family: Montserrat-Medium;
+}
+
+.button { text-align: center; }
+
+/* Gradient button using Ionic tokens */
+.button button {
+  width: 80%;
+  height: 50px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: Montserrat-bold;
+  color: var(--ion-color-primary-contrast);
+  // background: linear-gradient(
+  //   175deg,
+  //   var(--ion-color-primary) 0%,
+  //   color-mix(in srgb, var(--ion-color-primary) 60%, var(--ion-color-dark) 40%) 50%
+  // );
+    background: var(--ion-color-primary);
+}

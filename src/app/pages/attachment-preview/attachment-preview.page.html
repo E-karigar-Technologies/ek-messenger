@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Preview</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <img [src]="imageData" style="width: 100%; max-height: 80vh;" />
+
+  <div class="ion-text-center ion-margin-top">
+    <ion-button color="success" (click)="send()">Send</ion-button>
+    <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+  </div>
+</ion-content>

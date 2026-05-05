@@ -1,0 +1,200 @@
+<ion-header>
+  <ion-toolbar class="ion_toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/settings"
+        [attr.aria-label]="'common.back' | translate">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">{{ 'avatarPage.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Preview -->
+  <div class="preview" style="display:flex;justify-content:center;margin:18px 0;">
+    <ion-avatar>
+      <img [src]="avatarUrl" [alt]="'avatarPage.previewAlt' | translate" />
+    </ion-avatar>
+  </div>
+
+  <!-- Customization Options -->
+  <ion-list style="background: transparent;" lines="none">
+    <ion-list-header color="medium">
+      <ion-label style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 12px;">
+        {{ 'avatarPage.sections.customization' | translate }}
+      </ion-label>
+    </ion-list-header>
+
+    <!-- Hair -->
+    <ion-card color="white" style="margin: 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+      <ion-item lines="none" color="white">
+        <ion-icon class="itemIcon" name="cut-outline" slot="start"  aria-hidden="true"></ion-icon>
+        <ion-label class="itemHeader" style="font-weight: 500;">{{ 'avatarPage.fields.hair' | translate }}</ion-label>
+        <ion-select
+          [(ngModel)]="options.topType"
+          (ionChange)="refresh()"
+          [placeholder]="'avatarPage.placeholders.hair' | translate"
+          interface="popover"
+          slot="end"
+          [attr.aria-label]="'avatarPage.fields.hair' | translate"
+          style="max-width: 200px;">
+          <ion-select-option  *ngFor="let t of avatarService.topTypes" [value]="t">
+            {{ t }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <!-- Accessories -->
+    <ion-card color="white" style="margin: 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+      <ion-item lines="none" color="white">
+        <ion-icon class="itemIcon" name="glasses-outline" slot="start"  aria-hidden="true"></ion-icon>
+        <ion-label class="itemHeader" style="font-weight: 500;">{{ 'avatarPage.fields.accessories' | translate }}</ion-label>
+        <ion-select
+          [(ngModel)]="options.accessoriesType"
+          (ionChange)="refresh()"
+          [placeholder]="'avatarPage.placeholders.accessories' | translate"
+          interface="popover"
+          slot="end"
+          [attr.aria-label]="'avatarPage.fields.accessories' | translate"
+          style="max-width: 200px;">
+          <ion-select-option class="itemHeader" *ngFor="let t of avatarService.accessoriesTypes" [value]="t">
+            {{ t }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <!-- Hair color -->
+    <ion-card color="white" style="margin: 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+      <ion-item lines="none" color="white">
+        <ion-icon class="itemIcon" name="color-palette-outline" slot="start"  aria-hidden="true"></ion-icon>
+        <ion-label class="itemHeader" style="font-weight: 500;">{{ 'avatarPage.fields.hairColor' | translate }}</ion-label>
+        <ion-select
+          [(ngModel)]="options.hairColor"
+          (ionChange)="refresh()"
+          [placeholder]="'avatarPage.placeholders.hairColor' | translate"
+          interface="popover"
+          slot="end"
+          [attr.aria-label]="'avatarPage.fields.hairColor' | translate"
+          style="max-width: 200px;">
+          <ion-select-option *ngFor="let c of avatarService.hairColors" [value]="c">
+            {{ c }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <!-- Eyes -->
+    <ion-card color="white" style="margin: 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+      <ion-item lines="none" color="white">
+        <ion-icon class="itemIcon" name="eye-outline" slot="start"  aria-hidden="true"></ion-icon>
+        <ion-label class="itemHeader" style="font-weight: 500;">{{ 'avatarPage.fields.eyes' | translate }}</ion-label>
+        <ion-select
+          [(ngModel)]="options.eyeType"
+          (ionChange)="refresh()"
+          [placeholder]="'avatarPage.placeholders.eyes' | translate"
+          interface="popover"
+          slot="end"
+          [attr.aria-label]="'avatarPage.fields.eyes' | translate"
+          style="max-width: 200px;">
+          <ion-select-option *ngFor="let e of avatarService.eyeTypes" [value]="e">
+            {{ e }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <!-- Mouth -->
+    <ion-card color="white" style="margin: 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+      <ion-item lines="none" color="white">
+        <ion-icon class="itemIcon" name="happy-outline" slot="start"  aria-hidden="true"></ion-icon>
+        <ion-label class="itemHeader" style="font-weight: 500;">{{ 'avatarPage.fields.mouth' | translate }}</ion-label>
+        <ion-select
+          [(ngModel)]="options.mouthType"
+          (ionChange)="refresh()"
+          [placeholder]="'avatarPage.placeholders.mouth' | translate"
+          interface="popover"
+          slot="end"
+          [attr.aria-label]="'avatarPage.fields.mouth' | translate"
+          style="max-width: 200px;">
+          <ion-select-option *ngFor="let m of avatarService.mouthTypes" [value]="m">
+            {{ m }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <!-- Clothes -->
+    <ion-card color="white" style="margin: 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+      <ion-item lines="none" color="white">
+        <ion-icon  class="itemIcon" name="shirt-outline" slot="start"  aria-hidden="true"></ion-icon>
+        <ion-label class="itemHeader" style="font-weight: 500;">{{ 'avatarPage.fields.clothes' | translate }}</ion-label>
+        <ion-select
+          [(ngModel)]="options.clotheType"
+          (ionChange)="refresh()"
+          [placeholder]="'avatarPage.placeholders.clothes' | translate"
+          interface="popover"
+          slot="end"
+          [attr.aria-label]="'avatarPage.fields.clothes' | translate"
+          style="max-width: 200px;">
+          <ion-select-option *ngFor="let c of avatarService.clotheTypes" [value]="c">
+            {{ c }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <!-- Skin -->
+    <ion-card color="white" style="margin: 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+      <ion-item lines="none" color="white">
+        <ion-icon class="itemIcon" name="person-outline" slot="start"  aria-hidden="true"></ion-icon>
+        <ion-label class="itemHeader" style="font-weight: 500;">{{ 'avatarPage.fields.skin' | translate }}</ion-label>
+        <ion-select
+          [(ngModel)]="options.skinColor"
+          (ionChange)="refresh()"
+          [placeholder]="'avatarPage.placeholders.skin' | translate"
+          interface="popover"
+          slot="end"
+          [attr.aria-label]="'avatarPage.fields.skin' | translate"
+          style="max-width: 200px;">
+          <ion-select-option *ngFor="let s of avatarService.skinColors" [value]="s">
+            {{ s }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+  <!-- Action Buttons -->
+  <ion-card color="white" style="margin: 6px 0px 60px 0px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <ion-card-content style="padding: 0px;">
+      <ion-row>
+        <ion-col size="6">
+          <ion-button
+            expand="block"
+            fill="solid"
+            (click)="downloadAvatar()"
+            [disabled]="isDownloading"
+            [attr.aria-label]="(isDownloading ? 'avatarPage.buttons.downloading' : 'avatarPage.buttons.download') | translate"
+            style="--border-radius: 4px; text-transform: none; font-weight: 500;">
+            <ion-icon slot="start" name="download-outline"></ion-icon>
+            {{ (isDownloading ? 'avatarPage.buttons.downloading' : 'avatarPage.buttons.download') | translate }}
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button
+            expand="block"
+            fill="outline"
+            (click)="saveOptions()"
+            [attr.aria-label]="'avatarPage.buttons.save' | translate"
+            style="--border-radius: 4px; text-transform: none; font-weight: 500;">
+            <ion-icon slot="start" name="bookmark-outline"></ion-icon>
+            {{ 'avatarPage.buttons.save' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

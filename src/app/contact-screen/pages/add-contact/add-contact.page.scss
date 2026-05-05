@@ -1,0 +1,125 @@
+// add-contact.page.scss
+ion-toolbar {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-text-color);
+}
+
+.contact-content {
+  --background: var(--ion-background-color);
+}
+
+.section-card {
+  // margin: 8px 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  // margin:25px;
+  background: var(--ion-background-color);
+}
+ion-item{
+    background:var(--ion-background-color);
+}
+ion-icon{
+    color:var(--ion-text-color);
+}
+.add-field-btn {
+  --background: transparent;
+  --padding-start: 16px;
+  cursor: pointer;
+
+  .add-avatar {
+    width: 32px;
+    height: 32px;
+    background: #e9f5f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}
+ion-item{
+  --background:var(--ion-background-color);
+  margin: 5px;
+}
+.sync-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .sync-avatar {
+    width: 40px;
+    height: 40px;
+    background: #e9f5f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}
+
+.country-select {
+  max-width: 90px;
+  border: 1px solid var(--ion-input-border-color);
+  border-radius: 7px;
+  padding:5px 3px;;
+  margin-right: 8px;
+}
+
+.name-input {
+  --border-radius: 10px;          // border radius
+  --border-color: var(--ion-input-border-color);        // default border color
+  --highlight-color-focused: var(--ion-color-primary); // border color on focus
+  --highlight-color-valid: var(--ion-color-primary);   // border color when valid
+  --highlight-color-invalid: #ff3b30;
+
+  --padding-start: 12px;
+  --padding-end: 12px;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+ 
+  gap: 50%;
+}
+.saveBtn{
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
+   position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+  z-index: 10;
+  // background: var(--ion-color-primary) !important;
+  /* border-top: 1px solid var(--ion-border-color); */
+  /* bottom: max(60px, env(safe-area-inset-bottom, 0px)); */
+  bottom: 25px;
+ 
+}
+.btn{
+   width: 92%;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ion-color-primary-contrast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  /* Brand gradient that adapts to primary */
+  background: var(--ion-color-primary);
+  box-shadow: 0 6px 16px
+    color-mix(in srgb, var(--ion-color-primary) 22%, transparent);
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.spin { animation: spin 1s linear infinite; }

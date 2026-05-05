@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar class="ion_toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">Chat Theme</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="surpriseMe()">
+        <ion-icon slot="icon-only" name="shuffle-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="solid" (click)="saveTheme()">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Live preview -->
+  <div #preview class="preview-area">
+    <div class="chat-preview">
+      <div class="msg other">Hey! How does it look?</div>
+      <div class="msg me">Amazing! 🎨</div>
+    </div>
+    <!-- <ion-button fill="clear" size="small" class="preview-full" (click)="previewFullScreen()">
+      <ion-icon slot="icon-only" name="expand-outline"></ion-icon>
+    </ion-button> -->
+  </div>
+
+  <!-- Bubble presets -->
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>Bubble Colors</ion-label>
+    </ion-list-header>
+    <div class="h-scroll">
+      <div class="preset-card"
+           *ngFor="let p of bubblePresets; trackBy: trackByIndex"
+           (click)="pickBubble(p.me, p.other)">
+        <div class="swatches">
+          <div class="swatch" [style.background]="p.me"></div>
+          <div class="swatch" [style.background]="p.other"></div>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+
+  <!-- Gradients -->
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>Gradients</ion-label>
+    </ion-list-header>
+    <div class="h-scroll">
+      <div class="gradient"
+           *ngFor="let g of gradients; trackBy: trackByGradient"
+           (click)="pickGradient(g.css)"
+           [style.background]="g.css"></div>
+    </div>
+  </ion-list>
+
+  <!-- Wallpapers -->
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>Wallpapers</ion-label>
+    </ion-list-header>
+    <div class="h-scroll">
+      <div class="wall-thumb"
+           *ngFor="let w of wallpapers; trackBy: trackByWallpaper"
+           (click)="pickWallpaper(w.url)">
+        <img [src]="w.url" loading="lazy" [alt]="'Wallpaper ' + w.id" />
+      </div>
+    </div>
+  </ion-list>
+
+  <!-- Solid colors -->
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>Solid Colors</ion-label>
+    </ion-list-header>
+    <div class="h-scroll color-row">
+      <div class="color-dot"
+           *ngFor="let c of ['#FFADAD','#FFD6A5','#FDFFB6','#CAFFBF','#9BF6FF','#A0C4FF','#BDB2FF','#FFC6FF','#FFFFFF','#DCF8C6']; trackBy: trackByIndex"
+           [style.background]="c"
+           (click)="pickSolid(c)"></div>
+      <div class="color-picker-wrapper">
+        <input type="color"
+               id="solidColorPicker"
+               (change)="onColorChange($event)"
+               value="#FFFFFF"
+               class="color-picker" />
+        <label for="solidColorPicker" class="color-picker-label">Custom</label>
+      </div>
+    </div>
+  </ion-list>
+
+  <!-- Saved presets -->
+  <ion-list lines="none" *ngIf="savedPresets.length">
+    <ion-list-header>
+      <ion-label>Saved Presets</ion-label>
+      <ion-button fill="clear" size="small" (click)="savePreset()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-list-header>
+    <div class="h-scroll">
+      <div class="preset-card small"
+           *ngFor="let s of savedPresets; trackBy: trackByIndex"
+           (click)="theme = s; livePreview()">
+        <div class="swatches">
+          <div class="swatch" [style.background]="s.meBubble"></div>
+          <div class="swatch" [style.background]="s.otherBubble"></div>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+
+  <div style="height: 24px;"></div>
+</ion-content>

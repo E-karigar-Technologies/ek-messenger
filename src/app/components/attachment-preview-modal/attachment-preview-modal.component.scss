@@ -1,0 +1,65 @@
+/* =========================
+   Homah changes (refactored)
+   ========================= */
+
+/* View container */
+.view-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Smile button / chip */
+.smile {
+  border-radius: 40px;
+  background: var(--ion-item-background);
+  border: 1px solid var(--ion-border-color);
+  box-shadow: 0 0 12px 0 color-mix(in srgb, var(--ion-text-color) 18%, transparent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+}
+
+.smile-icon {
+  width: 28px;
+  height: 35px;
+  display: block;
+}
+
+/* Reply bubble */
+.reply {
+  border-radius: 15px;
+  background: var(--ion-card-background);
+  border: 1px solid var(--ion-border-color);
+  box-shadow: 0 0 12px 0 color-mix(in srgb, var(--ion-text-color) 12%, transparent);
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reply-icon {
+  width: 26px;
+  height: 28px;
+  display: block;
+}
+
+/* User avatar/headline spacing */
+.user-head {
+  margin-left: 15px;
+  font-weight: 600;
+  color: var(--ion-text-color);
+}
+
+/* Accessibility focus ring */
+:where(.smile, .reply):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Small-screen tweaks */
+@media (max-width: 400px) {
+  .smile-icon, .reply-icon { width: 22px; height: 24px; }
+}

@@ -1,0 +1,748 @@
+{
+  "meta": {
+    "generatedAt": "2025-09-25T06:49:05.846991Z",
+    "note": "Translations for email-edit page.",
+    "translated": true,
+    "locale": "zh-CN"
+  },
+  "emailEdit": {
+    "title": "邮箱地址",
+    "description": "邮箱可帮助您访问账户。它对其他人不可见。",
+    "label": "邮箱",
+    "verified": "已验证",
+    "placeholder": "you@example.com",
+    "edit": "编辑",
+    "cancel": "取消",
+    "save": "保存",
+    "savedSuccess": "邮箱已成功保存。",
+    "validation": {
+      "required": "邮箱是必填项。",
+      "invalid": "请输入有效的邮箱地址。",
+      "maxlength": "邮箱过长（最多 254 个字符）。"
+    }
+  },
+  "helpPage": {
+    "title": "帮助",
+    "helpCenter": {
+      "title": "帮助中心",
+      "description": "获取帮助、常见问题解答和联系方式。"
+    },
+    "terms": {
+      "title": "条款与隐私政策",
+      "description": "阅读我们的条款和数据政策。"
+    },
+    "channelReports": {
+      "title": "频道报告",
+      "description": "管理并查看报告。"
+    },
+    "appInfo": {
+      "title": "应用信息",
+      "description": "版本、法律和技术细节。"
+    }
+  },
+  "common": { "ok": "确定", "cancel": "取消", "logout": "退出登录", "reset": "重置" },
+  "settingsPage": {
+  "title": "设置",
+  "account": {
+    "title": "账户",
+    "description": "隐私、安全、更改号码"
+  },
+  "privacy": {
+    "title": "隐私",
+    "description": "控制您的隐私设置"
+  },
+  "avatar": {
+    "title": "头像",
+    "description": "更改您的头像"
+  },
+  "chats": {
+    "title": "聊天",
+    "description": "主题、壁纸、存储和数据"
+  },
+  "accessibility": {
+    "title": "辅助功能",
+    "description": "调整文字大小和显示选项"
+  },
+  "notifications": {
+    "title": "通知",
+    "description": "管理聊天、群组和通话通知"
+  },
+  "storage": {
+    "title": "存储与数据",
+    "description": "管理存储空间和网络使用"
+  },
+  "appLanguage": {
+    "title": "应用语言",
+    "description": "选择 TellDemm 应用语言"
+  },
+  "help": {
+    "title": "帮助",
+    "description": "帮助中心、联系我们、应用信息"
+  },
+  "updates": {
+    "title": "应用更新",
+    "description": "检查更新并启用自动更新"
+  },
+  "invite": {
+    "title": "邀请朋友",
+    "description": "与您的联系人分享 TellDemm 应用"
+  },
+  "logout": {
+    "title": "退出登录",
+    "description": "清除应用数据并退出登录",
+    "confirmHeader": "确认退出",
+    "confirmMessage": "您确定要退出登录并清除应用数据吗？",
+    "loadingHeader": "正在退出",
+    "loadingMessage": "请稍候...",
+    "successHeader": "已退出",
+    "successMessage": "您已成功退出登录。"
+  },
+  "defaultStatus": "可用"
+},
+  "appUpdates": {
+    "title": "应用更新",
+    "version": "版本",
+    "latestAvailable": "最新可用版本",
+    "status": "状态",
+    "statusMessages": {
+      "updateAvailable": "有可用更新。",
+      "upToDate": "您已使用最新版本。"
+    },
+    "badge": {
+      "updateAvailable": "有更新",
+      "upToDate": "最新"
+    },
+    "checkForUpdates": {
+      "title": "检查更新",
+      "description": "手动检查是否有新版本"
+    },
+    "checking": "正在检查…",
+    "toast": {
+      "latest": "您正在使用最新版本。",
+      "updateAvailable": "有更新可用: {{version}}",
+      "error": "无法检查更新，请稍后再试。"
+    }
+  },
+  "accountPage": {
+    "title": "账户",
+    "securityNotifications": "安全通知",
+    "passkeys": "通行密钥",
+    "emailAddress": "电子邮件地址",
+    "twoStep": "两步验证",
+    "changeNumber": "更改号码",
+    "requestInfo": "请求账户信息",
+    "addAccount": "添加账户",
+    "deleteAccount": "删除账户",
+    "confirmDelete": {
+      "title": "删除账户？",
+      "message": "此操作将永久删除您的账户和数据。",
+      "confirm": "删除",
+      "cancel": "取消",
+      "log": "删除账户弹窗已打开"
+    }
+  },
+  "accessibility": {
+    "title": "辅助功能",
+    "groups": {
+      "displayMotion": "显示与动画",
+      "interaction": "交互"
+    },
+    "increaseContrast": {
+      "title": "提高对比度",
+      "desc": "在浅色模式下加深主要颜色以改善可读性。"
+    },
+    "reduceMotion": {
+      "title": "减少动画",
+      "desc": "尽量减少动态贴纸、GIF 和过渡效果。"
+    },
+    "largeText": {
+      "title": "大字体",
+      "desc": "增大系统字体以便更轻松阅读。"
+    },
+    "simpleAnimations": {
+      "title": "简化动画",
+      "desc": "减少复杂动画以便更容易操作。"
+    },
+    "grayscale": {
+      "title": "灰度模式",
+      "desc": "将界面颜色转换为灰色调以减轻视觉疲劳。"
+    }
+  },
+  "privacyPage": {
+    "title": "隐私",
+    "groups": {
+      "whoCanSee": "谁可以查看我的信息",
+      "other": "其他"
+    },
+    "lastSeen": {
+      "title": "最近上线和在线状态",
+      "desc": "控制谁可以查看你的最近上线和在线状态"
+    },
+    "profilePhoto": {
+      "title": "头像",
+      "desc": "选择谁可以查看你的头像"
+    },
+    "about": {
+      "title": "关于",
+      "desc": "控制谁可以查看你的简介信息"
+    },
+    "status": {
+      "title": "状态",
+      "desc": "管理谁可以查看你的状态更新"
+    },
+    "blocked": {
+      "title": "已屏蔽的联系人",
+      "desc": "查看和管理已屏蔽的用户"
+    },
+    "options": {
+      "everyone": "所有人",
+      "contacts": "我的联系人",
+      "nobody": "无人"
+    }
+  },
+  "avatarPage": {
+    "title": "创建你的头像",
+    "previewAlt": "头像预览",
+    "sections": {
+      "customization": "自定义选项"
+    },
+    "fields": {
+      "hair": "头发",
+      "accessories": "配饰",
+      "hairColor": "头发颜色",
+      "eyes": "眼睛",
+      "mouth": "嘴巴",
+      "clothes": "衣服",
+      "skin": "肤色"
+    },
+    "placeholders": {
+      "hair": "选择发型",
+      "accessories": "选择配饰",
+      "hairColor": "选择头发颜色",
+      "eyes": "选择眼睛样式",
+      "mouth": "选择嘴型",
+      "clothes": "选择服装",
+      "skin": "选择肤色"
+    },
+    "buttons": {
+      "download": "下载",
+      "downloading": "正在下载…",
+      "save": "保存"
+    },
+    "toast": {
+      "saved": "头像选项已本地保存。",
+      "downloadError": "下载失败，请重试。"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "highPriority": {
+      "title": "使用高优先级通知",
+      "desc": "即使开启“请勿打扰”，也能收到带声音和预览的通知"
+    },
+    "message": {
+      "title": "消息通知",
+      "desc": "自定义消息提醒"
+    },
+    "group": {
+      "title": "群聊通知",
+      "desc": "管理群聊通知"
+    },
+    "call": {
+      "title": "通话通知",
+      "desc": "铃声和振动设置"
+    }
+  },
+  "storage": {
+    "title": "存储与数据",
+    "totalUsedHuman": "{{used}} MB / {{total}} MB",
+    "cards": {
+      "usage": {
+        "title": "存储使用情况",
+        "used": "已用 {{mb}} MB",
+        "total": "总共 {{mb}} MB"
+      }
+    },
+    "sections": {
+      "network": "网络使用",
+      "manage": "管理"
+    },
+    "network": {
+      "sent": {
+        "title": "已发送数据",
+        "subtitle": "{{val}}"
+      },
+      "received": {
+        "title": "已接收数据",
+        "subtitle": "{{val}}"
+      }
+    },
+    "manage": {
+      "title": "管理存储",
+      "desc": "查看并删除大文件、聊天和媒体"
+    },
+    "autoDownload": {
+      "title": "媒体自动下载",
+      "desc": "控制在移动/Wi-Fi/漫游时下载的内容"
+    },
+    "actions": {
+      "analyze": "分析",
+      "clearCache": "清除缓存",
+      "resetStats": "重置统计数据"
+    },
+    "toast": {
+      "cleared": "已清除 {{mb}} MB 缓存",
+      "statsReset": "网络统计已重置"
+    }
+  },
+  "chats": {
+    "title": "聊天",
+    "sections": {
+      "appearance": "外观",
+      "behavior": "消息行为",
+      "management": "聊天管理",
+      "translation": "翻译"
+    },
+    "items": {
+      "theme": {
+        "title": "主题",
+        "sub": "系统默认"
+      },
+      "chatTheme": {
+        "title": "默认聊天主题",
+        "sub": "选择壁纸或主题"
+      },
+      "fontSize": {
+        "title": "字体大小",
+        "sub": "中等"
+      },
+      "enterToSend": {
+        "title": "回车发送",
+        "sub": "按 Enter 键发送消息"
+      },
+      "mediaVisibility": {
+        "title": "媒体可见性",
+        "sub": "在相册中显示新下载的媒体"
+      },
+      "keepArchived": {
+        "title": "保持聊天归档",
+        "sub": "收到新消息时，已归档的聊天仍保持归档"
+      },
+      "transcripts": {
+        "title": "语音消息转录",
+        "sub": "自动转录新的语音消息"
+      },
+      "translation": {
+        "title": "启用翻译",
+        "sub": "翻译您发送的消息",
+        "notice": "翻译后的消息可能会由外部服务处理以确保准确性。您的数据将保持私密，不会被存储。",
+        "reset": {
+          "title": "重置授权",
+          "sub": "清除翻译授权并禁用该功能"
+        }
+      },
+      "backup": {
+        "title": "聊天备份",
+        "sub": "将消息备份到云存储"
+      },
+      "transfer": {
+        "title": "转移聊天",
+        "sub": "在设备之间迁移聊天"
+      },
+      "history": {
+        "title": "聊天记录",
+        "sub": "导出、归档、清除或删除所有聊天"
+      }
+    },
+    "toasts": {
+      "enter": {
+        "enabled": "回车发送已启用",
+        "disabled": "回车发送已禁用"
+      },
+      "media": {
+        "on": "媒体可见性已开启",
+        "off": "媒体可见性已关闭"
+      },
+      "archived": {
+        "enabled": "保持归档已启用",
+        "disabled": "保持归档已禁用"
+      },
+      "transcripts": {
+        "enabled": "语音消息转录已启用",
+        "disabled": "语音消息转录已禁用"
+      },
+      "translation": {
+        "enabled": "翻译已启用",
+        "disabled": "翻译已禁用",
+        "consentDeclined": "已拒绝翻译授权",
+        "consentReset": "已重置翻译授权"
+      },
+      "backup": {
+        "starting": "正在开始备份…",
+        "done": "备份完成"
+      }
+    },
+    "dialogs": {
+      "translationConsent": {
+        "header": "翻译需要将消息文本发送到外部服务",
+        "message": "为了提供消息翻译，我们会将消息文本发送到第三方翻译服务。我们不会收集任何个人账户信息，只发送消息文本。如果您同意，翻译内容将被获取并保存在本地。您可以随时撤销授权。",
+        "decline": "拒绝",
+        "accept": "同意"
+      },
+      "resetTranslationConsent": {
+        "header": "重置翻译授权",
+        "message": "这将清除您对消息翻译的授权并禁用该功能。您之后仍可重新启用。"
+      }
+    }
+  },
+  "profilePage": {
+    "title": "个人资料",
+    "imageAlt": "头像",
+    "buttons": {
+      "edit": "编辑",
+      "addLinks": "添加链接",
+      "cancel": "取消"
+    },
+    "fields": {
+      "name": "姓名",
+      "about": "简介",
+      "phone": "电话",
+      "links": "链接"
+    },
+    "actions": {
+      "source": {
+        "header": "选择图片来源",
+        "camera": "相机",
+        "gallery": "图库",
+        "cancel": "取消"
+      }
+    },
+    "loading": {
+      "openingCamera": "正在打开相机...",
+      "processing": "正在处理图片...",
+      "updating": "正在更新头像..."
+    },
+    "validation": {
+      "size": "图片大小应小于 5MB",
+      "type": "请选择有效的图片文件 (JPEG, PNG, WebP)"
+    },
+    "toast": {
+      "loadFailed": "加载个人资料失败",
+      "imageLoadFailed": "加载头像失败",
+      "selectFailed": "选择图片失败，请重试。",
+      "processFailed": "处理图片出错，请重试。",
+      "noUser": "未找到用户 ID",
+      "updated": "头像更新成功！",
+      "updateFailed": "更新头像失败"
+    }
+  },
+  "footerTabs": {
+    "chat": "聊天",
+    "updates": "更新",
+    "communities": "社区",
+    "calls": "通话",
+    "badges": {
+      "unreadChats": "{{count}} 未读 聊天",
+      "unreadUpdates": "{{count}} 更新"
+    }
+  },
+  "socialLinks": {
+    "title": "链接",
+    "intro": "在个人资料中添加链接可帮助联系人轻松访问您的其他资料。",
+    "instagram": {
+      "title": "Instagram",
+      "add": "添加您的 Instagram"
+    },
+    "actions": {
+      "add": "添加",
+      "edit": "编辑",
+      "cancel": "取消"
+    },
+    "privacy": {
+      "note": "要管理谁可以查看您的链接，请前往",
+      "link": "隐私设置"
+    }
+  },
+  "addInstagram": {
+    "title": "添加 Instagram",
+    "loading": "正在加载...",
+    "saving": "正在保存...",
+    "usernameLabel": "Instagram 用户名",
+    "usernamePlaceholder": "用户名",
+    "hint": {
+      "text": "添加 Instagram 用户名后，它将显示在您的个人资料中。",
+      "learnMore": "了解更多"
+    },
+    "save": "保存",
+    "validation": {
+      "required": "请输入您的 Instagram 用户名",
+      "invalid": "请输入有效的用户名（无空格，最多 30 个字符）"
+    },
+    "toast": {
+      "fetchFailed": "获取 Instagram 链接失败",
+      "saved": "Instagram 保存成功！",
+      "saveFailed": "更新 Instagram 链接失败，请重试。"
+    }
+  },
+  "home": {
+    "search": {
+      "placeholder": "询问或搜索"
+    },
+    "filters": {
+      "all": "全部",
+      "read": "已读",
+      "unread": "未读",
+      "groups": "群组"
+    },
+    "groupCreator": {
+      "placeholder": "输入 群组 名称"
+    },
+    "typing": "正在输入...",
+    "time": {
+      "yesterday": "昨天"
+    },
+    "preview": {
+      "deleted": "此消息已被删除",
+      "encrypted": "[已加密]",
+      "media": {
+        "photo": "PicTell (照片)",
+        "video": "ClipTell (视频)",
+        "audio": "VoiceTell (音频)",
+        "file": "FileTell (附件)",
+        "generic": "[媒体]"
+      }
+    },
+    "actions": {
+      "scan": "扫描 DemmCode",
+      "camera": "打开相机",
+      "menu": "打开菜单",
+      "contacts": "DemmList (联系人)"
+    },
+    "scan": {
+      "onlyDevice": "条码扫描仅在真实设备上工作。",
+      "permission": "扫描条码需要相机权限。",
+      "notFound": "未找到条码。",
+      "error": "扫描过程中出现问题。"
+    },
+    "logout": {
+      "header": "登出",
+      "message": "会话超时/过期。"
+    },
+    "alt": {
+      "profile": "个人资料"
+    }
+  },
+  "menu": {
+    "newGroup": "新建群组",
+    "newCommunity": "新建社区",
+    "newBroadcast": "新建广播 (WIP)",
+    "starred": "已加星标 (WIP)",
+    "readAll": "全部已读 (WIP)",
+    "settings": "设置",
+    "createChannels": "创建频道 (WIP)",
+    "statusPrivacy": "状态隐私 (WIP)",
+    "clearCallLogs": "清除通话记录 (WIP)"
+  },
+  "userabout": {
+    "members": "成员",
+    "group": "群组",
+    "groups": "群组",
+    "inCommon": "共同",
+    "toolbar": {
+      "message": "消息",
+      "call": "通话",
+      "video": "视频",
+      "add": "添加"
+    },
+    "defaults": {
+      "heyThere": "嗨！我正在使用 Telldemm。",
+      "noGroupDescription": "没有群组描述。",
+      "unknown": "未知",
+      "unknownDate": "未知日期",
+      "unnamedGroup": "未命名群组"
+    },
+    "updatedOn": "更新于",
+    "createdByOn": "由 {{name}} 创建于",
+    "media": {
+      "title": "媒体、链接和文档"
+    },
+    "notifications": "通知",
+    "mediaVisibility": "媒体可见性",
+    "encryption": {
+      "title": "加密",
+      "subtitle": "消息和通话已端到端加密。点击验证。"
+    },
+    "disappearing": "阅后即焚消息",
+    "chatLock": {
+      "title": "聊天锁",
+      "subtitle": "在此设备上锁定并隐藏此聊天。"
+    },
+    "advancedPrivacy": {
+      "title": "高级聊天隐私",
+      "off": "关闭"
+    },
+    "createGroupWith": "与 {{name}} 创建群组",
+    "commonGroupWith": "与 {{name}} 的共同群组",
+    "groupMembers": "群组成员",
+    "addMembers": "添加成员",
+    "groupAdmin": "群组管理员",
+    "viewPastMembers": "查看过去的成员",
+    "addToFavourites": "添加到收藏夹",
+    "addToList": "添加到列表",
+    "block": "屏蔽 {{name}}",
+    "unblock": "取消屏蔽 {{name}}",
+    "report": "举报 {{name}}",
+    "actions": {
+      "message": "消息",
+      "dismissAdmin": "解除管理员",
+      "makeAdmin": "设为管理员",
+      "removeFromGroup": "从群组中移除"
+    },
+    "toasts": {
+      "madeAdmin": "{{name}} 现在是管理员",
+      "dismissedAdmin": "{{name}} 已不再是管理员",
+      "removedFromGroup": "{{name}} 已从群组中移除",
+      "blocked": "{{name}} 已被屏蔽。",
+      "unblocked": "{{name}} 已被取消屏蔽。",
+      "reported": "{{name}} 已被举报。",
+      "reportedAndBlocked": "{{name}} 已被举报并屏蔽。"
+    },
+    "errors": {
+      "makeAdmin": "无法将 {{name}} 设为管理员",
+      "dismissAdmin": "无法解除 {{name}} 的管理员身份",
+      "removeMember": "移除成员时出错"
+    },
+    "alerts": {
+      "block": {
+        "header": "屏蔽联系人",
+        "message": "您将不再接收来自 {{name}} 的消息或通话。",
+        "cta": "屏蔽"
+      },
+      "unblock": {
+        "header": "取消屏蔽联系人",
+        "message": "您确定要取消屏蔽 {{name}} 吗？"
+      },
+      "report": {
+        "header": "举报联系人",
+        "message": "将举报来自 {{name}} 的最近 5 条消息。是否还要屏蔽此用户？",
+        "alsoBlock": "同时屏蔽联系人",
+        "cta": "举报"
+      }
+    }
+  },
+  "invite": {
+    "header": "邀请好友",
+    "actions": {
+      "search": "搜索联系人",
+      "shareLink": "分享应用链接",
+      "fromContacts": "从联系人邀请",
+      "invite": "邀请"
+    },
+    "share": {
+      "title": "快来加入我使用这个应用！",
+      "subtitle": "通过任意应用发送下载链接",
+      "body": "看看这个很棒的应用。在这里下载：",
+      "button": "分享",
+      "success": "链接已分享",
+      "copied": "链接已复制"
+    },
+    "contacts": {
+      "title": "来自联系人",
+      "subtitle": "直接从通讯录邀请",
+      "header": "来自联系人",
+      "notOnApp": "还未使用此应用"
+    },
+    "title": "快来加入我使用这个应用！",
+    "text": "看看这个很棒的应用。在这里下载：",
+    "dialogTitle": "分享应用链接",
+    "toasts": {
+      "openContacts": "正在打开联系人...",
+      "searchContacts": "已点击搜索联系人。",
+      "invited": "已向 {{phone}} 发送邀请"
+    },
+    "errors": {
+      "shareFailed": "无法打开分享界面。"
+    }
+  },
+  "community": {
+    "manageGroups": {
+      "title": "管理群组",
+      "groups": "群组",
+      "createNew": "创建新群组",
+      "addExisting": "添加现有群组",
+      "info": "成员可以建议现有群组供管理员批准，并可直接添加新群组。查看于",
+      "settingsLink": "社区设置",
+      "listHeader": "此社区中的群组",
+      "loading": "正在加载群组...",
+      "empty": "未找到该社区的群组",
+      "members": "成员",
+      "unnamedGroup": "未命名群组",
+      "remove": {
+        "header": "从社区移除群组",
+        "message": "您要将此群组从社区中移除吗？群组将保留，但不再属于该社区。",
+        "alsoRemoveMembers": "同时将该群组的成员从社区和群组中移除",
+        "cta": "移除",
+        "aria": "从社区移除群组"
+      },
+      "toasts": {
+        "removed": "群组已从社区移除，成员已更新",
+        "removeFailed": "无法移除群组。请重试。"
+      }
+    },
+    "title": "社区",
+    "actions": {
+      "qr": "打开二维码操作",
+      "menu": "打开菜单"
+    },
+    "newCommunity": "新社区",
+    "unnamedCommunity": "未命名社区",
+    "viewAll": "查看全部",
+    "groupType": {
+      "normal": "普通群组",
+      "announcement": "公告群组",
+      "general": "综合群组"
+    },
+    "newGroup": {
+      "header": "新建群组",
+      "placeholder": "群组名称",
+      "create": "创建"
+    },
+    "toasts": {
+      "groupCreated": "群组已创建"
+    }
+  },
+  "community_menu_component": {
+    "info": "社区信息",
+    "invite": "邀请成员",
+    "settings": "社区设置"
+  },
+  "group_preview_modal_component": {
+    "close": "关闭",
+    "groupIcon": "群组图标",
+    "createdBy": "由 {{name}} 创建",
+    "noMembers": "暂无成员",
+    "noDescription": "没有描述",
+    "communityLabel": "社区：",
+    "joinNote": "加入后您将立即成为成员。",
+    "joinCta": "加入群组"
+  },
+  "add_existing_groups_page": {
+    "header": "添加现有群组",
+    "actions": {
+      "search": "搜索群组",
+      "confirm": "确认选择",
+      "removeChip": "移除所选群组"
+    },
+    "of": "的",
+    "selected": "已选择",
+    "banner": "群组中的所有人都会被添加到社区。",
+    "listHeader": "您是管理员的群组",
+    "loading": "正在加载群组...",
+    "empty": "未找到管理员群组",
+    "checkboxLabel": "选择群组",
+    "unnamedGroup": "未命名群组",
+    "toasts": {
+      "selectAtLeastOne": "请至少选择一个群组"
+    }
+  }
+}

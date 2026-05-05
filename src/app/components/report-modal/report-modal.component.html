@@ -1,0 +1,70 @@
+<!-- src/app/components/report-modal/report-modal.component.html -->
+
+<div class="modal-root">
+  <div class="drag-handle"></div>
+
+  <div class="modal-header">
+    <button class="close-btn" (click)="close()">
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+    <h2 class="modal-title">Report {{ chatType === 'private' ? 'User' : 'Group' }}</h2>
+    <div style="width: 36px;"></div>
+  </div>
+
+  <div class="modal-body">
+    <div class="report-info">
+      <p class="info-text">
+        You are reporting <strong>{{ reportedSnapshot.name }}</strong>.
+        Please select the reason for your report and provide additional details if needed.
+      </p>
+    </div>
+
+    <div class="field-section">
+      <p class="field-label">Report Category *</p>
+      <div class="categories-grid">
+        <button
+          *ngFor="let category of categories"
+          class="category-btn"
+          [class.selected]="selectedCategory === category.id"
+          (click)="selectCategory(category.id)"
+        >
+          <div class="category-name">{{ category.name }}</div>
+          <div class="category-desc">{{ category.description }}</div>
+        </button>
+      </div>
+    </div>
+
+    <div class="field-section">
+      <p class="field-label">Description (Optional)</p>
+      <textarea
+        class="description-input"
+        [(ngModel)]="description"
+        placeholder="Provide additional details about the issue..."
+        rows="3"
+        maxlength="500"
+      ></textarea>
+      <p class="helper-text">
+        If you don't provide a description, a default message will be used.
+      </p>
+    </div>
+
+    <div class="field-section" *ngIf="showBlockOption">
+      <ion-item class="block-option-item" lines="none">
+        <ion-checkbox [(ngModel)]="alsoBlock" slot="start"></ion-checkbox>
+        <ion-label>Also block this user</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="submit-btn"
+      [class.submit-btn-active]="selectedCategory && !isSubmitting"
+      [disabled]="!selectedCategory || isSubmitting"
+      (click)="submitReport()"
+    >
+      <ion-spinner *ngIf="isSubmitting" name="crescent" slot="start"></ion-spinner>
+      {{ isSubmitting ? 'Submitting...' : 'Submit Report' }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+.help-content {
+  --background: #ffffff;
+
+  .container {
+    padding: 16px;
+    color: #222;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 18px;
+    color: var(--ion-color-primary);
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  ol {
+    padding-left: 18px;
+    margin-top: 8px;
+
+    li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+  }
+
+  ul {
+    padding-left: 18px;
+
+    li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+  }
+
+  .note {
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+
+  .help-footer {
+    margin-top: 30px;
+    text-align: center;
+
+    p {
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    ion-button {
+      color: #25d366;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Invite as Admin</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar class="search-toolbar">
+    <ion-searchbar
+      [(ngModel)]="searchText"
+      placeholder="Search contacts"
+      [debounce]="200"
+      mode="md"
+      class="custom-searchbar">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Loading state -->
+  <div *ngIf="isLoading" class="loading-container">
+    <ion-spinner name="dots"></ion-spinner>
+    <p>Loading contacts...</p>
+  </div>
+
+  <!-- Selected chips row -->
+  <div *ngIf="selectedContacts.length > 0 && !isLoading" class="selected-chips-row">
+    <ion-chip
+      *ngFor="let contact of selectedContacts"
+      (click)="toggleSelect(contact)">
+      <ion-avatar>
+        <img [src]="contact.image" (error)="onImageError($event)" />
+      </ion-avatar>
+      <ion-label>{{ contact.name }}</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
+  </div>
+
+  <!-- Empty state -->
+  <div *ngIf="!isLoading && filteredContacts.length === 0" class="empty-state">
+    <ion-icon name="people-outline"></ion-icon>
+    <p>No contacts found</p>
+  </div>
+
+  <!-- Contacts list -->
+  <ion-list *ngIf="!isLoading && filteredContacts.length > 0" lines="none">
+    <ion-item
+      *ngFor="let contact of filteredContacts"
+      (click)="toggleSelect(contact)"
+      [class.selected-item]="contact.selected"
+      detail="false"
+      button>
+      <ion-avatar slot="start">
+        <img [src]="contact.image" (error)="onImageError($event)" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ contact.name }}</h2>
+      </ion-label>
+      <ion-checkbox
+        slot="end"
+        [(ngModel)]="contact.selected"
+        (ionChange)="$event.stopPropagation()"
+        color="primary">
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      color="primary"
+      class="footer-btn"
+      [disabled]="selectedContacts.length === 0 || isSending"
+      (click)="sendInvites()">
+      <ion-spinner *ngIf="isSending" name="dots"></ion-spinner>
+      <span *ngIf="!isSending">
+        {{ selectedContacts.length === 0 ? 'Send Invite' : 'Send Invite (' + selectedContacts.length + ')' }}
+      </span>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

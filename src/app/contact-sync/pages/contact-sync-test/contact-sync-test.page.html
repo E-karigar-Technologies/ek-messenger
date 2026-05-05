@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contact Sync Test</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button expand="block" (click)="runContactSyncTest()">
+    Run Contact Sync
+  </ion-button>
+
+  <ion-card class="ion-margin-top">
+    <ion-card-header>
+      <ion-card-title>Sync State</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <strong>Phase:</strong>
+        {{ (phase$ | async) || 'idle' }}
+      </p>
+
+      <p *ngIf="(progress$ | async) as progress">
+        <strong>Progress:</strong>
+        Request chunk {{ progress.currentBatch }} of {{ progress.totalBatches }}
+      </p>
+
+      <!-- Stateless match flow: no sync_id/session -->
+
+      <p *ngIf="(error$ | async) as error" class="ion-text-danger">
+        <strong>Error:</strong>
+        {{ error }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-margin-top" *ngIf="(matchedContacts$ | async) as matched">
+    <ion-card-header>
+      <ion-card-title>Matched Contacts ({{ matched.length }})</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let c of matched">
+          <ion-label>
+            <h2>{{ c.name }}</h2>
+            <p *ngIf="c.device_contact_name">in your contacts: {{ c.device_contact_name }}</p>
+            <p>user_id: {{ c.user_id }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-margin-top">
+    <ion-card-header>
+      <ion-card-title>Debug: All Contacts (phone → hash)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-searchbar
+        placeholder="Search phone or hash"
+        (ionInput)="onSearchInput($event)"
+        debounce="150"
+      ></ion-searchbar>
+      <ion-list lines="full">
+        <ion-item *ngFor="let item of (filteredDebugContacts$ | async)">
+          <ion-label>
+            <h3>{{ item.phone }}</h3>
+            <p class="ion-text-wrap ion-text-break">{{ item.hash }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

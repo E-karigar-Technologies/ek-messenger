@@ -1,0 +1,199 @@
+.toolbar {
+ --color:var(--ion-color-primary);
+  .heading {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.homemainicons {
+  color: white;
+  background: var(--ion-color-primary)  !important;
+  font-size: 18px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  width: 34px;
+}
+
+
+/* New community row */
+.new-community {
+  --background: transparent;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+
+  ion-label h2 {
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
+
+.new-community-avatar {
+  position: relative;
+
+  img {
+    border-radius: 50%;
+  }
+
+  .add-icon {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    font-size: 18px;
+    color: var(--ion-color-primary);
+    background: var(--ion-color-light);
+    border-radius: 50%;
+  }
+}
+
+/* Community row */
+.community-item {
+  --background: transparent;
+  padding: 8px 16px;
+
+  .community-avatar img {
+    border-radius: 50%;
+  }
+
+  .community-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+/* Groups list */
+.group-list {
+  padding-left: 70px;
+  padding-right: 16px;
+
+  .group-item {
+    --background: transparent;
+    padding-left: 0;
+    min-height: 40px;
+
+    .group-name {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+/* Group icon bubble */
+.group-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  background: rgba(var(--ion-color-primary-rgb), 0.08);
+}
+
+.group-icon {
+  font-size: 18px;
+  color: var(--ion-color-primary);
+}
+
+/* View all row */
+.view-all-item {
+  --background: transparent;
+  padding: 0 16px 12px 70px;
+
+  .view-all-label {
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+/* Skeleton styles – keep spacing same as real content */
+.community-skeleton {
+  margin-top: 4px;
+}
+
+.group-icon-skeleton {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  border-radius: 50%;
+}
+
+/* Small tweak for content */
+ion-content {
+  --padding-bottom: 60px;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+  padding: 20px;
+  
+  .empty-state-content {
+    text-align: center;
+    max-width: 400px;
+    
+    .empty-icon {
+      font-size: 120px;
+      color: var(--ion-color-medium);
+      margin-bottom: 24px;
+      opacity: 0.5;
+    }
+    
+    .empty-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .empty-description {
+      font-size: 16px;
+      // color: var(--ion-color-medium);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    
+    .empty-action-btn {
+      --border-radius: 12px;
+      height: 48px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .offline-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--ion-color-warning);
+      margin-top: 16px;
+      
+      ion-icon {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// Syncing indicator in header
+ion-chip {
+  ion-icon {
+    animation: rotate 1s linear infinite;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.header{
+  color:var(--ion-text-color);
+}

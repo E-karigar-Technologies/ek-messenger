@@ -1,0 +1,293 @@
+// src/app/components/edit-custom-list/edit-custom-list.component.scss
+
+$primary: var(--ion-color-primary);
+$primary-light: rgba(188, 140, 44, 0.15);
+$green: #25d366;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+}
+
+// ── Drag handle ───────────────────────────────────────────────────────────────
+.modal-handle {
+  width: 40px;
+  height: 4px;
+  background: #ddd;
+  border-radius: 4px;
+  margin: 10px auto 0;
+  flex-shrink: 0;
+}
+
+// ── Top bar ── × Edit ✓ ───────────────────────────────────────────────────────
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 12px;
+  flex-shrink: 0;
+  border-bottom: 0.5px solid #f0f0f0;
+}
+
+.top-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+.top-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s;
+
+  &:active {
+    background: $primary-light;
+  }
+
+  ion-icon {
+    font-size: 26px;
+  }
+}
+
+.cancel-btn ion-icon {
+  color: #555;
+}
+
+.confirm-btn ion-icon {
+  color: $primary;  // ← gold tick
+  font-weight: 700;
+}
+
+// ── Scrollable content ────────────────────────────────────────────────────────
+.content-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 18px 40px;
+}
+
+// ── Name row ──────────────────────────────────────────────────────────────────
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.name-input-wrap {
+  flex: 1;
+  position: relative;
+  border: 2px solid $primary;
+  border-radius: 10px;
+  padding: 12px 14px 20px;
+  background: #fff;
+  transition: border-color 0.2s;
+
+  &:focus-within {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba(188, 140, 44, 0.12);
+  }
+}
+
+.name-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  color: #111;
+  background: transparent;
+  font-family: inherit;
+
+  &::placeholder {
+    color: #bbb;
+  }
+}
+
+// Cursor pip — gold colour to match theme
+.name-underline {
+  position: absolute;
+  bottom: 8px;
+  left: 14px;
+  width: 13px;
+  height: 13px;
+  background: $primary;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg) translateX(-3px);
+}
+
+// ── Emoji button ──────────────────────────────────────────────────────────────
+.emoji-btn {
+  background: none;
+  border: 1.5px solid #ddd;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.15s;
+
+  &:active {
+    background: $primary-light;
+    border-color: $primary;
+  }
+
+  ion-icon {
+    font-size: 24px;
+    color: #999;
+  }
+
+  .selected-emoji {
+    font-size: 22px;
+    line-height: 1;
+  }
+}
+
+// ── Section label ─────────────────────────────────────────────────────────────
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: $primary;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+// ── Add row ───────────────────────────────────────────────────────────────────
+.add-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 2px 0 18px;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.add-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 26px;
+    color: #fff;
+  }
+}
+
+.add-label {
+  font-size: 16px;
+  color: #111;
+  font-weight: 400;
+}
+
+// ── Chat list ─────────────────────────────────────────────────────────────────
+.chat-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 0.5px solid #f2f2f2;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// ── Avatar ────────────────────────────────────────────────────────────────────
+.avatar-wrap {
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-initials {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: $primary;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+// ── Chat name ─────────────────────────────────────────────────────────────────
+.chat-name {
+  flex: 1;
+  font-size: 16px;
+  color: #111;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ── Delete button ─────────────────────────────────────────────────────────────
+.delete-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.15s;
+
+  ion-icon {
+    font-size: 22px;
+    color: #bbb;
+    transition: color 0.15s;
+  }
+
+  &:active {
+    background: rgba(229, 57, 53, 0.08);
+
+    ion-icon {
+      color: #e53935;
+    }
+  }
+}
+
+// ── Loading ───────────────────────────────────────────────────────────────────
+.loading-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+
+  ion-spinner {
+    --color: #{$primary};
+    width: 36px;
+    height: 36px;
+  }
+}

@@ -1,0 +1,58 @@
+ion-content {
+  --background: var(--ion-background-color);
+  background-image: url('/assets/images/cal_screen_image.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-icon-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 50px 20px 30px;
+}
+
+.main-header { text-align: center; }
+
+.madhav {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--ion-text-color);
+}
+
+.encrypted {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ion-color-medium);
+}
+
+.main-img { text-align: center; }
+.main-img img {
+  width: 150px; height: 150px; border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--ion-border-color);
+  background: var(--ion-item-background);
+}
+
+/* action icons row */
+.icons-main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+/* circular action buttons */
+.icons {
+  width: 55px; height: 55px; border-radius: 50%;
+  background-color: var(--ion-item-background);
+  display: flex; justify-content: center; align-items: center;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--ion-text-color) 10%, transparent);
+}
+
+/* icon colors */
+.video-icon { color: var(--ion-color-medium); }
+.call-icon  { background-color: var(--ion-color-primary); color: var(--ion-color-primary-contrast); }

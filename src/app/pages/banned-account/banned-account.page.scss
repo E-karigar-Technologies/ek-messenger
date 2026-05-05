@@ -1,0 +1,71 @@
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 20px;
+}
+
+.telldemm-img {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.telldemm-img img { max-width: 50%; }
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.icon-section {
+  margin-bottom: 20px;
+  .ban-icon {
+    font-size: 80px;
+  }
+}
+
+.text-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin-bottom: 30px;
+}
+
+.text-section h1 {
+  color: var(--ion-color-danger);
+  font-size: 26px;
+  font-weight: bold;
+  font-family: Montserrat-bold;
+  margin-bottom: 15px;
+}
+
+.text-section p {
+  color: var(--ion-text-color);
+  font-size: 18px;
+  text-align: center;
+  font-family: Montserrat-Medium;
+  line-height: 1.4;
+}
+
+.button-section {
+  width: 100%;
+  text-align: center;
+}
+
+.register-btn {
+  width: 80%;
+  height: 50px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: Montserrat-bold;
+  color: var(--ion-color-primary-contrast);
+  background: var(--ion-color-primary);
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon
+        name="arrow-back-outline"
+        style="font-size: 24px; cursor: pointer; padding: 0 12px; color: var(--ion-color-primary)"
+        (click)="back()"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Pending groups</ion-title>
+  </ion-toolbar>
+
+  <!-- Count subtitle bar -->
+  <div class="subtitle-bar" *ngIf="!loading">
+    {{ suggestions.length }} group suggestion{{ suggestions.length !== 1 ? 's' : '' }}
+  </div>
+</ion-header>
+
+<ion-content>
+  <!-- Info banner -->
+  <div class="info-banner">
+    <p>
+      Groups suggestions from members need admin approval.
+      <!-- <span class="settings-link" (click)="router.navigate(['/community-settings'], { queryParams: { communityId: communityId } })"> -->
+        Change in Community settings
+      <!-- </span> -->
+    </p>
+  </div>
+
+  <!-- Loading skeleton -->
+  <ng-container *ngIf="loading">
+    <ion-list>
+      <ion-item *ngFor="let i of [1,2,3]">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated style="width:44px;height:44px;border-radius:50%"></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <ion-skeleton-text animated style="width:50%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width:35%"></ion-skeleton-text>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="!loading && suggestions.length === 0">
+    <ion-icon name="checkmark-circle-outline" class="empty-icon"></ion-icon>
+    <h3>No pending suggestions</h3>
+    <p>All group suggestions have been reviewed.</p>
+  </div>
+
+  <!-- Suggestions list -->
+  <ng-container *ngIf="!loading && suggestions.length > 0">
+    <div class="section-label">Suggested new groups ({{ suggestions.length }})</div>
+
+    <ion-list lines="none" class="suggestions-list">
+      <ion-item *ngFor="let s of suggestions" class="suggestion-item">
+        <!-- Avatar -->
+        <ion-avatar slot="start" class="group-avatar">
+          <ng-container *ngIf="s.avatar; else initTpl">
+            <img [src]="s.avatar" [alt]="s.groupName" (error)="s.avatar = null" />
+          </ng-container>
+          <ng-template #initTpl>
+            <div class="avatar-initial">
+              {{ (s.groupName || '?').charAt(0).toUpperCase() }}
+            </div>
+          </ng-template>
+        </ion-avatar>
+
+        <!-- Info -->
+        <ion-label>
+          <h3 class="group-name">{{ s.groupName }}</h3>
+          <p class="suggested-by">Suggested by {{ s.suggestedByName || s.suggestedBy }}</p>
+        </ion-label>
+
+        <!-- Reject button -->
+        <ion-button
+          fill="clear"
+          slot="end"
+          class="action-btn reject-btn"
+          (click)="reject(s)"
+        >
+          <div class="action-circle reject-circle">
+            <ion-icon name="close-outline"></ion-icon>
+          </div>
+        </ion-button>
+
+        <!-- Approve button -->
+        <ion-button
+          fill="clear"
+          slot="end"
+          class="action-btn approve-btn"
+          (click)="approve(s)"
+        >
+          <div class="action-circle approve-circle">
+            <ion-icon name="checkmark-outline"></ion-icon>
+          </div>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+</ion-content>
+
+<!-- Footer: Reject all / Approve all -->
+<ion-footer *ngIf="!loading && suggestions.length > 0">
+  <ion-toolbar class="footer-toolbar">
+    <div class="footer-actions">
+      <button class="reject-all-btn" (click)="rejectAll()">Reject all</button>
+      <ion-button expand="block" class="approve-all-btn" (click)="approveAll()">
+        Approve all
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

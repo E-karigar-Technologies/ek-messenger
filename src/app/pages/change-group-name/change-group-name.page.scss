@@ -1,0 +1,148 @@
+/* =========================
+   Group Name Screen (tokenized)
+   ========================= */
+
+/* Optional local gradient tokens
+   (derived from your primary so themes stay consistent) */
+:root {
+  --brand-grad-start: color-mix(in srgb, var(--ion-color-primary) 60%, #ffffff);
+  --brand-grad-end:   color-mix(in srgb, var(--ion-color-primary) 95%, #000000);
+}
+
+/* Title color via tokens */
+ion-title { color: var(--ion-text-color); }
+
+/* Wrapper spacing */
+.group-name-wrapper {
+  margin-top: 30px;
+  padding: 0 12px;
+}
+
+/* Input box with proper gradient border technique */
+.input-box {
+  /* real border with gradient: two backgrounds trick */
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 8px 12px;
+
+  /* surfaces via tokens */
+  --background: var(--ion-item-background);
+  background:
+    linear-gradient(var(--ion-item-background), var(--ion-item-background)) padding-box,
+    linear-gradient(175deg, var(--brand-grad-start) 0%, var(--brand-grad-end) 50%) border-box;
+
+  /* light elevation + structure */
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  --inner-padding-end: 0px;
+
+  &:focus-within {
+    box-shadow: var(--focus-ring);
+  }
+}
+
+/* Text input */
+.group-name-input {
+  font-size: 18px;
+  font-weight: 600; /* replaces 500 for better readability */
+  color: var(--ion-text-color);
+
+  /* ionic input tokens */
+  --highlight-color-focused: var(--ion-color-primary);
+  --border-color: var(--ion-color-primary);
+}
+.ion-valid.sc-ion-input-md-h {
+    --highlight-color: var(--ion-color-primary);
+}
+
+/* Character counter */
+.char-count {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+  margin-right: 8px;
+}
+
+/* Trailing icon */
+ion-icon[slot="end"] {
+  font-size: 22px;
+  color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+}
+
+/* Footer buttons bar */
+.footer-buttons {
+  position: fixed;
+  left: 0; width: 100%;
+  background: var(--ion-background-color);
+  padding: 20px 24px;
+  // border-top: 1px solid var(--ion-border-color);
+  box-shadow: none !important;
+  bottom: max(0px, env(safe-area-inset-bottom));
+}
+
+/* Optional grid frame */
+// ion-grid {
+//   border: 1px solid var(--ion-border-color);
+//   border-radius: 12px;
+// }
+
+/* Primary action button (gradient) */
+.ok-btn {
+  /* also set CSS var for platforms that honor it */
+  // --background: linear-gradient(175deg, var(--brand-grad-start) 0%, var(--brand-grad-end) 50%);
+  // --color: var(--ion-color-primary-contrast, #fff);
+  --border-radius: 12px;
+
+  // &::part(native) {
+  //   --background: linear-gradient(175deg, var(--brand-grad-start) 0%, var(--brand-grad-end) 50%);
+  //   color: var(--ion-color-primary-contrast, #fff);
+  //   border-radius: 12px;
+  //   font-weight: 700;
+  //   box-shadow: 0 6px 16px color-mix(in srgb, var(--ion-color-primary) 20%, transparent);
+  // }
+
+  &:hover { filter: brightness(1.03); }
+
+  &:disabled,
+  &[disabled] {
+    opacity: .6;
+    pointer-events: none;
+    filter: none;
+  }
+}
+
+/* Outline/text-styled cancel button with gradient text */
+.cancel-btn {
+  // --background: transparent;
+  // --color: transparent; /* we’ll paint the text via gradient */
+  font-weight: 700;
+  text-transform: none;
+  border: 1px solid;
+    border-radius: 12px;
+
+  // &::part(native) {
+  //   --background: transparent;
+  //   color: transparent;
+  //   background-image: linear-gradient(175deg, var(--brand-grad-start) 0%, var(--brand-grad-end) 50%);
+  //   -webkit-background-clip: text;
+  //           background-clip: text;
+  //   border: 1px solid color-mix(in srgb, var(--ion-color-primary) 35%, var(--ion-border-color));
+  //   border-radius: 12px;
+  // }
+
+  &:focus-visible { box-shadow: var(--focus-ring); }
+}
+
+/* Accessibility focus for the whole control */
+:where(.input-box, .ok-btn, .cancel-btn):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Small screens */
+@media (max-width: 420px) {
+  .footer-buttons { padding: 16px 16px; }
+}
+
+/* Dark-mode polish */
+@media (prefers-color-scheme: dark) {
+  .input-box { box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+}

@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="closePage()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Profile Photo</ion-title>
+
+    <!-- ✅ Pencil sirf tab dikhega jab group ho AND Announcements/General NA ho -->
+    <ion-buttons slot="end" *ngIf="canEditImage">
+      <ion-button fill="clear" (click)="editProfileDp()">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="dp-view-content">
+  <div class="dp-wrapper">
+    <img
+      [src]="imageUrl"
+      alt="Profile Picture"
+      class="dp-image"
+      (error)="onImageError()"
+    />
+  </div>
+</ion-content>
+
+<!-- 📌 Modal for editing options -->
+<ion-modal [isOpen]="showEditModal" (didDismiss)="closeEditModal()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Group icon</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeEditModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item button (click)="pickOption('camera')">
+          <ion-icon slot="start" name="camera-outline"></ion-icon>
+          <ion-label>Camera</ion-label>
+        </ion-item>
+        <ion-item button (click)="pickOption('gallery')">
+          <ion-icon slot="start" name="image-outline"></ion-icon>
+          <ion-label>Gallery</ion-label>
+        </ion-item>
+        <ion-item button (click)="pickOption('emoji')">
+          <ion-icon slot="start" name="happy-outline"></ion-icon>
+          <ion-label>Emoji & Stickers</ion-label>
+        </ion-item>
+        <ion-item button (click)="pickOption('ai-images')">
+          <ion-icon slot="start" name="sparkles-outline"></ion-icon>
+          <ion-label>AI Images</ion-label>
+        </ion-item>
+        <ion-item button (click)="pickOption('search-web')">
+          <ion-icon slot="start" name="search-outline"></ion-icon>
+          <ion-label>Search Web</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>

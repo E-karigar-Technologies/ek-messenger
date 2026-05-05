@@ -1,0 +1,53 @@
+/* Toolbar */
+ion-toolbar {
+  --background: var(--ion-toolbar-background, var(--ion-background-color));
+  --color: var(--ion-toolbar-color, var(--ion-text-color));
+  box-shadow: none;
+  width: 100%;
+  /* keep visual spacing without forcing fixed height */
+  padding-top: 30px; /* or use env(safe-area-inset-top) if you prefer */
+}
+
+/* Chat/status background */
+.chat-background {
+  /* token controls the whole bg shorthand; fallback to your asset */
+  --background: var(--ion-background-color);
+  background: var(--background);
+  /* keep image if provided */
+  background-image: url('/assets/images/status-bg.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Timeline container */
+.timeline-container {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--ion-background-color);
+  z-index: 10;
+}
+
+/* Progress line */
+.timeline-line {
+  height: 4px;
+  width: 100%;
+  background-color: var(--ion-color-primary);
+  border-radius: 2px;
+  animation: growLine 2.5s ease-out forwards;
+}
+
+/* Animation */
+@keyframes growLine {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* Motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-line { animation: none; width: 100%; }
+}

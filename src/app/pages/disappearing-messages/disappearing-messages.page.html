@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Disappearing messages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="top-section">
+
+    <!-- <img src="assets/disappearing.png" class="illustration"/> -->
+
+    <h2>Make messages in this chat disappear</h2>
+
+    <p>
+      For more privacy and storage, new messages will disappear from this chat for
+      everyone after the selected duration except when kept. Anyone in the chat
+      can change this setting.
+      <span class="learn">Learn more</span>
+    </p>
+
+  </div>
+
+  <div class="timer-section">
+
+    <h3>Message timer</h3>
+
+    <!-- <ion-radio-group [(ngModel)]="selectedTimer"> -->
+      <ion-radio-group [(ngModel)]="selectedTimer" (ngModelChange)="onTimerChange()">
+
+      <ion-item lines="none">
+        <ion-label>2 min</ion-label>
+        <ion-radio slot="start" value="2"></ion-radio>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>24 hours</ion-label>
+        <ion-radio slot="start" value="24"></ion-radio>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>7 days</ion-label>
+        <ion-radio slot="start" value="7"></ion-radio>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>90 days</ion-label>
+        <ion-radio slot="start" value="90"></ion-radio>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Off</ion-label>
+        <ion-radio slot="start" value="off"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+
+  </div>
+
+
+  <div class="default-timer" (click)="openDefaultTimer()">
+
+    <ion-icon name="timer-outline"></ion-icon>
+
+    <div>
+      <h4>Try a default message timer</h4>
+      <p>Start your new chats with disappearing messages</p>
+    </div>
+
+  </div>
+
+</ion-content>

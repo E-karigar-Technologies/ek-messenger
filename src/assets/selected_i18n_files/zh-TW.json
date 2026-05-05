@@ -1,0 +1,751 @@
+{
+  "meta": {
+    "generatedAt": "2025-09-25T06:49:05.846991Z",
+    "note": "Translations for email-edit page.",
+    "translated": true,
+    "locale": "zh-TW"
+  },
+  "emailEdit": {
+    "title": "電子郵件地址",
+    "description": "電子郵件可幫助您存取帳戶。它不會顯示給其他人。",
+    "label": "電子郵件",
+    "verified": "已驗證",
+    "placeholder": "you@example.com",
+    "edit": "編輯",
+    "cancel": "取消",
+    "save": "儲存",
+    "savedSuccess": "電子郵件已成功儲存。",
+    "validation": {
+      "required": "電子郵件為必填項。",
+      "invalid": "請輸入有效的電子郵件地址。",
+      "maxlength": "電子郵件過長（最多 254 個字元）。"
+    }
+  },
+  "helpPage": {
+    "title": "說明",
+    "helpCenter": {
+      "title": "說明中心",
+      "description": "取得幫助、常見問題與聯絡選項。"
+    },
+    "terms": {
+      "title": "條款與隱私政策",
+      "description": "閱讀我們的條款與資料政策。"
+    },
+    "channelReports": {
+      "title": "頻道檢舉",
+      "description": "管理並檢視檢舉報告。"
+    },
+    "appInfo": {
+      "title": "應用資訊",
+      "description": "版本、法律與技術細節。"
+    }
+  },
+  "common": { "ok": "確定", "cancel": "取消", "logout": "登出", "reset": "重置" },
+  "settingsPage": {
+  "title": "設定",
+  "account": {
+    "title": "帳戶",
+    "description": "隱私、安全性、變更號碼"
+  },
+  "privacy": {
+    "title": "隱私",
+    "description": "控制您的隱私設定"
+  },
+  "avatar": {
+    "title": "頭像",
+    "description": "變更您的頭像"
+  },
+  "chats": {
+    "title": "聊天",
+    "description": "主題、桌布、儲存空間與資料"
+  },
+  "accessibility": {
+    "title": "輔助功能",
+    "description": "調整文字大小與顯示選項"
+  },
+  "notifications": {
+    "title": "通知",
+    "description": "管理聊天、群組與通話通知"
+  },
+  "storage": {
+    "title": "儲存空間與資料",
+    "description": "管理儲存空間與網路使用量"
+  },
+  "appLanguage": {
+    "title": "應用程式語言",
+    "description": "選擇 TellDemm 應用程式語言"
+  },
+  "help": {
+    "title": "說明",
+    "description": "說明中心、聯絡我們、應用程式資訊"
+  },
+  "updates": {
+    "title": "應用程式更新",
+    "description": "檢查更新並啟用自動更新"
+  },
+  "invite": {
+    "title": "邀請朋友",
+    "description": "與您的聯絡人分享 TellDemm 應用程式"
+  },
+  "logout": {
+    "title": "登出",
+    "description": "清除應用程式資料並登出",
+    "confirmHeader": "確認登出",
+    "confirmMessage": "您確定要登出並清除應用程式資料嗎？",
+    "loadingHeader": "正在登出",
+    "loadingMessage": "請稍候...",
+    "successHeader": "已登出",
+    "successMessage": "您已成功登出。"
+  },
+  "defaultStatus": "可用"
+},
+  "appUpdates": {
+    "title": "應用更新",
+    "version": "版本",
+    "latestAvailable": "最新可用版本",
+    "status": "狀態",
+    "statusMessages": {
+      "updateAvailable": "有可用更新。",
+      "upToDate": "您已使用最新版本。"
+    },
+    "badge": {
+      "updateAvailable": "有更新",
+      "upToDate": "最新"
+    },
+    "checkForUpdates": {
+      "title": "檢查更新",
+      "description": "手動檢查是否有新版本"
+    },
+    "checking": "正在檢查…",
+    "toast": {
+      "latest": "您正在使用最新版本。",
+      "updateAvailable": "有可用更新: {{version}}",
+      "error": "無法檢查更新，請稍後再試。"
+    }
+  },
+  "accountPage": {
+    "title": "帳號",
+    "securityNotifications": "安全通知",
+    "passkeys": "通行密鑰",
+    "emailAddress": "電子郵件地址",
+    "twoStep": "兩步驟驗證",
+    "changeNumber": "更改號碼",
+    "requestInfo": "請求帳號資訊",
+    "addAccount": "新增帳號",
+    "deleteAccount": "刪除帳號",
+    "confirmDelete": {
+      "title": "刪除帳號？",
+      "message": "此操作將永久刪除您的帳號和資料。",
+      "confirm": "刪除",
+      "cancel": "取消",
+      "log": "刪除帳號視窗已開啟"
+    }
+  },
+  "accessibility": {
+    "title": "輔助功能",
+    "groups": {
+      "displayMotion": "顯示與動作",
+      "interaction": "互動"
+    },
+    "increaseContrast": {
+      "title": "提高對比",
+      "desc": "在亮色模式下加深主要顏色以改善可讀性。"
+    },
+    "reduceMotion": {
+      "title": "減少動作",
+      "desc": "盡量減少動態貼圖、GIF 與轉場效果。"
+    },
+    "largeText": {
+      "title": "大字體",
+      "desc": "放大系統字體大小以便更容易閱讀。"
+    },
+    "simpleAnimations": {
+      "title": "簡化動畫",
+      "desc": "減少複雜動畫以提升互動體驗。"
+    },
+    "grayscale": {
+      "title": "灰階模式",
+      "desc": "將所有介面顏色轉換為灰階以減輕視覺疲勞。"
+    }
+  },
+  "privacyPage": {
+    "title": "隱私",
+    "groups": {
+      "whoCanSee": "誰可以查看我的資訊",
+      "other": "其他"
+    },
+    "lastSeen": {
+      "title": "上次上線與在線狀態",
+      "desc": "控制誰可以查看你的上次上線和在線狀態"
+    },
+    "profilePhoto": {
+      "title": "個人頭像",
+      "desc": "選擇誰可以查看你的照片"
+    },
+    "about": {
+      "title": "關於",
+      "desc": "控制誰可以查看你的個人資訊"
+    },
+    "status": {
+      "title": "狀態",
+      "desc": "管理誰可以查看你的狀態更新"
+    },
+    "blocked": {
+      "title": "已封鎖的聯絡人",
+      "desc": "檢視和管理已封鎖的使用者"
+    },
+    "options": {
+      "everyone": "所有人",
+      "contacts": "我的聯絡人",
+      "nobody": "無人"
+    }
+  },
+  "avatarPage": {
+    "title": "建立你的頭像",
+    "previewAlt": "頭像預覽",
+    "sections": {
+      "customization": "自訂選項"
+    },
+    "fields": {
+      "hair": "頭髮",
+      "accessories": "配件",
+      "hairColor": "頭髮顏色",
+      "eyes": "眼睛",
+      "mouth": "嘴巴",
+      "clothes": "衣服",
+      "skin": "膚色"
+    },
+    "placeholders": {
+      "hair": "選擇髮型",
+      "accessories": "選擇配件",
+      "hairColor": "選擇頭髮顏色",
+      "eyes": "選擇眼睛樣式",
+      "mouth": "選擇嘴型",
+      "clothes": "選擇服裝",
+      "skin": "選擇膚色"
+    },
+    "buttons": {
+      "download": "下載",
+      "downloading": "正在下載…",
+      "save": "儲存"
+    },
+    "toast": {
+      "saved": "頭像選項已儲存在本機。",
+      "downloadError": "下載失敗。請再試一次。"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "highPriority": {
+      "title": "使用高優先順序通知",
+      "desc": "即使啟用「請勿打擾」，也能收到有聲音和預覽的通知"
+    },
+    "message": {
+      "title": "訊息通知",
+      "desc": "自訂訊息的提醒"
+    },
+    "group": {
+      "title": "群組聊天通知",
+      "desc": "管理群組聊天的通知"
+    },
+    "call": {
+      "title": "通話通知",
+      "desc": "鈴聲與震動設定"
+    }
+  },
+  "storage": {
+    "title": "儲存空間與資料",
+    "totalUsedHuman": "{{used}} MB / {{total}} MB",
+    "cards": {
+      "usage": {
+        "title": "儲存空間使用情況",
+        "used": "已使用 {{mb}} MB",
+        "total": "總共 {{mb}} MB"
+      }
+    },
+    "sections": {
+      "network": "網路使用",
+      "manage": "管理"
+    },
+    "network": {
+      "sent": {
+        "title": "已傳送資料",
+        "subtitle": "{{val}}"
+      },
+      "received": {
+        "title": "已接收資料",
+        "subtitle": "{{val}}"
+      }
+    },
+    "manage": {
+      "title": "管理儲存空間",
+      "desc": "檢視並刪除大型檔案、聊天和媒體"
+    },
+    "autoDownload": {
+      "title": "媒體自動下載",
+      "desc": "控制在行動網路/ Wi-Fi/ 漫遊時的下載內容"
+    },
+    "actions": {
+      "analyze": "分析",
+      "clearCache": "清除快取",
+      "resetStats": "重設統計資料"
+    },
+    "toast": {
+      "cleared": "已清除 {{mb}} MB 快取",
+      "statsReset": "網路統計已重設"
+    }
+  },
+
+  "chats": {
+    "title": "聊天",
+    "sections": {
+      "appearance": "外觀",
+      "behavior": "訊息行為",
+      "management": "聊天管理",
+      "translation": "翻譯"
+    },
+    "items": {
+      "theme": {
+        "title": "主題",
+        "sub": "系統預設"
+      },
+      "chatTheme": {
+        "title": "預設聊天主題",
+        "sub": "選擇桌布或主題"
+      },
+      "fontSize": {
+        "title": "字型大小",
+        "sub": "中等"
+      },
+      "enterToSend": {
+        "title": "按 Enter 傳送",
+        "sub": "按 Enter 鍵即可傳送訊息"
+      },
+      "mediaVisibility": {
+        "title": "媒體可見性",
+        "sub": "在相簿中顯示新下載的媒體"
+      },
+      "keepArchived": {
+        "title": "保持聊天封存",
+        "sub": "收到新訊息時，封存的聊天仍維持封存狀態"
+      },
+      "transcripts": {
+        "title": "語音訊息轉錄",
+        "sub": "自動轉錄新的語音訊息"
+      },
+      "translation": {
+        "title": "啟用翻譯",
+        "sub": "翻譯您所傳送的訊息",
+        "notice": "為確保準確性，翻譯後的訊息可能會由外部服務處理。您的資料會保持隱私且不會被儲存。",
+        "reset": {
+          "title": "重設授權",
+          "sub": "清除翻譯授權並停用此功能"
+        }
+      },
+      "backup": {
+        "title": "聊天備份",
+        "sub": "將訊息備份至雲端儲存"
+      },
+      "transfer": {
+        "title": "轉移聊天",
+        "sub": "在不同裝置間移動聊天"
+      },
+      "history": {
+        "title": "聊天記錄",
+        "sub": "匯出、封存、清除或刪除所有聊天"
+      }
+    },
+    "toasts": {
+      "enter": {
+        "enabled": "已啟用 Enter 傳送",
+        "disabled": "已停用 Enter 傳送"
+      },
+      "media": {
+        "on": "媒體可見性已開啟",
+        "off": "媒體可見性已關閉"
+      },
+      "archived": {
+        "enabled": "保持封存已啟用",
+        "disabled": "保持封存已停用"
+      },
+      "transcripts": {
+        "enabled": "語音訊息轉錄已啟用",
+        "disabled": "語音訊息轉錄已停用"
+      },
+      "translation": {
+        "enabled": "翻譯已啟用",
+        "disabled": "翻譯已停用",
+        "consentDeclined": "已拒絕翻譯授權",
+        "consentReset": "已重設翻譯授權"
+      },
+      "backup": {
+        "starting": "正在開始備份…",
+        "done": "備份完成"
+      }
+    },
+    "dialogs": {
+      "translationConsent": {
+        "header": "翻譯需要將訊息文字傳送至外部服務",
+        "message": "為提供翻譯，我們會將訊息文字傳送給第三方翻譯服務。我們不會收集任何個人帳戶資訊，只會傳送訊息內容。如果您同意，翻譯內容將會被擷取並保存在本機。您可隨時撤銷此授權。",
+        "decline": "拒絕",
+        "accept": "同意"
+      },
+      "resetTranslationConsent": {
+        "header": "重設翻譯授權",
+        "message": "這將清除您對訊息翻譯的授權並停用此功能。您之後可以重新啟用。"
+      }
+    }
+  }
+
+,
+  "profilePage": {
+    "title": "個人資料",
+    "imageAlt": "個人頭像",
+    "buttons": {
+      "edit": "編輯",
+      "addLinks": "新增連結",
+      "cancel": "取消"
+    },
+    "fields": {
+      "name": "姓名",
+      "about": "關於",
+      "phone": "電話",
+      "links": "連結"
+    },
+    "actions": {
+      "source": {
+        "header": "選擇圖片來源",
+        "camera": "相機",
+        "gallery": "相簿",
+        "cancel": "取消"
+      }
+    },
+    "loading": {
+      "openingCamera": "正在開啟相機...",
+      "processing": "正在處理圖片...",
+      "updating": "正在更新個人頭像..."
+    },
+    "validation": {
+      "size": "圖片大小必須小於 5MB",
+      "type": "請選擇有效的圖片檔案 (JPEG, PNG, WebP)"
+    },
+    "toast": {
+      "loadFailed": "載入個人資料失敗",
+      "imageLoadFailed": "載入個人頭像失敗",
+      "selectFailed": "選擇圖片失敗，請再試一次。",
+      "processFailed": "處理圖片時發生錯誤，請再試一次。",
+      "noUser": "找不到使用者 ID",
+      "updated": "個人頭像更新成功！",
+      "updateFailed": "更新個人頭像失敗"
+    }
+  },
+  "footerTabs": {
+    "chat": "聊天",
+    "updates": "更新",
+    "communities": "社群",
+    "calls": "通話",
+    "badges": {
+      "unreadChats": "{{count}} 未讀 聊天",
+      "unreadUpdates": "{{count}} 更新"
+    }
+  },
+  "socialLinks": {
+    "title": "連結",
+    "intro": "在個人資料中新增連結可讓聯絡人輕鬆造訪您的其他帳號。",
+    "instagram": {
+      "title": "Instagram",
+      "add": "新增您的 Instagram"
+    },
+    "actions": {
+      "add": "新增",
+      "edit": "編輯",
+      "cancel": "取消"
+    },
+    "privacy": {
+      "note": "若要管理誰可以看到您的連結，請前往",
+      "link": "隱私設定"
+    }
+  },
+  "addInstagram": {
+    "title": "新增 Instagram",
+    "loading": "正在載入...",
+    "saving": "正在儲存...",
+    "usernameLabel": "Instagram 使用者名稱",
+    "usernamePlaceholder": "使用者名稱",
+    "hint": {
+      "text": "新增 Instagram 使用者名稱後，將會顯示在您的個人資料中。",
+      "learnMore": "了解更多"
+    },
+    "save": "儲存",
+    "validation": {
+      "required": "請輸入您的 Instagram 使用者名稱",
+      "invalid": "請輸入有效的使用者名稱（不可有空格，最多 30 個字元）"
+    },
+    "toast": {
+      "fetchFailed": "無法取得 Instagram 連結",
+      "saved": "Instagram 已成功儲存！",
+      "saveFailed": "無法更新 Instagram 連結，請再試一次。"
+    }
+  },
+  "home": {
+    "search": {
+      "placeholder": "詢問或搜尋"
+    },
+    "filters": {
+      "all": "全部",
+      "read": "已讀",
+      "unread": "未讀",
+      "groups": "群組"
+    },
+    "groupCreator": {
+      "placeholder": "輸入 群組 名稱"
+    },
+    "typing": "正在輸入...",
+    "time": {
+      "yesterday": "昨天"
+    },
+    "preview": {
+      "deleted": "此訊息已被刪除",
+      "encrypted": "[已加密]",
+      "media": {
+        "photo": "PicTell (照片)",
+        "video": "ClipTell (影片)",
+        "audio": "VoiceTell (音訊)",
+        "file": "FileTell (附件)",
+        "generic": "[媒體]"
+      }
+    },
+    "actions": {
+      "scan": "掃描 DemmCode",
+      "camera": "開啟相機",
+      "menu": "開啟選單",
+      "contacts": "DemmList (聯絡人)"
+    },
+    "scan": {
+      "onlyDevice": "條碼掃描僅在真實裝置上運作。",
+      "permission": "掃描條碼需要相機權限。",
+      "notFound": "未找到條碼。",
+      "error": "掃描過程中發生問題。"
+    },
+    "logout": {
+      "header": "登出",
+      "message": "工作階段逾時/過期。"
+    },
+    "alt": {
+      "profile": "個人資料"
+    }
+  },
+  "menu": {
+    "newGroup": "新增群組",
+    "newCommunity": "新增社群",
+    "newBroadcast": "新增廣播 (WIP)",
+    "starred": "已加星號 (WIP)",
+    "readAll": "全部標示為已讀 (WIP)",
+    "settings": "設定",
+    "createChannels": "建立頻道 (WIP)",
+    "statusPrivacy": "狀態隱私 (WIP)",
+    "clearCallLogs": "清除通話紀錄 (WIP)"
+  },
+  "userabout": {
+    "members": "成員",
+    "group": "群組",
+    "groups": "群組",
+    "inCommon": "共同",
+    "toolbar": {
+      "message": "訊息",
+      "call": "通話",
+      "video": "影片",
+      "add": "新增"
+    },
+    "defaults": {
+      "heyThere": "嗨！我正在使用 Telldemm。",
+      "noGroupDescription": "沒有群組描述。",
+      "unknown": "未知",
+      "unknownDate": "未知日期",
+      "unnamedGroup": "未命名群組"
+    },
+    "updatedOn": "更新於",
+    "createdByOn": "由 {{name}} 建立於",
+    "media": {
+      "title": "媒體、連結和文件"
+    },
+    "notifications": "通知",
+    "mediaVisibility": "媒體可見性",
+    "encryption": {
+      "title": "加密",
+      "subtitle": "訊息和通話已端對端加密。點擊驗證。"
+    },
+    "disappearing": "消失的訊息",
+    "chatLock": {
+      "title": "聊天鎖定",
+      "subtitle": "在此裝置上鎖定並隱藏此聊天。"
+    },
+    "advancedPrivacy": {
+      "title": "進階聊天隱私",
+      "off": "關閉"
+    },
+    "createGroupWith": "與 {{name}} 建立群組",
+    "commonGroupWith": "與 {{name}} 的共同群組",
+    "groupMembers": "群組成員",
+    "addMembers": "新增成員",
+    "groupAdmin": "群組管理員",
+    "viewPastMembers": "檢視過去的成員",
+    "addToFavourites": "加入最愛",
+    "addToList": "加入清單",
+    "block": "封鎖 {{name}}",
+    "unblock": "解除封鎖 {{name}}",
+    "report": "檢舉 {{name}}",
+    "actions": {
+      "message": "訊息",
+      "dismissAdmin": "解除管理員",
+      "makeAdmin": "設為管理員",
+      "removeFromGroup": "從群組中移除"
+    },
+    "toasts": {
+      "madeAdmin": "{{name}} 現在是管理員",
+      "dismissedAdmin": "{{name}} 不再是管理員",
+      "removedFromGroup": "{{name}} 已被移出群組",
+      "blocked": "{{name}} 已被封鎖。",
+      "unblocked": "{{name}} 已被解除封鎖。",
+      "reported": "{{name}} 已被檢舉。",
+      "reportedAndBlocked": "{{name}} 已被檢舉並封鎖。"
+    },
+    "errors": {
+      "makeAdmin": "無法將 {{name}} 設為管理員",
+      "dismissAdmin": "無法解除 {{name}} 的管理員身份",
+      "removeMember": "移除成員時發生錯誤"
+    },
+    "alerts": {
+      "block": {
+        "header": "封鎖聯絡人",
+        "message": "您將不再收到來自 {{name}} 的訊息或通話。",
+        "cta": "封鎖"
+      },
+      "unblock": {
+        "header": "解除封鎖聯絡人",
+        "message": "您確定要解除封鎖 {{name}} 嗎？"
+      },
+      "report": {
+        "header": "檢舉聯絡人",
+        "message": "將檢舉來自 {{name}} 的最近 5 則訊息。您是否也要封鎖此使用者？",
+        "alsoBlock": "同時封鎖聯絡人",
+        "cta": "檢舉"
+      }
+    }
+  },
+  "invite": {
+    "header": "邀請好友",
+    "actions": {
+      "search": "搜尋聯絡人",
+      "shareLink": "分享應用程式連結",
+      "fromContacts": "從聯絡人邀請",
+      "invite": "邀請"
+    },
+    "share": {
+      "title": "快來加入我使用這個應用程式！",
+      "subtitle": "透過任意應用程式傳送下載連結",
+      "body": "看看這個很棒的應用程式。從這裡下載：",
+      "button": "分享",
+      "success": "連結已分享",
+      "copied": "連結已複製"
+    },
+    "contacts": {
+      "title": "從聯絡人",
+      "subtitle": "直接從通訊錄邀請",
+      "header": "從聯絡人",
+      "notOnApp": "尚未使用此應用程式"
+    },
+    "title": "快來加入我使用這個應用程式！",
+    "text": "看看這個很棒的應用程式。從這裡下載：",
+    "dialogTitle": "分享應用程式連結",
+    "toasts": {
+      "openContacts": "正在開啟聯絡人...",
+      "searchContacts": "已點擊搜尋聯絡人。",
+      "invited": "已向 {{phone}} 傳送邀請"
+    },
+    "errors": {
+      "shareFailed": "無法開啟分享頁面。"
+    }
+  },
+  "community": {
+    "manageGroups": {
+      "title": "管理群組",
+      "groups": "群組",
+      "createNew": "建立新群組",
+      "addExisting": "新增現有群組",
+      "info": "成員可以建議現有群組以供管理員批准，並可直接新增新群組。查看於",
+      "settingsLink": "社群設定",
+      "listHeader": "此社群中的群組",
+      "loading": "正在載入群組...",
+      "empty": "未找到此社群的群組",
+      "members": "成員",
+      "unnamedGroup": "未命名群組",
+      "remove": {
+        "header": "從社群中移除群組",
+        "message": "要從社群中移除此群組嗎？群組將保留，但不再屬於此社群。",
+        "alsoRemoveMembers": "同時將此群組的成員從社群和群組中移除",
+        "cta": "移除",
+        "aria": "從社群中移除群組"
+      },
+      "toasts": {
+        "removed": "群組已從社群中移除並更新成員",
+        "removeFailed": "移除群組失敗。請再試一次。"
+      }
+    },
+    "title": "社群",
+    "actions": {
+      "qr": "開啟 QR 操作",
+      "menu": "開啟選單"
+    },
+    "newCommunity": "新社群",
+    "unnamedCommunity": "未命名社群",
+    "viewAll": "查看全部",
+    "groupType": {
+      "normal": "普通群組",
+      "announcement": "公告群組",
+      "general": "一般群組"
+    },
+    "newGroup": {
+      "header": "新群組",
+      "placeholder": "群組名稱",
+      "create": "建立"
+    },
+    "toasts": {
+      "groupCreated": "群組已建立"
+    }
+  },
+  "community_menu_component": {
+    "info": "社群資訊",
+    "invite": "邀請成員",
+    "settings": "社群設定"
+  },
+  "group_preview_modal_component": {
+    "close": "關閉",
+    "groupIcon": "群組圖示",
+    "createdBy": "由 {{name}} 建立",
+    "noMembers": "尚無成員",
+    "noDescription": "沒有描述",
+    "communityLabel": "社群：",
+    "joinNote": "加入後您將立即成為成員。",
+    "joinCta": "加入群組"
+  },
+  "add_existing_groups_page": {
+    "header": "新增現有群組",
+    "actions": {
+      "search": "搜尋群組",
+      "confirm": "確認選擇",
+      "removeChip": "移除所選群組"
+    },
+    "of": "的",
+    "selected": "已選擇",
+    "banner": "群組中的所有人都會被加入到社群中。",
+    "listHeader": "您是管理員的群組",
+    "loading": "正在載入群組...",
+    "empty": "未找到管理員群組",
+    "checkboxLabel": "選擇群組",
+    "unnamedGroup": "未命名群組",
+    "toasts": {
+      "selectAtLeastOne": "請至少選擇一個群組"
+    }
+  }
+}

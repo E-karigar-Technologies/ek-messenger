@@ -1,0 +1,41 @@
+page-storage-data {
+  /* List surface uses theme background */
+  ion-list {
+    background: var(--ion-background-color);
+    --ion-item-background: var(--ion-item-background, var(--ion-background-color));
+    --ion-item-color: var(--ion-text-color);
+  }
+
+  /* Optional: storage section headers */
+  ion-list-header {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: color-mix(in srgb, var(--ion-text-color) 65%, transparent);
+    padding-top: 12px;
+    padding-bottom: 6px;
+  }
+
+  /* Optional: muted labels (like "Cache size") */
+  .sub-label {
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--ion-text-color) 55%, transparent);
+  }
+
+  /* Progress bar styling for storage usage */
+  ion-progress-bar {
+    --background: color-mix(in srgb, var(--ion-color-primary) 30%, transparent);
+    --progress-background: var(--ion-color-primary);
+    border-radius: 4px;
+    height: 8px;
+    margin-top: 6px;
+  }
+
+  /* Accessibility */
+  ion-item:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 8px;
+  }
+}

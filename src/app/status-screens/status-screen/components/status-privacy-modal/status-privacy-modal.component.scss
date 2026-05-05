@@ -1,0 +1,49 @@
+.privacy-wrap {
+  padding: 14px;
+}
+
+.privacy-hint {
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: var(--ion-color-medium);
+}
+
+ion-item {
+  --background: var(--ion-item-background);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+ion-label h3 {
+  margin: 0;
+  font-size: 15px;
+  font-family: OpenSans-SemiBold;
+}
+
+ion-label p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--ion-color-medium);
+}
+
+.contacts-section {
+  margin-top: 18px;
+}
+
+.contacts-title {
+  margin: 0 0 10px;
+  font-family: OpenSans-SemiBold;
+  font-size: 14px;
+  color: var(--ion-color-step-700);
+}
+
+.contact-list {
+  max-height: 42vh;
+  overflow: auto;
+}
+
+.contacts-empty {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ion-color-medium);
+}

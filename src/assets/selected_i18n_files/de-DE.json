@@ -1,0 +1,748 @@
+{
+  "meta": {
+    "generatedAt": "2025-09-25T06:49:05.846991Z",
+    "note": "Translations for email-edit page.",
+    "translated": true,
+    "locale": "de-DE"
+  },
+  "emailEdit": {
+    "title": "E-Mail-Adresse",
+    "description": "Die E-Mail hilft dir, auf dein Konto zuzugreifen. Sie ist für andere nicht sichtbar.",
+    "label": "E-Mail",
+    "verified": "Verifiziert",
+    "placeholder": "you@example.com",
+    "edit": "Bearbeiten",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "savedSuccess": "E-Mail wurde erfolgreich gespeichert.",
+    "validation": {
+      "required": "E-Mail ist erforderlich.",
+      "invalid": "Bitte eine gültige E-Mail-Adresse eingeben.",
+      "maxlength": "Die E-Mail ist zu lang (maximal 254 Zeichen)."
+    }
+  },
+  "helpPage": {
+    "title": "Hilfe",
+    "helpCenter": {
+      "title": "Hilfezentrum",
+      "description": "Hilfe, FAQs und Kontaktmöglichkeiten."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen & Datenschutz",
+      "description": "Lesen Sie unsere Bedingungen und Datenschutzrichtlinie."
+    },
+    "channelReports": {
+      "title": "Kanalberichte",
+      "description": "Berichte verwalten und anzeigen."
+    },
+    "appInfo": {
+      "title": "App-Informationen",
+      "description": "Version, rechtliche und technische Details."
+    }
+  },
+  "common": { "ok": "OK", "cancel": "Abbrechen", "logout": "Abmelden", "reset": "Zurücksetzen" },
+  "settingsPage": {
+    "title": "Einstellungen",
+    "account": {
+      "title": "Konto",
+      "description": "Privatsphäre, Sicherheit, Nummer ändern"
+    },
+    "privacy": {
+      "title": "Datenschutz",
+      "description": "Steuern Sie Ihre Datenschutzeinstellungen"
+    },
+    "avatar": {
+      "title": "Profilbild",
+      "description": "Ändern Sie Ihr Profilbild"
+    },
+    "chats": {
+      "title": "Chats",
+      "description": "Thema, Hintergrundbild, Backup"
+    },
+    "accessibility": {
+      "title": "Barrierefreiheit",
+      "description": "Textgröße und Anzeigeoptionen anpassen"
+    },
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "description": "Nachrichten-, Gruppen- und Anrufbenachrichtigungen verwalten"
+    },
+    "storage": {
+      "title": "Speicher & Daten",
+      "description": "Speicher und Netzwerkverbrauch verwalten"
+    },
+    "appLanguage": {
+      "title": "App-Sprache",
+      "description": "Wählen Sie die Sprache der App"
+    },
+    "help": {
+      "title": "Hilfe",
+      "description": "Hilfe-Center, Kontaktieren Sie uns, App-Info"
+    },
+    "updates": {
+      "title": "App-Updates",
+      "description": "Auf Updates prüfen und Auto-Update aktivieren"
+    },
+    "invite": {
+      "title": "Freund einladen",
+      "description": "Teilen Sie die App mit Ihren Kontakten"
+    },
+    "logout": {
+      "title": "Abmelden",
+      "description": "App-Daten löschen und abmelden",
+      "confirmHeader": "Abmeldung bestätigen",
+      "confirmMessage": "Sind Sie sicher, dass Sie sich abmelden und App-Daten löschen möchten?",
+      "loadingHeader": "Abmeldung läuft",
+      "loadingMessage": "Bitte warten...",
+      "successHeader": "Abgemeldet",
+      "successMessage": "Sie haben sich erfolgreich abgemeldet."
+    },
+    "defaultStatus": "Verfügbar"
+  },
+  "appUpdates": {
+    "title": "App-Updates",
+    "version": "Version",
+    "latestAvailable": "Neueste verfügbar",
+    "status": "Status",
+    "statusMessages": {
+      "updateAvailable": "Ein Update ist verfügbar.",
+      "upToDate": "Sie verwenden die neueste Version."
+    },
+    "badge": {
+      "updateAvailable": "Update verfügbar",
+      "upToDate": "Aktuell"
+    },
+    "checkForUpdates": {
+      "title": "Nach Updates suchen",
+      "description": "Manuell prüfen, ob eine neue Version verfügbar ist"
+    },
+    "checking": "Überprüfung…",
+    "toast": {
+      "latest": "Sie verwenden die neueste Version.",
+      "updateAvailable": "Update verfügbar: {{version}}",
+      "error": "Updates konnten nicht überprüft werden. Bitte versuchen Sie es später erneut."
+    }
+  },
+  "accountPage": {
+    "title": "Konto",
+    "securityNotifications": "Sicherheitsbenachrichtigungen",
+    "passkeys": "Passkeys",
+    "emailAddress": "E-Mail-Adresse",
+    "twoStep": "Zwei-Schritt-Verifizierung",
+    "changeNumber": "Nummer ändern",
+    "requestInfo": "Kontoinformationen anfordern",
+    "addAccount": "Konto hinzufügen",
+    "deleteAccount": "Konto löschen",
+    "confirmDelete": {
+      "title": "Konto löschen?",
+      "message": "Diese Aktion löscht Ihr Konto und Ihre Daten dauerhaft.",
+      "confirm": "Löschen",
+      "cancel": "Abbrechen",
+      "log": "Konto-Löschungsfenster geöffnet"
+    }
+  },
+  "accessibility": {
+    "title": "Barrierefreiheit",
+    "groups": {
+      "displayMotion": "Anzeige und Bewegung",
+      "interaction": "Interaktion"
+    },
+    "increaseContrast": {
+      "title": "Kontrast erhöhen",
+      "desc": "Wichtige Farben abdunkeln, um die Lesbarkeit im hellen Modus zu verbessern."
+    },
+    "reduceMotion": {
+      "title": "Bewegung reduzieren",
+      "desc": "Animierte Sticker, GIFs und Übergänge minimieren."
+    },
+    "largeText": {
+      "title": "Großer Text",
+      "desc": "Systemschriftgröße erhöhen, um das Lesen zu erleichtern."
+    },
+    "simpleAnimations": {
+      "title": "Vereinfachte Animationen",
+      "desc": "Komplexe Animationen reduzieren, um die Interaktion zu erleichtern."
+    },
+    "grayscale": {
+      "title": "Graustufenmodus",
+      "desc": "Alle Farben der Benutzeroberfläche in Grautöne umwandeln, um die Augen zu entlasten."
+    }
+  },
+  "privacyPage": {
+    "title": "Datenschutz",
+    "groups": {
+      "whoCanSee": "Wer kann meine Infos sehen",
+      "other": "Andere"
+    },
+    "lastSeen": {
+      "title": "Zuletzt online & Online-Status",
+      "desc": "Steuern Sie, wer Ihren zuletzt gesehen- und Online-Status sehen kann"
+    },
+    "profilePhoto": {
+      "title": "Profilfoto",
+      "desc": "Wählen Sie, wer Ihr Foto sehen darf"
+    },
+    "about": {
+      "title": "Info",
+      "desc": "Steuern Sie, wer Ihre Info sehen darf"
+    },
+    "status": {
+      "title": "Status",
+      "desc": "Verwalten Sie, wer Ihre Status-Updates sehen kann"
+    },
+    "blocked": {
+      "title": "Blockierte Kontakte",
+      "desc": "Blockierte Benutzer anzeigen und verwalten"
+    },
+    "options": {
+      "everyone": "Jeder",
+      "contacts": "Meine Kontakte",
+      "nobody": "Niemand"
+    }
+  },
+  "avatarPage": {
+    "title": "Erstelle dein Avatar",
+    "previewAlt": "Avatar-Vorschau",
+    "sections": {
+      "customization": "Anpassungsoptionen"
+    },
+    "fields": {
+      "hair": "Haare",
+      "accessories": "Zubehör",
+      "hairColor": "Haarfarbe",
+      "eyes": "Augen",
+      "mouth": "Mund",
+      "clothes": "Kleidung",
+      "skin": "Haut"
+    },
+    "placeholders": {
+      "hair": "Frisur auswählen",
+      "accessories": "Zubehör auswählen",
+      "hairColor": "Haarfarbe auswählen",
+      "eyes": "Augenstil auswählen",
+      "mouth": "Mundform auswählen",
+      "clothes": "Kleidung auswählen",
+      "skin": "Hautton auswählen"
+    },
+    "buttons": {
+      "download": "Herunterladen",
+      "downloading": "Wird heruntergeladen…",
+      "save": "Speichern"
+    },
+    "toast": {
+      "saved": "Avatar-Auswahl wurde lokal gespeichert.",
+      "downloadError": "Download fehlgeschlagen. Bitte erneut versuchen."
+    }
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "highPriority": {
+      "title": "Benachrichtigungen mit hoher Priorität verwenden",
+      "desc": "Erhalten Sie Benachrichtigungen mit Ton und Vorschau, auch wenn „Nicht stören“ aktiviert ist"
+    },
+    "message": {
+      "title": "Nachrichten-Benachrichtigungen",
+      "desc": "Benachrichtigungen für Nachrichten anpassen"
+    },
+    "group": {
+      "title": "Gruppenchat-Benachrichtigungen",
+      "desc": "Benachrichtigungen für Gruppenchats verwalten"
+    },
+    "call": {
+      "title": "Anrufbenachrichtigungen",
+      "desc": "Einstellungen für Klingeltöne und Vibration"
+    }
+  },
+  "storage": {
+    "title": "Speicher & Daten",
+    "totalUsedHuman": "{{used}} MB von {{total}} MB",
+    "cards": {
+      "usage": {
+        "title": "Speichernutzung",
+        "used": "{{mb}} MB verwendet",
+        "total": "{{mb}} MB insgesamt"
+      }
+    },
+    "sections": {
+      "network": "Netzwerknutzung",
+      "manage": "Verwalten"
+    },
+    "network": {
+      "sent": {
+        "title": "Gesendete Daten",
+        "subtitle": "{{val}}"
+      },
+      "received": {
+        "title": "Empfangene Daten",
+        "subtitle": "{{val}}"
+      }
+    },
+    "manage": {
+      "title": "Speicher verwalten",
+      "desc": "Überprüfen und löschen Sie große Dateien, Chats und Medien"
+    },
+    "autoDownload": {
+      "title": "Automatischer Medien-Download",
+      "desc": "Steuern Sie, was über Mobilfunk/WLAN/Roaming heruntergeladen wird"
+    },
+    "actions": {
+      "analyze": "Analysieren",
+      "clearCache": "Cache leeren",
+      "resetStats": "Statistiken zurücksetzen"
+    },
+    "toast": {
+      "cleared": "{{mb}} MB Cache geleert",
+      "statsReset": "Netzwerkstatistiken zurückgesetzt"
+    }
+  },
+  "chats": {
+    "title": "Chats",
+    "sections": {
+      "appearance": "Darstellung",
+      "behavior": "Nachrichtenverhalten",
+      "management": "Chatverwaltung",
+      "translation": "Übersetzung"
+    },
+    "items": {
+      "theme": {
+        "title": "Design",
+        "sub": "Systemstandard"
+      },
+      "chatTheme": {
+        "title": "Standard-Chatdesign",
+        "sub": "Hintergrundbild oder Design auswählen"
+      },
+      "fontSize": {
+        "title": "Schriftgröße",
+        "sub": "Mittel"
+      },
+      "enterToSend": {
+        "title": "Enter zum Senden",
+        "sub": "Drücken Sie Enter, um Nachrichten zu senden"
+      },
+      "mediaVisibility": {
+        "title": "Mediensichtbarkeit",
+        "sub": "Neu heruntergeladene Medien in der Galerie anzeigen"
+      },
+      "keepArchived": {
+        "title": "Chats archiviert halten",
+        "sub": "Archivierte Chats bleiben archiviert, wenn neue Nachrichten eintreffen"
+      },
+      "transcripts": {
+        "title": "Sprachnachrichten-Transkription",
+        "sub": "Neue Sprachnachrichten automatisch transkribieren"
+      },
+      "translation": {
+        "title": "Übersetzung aktivieren",
+        "sub": "Nachrichten, die Sie senden, übersetzen",
+        "notice": "Übersetzte Nachrichten können zur Genauigkeit von externen Diensten verarbeitet werden. Ihre Daten bleiben privat und werden nicht gespeichert.",
+        "reset": {
+          "title": "Zustimmung zurücksetzen",
+          "sub": "Übersetzungszustimmung löschen und Funktion deaktivieren"
+        }
+      },
+      "backup": {
+        "title": "Chat-Backup",
+        "sub": "Nachrichten in der Cloud speichern"
+      },
+      "transfer": {
+        "title": "Chats übertragen",
+        "sub": "Chats zwischen Geräten übertragen"
+      },
+      "history": {
+        "title": "Chatverlauf",
+        "sub": "Alle Chats exportieren, archivieren, löschen oder leeren"
+      }
+    },
+    "toasts": {
+      "enter": {
+        "enabled": "Enter-zum-Senden aktiviert",
+        "disabled": "Enter-zum-Senden deaktiviert"
+      },
+      "media": {
+        "on": "Mediensichtbarkeit aktiviert",
+        "off": "Mediensichtbarkeit deaktiviert"
+      },
+      "archived": {
+        "enabled": "Archiviert behalten aktiviert",
+        "disabled": "Archiviert behalten deaktiviert"
+      },
+      "transcripts": {
+        "enabled": "Transkription aktiviert",
+        "disabled": "Transkription deaktiviert"
+      },
+      "translation": {
+        "enabled": "Übersetzung aktiviert",
+        "disabled": "Übersetzung deaktiviert",
+        "consentDeclined": "Übersetzungszustimmung abgelehnt",
+        "consentReset": "Übersetzungszustimmung zurückgesetzt"
+      },
+      "backup": {
+        "starting": "Backup wird gestartet…",
+        "done": "Backup abgeschlossen"
+      }
+    },
+    "dialogs": {
+      "translationConsent": {
+        "header": "Für die Übersetzung muss der Nachrichtentext an einen externen Dienst gesendet werden",
+        "message": "Um Übersetzungen bereitzustellen, senden wir den Nachrichtentext an einen externen Übersetzungsdienst. Wir sammeln keine persönlichen Kontodaten – es wird nur der Nachrichtentext gesendet. Wenn Sie zustimmen, werden Übersetzungen abgerufen und lokal gespeichert. Sie können die Zustimmung jederzeit widerrufen.",
+        "decline": "Ablehnen",
+        "accept": "Zustimmen"
+      },
+      "resetTranslationConsent": {
+        "header": "Übersetzungszustimmung zurücksetzen",
+        "message": "Dadurch wird Ihre Zustimmung zur Übersetzung gelöscht und die Funktion deaktiviert. Sie können sie später erneut aktivieren."
+      }
+    }
+  },
+  "profilePage": {
+    "title": "Profil",
+    "imageAlt": "Profilbild",
+    "buttons": {
+      "edit": "Bearbeiten",
+      "addLinks": "Links hinzufügen",
+      "cancel": "Abbrechen"
+    },
+    "fields": {
+      "name": "Name",
+      "about": "Info",
+      "phone": "Telefon",
+      "links": "Links"
+    },
+    "actions": {
+      "source": {
+        "header": "Bildquelle auswählen",
+        "camera": "Kamera",
+        "gallery": "Galerie",
+        "cancel": "Abbrechen"
+      }
+    },
+    "loading": {
+      "openingCamera": "Kamera wird geöffnet...",
+      "processing": "Bild wird verarbeitet...",
+      "updating": "Profilbild wird aktualisiert..."
+    },
+    "validation": {
+      "size": "Die Bildgröße sollte kleiner als 5 MB sein",
+      "type": "Bitte wählen Sie eine gültige Bilddatei aus (JPEG, PNG, WebP)"
+    },
+    "toast": {
+      "loadFailed": "Profil-Daten konnten nicht geladen werden",
+      "imageLoadFailed": "Profilbild konnte nicht geladen werden",
+      "selectFailed": "Bild konnte nicht ausgewählt werden. Bitte erneut versuchen.",
+      "processFailed": "Fehler bei der Bildverarbeitung. Bitte erneut versuchen.",
+      "noUser": "Benutzer-ID nicht gefunden",
+      "updated": "Profilbild erfolgreich aktualisiert!",
+      "updateFailed": "Profilbild konnte nicht aktualisiert werden"
+    }
+  },
+  "footerTabs": {
+    "chat": "Chats",
+    "updates": "Updates",
+    "communities": "Gemeinschaften",
+    "calls": "Anrufe",
+    "badges": {
+      "unreadChats": "{{count}} ungelesene Chats",
+      "unreadUpdates": "{{count}} Updates"
+    }
+  },
+  "socialLinks": {
+    "title": "Links",
+    "intro": "Das Hinzufügen von Links zu Ihrem Profil hilft Ihren Kontakten, Ihre anderen Profile leicht zu besuchen.",
+    "instagram": {
+      "title": "Instagram",
+      "add": "Fügen Sie Ihr Instagram hinzu"
+    },
+    "actions": {
+      "add": "Hinzufügen",
+      "edit": "Bearbeiten",
+      "cancel": "Abbrechen"
+    },
+    "privacy": {
+      "note": "Um zu verwalten, wer Ihre Links sehen kann, gehen Sie zu",
+      "link": "Datenschutzeinstellungen"
+    }
+  },
+  "addInstagram": {
+    "title": "Instagram hinzufügen",
+    "loading": "Wird geladen...",
+    "saving": "Wird gespeichert...",
+    "usernameLabel": "Instagram-Benutzername",
+    "usernamePlaceholder": "Benutzername",
+    "hint": {
+      "text": "Das Hinzufügen eines Instagram-Benutzernamens macht ihn in Ihrem Profil sichtbar.",
+      "learnMore": "Mehr erfahren"
+    },
+    "save": "Speichern",
+    "validation": {
+      "required": "Bitte geben Sie Ihren Instagram-Benutzernamen ein",
+      "invalid": "Geben Sie einen gültigen Benutzernamen ein (keine Leerzeichen, max. 30 Zeichen)"
+    },
+    "toast": {
+      "fetchFailed": "Instagram-Link konnte nicht abgerufen werden",
+      "saved": "Instagram erfolgreich gespeichert!",
+      "saveFailed": "Instagram-Link konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut."
+    }
+  },
+  "home": {
+    "search": {
+      "placeholder": "Fragen oder Suchen"
+    },
+    "filters": {
+      "all": "ALLE",
+      "read": "Gelesen",
+      "unread": "Ungelesen",
+      "groups": "Gruppen"
+    },
+    "groupCreator": {
+      "placeholder": "Gruppen-Name eingeben"
+    },
+    "typing": "tippt...",
+    "time": {
+      "yesterday": "Gestern"
+    },
+    "preview": {
+      "deleted": "Diese Nachricht wurde gelöscht",
+      "encrypted": "[Verschlüsselt]",
+      "media": {
+        "photo": "PicTell (Foto)",
+        "video": "ClipTell (Video)",
+        "audio": "VoiceTell (Audio)",
+        "file": "FileTell (Anhang)",
+        "generic": "[Medien]"
+      }
+    },
+    "actions": {
+      "scan": "DemmCode scannen",
+      "camera": "Kamera öffnen",
+      "menu": "Menü öffnen",
+      "contacts": "DemmList (Kontakte)"
+    },
+    "scan": {
+      "onlyDevice": "Barcode-Scanning funktioniert nur auf einem echten Gerät.",
+      "permission": "Kameraberechtigung ist erforderlich, um Barcodes zu scannen.",
+      "notFound": "Kein Barcode gefunden.",
+      "error": "Etwas ist während des Scans schiefgelaufen."
+    },
+    "logout": {
+      "header": "Abmelden",
+      "message": "Sitzung abgelaufen/zeitlich begrenzt."
+    },
+    "alt": {
+      "profile": "Profil"
+    }
+  },
+  "menu": {
+    "newGroup": "Neue Gruppe",
+    "newCommunity": "Neue Community",
+    "newBroadcast": "Neue Übertragung (WIP)",
+    "starred": "Markiert (WIP)",
+    "readAll": "Alle als gelesen markieren (WIP)",
+    "settings": "Einstellungen",
+    "createChannels": "Kanäle erstellen (WIP)",
+    "statusPrivacy": "Status-Datenschutz (WIP)",
+    "clearCallLogs": "Anrufliste löschen (WIP)"
+  },
+  "userabout": {
+    "members": "Mitglieder",
+    "group": "Gruppe",
+    "groups": "Gruppen",
+    "inCommon": "Gemeinsam",
+    "toolbar": {
+      "message": "Nachricht",
+      "call": "Anruf",
+      "video": "Video",
+      "add": "Hinzufügen"
+    },
+    "defaults": {
+      "heyThere": "Hallo! Ich benutze Telldemm.",
+      "noGroupDescription": "Keine Gruppenbeschreibung.",
+      "unknown": "Unbekannt",
+      "unknownDate": "Unbekanntes Datum",
+      "unnamedGroup": "Unbenannte Gruppe"
+    },
+    "updatedOn": "Aktualisiert am",
+    "createdByOn": "Erstellt von {{name}} am",
+    "media": {
+      "title": "Medien, Links und Dokumente"
+    },
+    "notifications": "Benachrichtigungen",
+    "mediaVisibility": "Mediensichtbarkeit",
+    "encryption": {
+      "title": "Verschlüsselung",
+      "subtitle": "Nachrichten und Anrufe sind Ende-zu-Ende verschlüsselt. Tippen zum Überprüfen."
+    },
+    "disappearing": "Verschwindende Nachrichten",
+    "chatLock": {
+      "title": "Chat-Sperre",
+      "subtitle": "Diesen Chat auf diesem Gerät sperren und ausblenden."
+    },
+    "advancedPrivacy": {
+      "title": "Erweiterte Chat-Datenschutz",
+      "off": "Aus"
+    },
+    "createGroupWith": "Gruppe mit {{name}} erstellen",
+    "commonGroupWith": "Gemeinsame Gruppe mit {{name}}",
+    "groupMembers": "Gruppenmitglieder",
+    "addMembers": "Mitglieder hinzufügen",
+    "groupAdmin": "Gruppenadmin",
+    "viewPastMembers": "Frühere Mitglieder anzeigen",
+    "addToFavourites": "Zu Favoriten hinzufügen",
+    "addToList": "Zur Liste hinzufügen",
+    "block": "{{name}} blockieren",
+    "unblock": "{{name}} entsperren",
+    "report": "{{name}} melden",
+    "actions": {
+      "message": "Nachricht",
+      "dismissAdmin": "Als Admin entfernen",
+      "makeAdmin": "Zum Admin machen",
+      "removeFromGroup": "Aus der Gruppe entfernen"
+    },
+    "toasts": {
+      "madeAdmin": "{{name}} ist jetzt Admin",
+      "dismissedAdmin": "{{name}} ist kein Admin mehr",
+      "removedFromGroup": "{{name}} wurde aus der Gruppe entfernt",
+      "blocked": "{{name}} wurde blockiert.",
+      "unblocked": "{{name}} wurde entsperrt.",
+      "reported": "{{name}} wurde gemeldet.",
+      "reportedAndBlocked": "{{name}} wurde gemeldet und blockiert."
+    },
+    "errors": {
+      "makeAdmin": "Fehler: Konnte {{name}} nicht zum Admin machen",
+      "dismissAdmin": "Fehler: Konnte {{name}} nicht als Admin entfernen",
+      "removeMember": "Fehler beim Entfernen des Mitglieds"
+    },
+    "alerts": {
+      "block": {
+        "header": "Kontakt blockieren",
+        "message": "Sie werden keine Nachrichten oder Anrufe mehr von {{name}} erhalten.",
+        "cta": "Blockieren"
+      },
+      "unblock": {
+        "header": "Kontakt entsperren",
+        "message": "Möchten Sie {{name}} wirklich entsperren?"
+      },
+      "report": {
+        "header": "Kontakt melden",
+        "message": "Die letzten 5 Nachrichten von {{name}} werden gemeldet. Möchten Sie diesen Benutzer auch blockieren?",
+        "alsoBlock": "Kontakt auch blockieren",
+        "cta": "Melden"
+      }
+    }
+  },
+  "invite": {
+    "header": "Einen Freund einladen",
+    "actions": {
+      "search": "Kontakte durchsuchen",
+      "shareLink": "App-Link teilen",
+      "fromContacts": "Aus Kontakten einladen",
+      "invite": "Einladen"
+    },
+    "share": {
+      "title": "Begleite mich in dieser App!",
+      "subtitle": "App-Download-Link über eine beliebige App senden",
+      "body": "Schau dir diese tolle App an. Lade sie hier herunter:",
+      "button": "Teilen",
+      "success": "Link geteilt",
+      "copied": "Link kopiert"
+    },
+    "contacts": {
+      "title": "Aus Kontakten",
+      "subtitle": "Direkt aus deinem Telefonbuch einladen",
+      "header": "Aus Kontakten",
+      "notOnApp": "Noch nicht in der App"
+    },
+    "title": "Begleite mich in dieser App!",
+    "text": "Schau dir diese tolle App an. Lade sie hier herunter:",
+    "dialogTitle": "App-Link teilen",
+    "toasts": {
+      "openContacts": "Kontakte werden geöffnet...",
+      "searchContacts": "Kontaktsuche angetippt.",
+      "invited": "Einladung an {{phone}} gesendet"
+    },
+    "errors": {
+      "shareFailed": "Teilen-Sheet konnte nicht geöffnet werden."
+    }
+  },
+  "community": {
+    "manageGroups": {
+      "title": "Gruppen verwalten",
+      "groups": "Gruppen",
+      "createNew": "Neue Gruppe erstellen",
+      "addExisting": "Vorhandene Gruppen hinzufügen",
+      "info": "Mitglieder können bestehende Gruppen zur Genehmigung durch den Admin vorschlagen und neue Gruppen direkt hinzufügen. Anzeigen in",
+      "settingsLink": "Community-Einstellungen",
+      "listHeader": "Gruppen in dieser Community",
+      "loading": "Gruppen werden geladen...",
+      "empty": "Keine Gruppen für diese Community gefunden",
+      "members": "Mitglieder",
+      "unnamedGroup": "Unbenannte Gruppe",
+      "remove": {
+        "header": "Gruppe aus Community entfernen",
+        "message": "Möchten Sie diese Gruppe aus der Community entfernen? Die Gruppe bleibt bestehen, gehört aber nicht mehr zur Community.",
+        "alsoRemoveMembers": "Auch Mitglieder dieser Gruppe aus der Community und der Gruppe entfernen",
+        "cta": "Entfernen",
+        "aria": "Gruppe aus Community entfernen"
+      },
+      "toasts": {
+        "removed": "Gruppe aus Community entfernt und Mitglieder aktualisiert",
+        "removeFailed": "Entfernen der Gruppe fehlgeschlagen. Versuchen Sie es erneut."
+      }
+    },
+    "title": "Communitys",
+    "actions": {
+      "qr": "QR-Aktionen öffnen",
+      "menu": "Menü öffnen"
+    },
+    "newCommunity": "Neue Community",
+    "unnamedCommunity": "Unbenannte Community",
+    "viewAll": "Alle anzeigen",
+    "groupType": {
+      "normal": "Normale Gruppe",
+      "announcement": "Ankündigungsgruppe",
+      "general": "Allgemeine Gruppe"
+    },
+    "newGroup": {
+      "header": "Neue Gruppe",
+      "placeholder": "Gruppenname",
+      "create": "Erstellen"
+    },
+    "toasts": {
+      "groupCreated": "Gruppe erstellt"
+    }
+  },
+  "community_menu_component": {
+    "info": "Community-Info",
+    "invite": "Mitglieder einladen",
+    "settings": "Community-Einstellungen"
+  },
+  "group_preview_modal_component": {
+    "close": "Schließen",
+    "groupIcon": "Gruppensymbol",
+    "createdBy": "Erstellt von {{name}}",
+    "noMembers": "Noch keine Mitglieder",
+    "noDescription": "Keine Beschreibung",
+    "communityLabel": "Community:",
+    "joinNote": "Durch Beitritt werden Sie sofort Mitglied.",
+    "joinCta": "Gruppe beitreten"
+  },
+  "add_existing_groups_page": {
+    "header": "Vorhandene Gruppen hinzufügen",
+    "actions": {
+      "search": "Gruppen suchen",
+      "confirm": "Auswahl bestätigen",
+      "removeChip": "Ausgewählte Gruppe entfernen"
+    },
+    "of": "von",
+    "selected": "ausgewählt",
+    "banner": "Alle Mitglieder der Gruppen werden zur Community hinzugefügt.",
+    "listHeader": "Gruppen, bei denen Sie Admin sind",
+    "loading": "Gruppen werden geladen...",
+    "empty": "Keine Admin-Gruppen gefunden",
+    "checkboxLabel": "Gruppe auswählen",
+    "unnamedGroup": "Unbenannte Gruppe",
+    "toasts": {
+      "selectAtLeastOne": "Wählen Sie mindestens eine Gruppe aus"
+    }
+  }
+}

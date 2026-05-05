@@ -1,0 +1,727 @@
+{
+  "meta": {
+    "generatedAt": "2025-09-25T06:49:05.846991Z",
+    "note": "Translations for email-edit page.",
+    "translated": true,
+    "locale": "tr-TR"
+  },
+  "emailEdit": {
+    "title": "E-posta adresi",
+    "description": "E-posta, hesabınıza erişmenize yardımcı olur. Başkaları tarafından görülemez.",
+    "label": "E-posta",
+    "verified": "Doğrulandı",
+    "placeholder": "you@example.com",
+    "edit": "Düzenle",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "savedSuccess": "E-posta başarıyla kaydedildi.",
+    "validation": {
+      "required": "E-posta gereklidir.",
+      "invalid": "Lütfen geçerli bir e-posta adresi girin.",
+      "maxlength": "E-posta çok uzun (en fazla 254 karakter)."
+    }
+  },
+  "helpPage": {
+    "title": "Yardım",
+    "helpCenter": {
+      "title": "Yardım Merkezi",
+      "description": "Yardım, SSS ve iletişim seçenekleri alın."
+    },
+    "terms": {
+      "title": "Şartlar ve Gizlilik Politikası",
+      "description": "Şartlarımızı ve veri politikamızı okuyun."
+    },
+    "channelReports": {
+      "title": "Kanal Raporları",
+      "description": "Raporları yönetin ve görüntüleyin."
+    },
+    "appInfo": {
+      "title": "Uygulama Bilgileri",
+      "description": "Sürüm, yasal ve teknik bilgiler."
+    }
+  },
+  "common": { "ok": "Tamam", "cancel": "İptal", "logout": "Çıkış Yap", "reset": "Sıfırla" },
+  "settingsPage": {
+  "title": "Ayarlar",
+  "account": {
+    "title": "Hesap",
+    "description": "Gizlilik, güvenlik, numara değiştir"
+  },
+  "privacy": {
+    "title": "Gizlilik",
+    "description": "Gizlilik ayarlarınızı kontrol edin"
+  },
+  "avatar": {
+    "title": "Profil resmi",
+    "description": "Profil resminizi değiştirin"
+  },
+  "chats": {
+    "title": "Sohbetler",
+    "description": "Tema, duvar kağıdı, depolama ve veri"
+  },
+  "accessibility": {
+    "title": "Erişilebilirlik",
+    "description": "Metin boyutu ve ekran seçeneklerini ayarlayın"
+  },
+  "notifications": {
+    "title": "Bildirimler",
+    "description": "Mesajlar, gruplar ve aramalar için bildirimleri yönetin"
+  },
+  "storage": {
+    "title": "Depolama ve Veri",
+    "description": "Depolama ve ağ kullanımını yönetin"
+  },
+  "appLanguage": {
+    "title": "Uygulama dili",
+    "description": "Uygulama dilini seçin"
+  },
+  "help": {
+    "title": "Yardım",
+    "description": "Yardım merkezi, bize ulaşın, uygulama bilgileri"
+  },
+  "updates": {
+    "title": "Uygulama güncellemeleri",
+    "description": "Güncellemeleri kontrol edin ve otomatik güncellemeleri etkinleştirin"
+  },
+  "invite": {
+    "title": "Arkadaş davet et",
+    "description": "Uygulamayı kişilerinizle paylaşın"
+  },
+  "logout": {
+    "title": "Çıkış yap",
+    "description": "Uygulama verilerini temizle ve çıkış yap",
+    "confirmHeader": "Çıkışı onayla",
+    "confirmMessage": "Uygulama verilerini temizleyip çıkış yapmak istediğinizden emin misiniz?",
+    "loadingHeader": "Çıkış yapılıyor",
+    "loadingMessage": "Lütfen bekleyin...",
+    "successHeader": "Çıkış yapıldı",
+    "successMessage": "Başarıyla çıkış yaptınız."
+  },
+  "defaultStatus": "Mevcut"
+},
+  "accountPage": {
+    "title": "Hesap",
+    "securityNotifications": "Güvenlik bildirimleri",
+    "passkeys": "Geçiş anahtarları",
+    "emailAddress": "E-posta adresi",
+    "twoStep": "İki adımlı doğrulama",
+    "changeNumber": "Numarayı değiştir",
+    "requestInfo": "Hesap bilgisi iste",
+    "addAccount": "Hesap ekle",
+    "deleteAccount": "Hesabı sil",
+    "confirmDelete": {
+      "title": "Hesap silinsin mi?",
+      "message": "Bu işlem hesabınızı ve verilerinizi kalıcı olarak silecektir.",
+      "confirm": "Sil",
+      "cancel": "İptal",
+      "log": "Hesap silme penceresi açıldı"
+    }
+  },
+  "accessibility": {
+    "title": "Erişilebilirlik",
+    "groups": {
+      "displayMotion": "Ekran ve hareket",
+      "interaction": "Etkileşim"
+    },
+    "increaseContrast": {
+      "title": "Karşıtlığı artır",
+      "desc": "Açık modda okunabilirliği artırmak için ana renkleri koyulaştırın."
+    },
+    "reduceMotion": {
+      "title": "Hareketi azalt",
+      "desc": "Animasyonlu çıkartmaları, GIF’leri ve geçişleri en aza indirin."
+    },
+    "largeText": {
+      "title": "Büyük metin",
+      "desc": "Okumayı kolaylaştırmak için sistem yazı tipi boyutunu artırın."
+    },
+    "simpleAnimations": {
+      "title": "Basitleştirilmiş animasyonlar",
+      "desc": "Daha kolay etkileşim için karmaşık animasyonları azaltın."
+    },
+    "grayscale": {
+      "title": "Gri tonlama modu",
+      "desc": "Göz yorgunluğunu azaltmak için tüm arayüz renklerini gri tonlarına dönüştürün."
+    }
+  },
+  "privacyPage": {
+    "title": "Gizlilik",
+    "groups": {
+      "whoCanSee": "Bilgilerimi kim görebilir",
+      "other": "Diğer"
+    },
+    "lastSeen": {
+      "title": "Son Görülme ve Çevrimiçi",
+      "desc": "Son görülme ve çevrimiçi durumunuzu kimin görebileceğini kontrol edin"
+    },
+    "profilePhoto": {
+      "title": "Profil Fotoğrafı",
+      "desc": "Fotoğrafınızı kimin görebileceğini seçin"
+    },
+    "about": {
+      "title": "Hakkında",
+      "desc": "Hakkında bilgilerinizi kimin görebileceğini kontrol edin"
+    },
+    "status": {
+      "title": "Durum",
+      "desc": "Durum güncellemelerinizi kimin görebileceğini yönetin"
+    },
+    "blocked": {
+      "title": "Engellenen Kişiler",
+      "desc": "Engellenen kullanıcıları görüntüleyin ve yönetin"
+    },
+    "options": {
+      "everyone": "Herkes",
+      "contacts": "Kişilerim",
+      "nobody": "Hiç kimse"
+    }
+  },
+  "avatarPage": {
+    "title": "Avatarını Oluştur",
+    "previewAlt": "Avatar önizlemesi",
+    "sections": {
+      "customization": "Kişiselleştirme Seçenekleri"
+    },
+    "fields": {
+      "hair": "Saç",
+      "accessories": "Aksesuarlar",
+      "hairColor": "Saç rengi",
+      "eyes": "Gözler",
+      "mouth": "Ağız",
+      "clothes": "Kıyafetler",
+      "skin": "Ten"
+    },
+    "placeholders": {
+      "hair": "Saç stilini seç",
+      "accessories": "Aksesuarları seç",
+      "hairColor": "Saç rengini seç",
+      "eyes": "Göz stilini seç",
+      "mouth": "Ağız stilini seç",
+      "clothes": "Kıyafet seç",
+      "skin": "Ten rengini seç"
+    },
+    "buttons": {
+      "download": "İndir",
+      "downloading": "İndiriliyor…",
+      "save": "Kaydet"
+    },
+    "toast": {
+      "saved": "Avatar seçenekleri yerel olarak kaydedildi.",
+      "downloadError": "İndirme başarısız. Lütfen tekrar deneyin."
+    }
+  },
+  "notifications": {
+    "title": "Bildirimler",
+    "highPriority": {
+      "title": "Yüksek öncelikli bildirimleri kullan",
+      "desc": "Rahatsız Etme açık olsa bile sesli ve önizlemeli bildirimler al"
+    },
+    "message": {
+      "title": "Mesaj bildirimleri",
+      "desc": "Mesajlar için uyarıları özelleştir"
+    },
+    "group": {
+      "title": "Grup sohbet bildirimleri",
+      "desc": "Grup sohbetleri için bildirimleri yönet"
+    },
+    "call": {
+      "title": "Arama bildirimleri",
+      "desc": "Zil sesleri ve titreşim ayarları"
+    }
+  },
+  "storage": {
+    "title": "Depolama ve Veri",
+    "totalUsedHuman": "{{used}} MB / {{total}} MB",
+    "cards": {
+      "usage": {
+        "title": "Depolama kullanımı",
+        "used": "{{mb}} MB kullanıldı",
+        "total": "Toplam {{mb}} MB"
+      }
+    },
+    "sections": {
+      "network": "Ağ kullanımı",
+      "manage": "Yönet"
+    },
+    "network": {
+      "sent": {
+        "title": "Gönderilen veri",
+        "subtitle": "{{val}}"
+      },
+      "received": {
+        "title": "Alınan veri",
+        "subtitle": "{{val}}"
+      }
+    },
+    "manage": {
+      "title": "Depolamayı yönet",
+      "desc": "Büyük dosyaları, sohbetleri ve medyayı gözden geçir ve sil"
+    },
+    "autoDownload": {
+      "title": "Medya otomatik indirme",
+      "desc": "Mobil/Wi-Fi/dolaşımda nelerin indirileceğini kontrol et"
+    },
+    "actions": {
+      "analyze": "Analiz et",
+      "clearCache": "Önbelleği temizle",
+      "resetStats": "İstatistikleri sıfırla"
+    },
+    "toast": {
+      "cleared": "{{mb}} MB önbellek temizlendi",
+      "statsReset": "Ağ istatistikleri sıfırlandı"
+    }
+  },
+
+  "chats": {
+    "title": "แชท",
+    "sections": {
+      "appearance": "ลักษณะ",
+      "behavior": "พฤติกรรมข้อความ",
+      "management": "การจัดการแชท",
+      "translation": "การแปลภาษา"
+    },
+    "items": {
+      "theme": {
+        "title": "ธีม",
+        "sub": "ค่าเริ่มต้นของระบบ"
+      },
+      "chatTheme": {
+        "title": "ธีมแชทเริ่มต้น",
+        "sub": "เลือกภาพพื้นหลังหรือธีม"
+      },
+      "fontSize": {
+        "title": "ขนาดตัวอักษร",
+        "sub": "ปานกลาง"
+      },
+      "enterToSend": {
+        "title": "กด Enter เพื่อส่ง",
+        "sub": "กด Enter เพื่อส่งข้อความ"
+      },
+      "mediaVisibility": {
+        "title": "การแสดงสื่อ",
+        "sub": "แสดงสื่อที่ดาวน์โหลดใหม่ในแกลเลอรี"
+      },
+      "keepArchived": {
+        "title": "เก็บแชทที่เก็บถาวรไว้",
+        "sub": "แชทที่เก็บถาวรจะยังคงอยู่แม้มีข้อความใหม่เข้ามา"
+      },
+      "transcripts": {
+        "title": "ถอดเสียงข้อความเสียง",
+        "sub": "ถอดเสียงข้อความเสียงใหม่โดยอัตโนมัติ"
+      },
+      "translation": {
+        "title": "เปิดใช้การแปลภาษา",
+        "sub": "แปลข้อความที่คุณส่ง",
+        "notice": "ข้อความที่แปลอาจถูกประมวลผลโดยบริการภายนอกเพื่อความแม่นยำ ข้อมูลของคุณยังคงเป็นส่วนตัวและจะไม่ถูกจัดเก็บ",
+        "reset": {
+          "title": "รีเซ็ตความยินยอม",
+          "sub": "ล้างความยินยอมในการแปลและปิดใช้งานฟีเจอร์นี้"
+        }
+      },
+      "backup": {
+        "title": "สำรองข้อมูลแชท",
+        "sub": "สำรองข้อความไปยังที่เก็บข้อมูลบนคลาวด์"
+      },
+      "transfer": {
+        "title": "โอนย้ายแชท",
+        "sub": "ย้ายแชทระหว่างอุปกรณ์"
+      },
+      "history": {
+        "title": "ประวัติแชท",
+        "sub": "ส่งออก เก็บถาวร ล้าง หรือ ลบแชททั้งหมด"
+      }
+    },
+    "toasts": {
+      "enter": {
+        "enabled": "เปิดใช้งานการกด Enter เพื่อส่งแล้ว",
+        "disabled": "ปิดใช้งานการกด Enter เพื่อส่งแล้ว"
+      },
+      "media": {
+        "on": "เปิดการแสดงสื่อแล้ว",
+        "off": "ปิดการแสดงสื่อแล้ว"
+      },
+      "archived": {
+        "enabled": "เปิดการเก็บถาวรไว้แล้ว",
+        "disabled": "ปิดการเก็บถาวรไว้แล้ว"
+      },
+      "transcripts": {
+        "enabled": "เปิดการถอดเสียงแล้ว",
+        "disabled": "ปิดการถอดเสียงแล้ว"
+      },
+      "translation": {
+        "enabled": "เปิดใช้งานการแปลแล้ว",
+        "disabled": "ปิดใช้งานการแปลแล้ว",
+        "consentDeclined": "ปฏิเสธความยินยอมการแปลแล้ว",
+        "consentReset": "รีเซ็ตความยินยอมการแปลแล้ว"
+      },
+      "backup": {
+        "starting": "กำลังเริ่มการสำรองข้อมูล…",
+        "done": "สำรองข้อมูลเสร็จสิ้น"
+      }
+    },
+    "dialogs": {
+      "translationConsent": {
+        "header": "การแปลจำเป็นต้องส่งข้อความไปยังบริการภายนอก",
+        "message": "เพื่อให้การแปลข้อความ เราจะส่งข้อความไปยังบริการแปลภายนอก เราไม่เก็บข้อมูลบัญชีส่วนบุคคลของคุณ จะส่งเฉพาะข้อความเท่านั้น หากคุณยินยอม การแปลจะถูกดาวน์โหลดและเก็บไว้ในเครื่อง คุณสามารถเพิกถอนความยินยอมได้ทุกเมื่อ",
+        "decline": "ปฏิเสธ",
+        "accept": "ยอมรับ"
+      },
+      "resetTranslationConsent": {
+        "header": "รีเซ็ตความยินยอมการแปล",
+        "message": "ระบบจะล้างความยินยอมการแปลของคุณและปิดฟีเจอร์นี้ คุณสามารถเปิดใช้งานอีกครั้งได้ในภายหลัง"
+      }
+    }
+  }
+
+,
+  "profilePage": {
+    "title": "Profil",
+    "imageAlt": "Profil resmi",
+    "buttons": {
+      "edit": "Düzenle",
+      "addLinks": "Bağlantı ekle",
+      "cancel": "İptal"
+    },
+    "fields": {
+      "name": "Ad",
+      "about": "Hakkında",
+      "phone": "Telefon",
+      "links": "Bağlantılar"
+    },
+    "actions": {
+      "source": {
+        "header": "Resim kaynağını seç",
+        "camera": "Kamera",
+        "gallery": "Galeri",
+        "cancel": "İptal"
+      }
+    },
+    "loading": {
+      "openingCamera": "Kamera açılıyor...",
+      "processing": "Resim işleniyor...",
+      "updating": "Profil resmi güncelleniyor..."
+    },
+    "validation": {
+      "size": "Resim boyutu 5MB’den küçük olmalıdır",
+      "type": "Lütfen geçerli bir resim dosyası seçin (JPEG, PNG, WebP)"
+    },
+    "toast": {
+      "loadFailed": "Profil verileri yüklenemedi",
+      "imageLoadFailed": "Profil resmi yüklenemedi",
+      "selectFailed": "Resim seçilemedi. Lütfen tekrar deneyin.",
+      "processFailed": "Resim işlenirken hata oluştu. Lütfen tekrar deneyin.",
+      "noUser": "Kullanıcı kimliği bulunamadı",
+      "updated": "Profil resmi başarıyla güncellendi!",
+      "updateFailed": "Profil resmi güncellenemedi"
+    }
+  },
+  "footerTabs": {
+    "chat": "Sohbetler",
+    "updates": "Güncellemeler",
+    "communities": "Topluluklar",
+    "calls": "Aramalar",
+    "badges": {
+      "unreadChats": "{{count}} okunmamış Sohbetler",
+      "unreadUpdates": "{{count}} Güncellemeler"
+    }
+  },
+  "socialLinks": {
+    "title": "Bağlantılar",
+    "intro": "Profilinize bağlantılar eklemek, kişilerin diğer profillerinizi kolayca ziyaret etmesine yardımcı olur.",
+    "instagram": {
+      "title": "Instagram",
+      "add": "Instagram hesabınızı ekleyin"
+    },
+    "actions": {
+      "add": "Ekle",
+      "edit": "Düzenle",
+      "cancel": "İptal"
+    },
+    "privacy": {
+      "note": "Bağlantılarınızı kimin görebileceğini yönetmek için gidin",
+      "link": "gizlilik ayarları"
+    }
+  },
+  "addInstagram": {
+    "title": "Instagram Ekle",
+    "loading": "Yükleniyor...",
+    "saving": "Kaydediliyor...",
+    "usernameLabel": "Instagram kullanıcı adı",
+    "usernamePlaceholder": "kullanıcı adı",
+    "hint": {
+      "text": "Instagram kullanıcı adı eklemek profilinizde görünür hale getirecektir.",
+      "learnMore": "Daha fazla bilgi"
+    },
+    "save": "Kaydet",
+    "validation": {
+      "required": "Lütfen Instagram kullanıcı adınızı girin",
+      "invalid": "Geçerli bir kullanıcı adı girin (boşluk yok, en fazla 30 karakter)"
+    },
+    "toast": {
+      "fetchFailed": "Instagram bağlantısı alınamadı",
+      "saved": "Instagram başarıyla kaydedildi!",
+      "saveFailed": "Instagram bağlantısı güncellenemedi. Tekrar deneyin."
+    }
+  },
+  "home": {
+    "search": {
+      "placeholder": "Sor veya Ara"
+    },
+    "filters": {
+      "all": "TÜM",
+      "read": "Okundu",
+      "unread": "Okunmadı",
+      "groups": "Gruplar"
+    },
+    "groupCreator": {
+      "placeholder": "Gruplar Adını Girin"
+    },
+    "typing": "yazıyor...",
+    "time": {
+      "yesterday": "Dün"
+    },
+    "preview": {
+      "deleted": "Bu mesaj silindi",
+      "encrypted": "[Şifrelenmiş]",
+      "media": {
+        "photo": "PicTell (Fotoğraf)",
+        "video": "ClipTell (Video)",
+        "audio": "VoiceTell (Ses)",
+        "file": "FileTell (Ek)",
+        "generic": "[Medya]"
+      }
+    },
+    "actions": {
+      "scan": "DemmCode Tara",
+      "camera": "Kamerayı aç",
+      "menu": "Menüyü aç",
+      "contacts": "DemmList (Kişiler)"
+    },
+    "scan": {
+      "onlyDevice": "Barkod tarama yalnızca gerçek bir cihazda çalışır.",
+      "permission": "Barkod taramak için kamera izni gereklidir.",
+      "notFound": "Barkod bulunamadı.",
+      "error": "Taramada bir şeyler ters gitti."
+    },
+    "logout": {
+      "header": "Çıkış Yap",
+      "message": "Oturum süresi doldu/bitti."
+    },
+    "alt": {
+      "profile": "Profil"
+    }
+  },
+  "menu": {
+    "newGroup": "Yeni grup",
+    "newCommunity": "Yeni topluluk",
+    "newBroadcast": "Yeni yayın (WIP)",
+    "starred": "Yıldızlı (WIP)",
+    "readAll": "Tümünü oku (WIP)",
+    "settings": "Ayarlar",
+    "createChannels": "Kanal oluştur (WIP)",
+    "statusPrivacy": "Durum gizliliği (WIP)",
+    "clearCallLogs": "Çağrı kayıtlarını temizle (WIP)"
+  },
+  "userabout": {
+    "members": "Üyeler",
+    "group": "Grup",
+    "groups": "Gruplar",
+    "inCommon": "Ortak",
+    "toolbar": {
+      "message": "Mesaj",
+      "call": "Ara",
+      "video": "Video",
+      "add": "Ekle"
+    },
+    "defaults": {
+      "heyThere": "Merhaba! Telldemm kullanıyorum.",
+      "noGroupDescription": "Grup açıklaması yok.",
+      "unknown": "Bilinmiyor",
+      "unknownDate": "Bilinmeyen Tarih",
+      "unnamedGroup": "İsimsiz Grup"
+    },
+    "updatedOn": "Güncellendi",
+    "createdByOn": "{{name}} tarafından oluşturuldu",
+    "media": {
+      "title": "Medya, bağlantılar ve belgeler"
+    },
+    "notifications": "Bildirimler",
+    "mediaVisibility": "Medya Görünürlüğü",
+    "encryption": {
+      "title": "Şifreleme",
+      "subtitle": "Mesajlar ve aramalar uçtan uca şifrelenmiştir. Doğrulamak için dokunun."
+    },
+    "disappearing": "Kaybolan mesajlar",
+    "chatLock": {
+      "title": "Sohbet kilidi",
+      "subtitle": "Bu sohbeti bu cihazda kilitleyin ve gizleyin."
+    },
+    "advancedPrivacy": {
+      "title": "Gelişmiş Sohbet Gizliliği",
+      "off": "Kapalı"
+    },
+    "createGroupWith": "{{name}} ile grup oluştur",
+    "commonGroupWith": "{{name}} ile ortak grup",
+    "groupMembers": "Grup Üyeleri",
+    "addMembers": "Üye Ekle",
+    "groupAdmin": "Grup yöneticisi",
+    "viewPastMembers": "Geçmiş üyeleri gör",
+    "addToFavourites": "Favorilere ekle",
+    "addToList": "Listeye ekle",
+    "block": "{{name}} engelle",
+    "unblock": "{{name}} engeli kaldır",
+    "report": "{{name}} şikayet et",
+    "actions": {
+      "message": "Mesaj",
+      "dismissAdmin": "Yöneticilikten çıkar",
+      "makeAdmin": "Yönetici yap",
+      "removeFromGroup": "Gruptan çıkar"
+    },
+    "toasts": {
+      "madeAdmin": "{{name}} artık yönetici",
+      "dismissedAdmin": "{{name}} artık yönetici değil",
+      "removedFromGroup": "{{name}} gruptan çıkarıldı",
+      "blocked": "{{name}} engellendi.",
+      "unblocked": "{{name}} engeli kaldırıldı.",
+      "reported": "{{name}} şikayet edildi.",
+      "reportedAndBlocked": "{{name}} şikayet edilip engellendi."
+    },
+    "errors": {
+      "makeAdmin": "{{name}} yönetici yapılamadı",
+      "dismissAdmin": "{{name}} yöneticilikten çıkarılamadı",
+      "removeMember": "Üye çıkarılırken hata oluştu"
+    },
+    "alerts": {
+      "block": {
+        "header": "Kişiyi engelle",
+        "message": "Artık {{name}}’den mesaj veya arama almayacaksınız.",
+        "cta": "Engelle"
+      },
+      "unblock": {
+        "header": "Kişi engelini kaldır",
+        "message": "{{name}} engelini kaldırmak istediğinize emin misiniz?"
+      },
+      "report": {
+        "header": "Kişiyi şikayet et",
+        "message": "Son 5 mesaj {{name}} tarafından bildirilecek. Bu kullanıcıyı da engellemek istiyor musunuz?",
+        "alsoBlock": "Kişiyi de engelle",
+        "cta": "Şikayet et"
+      }
+    }
+  },
+  "invite": {
+    "header": "Bir arkadaş davet et",
+    "actions": {
+      "search": "Kişileri ara",
+      "shareLink": "Uygulama bağlantısını paylaş",
+      "fromContacts": "Kişilerden davet et",
+      "invite": "Davet et"
+    },
+    "share": {
+      "title": "Bu uygulamada bana katıl!",
+      "subtitle": "Uygulama indirme bağlantısını herhangi bir uygulama ile gönder",
+      "body": "Bu harika uygulamaya göz at. Buradan indir:",
+      "button": "Paylaş",
+      "success": "Bağlantı paylaşıldı",
+      "copied": "Bağlantı kopyalandı"
+    },
+    "contacts": {
+      "title": "Kişilerden",
+      "subtitle": "Telefon rehberinizden doğrudan davet edin",
+      "header": "Kişilerden",
+      "notOnApp": "Henüz uygulamada değil"
+    },
+    "title": "Bu uygulamada bana katıl!",
+    "text": "Bu harika uygulamaya göz at. Buradan indir:",
+    "dialogTitle": "Uygulama bağlantısını paylaş",
+    "toasts": {
+      "openContacts": "Kişiler açılıyor...",
+      "searchContacts": "Kişi arama seçildi.",
+      "invited": "{{phone}} numarasına davet gönderildi"
+    },
+    "errors": {
+      "shareFailed": "Paylaşım sayfası açılamadı."
+    }
+  },
+  "community": {
+    "manageGroups": {
+      "title": "Grupları yönet",
+      "groups": "gruplar",
+      "createNew": "Yeni grup oluştur",
+      "addExisting": "Mevcut grupları ekle",
+      "info": "Üyeler mevcut grupları yönetici onayı için önerebilir ve yeni grupları doğrudan ekleyebilir. Görüntüle:",
+      "settingsLink": "Topluluk ayarları",
+      "listHeader": "Bu topluluktaki gruplar",
+      "loading": "Gruplar yükleniyor...",
+      "empty": "Bu topluluk için grup bulunamadı",
+      "members": "üyeler",
+      "unnamedGroup": "Adsız grup",
+      "remove": {
+        "header": "Grubu topluluktan kaldır",
+        "message": "Bu grubu topluluktan kaldırmak istiyor musunuz? Grup kalacak ancak artık topluluğa ait olmayacak.",
+        "alsoRemoveMembers": "Bu grubun üyelerini de topluluktan ve gruptan kaldır",
+        "cta": "Kaldır",
+        "aria": "Grubu topluluktan kaldır"
+      },
+      "toasts": {
+        "removed": "Grup topluluktan kaldırıldı ve üyeler güncellendi",
+        "removeFailed": "Grup kaldırılamadı. Tekrar deneyin."
+      }
+    },
+    "title": "Topluluklar",
+    "actions": {
+      "qr": "QR işlemlerini aç",
+      "menu": "Menüyü aç"
+    },
+    "newCommunity": "Yeni topluluk",
+    "unnamedCommunity": "Adsız Topluluk",
+    "viewAll": "Hepsini gör",
+    "groupType": {
+      "normal": "Normal Grup",
+      "announcement": "Duyuru Grubu",
+      "general": "Genel Grup"
+    },
+    "newGroup": {
+      "header": "Yeni Grup",
+      "placeholder": "Grup Adı",
+      "create": "Oluştur"
+    },
+    "toasts": {
+      "groupCreated": "Grup oluşturuldu"
+    }
+  },
+  "community_menu_component": {
+    "info": "Topluluk bilgisi",
+    "invite": "Üye davet et",
+    "settings": "Topluluk ayarları"
+  },
+  "group_preview_modal_component": {
+    "close": "Kapat",
+    "groupIcon": "Grup simgesi",
+    "createdBy": "{{name}} tarafından oluşturuldu",
+    "noMembers": "Henüz üye yok",
+    "noDescription": "Açıklama yok",
+    "communityLabel": "Topluluk:",
+    "joinNote": "Katıldığınızda hemen üye olursunuz.",
+    "joinCta": "Gruba Katıl"
+  },
+  "add_existing_groups_page": {
+    "header": "Mevcut grupları ekle",
+    "actions": {
+      "search": "Grupları ara",
+      "confirm": "Seçimi onayla",
+      "removeChip": "Seçilen grubu kaldır"
+    },
+    "of": "üzerinden",
+    "selected": "seçildi",
+    "banner": "Gruplardaki herkes topluluğa eklenecek.",
+    "listHeader": "Yöneticisi olduğunuz gruplar",
+    "loading": "Gruplar yükleniyor...",
+    "empty": "Hiç yönetici grubu bulunamadı",
+    "checkboxLabel": "Grup seç",
+    "unnamedGroup": "Adsız grup",
+    "toasts": {
+      "selectAtLeastOne": "En az bir grup seçin"
+    }
+  }
+}

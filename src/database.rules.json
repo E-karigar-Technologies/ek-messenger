@@ -1,0 +1,114 @@
+{
+  "rules": {
+    "users": {
+    	"$userId": {
+        ".read": "auth.uid === $userId",
+        ".write": "false" 
+      }
+    },
+    "userchats": {
+      "$userId": {
+        ".read": "auth.uid === $userId",
+        ".write": "false",
+        ".indexOn": ["lastmessageAt"]
+      }
+    },
+    "chats": {
+      "$roomId": {
+        ".read": "root.child('userchats').child(auth.uid).hasChild($roomId)",
+        ".write": "false",
+        ".indexOn": ["timestamp"]
+      }
+    },
+    "groups": {
+      "$groupId": {
+        ".read": "auth != null",
+        ".write": "false"
+      }
+    },
+    "presence": {
+      "$userId": {
+        ".read": "auth != null",
+        ".write": "false"
+      }
+    },
+    "typing": {
+      "$roomId": {
+        ".read": "root.child('userchats').child(auth.uid).hasChild($roomId)",
+        "$userId": {
+          ".write": "false"
+        }
+      }
+    },
+    "unreadCounts": {
+      "$userId": {
+          "$roomId": {
+            ".read": "auth.uid === $userId",
+            ".write": "false"
+          }
+      }
+    },
+    "usersBlocks": {
+      "$blockerId": {
+        ".read": "auth.uid === $blockerId",
+        "$blockedId": {
+           ".write": "false"
+        }
+      }
+    },
+    "communities": {
+      "$communityId": {
+        ".read": "auth != null",
+        ".write": "false"
+      }
+    },
+    "usersInCommunity": {
+      "$userId": {
+        ".read": "auth.uid === $userId",
+        ".write": "false"
+      }
+    },
+    "pinnedMessages": {
+      "$roomId": {
+        ".read": "auth != null",
+        ".write": "false"
+      }
+    },
+    "userFilters": {
+      "$userId": {
+        ".read": "auth.uid === $userId",
+        ".write": "false"
+      }
+    },
+    "activeChats": {
+      "$userId": {
+        ".read": "auth != null",
+        ".write": "false"
+      }
+    },
+    "channels": {
+      "$channelId": {
+        ".read": "auth != null",
+        ".write": "false"
+      }
+    },
+    "disappearingSettings": {
+      "$roomId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "globalSettings": {
+      "$userId": {
+        ".read": "auth.uid === $userId",
+        ".write": "auth != null"
+      }
+    },
+    "channel_unreadCount": {
+      "$userId": {
+        ".read": "auth.uid === $userId",
+        ".write": "false"
+      }
+    }
+  }
+}

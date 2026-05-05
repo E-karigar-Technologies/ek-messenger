@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-button slot="start" fill="clear" (click)="goBack()" class="back-btn">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title class="toolbar-title">
+      <div class="title-wrap">
+        <span class="title-main">Group permissions</span>
+        <span class="title-sub">{{ groupName }}</span>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="permissions-content">
+
+  <!-- Members Can Section -->
+  <div class="section-label">Members can:</div>
+
+  <div class="permissions-card">
+
+    <!-- Edit group settings -->
+    <div class="permission-item" [class.last]="false">
+      <div class="perm-icon-wrap">
+        <ion-icon name="pencil-outline" class="perm-icon"></ion-icon>
+      </div>
+      <div class="perm-body">
+        <div class="perm-title">Edit group settings</div>
+        <div class="perm-desc">
+          This includes the name, icon, description, disappearing message timer,
+          and the ability to pin, keep or unkeep messages.
+        </div>
+      </div>
+      <ion-toggle
+        [(ngModel)]="permissions.editGroupSettings"
+        (ionChange)="onPermissionChange('editGroupSettings', $event)"
+        class="custom-toggle"
+      ></ion-toggle>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Send new messages -->
+    <div class="permission-item">
+      <div class="perm-icon-wrap">
+        <ion-icon name="chatbox-outline" class="perm-icon"></ion-icon>
+      </div>
+      <div class="perm-body">
+        <div class="perm-title">Send new messages</div>
+      </div>
+      <ion-toggle
+        [(ngModel)]="permissions.sendMessages"
+        (ionChange)="onPermissionChange('sendMessages', $event)"
+        class="custom-toggle"
+      ></ion-toggle>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Add other members -->
+    <div class="permission-item">
+      <div class="perm-icon-wrap">
+        <ion-icon name="person-add-outline" class="perm-icon"></ion-icon>
+      </div>
+      <div class="perm-body">
+        <div class="perm-title">Add other members</div>
+        <div class="perm-desc" *ngIf="!permissions.addMembers">
+          Only admins can add new people to this group.
+        </div>
+      </div>
+      <ion-toggle
+        [(ngModel)]="permissions.addMembers"
+        (ionChange)="onPermissionChange('addMembers', $event)"
+        class="custom-toggle"
+      ></ion-toggle>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Invite via link or QR code -->
+    <div class="permission-item last">
+      <div class="perm-icon-wrap">
+        <ion-icon name="link-outline" class="perm-icon"></ion-icon>
+      </div>
+      <div class="perm-body">
+        <div class="perm-title">Invite via link or QR code</div>
+      </div>
+      <ion-toggle
+        [(ngModel)]="permissions.inviteViaLink"
+        (ionChange)="onPermissionChange('inviteViaLink', $event)"
+        class="custom-toggle"
+      ></ion-toggle>
+    </div>
+
+  </div>
+
+  <!-- Admins Can Section -->
+  <!-- <div class="section-label admins-label">Admins can:</div>
+
+  <div class="permissions-card">
+
+    <div class="permission-item last">
+      <div class="perm-icon-wrap">
+        <ion-icon name="person-circle-outline" class="perm-icon"></ion-icon>
+      </div>
+      <div class="perm-body">
+        <div class="perm-title">Approve new members</div>
+        <div class="perm-desc">
+          When turned on, admins must approve anyone who wants to join the group.
+        </div>
+        <div class="learn-more" (click)="learnMore()">Learn more</div>
+      </div>
+      <ion-toggle
+        [(ngModel)]="permissions.approveNewMembers"
+        (ionChange)="onPermissionChange('approveNewMembers', $event)"
+        class="custom-toggle"
+      ></ion-toggle>
+    </div>
+
+  </div> -->
+
+  <!-- Save Button -->
+  <div class="save-wrap">
+    <ion-button expand="block" class="save-btn" (click)="savePermissions()" [disabled]="isSaving">
+      <ion-spinner *ngIf="isSaving" name="crescent" class="save-spinner"></ion-spinner>
+      <span *ngIf="!isSaving">Save Changes</span>
+    </ion-button>
+  </div>
+
+</ion-content>

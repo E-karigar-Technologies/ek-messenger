@@ -1,0 +1,10 @@
+.custom-searchbar {
+  --background: var(--searchbar-bg);
+  --border-radius: 25px;
+  color: var(--ion-text-color);
+  backdrop-filter: blur(10px);
+  --box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.itemLabel{
+    color: var(--ion-text-color);
+}

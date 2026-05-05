@@ -1,0 +1,116 @@
+.highlight-message {
+  background-color: rgba(var(--ion-color-primary-rgb), 0.25) !important;
+  border-left: 4px solid var(--ion-color-primary) !important;
+  border-right: 4px solid var(--ion-color-primary) !important;
+  animation: highlightPulseReply 1.5s ease-in-out;
+  box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+  z-index: 100;
+  position: relative;
+}
+
+@keyframes highlightPulseReply {
+  0% {
+    background-color: rgba(var(--ion-color-primary-rgb), 0.5);
+    box-shadow: 0 0 0 8px rgba(var(--ion-color-primary-rgb), 0.3);
+    transform: scale(1.05);
+  }
+  50% {
+    background-color: rgba(var(--ion-color-primary-rgb), 0.35);
+    box-shadow: 0 0 0 6px rgba(var(--ion-color-primary-rgb), 0.2);
+    transform: scale(1.03);
+  }
+  100% {
+    background-color: rgba(var(--ion-color-primary-rgb), 0.25);
+    box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15);
+    transform: scale(1.02);
+  }
+}
+
+// ✅ Custom Loading Controller Styles
+::ng-deep .custom-loading-controller {
+  --backdrop-opacity: 0.6;
+  
+  .loading-wrapper {
+    border-radius: 16px;
+    padding: 24px;
+    background: white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    min-width: 260px;
+    
+    .loading-content {
+      text-align: center;
+    }
+    
+    ion-spinner {
+      color: var(--ion-color-primary);
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      display: block;
+    }
+    
+    p {
+      margin: 0;
+      font-size: 15px;
+      color: #333;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+  }
+}
+
+// ✅ Loading animation
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.homemainicons {
+  color: white;
+  background: var(--ion-color-primary) !important;
+  font-size: 18px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  width: 34px;
+}
+
+.system-msg-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px 16px;
+
+  span {
+    background: #fff;
+    color: gray;
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.4;
+    letter-spacing: 0.1px;
+  }
+}
+
+// Dark theme support
+.dark .system-msg-center span,
+[data-theme="dark"] .system-msg-center span {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+}
+.invite-link-chip {
+  max-width: 100%;
+  transition: background 0.15s ease, border-color 0.15s ease;
+ 
+  &:active {
+    background: rgba(21, 101, 192, 0.15) !important;
+    border-color: rgba(21, 101, 192, 0.4) !important;
+  }
+}

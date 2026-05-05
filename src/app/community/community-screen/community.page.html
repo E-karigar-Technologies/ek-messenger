@@ -1,0 +1,157 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title slot="start" class="ion-text-start">
+      <h2 class="heading">{{ 'community.title' | translate }}</h2>
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <!-- Syncing indicator -->
+      <!-- <ion-chip *ngIf="isSyncing" color="primary" size="small" style="margin-right: 8px;">
+        <ion-icon name="sync-outline"></ion-icon>
+        <ion-label>{{ 'community.syncing' | translate }}</ion-label>
+      </ion-chip> -->
+
+      <ion-button fill="clear" (click)="presentPopover($event)"
+        [attr.aria-label]="'community.actions.menu' | translate">
+        <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Pull to refresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="refreshCommunities($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline"
+      [pullingText]="'community.pullToRefresh' | translate" refreshingSpinner="circles"
+      [refreshingText]="'refreshing'">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- New Community button -->
+  <ion-item lines="none" class="new-community" button (click)="createCommunityPrompt()"
+    [attr.aria-label]="'community.newCommunity' | translate">
+    <ion-avatar slot="start" class="new-community-avatar">
+      <img src="assets/images/profile.png" />
+      <ion-icon name="add-circle" class="add-icon"></ion-icon>
+    </ion-avatar>
+    <ion-label>
+      <h2 class="header">{{ 'community.newCommunity' | translate }}</h2>
+    </ion-label>
+  </ion-item>
+
+  <!-- 🔥 Skeleton while loading (first time only) -->
+  <ng-container *ngIf="loading; else contentOrEmpty">
+    <ion-list>
+      <ng-container *ngFor="let _ of skeletonCommunities">
+        <!-- community row skeleton -->
+        <ion-item class="community-item community-skeleton">
+          <ion-avatar slot="start">
+            <ion-skeleton-text animated style="width: 44px; height: 44px; border-radius: 50%"></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <h2>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </h2>
+          </ion-label>
+        </ion-item>
+
+        <!-- groups skeleton -->
+        <ion-list lines="none" class="group-list">
+          <ion-item *ngFor="let __ of [0,1,2]" class="group-item">
+            <div slot="start" class="group-icon-skeleton">
+              <ion-skeleton-text animated style="width: 32px; height: 32px; border-radius: 50%"></ion-skeleton-text>
+            </div>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+              </h3>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-item lines="none" class="view-all-item">
+          <ion-label>
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+
+  <!-- 🔥 Content or Empty State -->
+  <ng-template #contentOrEmpty>
+    <!-- 🔥 EMPTY STATE: No communities yet -->
+    <ng-container *ngIf="joinedCommunities.length === 0; else communitiesContent">
+      <div class="empty-state">
+        <div class="empty-state-content">
+          <!-- Icon -->
+          <ion-icon name="people-outline" class="empty-icon"></ion-icon>
+
+          <!-- Title -->
+          <h2 class="header empty-title">
+            No Communities Yet
+          </h2>
+
+          <!-- Description -->
+          <p class="header empty-description">
+            Create or join a community to start connecting with others.
+          </p>
+
+          <!-- Action Button -->
+          <ion-button expand="block" (click)="createCommunityPrompt()" class="empty-action-btn" [disabled]="isOffline">
+            <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+            Create Community
+          </ion-button>
+
+          <!-- Offline message -->
+          <!-- <p *ngIf="isOffline" class="offline-message">
+            <ion-icon name="cloud-offline-outline"></ion-icon>
+            {{ 'community.emptyState.offlineMessage' | translate }}
+          </p> -->
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- 🔥 Communities List -->
+    <ng-template #communitiesContent>
+      <ion-list>
+        <ng-container *ngFor="let community of joinedCommunities">
+          <!-- community header row -->
+          <ion-item class="community-item">
+            <ion-avatar slot="start" class="community-avatar">
+              <img [src]="community.icon || 'assets/images/community_icon.svg'" [alt]="community.name"
+                (error)="setDefaultCommunityIcon($event)" />
+            </ion-avatar>
+            <ion-label>
+              <h2 class="community-name">{{ community.name }}</h2>
+            </ion-label>
+          </ion-item>
+
+          <!-- groups list (max 3 – displayGroups) -->
+          <ion-list lines="none" class="group-list">
+            <ion-item *ngFor="let group of community.displayGroups" button class="group-item"
+              (click)="goToGroupChat(group.id)">
+              <div slot="start" class="group-icon-wrapper">
+                <ion-icon [name]="getGroupIcon(group)" class="group-icon"></ion-icon>
+              </div>
+              <ion-label>
+                <h3 class="group-name">{{ group.name }}</h3>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+
+          <!-- View all for this community -->
+          <ion-item lines="none" button detail="false" (click)="goToAddGroupCommunity(community)" class="view-all-item"
+            [attr.aria-label]="'community.viewAll' | translate">
+            <ion-label color="primary" class="view-all-label">
+              {{ 'community.viewAll' | translate }}
+            </ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ng-template>
+  </ng-template>
+</ion-content>
+
+<app-footer-tabs></app-footer-tabs>

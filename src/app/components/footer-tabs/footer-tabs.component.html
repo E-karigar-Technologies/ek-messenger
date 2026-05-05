@@ -1,0 +1,56 @@
+<ion-tab-bar slot="bottom" class="mineclass">
+  <!-- Chat -->
+  <button
+    (click)="navigateTohomescreen()"
+    [class.active]="isActive(['/home-screen'])"
+    [attr.aria-label]="'footerTabs.chat' | translate">
+    
+    <div class="icon-bg" [class.active]="isActive(['/home-screen'])">
+      <ion-icon name="chatbubble-ellipses-outline" class="footericons"></ion-icon>
+
+      <ion-badge
+        *ngIf="totalUnreadCount > 0"
+        class="unread-badge"
+        [attr.aria-label]="'footerTabs.badges.unreadChats' | translate:{ count: totalUnreadCount }"
+        aria-live="polite">
+        {{ totalUnreadCount }}
+      </ion-badge>
+    </div>
+
+    <p class="tabtext">{{ 'footerTabs.chat' | translate }}</p>
+  </button>
+
+  <!-- Updates / Status -->
+  <button
+    (click)="navigateTocallingscreen()"
+    [class.active]="isActive(['/status-screen'])"
+    [attr.aria-label]="'footerTabs.updates' | translate">
+    
+    <div class="icon-bg" [class.active]="isActive(['/status-screen'])">
+      <ion-icon name="refresh-circle-outline" class="footericons"></ion-icon>
+
+      <ion-badge
+        *ngIf="totalUnreadUpdates > 0"
+        class="unread-badge"
+        [attr.aria-label]="'footerTabs.badges.unreadUpdates' | translate:{ count: totalUnreadUpdates }"
+        aria-live="polite">
+        {{ totalUnreadUpdates }}
+      </ion-badge>
+    </div>
+
+    <p class="tabtext">{{ 'footerTabs.updates' | translate }}</p>
+  </button>
+
+  <!-- Communities -->
+  <button
+    (click)="navigateTocommunityscreen()"
+    [class.active]="isActive(['/community-screen'])"
+    [attr.aria-label]="'footerTabs.communities' | translate">
+    
+    <div class="icon-bg" [class.active]="isActive(['/community-screen'])">
+      <ion-icon name="people-outline" class="footericons"></ion-icon>
+    </div>
+
+    <p class="tabtext">{{ 'footerTabs.communities' | translate }}</p>
+  </button>
+</ion-tab-bar>

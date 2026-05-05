@@ -1,0 +1,138 @@
+/* =============== Headers =============== */
+ion-header { box-shadow: none; }
+
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-toolbar-background, var(--ion-background-color));
+    --color: var(--ion-toolbar-color, var(--ion-text-color));
+    box-shadow: none;
+    // border-bottom: 1px solid var(--ion-border-color);
+  }
+}
+
+/* =============== Community Header =============== */
+.community-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: var(--ion-toolbar-background, var(--ion-background-color));
+  box-shadow: 0 !important;
+  // border-bottom: 1px solid var(--ion-border-color);
+
+  .community-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* subtle surface using tokens */
+    background: color-mix(in srgb, var(--ion-text-color) 6%, var(--ion-item-background));
+    border: 1px solid var(--ion-border-color);
+  }
+
+  .community-icon img {
+    border-radius: 0;
+    height: 45px;
+    width: 45px;
+    display: block;
+  }
+
+  .community-info {
+    margin-left: 12px;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      color: var(--ion-text-color);
+    }
+
+    p {
+      font-size: 14px;
+      margin: 0;
+      color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+    }
+  }
+}
+
+/* =============== Empties / helper text =============== */
+.empty-text {
+  text-align: center;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--ion-text-color) 55%, transparent);
+  margin-top: 20px;
+}
+
+/* =============== Buttons =============== */
+.add-btn {
+  --background: var(--ion-color-primary);
+  --background-hover: var(--ion-color-primary-shade);
+  --color: var(--ion-color-primary-contrast);
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+/* =============== Icon band (square badge) =============== */
+.band {
+  background: color-mix(in srgb, var(--ion-color-primary) 10%, var(--ion-item-background));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; height: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--ion-border-color);
+}
+
+.band ion-icon {
+  color: var(--ion-color-primary);
+  font-size: 26px;
+}
+
+/* =============== Community row =============== */
+.community {
+  margin-left: 10px;
+
+  h3 {
+    font-weight: 600;
+    color: var(--ion-text-color);
+    margin: 0;
+  }
+}
+
+/* Remove ambient shadows on bars */
+ion-footer, ion-toolbar { box-shadow: none !important; }
+
+/* =============== SVG Community Icon (tokenized) =============== */
+.community-icon {
+  width: 44px;
+  height: 44px;
+
+  svg { width: 100%; height: 100%; display: block; }
+
+  /* Defaults (overridable by theme) */
+  --comm-bg: var(--ion-card-background);
+  --comm-fg: color-mix(in srgb, var(--ion-text-color) 70%, transparent);
+
+  .bg { fill: var(--comm-bg); }
+  .fg { fill: var(--comm-fg); }
+}
+
+/* iOS mode example: use success tint for bg */
+:root[mode=ios] .community-icon { --comm-bg: color-mix(in srgb, var(--ion-color-success, #34c759) 16%, var(--ion-card-background)); }
+/* Dark mode: brighten icon foreground */
+@media (prefers-color-scheme: dark) {
+  .community-icon { --comm-fg: color-mix(in srgb, var(--ion-text-color) 85%, transparent); }
+}
+
+.pending-avatar {
+  background: #F8F4EA;
+  ion-icon {
+    color: var(--ion-color-primary);
+    font-size: 22px;
+  }
+}
+.pending-count{
+  background: var(--ion-color-primary);
+  color: #fff;
+}

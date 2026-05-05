@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar class="asc-toolbar">
+
+    <!-- Normal header -->
+    <ng-container *ngIf="!showSearch">
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()" class="asc-icon-btn">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title class="asc-title-text">Select Contacts</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="openSearch()" class="asc-icon-btn">
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ng-container>
+
+    <!-- Search mode header -->
+    <ng-container *ngIf="showSearch">
+      <ion-buttons slot="start">
+        <ion-button (click)="closeSearch()" class="asc-icon-btn">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <div class="asc-search-wrap">
+        <input
+          #searchInputRef
+          class="asc-search-input"
+          [(ngModel)]="searchText"
+          (ngModelChange)="onSearch()"
+          placeholder="Search name or number"
+        />
+        <ion-icon
+          *ngIf="searchText"
+          name="close-circle"
+          class="asc-search-clear"
+          (click)="clearSearch()"
+        ></ion-icon>
+      </div>
+    </ng-container>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="asc-content">
+
+  <!-- Loading -->
+  <ng-container *ngIf="isLoading">
+    <div class="asc-loading">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!isLoading">
+
+    <!-- Selected chips — horizontal scroll -->
+    <div class="selected-row" *ngIf="selected.length > 0">
+      <div class="selected-scroll">
+        <div class="selected-chip" *ngFor="let chat of selected">
+          <div class="chip-avatar-wrap">
+            <ng-container *ngIf="chat.avatar; else chipInitials">
+              <img [src]="chat.avatar" class="chip-avatar-img" />
+            </ng-container>
+            <ng-template #chipInitials>
+              <div class="chip-avatar-initials">{{ getInitial(chat.title) }}</div>
+            </ng-template>
+            <button class="chip-remove" (click)="removeSelected(chat)">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+          <p class="chip-name">{{ chat.title }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chips-divider" *ngIf="selected.length > 0"></div>
+
+    <!-- Helper text when nothing selected -->
+    <p class="helper-text" *ngIf="selected.length === 0">
+      Select the contacts or chats you want to share with.
+    </p>
+
+    <!-- ── Frequently contacted ── -->
+    <ng-container *ngIf="filteredFrequent.length > 0">
+      <div class="section-label">Frequently contacted</div>
+      <ion-list lines="none" class="asc-list">
+        <ion-item
+          *ngFor="let chat of filteredFrequent"
+          class="asc-item"
+          (click)="toggleSelect(chat)"
+        >
+          <div slot="start" class="asc-avatar-wrap">
+            <ng-container *ngIf="chat.avatar; else freqInitials">
+              <img [src]="chat.avatar" class="asc-avatar-img" />
+            </ng-container>
+            <ng-template #freqInitials>
+              <div class="asc-avatar-initials">{{ getInitial(chat.title) }}</div>
+            </ng-template>
+            <div class="asc-check-overlay" *ngIf="isSelected(chat)">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+          <ion-label class="asc-label">{{ chat.title }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+
+    <!-- ── Device matched contacts ── -->
+    <ng-container *ngIf="filteredDevice.length > 0">
+      <div class="section-label">Device contacts</div>
+      <ion-list lines="none" class="asc-list">
+        <ion-item
+          *ngFor="let chat of filteredDevice"
+          class="asc-item"
+          (click)="toggleSelect(chat)"
+        >
+          <div slot="start" class="asc-avatar-wrap">
+            <ng-container *ngIf="chat.avatar; else devInitials">
+              <img [src]="chat.avatar" class="asc-avatar-img" />
+            </ng-container>
+            <ng-template #devInitials>
+              <div class="asc-avatar-initials">{{ getInitial(chat.title) }}</div>
+            </ng-template>
+            <div class="asc-check-overlay" *ngIf="isSelected(chat)">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+          <ion-label class="asc-label">{{ chat.title }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+
+    <!-- Empty state -->
+    <div
+      class="empty-state"
+      *ngIf="filteredFrequent.length === 0 && filteredDevice.length === 0"
+    >
+      <ion-icon name="people-outline"></ion-icon>
+      <p>No contacts found</p>
+    </div>
+
+    <div style="height: 88px;"></div>
+
+  </ng-container>
+
+</ion-content>
+
+<!-- Send FAB — shown when at least one contact is selected -->
+<ion-fab
+  vertical="bottom"
+  horizontal="end"
+  slot="fixed"
+  *ngIf="selected.length > 0"
+>
+  <div
+    class="done-fab invite-send-fab"
+    (click)="sendAttachment()"
+    [class.done-fab-saving]="isLoading"
+  >
+    <ng-container *ngIf="!isLoading">
+      <ion-icon name="send-outline" class="fab-icon"></ion-icon>
+      <span class="fab-send-label">Send to {{ selected.length }}</span>
+    </ng-container>
+    <ion-spinner *ngIf="isLoading" name="crescent" class="fab-spinner"></ion-spinner>
+  </div>
+</ion-fab>
+

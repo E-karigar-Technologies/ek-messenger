@@ -1,0 +1,186 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="telldemm">
+
+    <!-- Normal mode -->
+    <ng-container *ngIf="!showSearch">
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()" fill="clear">
+          <ion-icon name="arrow-back-outline" class="person"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Forward to</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="openSearch()" fill="clear">
+          <ion-icon name="search-outline" class="person"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ng-container>
+
+    <!-- Search mode -->
+    <ng-container *ngIf="showSearch">
+      <ion-buttons slot="start">
+        <ion-button (click)="closeSearch()" fill="clear">
+          <ion-icon name="arrow-back-outline" class="person"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <div class="fw-search-wrap">
+        <input
+          #searchInputRef
+          class="fw-search-input"
+          [(ngModel)]="searchText"
+          (ngModelChange)="onSearch()"
+          placeholder="Search name or number"
+        />
+        <ion-icon
+          *ngIf="searchText"
+          name="close-circle"
+          class="fw-search-clear"
+          (click)="clearSearch()"
+        ></ion-icon>
+      </div>
+    </ng-container>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- Channel invite preview (if forwarding an invite) -->
+  <div *ngIf="forwardedMessage?.channel_invite" style="padding: 12px 16px 0;">
+    <ion-card>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img [src]="forwardedMessage.channel_invite.channelDp || 'assets/images/user.jfif'" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ forwardedMessage.channel_invite.channelName }}</h2>
+          <p>Channel invitation</p>
+        </ion-label>
+      </ion-item>
+      <ion-card-content>
+        <p>{{ forwardedMessage.channel_invite.inviteText }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Selected chips row -->
+  <div class="fw-selected-row" *ngIf="selected.length > 0">
+    <div class="fw-selected-scroll">
+      <div class="fw-chip" *ngFor="let chat of selected">
+        <div class="fw-chip-avatar-wrap">
+          <ng-container *ngIf="chat.avatar; else chipInitials">
+            <img [src]="chat.avatar" class="fw-chip-img" />
+          </ng-container>
+          <ng-template #chipInitials>
+            <div class="fw-chip-initials">{{ getInitial(chat.title) }}</div>
+          </ng-template>
+          <button class="fw-chip-remove" (click)="removeSelected(chat)">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+        <p class="fw-chip-name">{{ chat.title }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skeleton loader -->
+  <ng-container *ngIf="isLoading">
+    <ion-list>
+      <ion-item *ngFor="let s of [].constructor(6)" lines="none">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated style="width:44px;height:44px;border-radius:50%;"></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <p><ion-skeleton-text animated style="width:60%;"></ion-skeleton-text></p>
+          <p><ion-skeleton-text animated style="width:40%;"></ion-skeleton-text></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="!isLoading">
+
+    <!-- Frequently contacted section -->
+    <ng-container *ngIf="filteredFrequent.length > 0">
+      <div class="fw-section-label">Frequently contacted</div>
+      <ion-list lines="none">
+        <ion-item
+          *ngFor="let chat of filteredFrequent"
+          (click)="toggleSelect(chat)"
+          class="fw-item"
+        >
+          <div slot="start" class="fw-avatar-wrap">
+            <ng-container *ngIf="chat.avatar; else freqInitials">
+              <img [src]="chat.avatar" class="fw-avatar-img" />
+            </ng-container>
+            <ng-template #freqInitials>
+              <div class="fw-avatar-initials">{{ getInitial(chat.title) }}</div>
+            </ng-template>
+            <div class="fw-check-overlay" *ngIf="isSelected(chat)">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+          <ion-label>
+            <p class="chat-message">{{ chat.title }}</p>
+          </ion-label>
+          <ion-icon
+            *ngIf="chat.type === 'group'"
+            name="people-outline"
+            slot="end"
+            style="font-size:18px;opacity:0.5;"
+          ></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+
+    <!-- Contacts on Telldemm section -->
+    <ng-container *ngIf="filteredOther.length > 0">
+      <div class="fw-section-label">Contacts on app</div>
+      <ion-list lines="none">
+        <ion-item
+          *ngFor="let chat of filteredOther"
+          (click)="toggleSelect(chat)"
+          class="fw-item"
+        >
+          <div slot="start" class="fw-avatar-wrap">
+            <ng-container *ngIf="chat.avatar; else otherInitials">
+              <img [src]="chat.avatar" class="fw-avatar-img" />
+            </ng-container>
+            <ng-template #otherInitials>
+              <div class="fw-avatar-initials">{{ getInitial(chat.title) }}</div>
+            </ng-template>
+            <div class="fw-check-overlay" *ngIf="isSelected(chat)">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+          <ion-label>
+            <p class="chat-message">{{ chat.title }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+
+    <!-- Empty state -->
+    <div
+      *ngIf="filteredFrequent.length === 0 && filteredOther.length === 0"
+      class="fw-empty"
+    >
+      <ion-icon name="people-outline"></ion-icon>
+      <p>No contacts found</p>
+    </div>
+
+  </ng-container>
+
+</ion-content>
+
+<ion-footer *ngIf="selected.length > 0" class="selected-footer">
+  <ion-toolbar>
+    <div class="selected-names">{{ selectedNames }}</div>
+    <ion-buttons slot="end">
+      <ion-button (click)="sendForward()">
+        <ion-icon name="send" slot="icon-only" class="multi-send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

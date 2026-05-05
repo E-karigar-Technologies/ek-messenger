@@ -1,0 +1,197 @@
+<ion-header translucent="true">
+  <ion-toolbar *ngIf="!showSearchBar" class="toolbar_screen">
+    <ion-buttons class="back-btn" slot="start">
+      <ion-back-button defaultHref="/home-screen" class="backIcon" style="font-size: 20px"></ion-back-button>
+       
+    </ion-buttons>
+
+    <ion-buttons>
+      <ion-item lines="none" detail="false"
+        style="--padding-start: 0; margin-top: 2px; margin-left: 20px;">
+        <ion-label class="user-name">
+          <h2 class="user-real-name headerTitle">Select Contacts</h2>
+          <h5>{{ allUsers.length }} contacts found on app</h5>
+        </ion-label>
+      </ion-item>
+    </ion-buttons>
+
+    <ion-buttons class="btn-main-icon" slot="end">
+      <ion-button class="custom-search-icon" (click)="focusSearchBar()">
+        <i class="fa-solid fa-magnifying-glass homemainicons"></i>
+      </ion-button>
+      <ion-button (click)="presentContactMenu($event)">
+        <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="showSearchBar" class="custom-search-toolbar">
+    <div class="custom-search-container">
+      <ion-icon name="arrow-back-outline" class="search-back-icon" (click)="toggleSearch()"></ion-icon>
+      <ion-input
+        #searchInput
+        [(ngModel)]="searchTerm"
+        [type]="keyboardType"
+        placeholder="Find by name or number..."
+        class="custom-search-input"
+        (ionInput)="filterContacts()"
+      ></ion-input>
+      <ion-icon
+        [name]="keyboardType === 'text' ? 'keypad-outline' : 'text-outline'"
+        class="search-keyboard-icon"
+        (click)="toggleKeyboardType()"
+      ></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- ── Static Options ──────────────────────────────────────────────────── -->
+  <ion-list class="list" lines="none" *ngIf="!creatingGroup">
+    <ion-item class="items" (click)="startGroupCreation()">
+      <ion-avatar slot="start" class="green-icon">
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label class="group">New Group</ion-label>
+    </ion-item>
+
+    <ion-item class="items" (click)="goToAddContact()">
+      <ion-avatar slot="start" class="green-icon">
+        <ion-icon name="person-add-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label class="group">New Contact (wip)</ion-label>
+      <ion-icon style="color: black" name="qr-code-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item class="items" (click)="goToCommunity()">
+      <ion-avatar slot="start" class="green-icon">
+        <ion-icon name="people-circle-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label class="group">New Community</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- ── Group Creator UI ────────────────────────────────────────────────── -->
+  <div *ngIf="creatingGroup" class="group-creator" style="padding: 12px">
+    <ion-input
+      [(ngModel)]="newGroupName"
+      placeholder="Enter DemmRoom Name"
+      style="margin-bottom: 12px"
+    ></ion-input>
+
+    <ion-list>
+      <ion-item *ngFor="let user of allUsers">
+        <ion-label>{{ user.username }}</ion-label>
+        <ion-checkbox [(ngModel)]="user.selected" slot="end"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="full" color="primary" (click)="createGroup()">
+      Create Group
+    </ion-button>
+  </div>
+
+  <!-- ── Skeleton Loader ─────────────────────────────────────────────────── -->
+  <ion-list *ngIf="!creatingGroup && isLoading">
+    <ion-item *ngFor="let i of [1,2,3,4,5]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text
+          animated
+          style="width: 40px; height: 40px; border-radius: 50%;"
+        ></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3><ion-skeleton-text animated style="width: 120px;"></ion-skeleton-text></h3>
+        <p><ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- ── Platform Contacts (On app) ────────────────────────────────── -->
+  <ng-container *ngIf="!creatingGroup && !isLoading">
+
+    <ion-list-header *ngIf="filteredContacts.length > 0">
+      <ion-label>Contacts On app</ion-label>
+    </ion-list-header>
+
+    <ion-list class="list2" lines="none" *ngIf="filteredContacts.length > 0">
+      <ion-item
+        *ngFor="let contact of filteredContacts"
+        (click)="openContactChat(contact.userId)"
+      >
+        <ion-avatar slot="start">
+          <img
+            *ngIf="contact.profile"
+            [src]="contact.profile"
+            [alt]="contact.username"
+            (error)="contact.profile = ''"
+          />
+          <div *ngIf="!contact.profile" class="avatar">
+            {{ contact.username.substring(0, 1) | uppercase }}
+          </div>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ contact.username }}</h2>
+          <p *ngIf="contact.phoneNumber" style="font-size: 12px; color: var(--ion-color-medium);">
+            {{ contact.phoneNumber }}
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- ── Invite Section (Not on app) ─────────────────────────────── -->
+    <ng-container *ngIf="filteredNonPlatformContacts.length > 0">
+
+      <ion-list-header>
+        <ion-label style="font-size: 14px; color: var(--ion-color-medium);">
+          Invite to app
+        </ion-label>
+      </ion-list-header>
+
+      <ion-list lines="none" class="list2">
+        <ion-item *ngFor="let contact of filteredNonPlatformContacts">
+          <ion-avatar slot="start">
+            <!-- Non-platform contacts have no profile pic — show initial -->
+            <div class="avatar avatar-grey">
+              {{ contact.username.substring(0, 1) | uppercase }}
+            </div>
+          </ion-avatar>
+
+          <ion-label>
+            <h2>{{ contact.username }}</h2>
+            <p style="font-size: 12px; color: var(--ion-color-medium);">
+              {{ contact.phoneNumber }}
+            </p>
+          </ion-label>
+
+          <!-- Invite Button (like WhatsApp) -->
+          <ion-button
+            slot="end"
+            fill="outline"
+            size="small"
+            color="success"
+            (click)="inviteContact(contact); $event.stopPropagation()"
+            style="--border-radius: 20px; font-size: 12px;"
+          >
+            Invite
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+    </ng-container>
+
+    <!-- ── Empty State ───────────────────────────────────────────────────── -->
+    <div
+      *ngIf="filteredContacts.length === 0 && filteredNonPlatformContacts.length === 0"
+      style="text-align: center; margin-top: 2rem;"
+    >
+      <ion-icon name="sad-outline" size="large" color="medium"></ion-icon>
+      <p style="margin-top: 10px; color: var(--ion-color-medium);">
+        No contacts found.
+      </p>
+    </div>
+
+  </ng-container>
+
+</ion-content>

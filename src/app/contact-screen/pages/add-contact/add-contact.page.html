@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title > {{ editable ? 'New Contact' : 'Edit contact'}}</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding contact-content">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-container">
+      <div>
+
+    <!-- Name Fields -->
+    <ion-list lines="none" class="section-card">
+      <ion-item>
+        <ion-icon name="person-outline" slot="start" color="medium"></ion-icon>
+        <ion-input
+          formControlName="firstName"
+          placeholder="First name"
+           fill="outline"
+          class="name-input">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="" slot="start" color="medium"></ion-icon>
+        <ion-input
+          formControlName="lastName"
+          placeholder="Last name"
+           fill="outline"
+          class="name-input">
+        </ion-input>
+      </ion-item>
+    </ion-list>
+
+    <!-- Phone Field -->
+    <ion-list lines="none" class="section-card">
+      <ion-item>
+        <ion-icon name="call-outline" slot="start" color="medium"></ion-icon>
+        <ion-select
+          formControlName="countryCode"
+          interface="popover"
+          class="country-select">
+          <ion-select-option
+            *ngFor="let c of countryCodes"
+            [value]="c.code">
+            {{ c.flag }} {{ c.code }}
+          </ion-select-option>
+        </ion-select>
+        <ion-input
+          formControlName="phone"
+          type="tel"
+          name="phone"
+          inputmode="numeric"
+          class="name-input"
+           fill="outline"
+           (ionInput)="validatePhoneNumber($event)"
+          placeholder="Phone number"
+          
+          >
+        </ion-input>
+        
+      </ion-item>
+
+      
+      
+    </ion-list>
+
+    <!-- Sync Button -->
+    <ion-list lines="none" class="section-card sync-section">
+      <ion-item button class="itemBgcolor" >
+        
+          <ion-icon
+          slot="start"
+            [name]="syncing ? 'sync' : 'sync-outline'"
+            [class.spin]="syncing"
+            color="success">
+          </ion-icon>
+        
+        <ion-label>
+          <h2>Sync contacts to phone</h2>
+          <!-- <p>{{ syncStatus }}</p> -->
+        </ion-label>
+        <ion-toggle slot="end"  (ionChange)="onToggle($event)"
+        [attr.aria-label]="'Sync contacts'">
+      </ion-toggle>
+
+      </ion-item>
+    </ion-list>
+    </div>
+   <div class="saveBtn">
+    <ion-button  class="btn" shape="round"  (click)="save()" [disabled]="form.invalid || saving" strong="true">
+    <ion-spinner *ngIf="saving" name="crescent" slot="start"></ion-spinner>
+    {{ saving ? 'Saving…' : 'Save' }}
+   </ion-button>
+     </div>
+    </div>
+
+  </form>
+
+</ion-content>

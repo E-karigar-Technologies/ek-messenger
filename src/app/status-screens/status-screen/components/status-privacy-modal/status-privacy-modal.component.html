@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="privacy-wrap">
+    <p class="privacy-hint">Selection auto-saved.</p>
+
+    <ion-radio-group [(ngModel)]="selectedMode">
+      <ion-item lines="none" button detail="false" (click)="setMode('my_contacts')">
+        <ion-radio slot="start" value="my_contacts"></ion-radio>
+        <ion-label>
+          <h3>My Contacts</h3>
+          <p>Share with all contacts saved when you post.</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none" button detail="false" (click)="setMode('my_contacts_except')">
+        <ion-radio slot="start" value="my_contacts_except"></ion-radio>
+        <ion-label>
+          <h3>My Contacts Except...</h3>
+          <p>Hide your status from selected contacts.</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none" button detail="false" (click)="setMode('only_share_with')">
+        <ion-radio slot="start" value="only_share_with"></ion-radio>
+        <ion-label>
+          <h3>Only Share With...</h3>
+          <p>Share your status with only selected contacts.</p>
+        </ion-label>
+      </ion-item>
+    </ion-radio-group>
+
+    <section *ngIf="showsContactPicker" class="contacts-section">
+      <h4 class="contacts-title">
+        {{
+          selectedMode === 'my_contacts_except'
+            ? 'Select contacts to exclude'
+            : 'Select contacts to allow'
+        }}
+      </h4>
+
+      <div class="contact-list" *ngIf="contacts.length > 0; else noContacts">
+        <ion-item lines="none" *ngFor="let contact of contacts">
+          <ion-checkbox
+            slot="start"
+            [checked]="isSelected(contact.uid)"
+            (ionChange)="onContactChange(contact.uid, $any($event.detail).checked)">
+          </ion-checkbox>
+
+          <ion-avatar slot="start">
+            <img [src]="contact.avatar || 'assets/images/user.jfif'" [alt]="contact.name" />
+          </ion-avatar>
+
+          <ion-label>{{ contact.name }}</ion-label>
+        </ion-item>
+      </div>
+
+      <ng-template #noContacts>
+        <p class="contacts-empty">No Telldemm contacts available yet.</p>
+      </ng-template>
+    </section>
+  </div>
+</ion-content>

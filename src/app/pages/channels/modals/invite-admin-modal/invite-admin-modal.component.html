@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>send invite to add</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="invite-container">
+    <!-- Selected User Section -->
+    <div class="selected-user-section">
+      <div class="user-chip">
+        <ion-avatar>
+          <img [src]="userToInvite?.profile_picture_url || 'assets/images/user.jfif'" (error)="setDefaultAvatar($event)" />
+        </ion-avatar>
+        <ion-label>{{ userToInvite?.name || 'User' }}</ion-label>
+        <ion-icon name="close-circle" class="remove-icon" (click)="dismiss()"></ion-icon>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Channel Preview Section -->
+    <div class="channel-preview-card">
+      <div class="channel-info">
+        <ion-avatar class="channel-dp">
+<img [src]="channel.channel_dp || 'assets/images/user.jfif'" (error)="setDefaultAvatar($event)" />
+        </ion-avatar>
+        <div class="channel-text">
+<h3>{{ channel.channel_name }}</h3>
+          <p>channel admin invite</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Section -->
+    <div class="message-box">
+      <ion-row class="ion-align-items-center">
+        <ion-col>
+          <p class="invite-msg-text">{{ messageText }}</p>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-button fill="clear" (click)="sendInvite()" [disabled]="isSending">
+            <ion-icon slot="icon-only" name="send" color="primary"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

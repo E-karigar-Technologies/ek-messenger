@@ -1,0 +1,142 @@
+page-invite-friend {
+  /* ── List surface ─────────────────────────────────────────────────────── */
+  ion-list {
+    background: var(--ion-background-color);
+    --ion-item-background: var(--ion-item-background, var(--ion-background-color));
+    --ion-item-color: var(--ion-text-color);
+  }
+
+  /* ── List header ──────────────────────────────────────────────────────── */
+  ion-list-header {
+    ion-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: color-mix(in srgb, var(--ion-text-color) 55%, transparent);
+      padding-bottom: 4px;
+    }
+  }
+
+  /* ── Contact item ─────────────────────────────────────────────────────── */
+  ion-item {
+    --padding-start: 16px;
+    --inner-padding-end: 12px;
+    --min-height: 64px;
+
+    ion-label {
+      h2 {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--ion-text-color);
+        margin-bottom: 2px;
+      }
+
+      p {
+        font-size: 0.78rem;
+        color: color-mix(in srgb, var(--ion-text-color) 55%, transparent);
+        margin: 1px 0;
+      }
+    }
+  }
+
+  /* ── Avatar (initial letter) ──────────────────────────────────────────── */
+  ion-avatar{
+  display: flex; justify-content: center; align-items: center;
+  color: #fff;
+  background: var(--ion-color-primary);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--ion-border-color);
+}
+
+  /* ── Invite button ────────────────────────────────────────────────────── */
+  .invite-btn {
+    --border-radius: 20px;
+    --padding-start: 14px;
+    --padding-end: 14px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    height: 32px;
+    min-width: 64px;
+  }
+
+  /* ── Optional: compact invite action row (bottom sheet, etc.) ─────────── */
+  .invite-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+
+    ion-button {
+      flex: 1;
+      --border-radius: 10px;
+      font-weight: 600;
+    }
+  }
+
+  /* ── Subtitle / description text ──────────────────────────────────────── */
+  .sub-label {
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+  }
+
+  /* ── Skeleton rows ────────────────────────────────────────────────────── */
+  .skeleton-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .skeleton-invite-btn {
+    width: 56px;
+    height: 28px;
+    border-radius: 14px;
+  }
+
+  /* ── Empty state ──────────────────────────────────────────────────────── */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 10px;
+
+    ion-icon {
+      font-size: 3rem;
+      color: var(--ion-color-medium);
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--ion-color-medium);
+      text-align: center;
+      max-width: 240px;
+      line-height: 1.5;
+    }
+  }
+
+  /* ── Search toolbar ───────────────────────────────────────────────────── */
+  ion-searchbar {
+    --background: color-mix(in srgb, var(--ion-text-color) 8%, transparent);
+    --border-radius: 10px;
+    --placeholder-color: color-mix(in srgb, var(--ion-text-color) 45%, transparent);
+    --icon-color: color-mix(in srgb, var(--ion-text-color) 45%, transparent);
+    --color: var(--ion-text-color);
+    padding: 4px 0;
+  }
+
+  /* ── Accessibility ────────────────────────────────────────────────────── */
+  ion-item:focus-visible,
+  ion-button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 8px;
+  }
+}
+.itemHeader{
+  color:var(--ion-text-color) ;
+}
+.searchBarClass{
+  --color: var(--ion-text-color);
+}

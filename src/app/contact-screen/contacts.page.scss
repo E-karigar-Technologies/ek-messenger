@@ -1,0 +1,253 @@
+/* ======================================
+   Contacts / Search Screen (tokenized)
+   ====================================== */
+
+/* App surfaces */
+ion-content {
+  --background: var(--ion-background-color);
+  color: var(--ion-text-color);
+}
+ion-toolbar,
+.toolbar,
+.custom-search-toolbar {
+  --background: var(--ion-toolbar-background, var(--ion-background-color));
+  --color: var(--ion-toolbar-color, var(--ion-text-color));
+  color: var(--color);
+  // border-bottom: 1px solid var(--ion-border-color);
+  box-shadow: none;
+}
+
+/* Header sizing without forcing fixed height */
+ion-header {
+  background: var(--ion-toolbar-background, var(--ion-background-color));
+  box-shadow: none;
+  // border-bottom: 1px solid var(--ion-border-color);
+}
+// .toolbar_screen { padding-top: 20px; }
+
+/* Buttons / icons */
+.back-btn {
+  color: var(--ion-toolbar-color, var(--ion-text-color));
+  width: 8%;
+  margin-top: 15px;
+}
+.btn-main-icon { margin-top: 15px; }
+
+.custom-search-icon {
+  --color: var(--ion-text-color);
+  --background: transparent;
+  padding: 2px;
+  // margin-right: 10px;
+  font-size: 20px;
+}
+.all-icon-btn { color: var(--ion-text-color); }
+.call-dout-icon { font-size: 28px; }
+
+ion-icon { font-size: 26px; color: white; }
+
+/* Names / labels */
+.user-real-name {
+  margin: 0;
+  font-size: 18px;
+  color: var(--ion-text-color);
+}
+.user-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ion-text-color);
+}
+
+ion-list-header,
+ion-label,
+h2,
+p { color: var(--ion-text-color); }
+h2 { font-size: 19px; text-align: left; }
+
+/* Prominent circular action icon (brand-tinted) */
+.green-icon {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  width: 50px; height: 50px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--ion-color-primary) 25%, transparent);
+}
+
+/* List surfaces */
+ion-item { --background: var(--ion-item-background); }
+ion-label { color: var(--ion-text-color); }
+
+.contact-count {
+  font-size: .9rem;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--ion-text-color) 45%, transparent);
+}
+
+.list,
+.list2 {
+  background: var(--ion-card-background);
+  // border: 1px solid var(--ion-border-color);
+  border-radius: 12px;
+  margin-top: 20px;
+}
+.list2 { font-size: 20px; }
+
+.items, .group { color: var(--ion-text-color); }
+.group { font-size: 19px; }
+
+/* Search bar */
+.custom-search-container {
+  display: flex;
+  align-items: center;
+  background: var(--ion-item-background);
+  border-radius: 25px;
+  margin: 8px 12px;
+  padding: 0 12px;
+  height: 47px;
+  border: 1px solid var(--ion-border-color);
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+
+ion-input.custom-search-input {
+  flex: 1;
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --background: transparent;
+  --placeholder-color: color-mix(in srgb, var(--ion-text-color) 45%, transparent);
+  --highlight-color-focused: transparent;
+  --highlight-color: transparent;
+  font-size: 14px;
+  height: 100%;
+  display: flex; align-items: center;
+  color: var(--ion-text-color);
+}
+ion-input.custom-search-input .native-input {
+  border: none !important;
+  box-shadow: none !important;
+  height: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: normal !important;
+}
+
+/* Pill toolbar that holds the search bar (optional) */
+.custom-search-toolbar {
+  // border-radius: 77px;
+  height: auto;
+  width: 97%;
+  margin: 4px 0 0 7px;
+  padding-top: 41px;
+}
+
+/* Avatar */
+ion-avatar{
+  display: flex; justify-content: center; align-items: center;
+  color: #fff;
+  background: var(--ion-color-primary);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--ion-border-color);
+}
+ion-avatar img{
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover; /* fill circle properly */
+}
+
+/* Utilities */
+.items { color: var(--ion-text-color); }
+
+/* Focus accessibility */
+:where(.custom-search-container, .green-icon, ion-avatar):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Dark-mode polish */
+@media (prefers-color-scheme: dark) {
+  .custom-search-container { box-shadow: 0 1px 2px rgba(0,0,0,.18); }
+}
+
+.homemainicons {
+  color: white;
+  background: var(--ion-color-primary);
+  font-size: 18px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  width: 34px;
+}
+
+/* Search Toolbar Holder */
+.custom-search-toolbar {
+  --background: var(--ion-toolbar-background, var(--ion-background-color));
+  padding: 6px 10px;
+  box-shadow: none;
+  border-bottom: 1px solid var(--ion-border-color);
+}
+
+/* Search Container */
+.custom-search-container {
+  display: flex;
+  align-items: center;
+  // width: 100%;
+  // height: 46px;
+  background: var(--ion-item-background);
+  border-radius: 25px;
+  padding: 0 12px;
+  border: 1px solid var(--ion-border-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+
+/* Back Icon */
+.search-back-icon {
+  font-size: 23px;
+  margin-right: 8px;
+  color: var(--ion-text-color);
+}
+
+/* Search Input */
+.custom-search-input {
+  flex: 1;
+  height: 100%;
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: transparent;
+  color: var(--ion-text-color);
+  font-size: 15px;
+}
+
+.custom-search-input .native-input {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  height: 100% !important;
+}
+
+/* Keyboard Toggle Icon */
+.search-keyboard-icon {
+  font-size: 23px;
+  margin-left: 8px;
+  color: var(--ion-text-color);
+}
+
+/* Extra: Hover effects (nice polish) */
+.search-back-icon:active,
+.search-keyboard-icon:active {
+  transform: scale(0.88);
+  opacity: 0.7;
+}
+
+/* Dark-mode */
+@media (prefers-color-scheme: dark) {
+  .custom-search-container {
+    box-shadow: 0 1px 2px rgba(0,0,0,.25);
+  }
+}
+.backIcon ,.headerTitle{
+ color: var(--ion-color-primary) !important;
+}

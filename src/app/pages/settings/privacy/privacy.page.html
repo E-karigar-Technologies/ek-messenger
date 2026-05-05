@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar  class="ion_toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/settings"
+        [attr.aria-label]="'common.back' | translate">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">{{ 'privacyPage.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" >
+
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>{{ 'privacyPage.groups.whoCanSee' | translate }}</ion-label>
+    </ion-list-header>
+
+    <!-- Last Seen -->
+    <ion-item>
+      <ion-icon slot="start" name="time-outline" aria-hidden="true" class="setting_icons"></ion-icon>
+      <ion-label>
+        <h2 class="itemHeader">{{ 'privacyPage.lastSeen.title' | translate }}</h2>
+        <p>{{ 'privacyPage.lastSeen.desc' | translate }}</p>
+      </ion-label>
+      <ion-select
+        slot="end"
+        
+        [(ngModel)]="lastSeen"
+        interface="popover"
+        [attr.aria-label]="'privacyPage.lastSeen.title' | translate">
+        <ion-select-option class="itemHeader" value="everyone">{{ 'privacyPage.options.everyone' | translate }}</ion-select-option>
+        <ion-select-option value="contacts">{{ 'privacyPage.options.contacts' | translate }}</ion-select-option>
+        <ion-select-option value="nobody">{{ 'privacyPage.options.nobody' | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Profile Photo -->
+    <ion-item>
+      <ion-icon slot="start" name="person-circle-outline" aria-hidden="true" class="setting_icons"></ion-icon>
+      <ion-label>
+        <h2 class="itemHeader">{{ 'privacyPage.profilePhoto.title' | translate }}</h2>
+        <p>{{ 'privacyPage.profilePhoto.desc' | translate }}</p>
+      </ion-label>
+      <ion-select
+        slot="end"
+        class="itemHeader"
+        [(ngModel)]="profilePhoto"
+        interface="popover"
+        [attr.aria-label]="'privacyPage.profilePhoto.title' | translate">
+        <ion-select-option value="everyone">{{ 'privacyPage.options.everyone' | translate }}</ion-select-option>
+        <ion-select-option value="contacts">{{ 'privacyPage.options.contacts' | translate }}</ion-select-option>
+        <ion-select-option value="nobody">{{ 'privacyPage.options.nobody' | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- About -->
+    <ion-item>
+      <ion-icon slot="start" name="information-circle-outline" aria-hidden="true" class="setting_icons"></ion-icon>
+      <ion-label>
+        <h2 class="itemHeader">{{ 'privacyPage.about.title' | translate }}</h2>
+        <p>{{ 'privacyPage.about.desc' | translate }}</p>
+      </ion-label>
+      <ion-select
+        slot="end"
+        class="itemHeader"
+        [(ngModel)]="about"
+        interface="popover"
+        [attr.aria-label]="'privacyPage.about.title' | translate">
+        <ion-select-option value="everyone">{{ 'privacyPage.options.everyone' | translate }}</ion-select-option>
+        <ion-select-option value="contacts">{{ 'privacyPage.options.contacts' | translate }}</ion-select-option>
+        <ion-select-option value="nobody">{{ 'privacyPage.options.nobody' | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>{{ 'privacyPage.groups.other' | translate }}</ion-label>
+    </ion-list-header>
+
+    <!-- Status -->
+    <ion-item button lines="none" detail (click)="goToStatusPrivacy()"
+              [attr.aria-label]="'privacyPage.status.title' | translate">
+      <ion-icon slot="start" name="ellipse-outline" aria-hidden="true" class="setting_icons"></ion-icon>
+      <ion-label>
+        <h2 class="itemHeader">{{ 'privacyPage.status.title' | translate }}</h2>
+        <p>{{ 'privacyPage.status.desc' | translate }}</p>
+      </ion-label>
+    </ion-item>
+
+    <!-- Blocked Contacts -->
+    <ion-item button lines="none" detail (click)="goToBlockedContacts()"
+              [attr.aria-label]="'privacyPage.blocked.title' | translate">
+      <ion-icon slot="start" name="ban-outline" aria-hidden="true" class="setting_icons"></ion-icon>
+      <ion-label>
+        <h2 class="itemHeader">{{ 'privacyPage.blocked.title' | translate }}</h2>
+        <p>{{ 'privacyPage.blocked.desc' | translate }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

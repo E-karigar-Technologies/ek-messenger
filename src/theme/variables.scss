@@ -1,0 +1,213 @@
+/* Ionic Theme Variables - Updated with Tick Colors */
+:root {
+  //  --ion-color-primary: var(--ion-color-primary);
+  //  --ion-color-primary:#006A4F;
+   --ion-color-primary:#1AB3F8;
+  --ion-color-primary-rgb: 0, 106, 79;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+   --ion-color-primary-shade: #6ECDFA;
+  --ion-color-primary-tint: #A2DFFC;
+  --ion-color-primary-pro-tint:#BCE8FD;
+
+  --ion-background-color: #ffffff;
+  --ion-text-color: #0b0b0b;
+  --ion-text-color-head: #006A4F;
+
+  --ion-toolbar-background: #ffffff;
+  --ion-toolbar-color: #0b0b0b;
+  --ion-background-color-dark: #ffffff;
+
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+  --ion-border-color: #dad7cd;
+  --ion-input-border-color: #6c757d;
+  --ion-popup-background: #ffffff;
+
+  --chat-bubble-sent: #ffe5e5;
+  --chat-bubble-received: #ffffff;
+  --chat-bubble-text: #303030;
+
+  --chat-input-bg: #ffffff;
+  --chat-input-text: #0b0b0b;
+  --chat-input-icon: #9b9b9b;
+
+  /* NEW: Chat Tick Colors */
+  --chat-tick-sent: #8a6a3b;        /* Single tick */
+  --chat-tick-delivered: #6d5832;   /* Double tick */
+  // --chat-tick-seen: #3f78b2;        /* Blue tick */
+  --chat-tick-seen: #b10202; 
+  --ion-border-color:#dad7cd;  /* Seen tick - red */
+  --searchbar-bg: #f2f2f7;
+
+}
+
+/* Dark Theme Variables */
+@media (prefers-color-scheme: dark) {
+  body {
+    // --ion-color-primary: #006A4F;
+    --ion-color-primary:#1AB3F8;
+    --ion-color-primary-rgb: 0, 106, 79;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #6ECDFA;
+  --ion-color-primary-tint: #A2DFFC;
+  --ion-color-primary-pro-tint:#BCE8FD;
+
+    --ion-background-color: #121212;
+    --ion-background-color-rgb: 18, 18, 18;
+
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+    --ion-text-color-head: #66A695;
+
+    --ion-toolbar-background: #121212;
+    --ion-toolbar-color: #ffffff;
+    --ion-background-color-dark:#121212;
+
+    --ion-item-background: #121212;
+    --ion-item-color: #ffffff;
+    --ion-card-background: #121212;
+    --ion-border-color: #534a4a;
+    --ion-popup-background: #252525;
+
+    --chat-bubble-sent: #004d3a;
+    --chat-bubble-received: #262626;
+    --chat-bubble-text: #e1e1e1;
+
+    --chat-input-bg: #1e1e1e;
+    --chat-input-text: #ffffff;
+    --chat-input-icon: #888888;
+
+    --chat-tick-sent: #8a6a3b;
+    --chat-tick-delivered: #6d5832;
+    --chat-tick-seen: #ff4d4d;
+    --ion-border-color:#534a4a;
+     --searchbar-bg: #1e1e1e;
+  }
+}
+
+/* Manual Dark Class Support */
+.dark {
+  // --ion-color-primary: #006A4F;
+  // --ion-color-primary-rgb: 0, 106, 79;
+  --ion-color-primary:#1AB3F8;
+
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+   --ion-color-primary-shade: #6ECDFA;
+  --ion-color-primary-tint: #A2DFFC;
+  --ion-color-primary-pro-tint:#BCE8FD;
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18, 18, 18;
+
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255, 255, 255;
+  --ion-text-color-head: #66A695;
+
+  --ion-toolbar-background: #121212;
+  --ion-toolbar-color: #ffffff;
+
+  --ion-item-background: #121212;
+  --ion-item-color: #ffffff;
+  --ion-card-background: #121212;
+  --ion-border-color: #534a4a;
+  --ion-background-color-dark:#121212;
+  --ion-popup-background: #252525;
+
+  --chat-bubble-sent: #004d3a;
+  --chat-bubble-received: #262626;
+  --chat-bubble-text: #e1e1e1;
+
+  --chat-input-bg: #1e1e1e;
+  --chat-input-text: #ffffff;
+  --chat-input-icon: #888888;
+
+  --chat-tick-sent: #8a6a3b;
+  --chat-tick-delivered: #6d5832;
+  --chat-tick-seen: #ff4d4d;
+  --ion-border-color:#534a4a;
+   --searchbar-bg: #1e1e1e;
+}
+
+/** Base (Light) **/
+body {
+  // --ion-color-primary: #006A4F;
+  --ion-color-primary:#1AB3F8;
+  --ion-color-primary-rgb: 0, 106, 79;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+   --ion-color-primary-shade: #6ECDFA;
+  --ion-color-primary-tint: #A2DFFC;
+  --ion-color-primary-pro-tint:#BCE8FD;
+
+  --ion-background-color: #ffffff;
+  --ion-text-color: #0b0b0b;
+  --ion-text-color-head: #006A4F;
+
+  --ion-toolbar-background: #ffffff;
+  --ion-toolbar-color: #0b0b0b;
+
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+  --ion-border-color: #dad7cd;
+  --ion-input-border-color: #6c757d;
+  --ion-popup-background: #ffffff;
+
+  --chat-bubble-sent: #ffe5e5;
+  --chat-bubble-received: #ffffff;
+  --chat-bubble-text: #303030;
+
+  --chat-input-bg: #ffffff;
+  --chat-input-text: #0b0b0b;
+  --chat-input-icon: #9b9b9b;
+
+  /* NEW: Chat Tick Colors */
+  --chat-tick-sent: #8a6a3b;        /* Single tick */
+  --chat-tick-delivered: #6d5832;   /* Double tick */
+  // --chat-tick-seen: #3f78b2;        /* Blue tick */
+  --chat-tick-seen: #b10202; 
+  --ion-paragraph-dark-color: #0b0b0b ; 
+  --ion-text-color-dark:#ffffff;
+  --ion-background-color-dark: #ffffff;
+  --ion-border-color:#dad7cd;
+  --searchbar-bg: #f2f2f7;
+
+
+}
+
+
+/** High Contrast Mode **/
+.accessibility-high-contrast {
+  --ion-background-color: #ffffff;
+  --ion-text-color: #121212;
+
+  --ion-toolbar-background: #ffffff;
+  --ion-toolbar-color: #121212;
+  --ion-text-white-color: white;
+
+  // --ion-color-primary: #006A4F;
+  --ion-color-primary:#1AB3F8;
+  --ion-color-primary-contrast: #121212;
+  --ion-color-primary-shade: #6ECDFA;
+  --ion-color-primary-tint: #A2DFFC;
+  --ion-color-primary-pro-tint:#BCE8FD;
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+  // --ion-border-color: #e7e7e7;
+
+  --chat-bubble-sent: #ffe5e5;
+  --chat-bubble-received: #ffffff;
+  --chat-bubble-text: #303030;
+
+  --chat-input-bg: #ffffff;
+  --chat-input-text: #121212;
+  --chat-input-icon: #9b9b9b;
+
+  /* NEW: Chat Tick Colors */
+  --chat-tick-sent: #8a6a3b;
+  --chat-tick-delivered: #6d5832;
+  // --chat-tick-seen: #3f78b2;
+  --chat-tick-seen: #720606;   /* Seen tick - red */
+
+}

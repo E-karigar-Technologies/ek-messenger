@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar class="ion_toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings/help"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">App Info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="app-info-content">
+  <div class="app-info-wrapper">
+
+    <!-- Logo + App Name Block -->
+    <div class="app-brand-block">
+      <div class="app-logo-container">
+        <img src="/assets/images/telldemm_light_logo_splash.svg" alt="Telldemm Logo" class="app-logo" />
+      </div>
+      <h1 class="app-name">Telldemm Messenger</h1>
+      <p class="app-version-label">Version {{ currentVersion }}</p>
+    </div>
+
+    <!-- Version Info Card -->
+    <ion-list lines="none" class="info-list">
+
+      <ion-item >
+        <ion-icon slot="start" name="phone-portrait-outline" class="setting_icons"></ion-icon>
+        <ion-label>
+          <p class="info-label">Current Version</p>
+          <h2 class="info-value">{{ currentVersion }}</h2>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon slot="start" name="cloud-download-outline" class="setting_icons"></ion-icon>
+        <ion-label>
+          <p class="info-label">Latest Version</p>
+          <h2 class="info-value">{{ latestVersion }}</h2>
+        </ion-label>
+        <ion-badge
+          slot="end"
+          [color]="updateAvailable ? 'warning' : 'success'"
+          class="update-badge"
+        >
+          {{ updateAvailable
+              ? 'Update Available'
+              : 'Up to Date' }}
+        </ion-badge>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-icon slot="start" name="cube-outline" class="setting_icons"></ion-icon>
+        <ion-label>
+          <p class="info-label">{{ 'appInfo.packageName' | translate }}</p>
+          <h2 class="info-value package-name">{{ packageName || 'com.ekarigar.telldemm' }}</h2>
+        </ion-label>
+      </ion-item> -->
+
+    </ion-list>
+
+    <!-- Check for Update Button -->
+    <!-- <div class="action-area">
+      <ion-button
+        expand="block"
+        class="check-update-btn"
+        (click)="checkForUpdates()"
+        [disabled]="isChecking"
+      >
+        <ion-icon slot="start" name="refresh-outline"></ion-icon>
+        {{ isChecking
+            ? ('appInfo.checking' | translate)
+            : ('appInfo.checkForUpdates' | translate) }}
+      </ion-button>
+    </div> -->
+
+    <!-- Copyright Footer -->
+    <div class="app-footer">
+      <p class="copyright">© {{ currentYear }} Telldemm Inc.</p>
+    </div>
+
+  </div>
+</ion-content>

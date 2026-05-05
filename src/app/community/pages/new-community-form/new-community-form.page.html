@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">   
+      <ion-back-button class="backIcon" (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="headerTitle">New community</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- See examples -->
+  <!-- <div class="examples">
+    <a href="#">See examples of different communities</a>
+  </div> -->
+
+  <!-- Community image -->
+  <div class="community-photo">
+    <ion-avatar style="background-color: gray;border-radius: 8px;overflow: hidden;">
+      <img src="assets/images/community_icon.svg" style="border-radius: 0;"/>
+    </ion-avatar>
+    <!-- <ion-fab-button size="small" class="change-photo" (click)="changePhoto()">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-fab-button>
+    <p>Change photo</p> -->
+  </div>
+
+  <!-- Community name -->
+  <ion-item lines="none">
+    <ion-label position="stacked" class="itemHeader">Community name</ion-label>
+    <ion-input
+      class="itemHeader"
+      type="text"
+      maxlength="100"
+      [(ngModel)]="communityName"
+      placeholder="Enter community name">
+    </ion-input>
+  </ion-item>
+  <div class="char-count">{{ communityName.length || 0 }}/100</div>
+
+  <!-- Community description -->
+  <ion-item lines="none">
+    <ion-textarea
+    class="no-padding itemHeader"
+      autoGrow="true"
+      maxlength="2048"
+      [(ngModel)]="communityDescription"
+      placeholder="Hi everyone! This community is for members to chat in topic-based groups and get important announcements.">
+    </ion-textarea>
+  </ion-item>
+  <div class="char-count">{{ communityDescription.length || 0 }}/2048</div>
+
+</ion-content>
+
+<!-- Floating Next button -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-fab-button class="next-btn" (click)="createCommunity()">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

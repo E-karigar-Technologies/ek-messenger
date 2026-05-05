@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Past Members</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Loading spinner -->
+  <div *ngIf="isLoading" class="ion-text-center ion-padding">
+    <ion-spinner></ion-spinner>
+    <p>Loading past members...</p>
+  </div>
+
+  <!-- Past members list -->
+  <ion-list *ngIf="!isLoading && pastMembers.length > 0">
+    <ion-item *ngFor="let member of pastMembers">
+      <ion-avatar slot="start">
+        <!-- <img [src]="member.avatar || 'assets/images/default-avatar.png'" alt="avatar"> -->
+         <img 
+          [src]="member.avatar || 'assets/images/user.jfif'" 
+          alt="avatar"
+          (error)="onImageError($event)"
+        />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ member.username }}</h2>
+        <p>{{ member.phoneNumber }}</p>
+        <p class="ion-text-wrap">
+          <ion-text color="medium">
+            <small>Left/Removed: {{ member.removedAt | date:'short' }}</small>
+          </ion-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Empty state -->
+  <div *ngIf="!isLoading && pastMembers.length === 0" class="ion-text-center ion-padding">
+    <ion-icon name="people-outline" size="large" color="medium"></ion-icon>
+    <p>No past members found.</p>
+  </div>
+</ion-content>

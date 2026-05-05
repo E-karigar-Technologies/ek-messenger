@@ -1,0 +1,519 @@
+<!-- HEADER -->
+<ion-header [translucent]="true">
+  <ion-toolbar class="telldemm">
+    <div class="main-header">
+      <ion-title>
+         <h2 class="header-name" >Updates</h2>
+      </ion-title>
+
+      <ion-buttons slot="end" class="header-icons">
+        <ion-button (click)="presentPopover($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<!-- CONTENT -->
+<ion-content [scrollY]="true">
+  <input
+    #statusFileInput
+    type="file"
+    accept="image/jpeg,image/png,image/webp,video/mp4"
+    hidden
+    (change)="onStatusFileSelected($event)" />
+
+  <section class="status-my-row">
+    <button class="my-status-button" (click)="openMyStatus()">
+      <div class="my-status-avatar-wrap" [class.has-status]="hasMyStatus">
+        <ion-avatar class="my-status-avatar">
+          <img src="assets/images/user.jfif" alt="My status" />
+        </ion-avatar>
+        <span class="my-status-add" (click)="$event.stopPropagation(); triggerStatusFilePicker()">
+          <ion-icon name="add"></ion-icon>
+        </span>
+      </div>
+
+      <div class="my-status-copy">
+        <h3>My Status</h3>
+        <p *ngIf="hasMyStatus">{{ formatRelativeTime(myStatusTimestamp) }}</p>
+        <p *ngIf="!hasMyStatus">Tap to add a status update</p>
+      </div>
+    </button>
+
+    <ion-button fill="clear" size="small" (click)="openDefaultPrivacySettings()">
+      <ion-icon name="settings-outline"></ion-icon>
+    </ion-button>
+  </section>
+
+  <section class="status-privacy-pill">
+    <ion-icon name="lock-closed-outline"></ion-icon>
+    <span>Default privacy: {{ statusPrivacyLabel }}</span>
+  </section>
+
+  <section class="status-drafts" *ngIf="statusDrafts.length > 0">
+    <div class="status-drafts-head">
+      <h4>Offline drafts</h4>
+      <p>{{ statusDrafts.length }} pending</p>
+    </div>
+
+    <ion-item lines="none" class="status-draft-item" *ngFor="let draft of statusDrafts; trackBy: trackByDraftId">
+      <ion-label>
+        <h3>{{ draft.fileName }}</h3>
+        <p>{{ formatRelativeTime(draft.createdAt) }} • {{ draft.fileType }}</p>
+      </ion-label>
+
+      <ion-button fill="clear" size="small" color="danger" (click)="deleteDraft(draft)">
+        Remove
+      </ion-button>
+    </ion-item>
+  </section>
+
+  <div class="status-state error" *ngIf="statusError && !hasAnyStatusUpdates">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <p>{{ statusError }}</p>
+  </div>
+
+  <section class="status-strip-wrap" *ngIf="recentStatusGroups.length > 0">
+    <div class="status-strip-head">
+      <h3>Recent updates</h3>
+    </div>
+
+    <div class="status-strip">
+      <button
+        class="status-chip"
+        *ngFor="let group of recentStatusGroups; trackBy: trackByStatusOwner"
+        (click)="openStatusViewer(group)">
+        <div class="status-ring" [class.seen]="group.unseenCount === 0">
+          <ion-avatar>
+            <img [src]="group.ownerAvatar || 'assets/images/user.jfif'" [alt]="group.ownerName" />
+          </ion-avatar>
+        </div>
+
+        <h4>{{ group.ownerName || 'Unknown' }}</h4>
+        <p>{{ formatRelativeTime(group.latestCreatedAt) }}</p>
+
+        <span class="unseen-dot" *ngIf="group.unseenCount > 0">{{ group.unseenCount }}</span>
+
+        <ion-button
+          fill="clear"
+          size="small"
+          class="owner-menu-btn"
+          (click)="$event.stopPropagation(); openStatusOwnerMenu(group, false, false)">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </button>
+    </div>
+  </section>
+
+  <section class="status-strip-wrap muted" *ngIf="mutedStatusGroups.length > 0">
+    <div class="status-strip-head">
+      <h3>Muted statuses</h3>
+    </div>
+
+    <div class="status-strip">
+      <button
+        class="status-chip muted"
+        *ngFor="let group of mutedStatusGroups; trackBy: trackByStatusOwner"
+        (click)="openStatusViewer(group)">
+        <div class="status-ring seen">
+          <ion-avatar>
+            <img [src]="group.ownerAvatar || 'assets/images/user.jfif'" [alt]="group.ownerName" />
+          </ion-avatar>
+        </div>
+
+        <h4>{{ group.ownerName || 'Unknown' }}</h4>
+        <p>{{ formatRelativeTime(group.latestCreatedAt) }}</p>
+
+        <ion-button
+          fill="clear"
+          size="small"
+          class="owner-menu-btn"
+          (click)="$event.stopPropagation(); openStatusOwnerMenu(group, true, false)">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </button>
+    </div>
+  </section>
+
+  <section class="status-strip-wrap muted" *ngIf="hiddenStatusGroups.length > 0">
+    <div class="status-strip-head">
+      <h3>Hidden statuses</h3>
+    </div>
+
+    <div class="status-strip">
+      <button
+        class="status-chip muted"
+        *ngFor="let group of hiddenStatusGroups; trackBy: trackByStatusOwner"
+        (click)="openStatusViewer(group)">
+        <div class="status-ring seen">
+          <ion-avatar>
+            <img [src]="group.ownerAvatar || 'assets/images/user.jfif'" [alt]="group.ownerName" />
+          </ion-avatar>
+        </div>
+
+        <h4>{{ group.ownerName || 'Unknown' }}</h4>
+        <p>{{ formatRelativeTime(group.latestCreatedAt) }}</p>
+
+        <ion-button
+          fill="clear"
+          size="small"
+          class="owner-menu-btn"
+          (click)="$event.stopPropagation(); openStatusOwnerMenu(group, false, true)">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </button>
+    </div>
+  </section>
+
+  <div class="status-state" *ngIf="!hasAnyStatusUpdates && !statusError && statusFeedReady">
+    <ion-icon name="sparkles-outline"></ion-icon>
+    <p>No status updates yet.</p>
+  </div>
+
+  <!-- CHANNEL HEADER -->
+  <div class="channels-main">
+    <p class="Status">Channels</p>
+
+    <p class="Explore" (click)="goToChannels()">
+      Explore Channels
+      <ion-icon
+        name="chevron-forward-outline"
+        [class.rotate]="isRotated">
+      </ion-icon>
+    </p>
+  </div>
+
+  <!-- ========================= -->
+  <!-- MY CHANNELS -->
+  <!-- ========================= -->
+
+  <ion-list-header>
+    <ion-label>My Channels</ion-label>
+  </ion-list-header>
+
+  <!-- 🔥 Fixed: Removed cdk-virtual-scroll-viewport, use regular *ngFor -->
+  <div class="channels-list" *ngIf="myChannels.length > 0 && !isLoadingChannels">
+    <ion-item
+      *ngFor="let ch of sortedMyChannels; trackBy: trackByChannelId"
+      (click)="openChat(ch)"
+      button
+      lines="none">
+
+      <ion-avatar slot="start">
+        <img
+          [src]="ch.channel_dp || 'assets/images/user.jfif'"
+          [alt]="ch.channel_name" />
+      </ion-avatar>
+
+      <ion-label>
+        <h2 class="chat-message">{{ ch.channel_name }}</h2>
+        <p class="followers" *ngIf="getChannelLastMsgText(ch); else noMsg">
+          {{ getChannelLastMsgText(ch) }}
+        </p>
+        <ng-template #noMsg>
+          <p class="followers">{{ getDisplayFollowersCount(ch) }} followers</p>
+        </ng-template>
+      </ion-label>
+      <div slot="end" class="channel-meta">
+        <p class="channel-time" *ngIf="getChannelLastMsgTime(ch)">{{ getChannelLastMsgTime(ch) }}</p>
+        <ion-badge
+          class="unread-badge"
+          *ngIf="(channelUnreadCounts[ch.channel_id] || 0) > 0">
+          {{ channelUnreadCounts[ch.channel_id] }}
+        </ion-badge>
+      </div>
+
+    </ion-item>
+  </div>
+
+  <!-- Empty state -->
+  <ion-item *ngIf="myChannels.length === 0 && !isLoadingChannels">
+    <ion-label>You are not following any channels yet</ion-label>
+  </ion-item>
+
+  <!-- ========================= -->
+  <!-- LOADING OVERLAY -->
+  <!-- ========================= -->
+  <ion-spinner
+    class="loading-overlay"
+    [class.visible]="isLoadingChannels">
+  </ion-spinner>
+
+  <!-- ========================= -->
+  <!-- DISCOVER CHANNELS -->
+  <!-- ========================= -->
+
+  <p class="channels">
+    Discover Channels (Find channels to follow)
+  </p>
+
+  <!-- 🔥 Fixed: Removed cdk-virtual-scroll-viewport, use regular *ngFor -->
+  <div class="channels-list" *ngIf="filteredChannels.length > 0 && !isLoadingChannels">
+    <ion-item
+      *ngFor="let ch of filteredChannels; trackBy: trackByChannelId"
+      (click)="openChat(ch)"
+      button
+      lines="none">
+
+      <ion-avatar slot="start">
+        <img
+          [src]="ch.channel_dp || 'assets/images/user.jfif'"
+          [alt]="ch.channel_name" />
+      </ion-avatar>
+
+      <ion-label>
+        <h2 class="chat-India">{{ ch.channel_name }}</h2>
+        <p class="followers">{{ getDisplayFollowersCount(ch) }} followers</p>
+      </ion-label>
+
+      <ion-button
+        slot="end"
+        fill="clear"
+        size="small"
+        color="primary"
+        (click)="onFollowClick($event, ch)"
+        [disabled]="loadingChannelId === ch.channel_id">
+        Join
+      </ion-button>
+
+    </ion-item>
+  </div>
+
+  <!-- Empty state -->
+  <ion-item *ngIf="filteredChannels.length === 0 && !isLoadingChannels">
+    <ion-label>No Channels Found</ion-label>
+  </ion-item>
+
+  <!-- ========================= -->
+  <!-- ADD CHANNEL FAB -->
+  <!-- ========================= -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openAddChannelModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-modal
+  [isOpen]="composerOpen"
+  [backdropDismiss]="false"
+  cssClass="status-composer-modal"
+  (didDismiss)="closeComposer()">
+  <ng-template>
+    <ion-content class="status-composer-content" [fullscreen]="true">
+      <div class="status-composer-shell">
+        <div class="status-composer-top">
+          <ion-button fill="clear" color="light" (click)="closeComposer()">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+
+          <div class="status-composer-title">
+            <h3>My Status</h3>
+            <p>{{ statusPrivacyLabel }}</p>
+          </div>
+
+          <ion-button fill="clear" color="light" (click)="triggerStatusFilePicker()">
+            <ion-icon name="images-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <div class="status-composer-preview" *ngIf="composerPreviewUrl">
+          <img *ngIf="composerFile?.type !== 'video/mp4'" [src]="composerPreviewUrl" alt="Status preview" />
+          <video *ngIf="composerFile?.type === 'video/mp4'" [src]="composerPreviewUrl" autoplay muted loop playsinline></video>
+        </div>
+
+        <div class="status-composer-bottom">
+          <ion-item lines="none" class="status-composer-caption-item">
+            <ion-textarea
+              autoGrow="true"
+              [(ngModel)]="composerCaption"
+              maxlength="500"
+              placeholder="Add a caption"></ion-textarea>
+          </ion-item>
+
+          <ion-button
+            class="status-composer-send"
+            [disabled]="composerPosting"
+            (click)="postComposerStatus()">
+            <ion-spinner *ngIf="composerPosting" name="crescent"></ion-spinner>
+            <ion-icon *ngIf="!composerPosting" name="send"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<ion-modal
+  [isOpen]="isViewerOpen"
+  [backdropDismiss]="true"
+  cssClass="status-viewer-modal"
+  (didDismiss)="closeStatusViewer()">
+  <ng-template>
+    <ion-content
+      class="status-viewer"
+      [fullscreen]="true"
+      (touchstart)="onViewerTouchStart($event)"
+      (touchend)="onViewerTouchEnd($event)">
+
+      <div class="viewer-progress">
+        <span
+          class="viewer-progress-segment"
+          *ngFor="let progress of viewerProgressBars; let i = index"
+          [style.width.%]="100 / viewerProgressBars.length">
+          <span class="fill" [style.width.%]="progress"></span>
+        </span>
+      </div>
+
+      <div class="viewer-head">
+        <div class="viewer-owner">
+          <ion-avatar>
+            <img [src]="viewerOwnerAvatar || 'assets/images/user.jfif'" [alt]="viewerOwnerName" />
+          </ion-avatar>
+          <div>
+            <h3>{{ viewerOwnerName }}</h3>
+            <p>{{ formatRelativeTime(currentViewerStatus?.createdAt || 0) }}</p>
+          </div>
+        </div>
+
+        <div class="viewer-head-actions">
+          <ion-button
+            *ngIf="viewerIsOwner && currentViewerStatus"
+            fill="clear"
+            color="light"
+            (click)="openViewerStatusMenu()">
+            <ion-icon name="ellipsis-vertical"></ion-icon>
+          </ion-button>
+
+          <ion-button fill="clear" color="light" (click)="closeStatusViewer()">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <div
+        class="viewer-media"
+        (mousedown)="onViewerHoldStart()"
+        (mouseup)="onViewerHoldEnd()"
+        (mouseleave)="onViewerHoldEnd()"
+        (touchstart)="onViewerHoldStart()"
+        (touchend)="onViewerHoldEnd()">
+
+        <div class="viewer-empty" *ngIf="!viewerMediaReady">
+          <ion-icon name="cloud-offline-outline"></ion-icon>
+          <p>Media unavailable right now. Please try again.</p>
+        </div>
+
+        <img
+          *ngIf="viewerMediaReady && currentViewerStatus?.mediaType === 'image'"
+          [src]="viewerMediaSrc"
+          [class.viewer-media-hidden]="viewerMediaLoading"
+          (load)="onViewerMediaLoaded()"
+          (error)="onViewerMediaError()"
+          alt="Status" />
+
+        <video
+          #viewerVideo
+          *ngIf="viewerMediaReady && currentViewerStatus?.mediaType === 'video'"
+          [src]="viewerMediaSrc"
+          [class.viewer-media-hidden]="viewerMediaLoading"
+          autoplay
+          playsinline
+          preload="auto"
+          (loadeddata)="onViewerMediaLoaded()"
+          (error)="onViewerMediaError()"></video>
+
+        <div class="viewer-loading" *ngIf="viewerMediaReady && viewerMediaLoading">
+          <ion-spinner name="crescent"></ion-spinner>
+        </div>
+
+        <button class="viewer-nav prev" (touchstart)="$event.stopPropagation(); onViewerHoldEnd()" (click)="goToPreviousStatus($event)"></button>
+        <button class="viewer-nav next" (touchstart)="$event.stopPropagation(); onViewerHoldEnd()" (click)="goToNextStatus($event)"></button>
+      </div>
+
+      <div class="viewer-caption" *ngIf="currentViewerStatus?.caption">
+        {{ currentViewerStatus?.caption }}
+      </div>
+
+      <button class="viewer-owner-stats" *ngIf="viewerIsOwner && currentViewerStatus" (click)="openOwnerViewsSheet()">
+        <ion-icon class="viewer-owner-stats-chevron" name="chevron-up-outline"></ion-icon>
+        <div class="viewer-owner-stats-row">
+          <ion-icon name="eye-outline"></ion-icon>
+          <span>{{ currentViewerStatus.viewCount || 0 }}</span>
+        </div>
+      </button>
+
+      <div class="viewer-reply" *ngIf="!viewerIsOwner">
+        <ion-item lines="none">
+          <ion-input
+            placeholder="Reply to status"
+            [(ngModel)]="viewerReplyText"
+            [disabled]="!(currentViewerStatus?.allowReplies ?? true)"></ion-input>
+
+          <ion-button
+            slot="end"
+            fill="clear"
+            [disabled]="!(currentViewerStatus?.allowReplies ?? true)"
+            (click)="sendViewerReply()">
+            Send
+          </ion-button>
+        </ion-item>
+
+        <div class="viewer-reactions">
+          <button (click)="sendViewerReaction('❤️')">❤️</button>
+          <button (click)="sendViewerReaction('🔥')">🔥</button>
+          <button (click)="sendViewerReaction('👏')">👏</button>
+          <button (click)="sendViewerReaction('😂')">😂</button>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<ion-modal
+  [isOpen]="isViewsSheetOpen"
+  cssClass="status-views-modal"
+  [breakpoints]="[0, 0.45, 0.75]"
+  [initialBreakpoint]="0.45"
+  (didDismiss)="closeOwnerViewsSheet()">
+  <ng-template>
+    <ion-content class="status-views-content" [fullscreen]="true">
+      <div class="status-views-header">
+        <h3>Viewed by {{ currentViewerStatus?.viewCount || ownerStatusViews.length }}</h3>
+        <ion-button fill="clear" size="small" (click)="closeOwnerViewsSheet()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="status-views-state" *ngIf="isLoadingOwnerViews">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Loading views...</p>
+      </div>
+
+      <ion-list lines="none" class="status-views-list" *ngIf="!isLoadingOwnerViews && ownerStatusViews.length > 0">
+        <ion-item class="status-views-item" *ngFor="let view of ownerStatusViews; trackBy: trackByStatusView">
+          <ion-avatar slot="start">
+            <img [src]="view.viewerAvatar || 'assets/images/user.jfif'" [alt]="view.viewerName" />
+          </ion-avatar>
+          <ion-label>
+            <h3>{{ view.viewerName }}</h3>
+            <p>{{ formatRelativeTime(view.viewedAt) }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="status-views-state" *ngIf="!isLoadingOwnerViews && ownerStatusViews.length === 0">
+        <ion-icon name="eye-off-outline"></ion-icon>
+        <p>No views yet.</p>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- FOOTER -->
+<app-footer-tabs
+  [totalUnreadUpdates]="totalUnreadUpdates">
+</app-footer-tabs>

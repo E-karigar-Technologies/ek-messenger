@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/profile-screen"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion_title">Update Name</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="saveName()" #nameForm="ngForm">
+    <ion-item lines="none" class="name-input-item">
+      <ion-label position="stacked">Your name</ion-label>
+      <ion-input
+        [(ngModel)]="name"
+        name="name"
+        maxlength="25"
+        required
+        placeholder="Enter your name"
+      >
+      </ion-input>
+    </ion-item>
+
+    <div class="char-count">{{ name.length || 0 }}/25</div>
+
+    <p class="note">
+      People will see this name if you interact with them and they don’t have
+      you saved as a contact.
+    </p>
+
+    <button class="save_button" type="submit" [disabled]="!nameForm.form.valid">
+      Save
+    </button>
+  </form>
+</ion-content>

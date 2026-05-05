@@ -1,0 +1,208 @@
+<ion-header>
+  <ion-toolbar class="members-toolbar">
+    <ion-buttons slot="start">
+      <ion-icon
+        name="arrow-back-outline"
+        class="back-icon"
+        (click)="back()"
+        style="font-size: 24px; cursor: pointer; "
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title class="members-title">Members</ion-title>
+  </ion-toolbar>
+
+  <!-- Search bar -->
+  <ion-toolbar class="search-toolbar">
+    <div class="search-wrapper">
+      <ion-icon name="search-outline" class="search-icon"></ion-icon>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search members..."
+        [(ngModel)]="searchQuery"
+        (input)="onSearch()"
+      />
+      <ion-icon
+        *ngIf="searchQuery"
+        name="close-circle"
+        class="clear-icon"
+        (click)="clearSearch()"
+      ></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="members-content">
+
+  <!-- Member count badge -->
+  <div class="members-count-bar" *ngIf="!loading">
+    <ion-icon name="people-outline" class="count-icon"></ion-icon>
+    <span>{{ filteredMembers.length }} member{{ filteredMembers.length !== 1 ? 's' : '' }}</span>
+  </div>
+
+  <!-- Skeleton Loader -->
+  <ion-list *ngIf="loading" lines="none" class="members-list">
+    <ion-item *ngFor="let i of [1,2,3,4,5,6]" class="member-item-skeleton">
+      <ion-avatar slot="start" class="member-avatar-skeleton">
+        <ion-skeleton-text animated style="width:44px; height:44px; border-radius:50%;"></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3><ion-skeleton-text animated style="width: 55%; height: 14px; border-radius: 4px;"></ion-skeleton-text></h3>
+        <p><ion-skeleton-text animated style="width: 35%; height: 11px; border-radius: 4px;"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Members List -->
+  <ion-list *ngIf="!loading" lines="none" class="members-list">
+
+    <!-- Admins section -->
+    <div *ngIf="adminMembers.length > 0 && !searchQuery">
+      <div class="section-header">
+        <span class="section-label">Admins & Owner</span>
+        <div class="section-line"></div>
+      </div>
+
+      <ion-item
+        *ngFor="let member of adminMembers; trackBy: trackById"
+        class="member-item"
+        [class.is-you]="member.isYou"
+      >
+        <!-- Avatar -->
+        <div slot="start" class="avatar-wrapper">
+          <ng-container *ngIf="member.avatar && !member.avatarError; else initialsAdminTpl">
+            <img
+              class="member-avatar"
+              [src]="member.avatar"
+              [alt]="member.name"
+              (error)="onAvatarError(member)"
+            />
+          </ng-container>
+          <ng-template #initialsAdminTpl>
+            <div class="member-avatar initials-avatar" [style.background]="getAvatarColor(member.name)">
+              {{ getInitial(member.name) }}
+            </div>
+          </ng-template>
+          <!-- Online dot -->
+          <span class="online-dot" *ngIf="member.isOnline"></span>
+        </div>
+
+        <ion-label class="member-label">
+          <h3 class="member-name">
+            {{ member.isYou ? 'You' : member.name }}
+            <span *ngIf="member.isYou" class="you-tag">You</span>
+          </h3>
+
+        </ion-label>
+
+        <div slot="end" class="badge-wrapper">
+          <span *ngIf="member.role === 'owner'" class="role-badge owner-badge">
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            Owner
+          </span>
+          <span *ngIf="member.role === 'admin'" class="role-badge admin-badge">
+            <ion-icon name="star-outline"></ion-icon>
+            Admin
+          </span>
+        </div>
+      </ion-item>
+    </div>
+
+    <!-- Regular members section -->
+    <div *ngIf="regularMembers.length > 0 && !searchQuery">
+      <div class="section-header" *ngIf="adminMembers.length > 0">
+        <span class="section-label">Members</span>
+        <div class="section-line"></div>
+      </div>
+
+      <ion-item
+        *ngFor="let member of regularMembers; trackBy: trackById"
+        class="member-item"
+        [class.is-you]="member.isYou"
+      >
+        <div slot="start" class="avatar-wrapper">
+          <ng-container *ngIf="member.avatar && !member.avatarError; else initialsRegTpl">
+            <img
+              class="member-avatar"
+              [src]="member.avatar"
+              [alt]="member.name"
+              (error)="onAvatarError(member)"
+            />
+          </ng-container>
+          <ng-template #initialsRegTpl>
+            <div class="member-avatar initials-avatar" [style.background]="getAvatarColor(member.name)">
+              {{ getInitial(member.name) }}
+            </div>
+          </ng-template>
+          <span class="online-dot" *ngIf="member.isOnline"></span>
+        </div>
+
+        <ion-label class="member-label">
+          <h3 class="member-name">
+            {{ member.isYou ? 'You' : member.name }}
+            <span *ngIf="member.isYou" class="you-tag">You</span>
+          </h3>
+
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <!-- Search results (flat list) -->
+    <ng-container *ngIf="searchQuery">
+      <ion-item
+        *ngFor="let member of filteredMembers; trackBy: trackById"
+        class="member-item"
+        [class.is-you]="member.isYou"
+      >
+        <div slot="start" class="avatar-wrapper">
+          <ng-container *ngIf="member.avatar && !member.avatarError; else initialsSearchTpl">
+            <img
+              class="member-avatar"
+              [src]="member.avatar"
+              [alt]="member.name"
+              (error)="onAvatarError(member)"
+            />
+          </ng-container>
+          <ng-template #initialsSearchTpl>
+            <div class="member-avatar initials-avatar" [style.background]="getAvatarColor(member.name)">
+              {{ getInitial(member.name) }}
+            </div>
+          </ng-template>
+          <span class="online-dot" *ngIf="member.isOnline"></span>
+        </div>
+
+        <ion-label class="member-label">
+          <h3 class="member-name">
+            {{ member.isYou ? 'You' : member.name }}
+            <span *ngIf="member.isYou" class="you-tag">You</span>
+          </h3>
+
+        </ion-label>
+
+        <div slot="end" class="badge-wrapper">
+          <span *ngIf="member.role === 'owner'" class="role-badge owner-badge">
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            Owner
+          </span>
+          <span *ngIf="member.role === 'admin'" class="role-badge admin-badge">
+            <ion-icon name="star-outline"></ion-icon>
+            Admin
+          </span>
+        </div>
+      </ion-item>
+    </ng-container>
+
+    <!-- No results -->
+    <div *ngIf="filteredMembers.length === 0 && searchQuery" class="no-results">
+      <ion-icon name="search-outline" class="no-results-icon"></ion-icon>
+      <p>No members found for "<strong>{{ searchQuery }}</strong>"</p>
+    </div>
+
+    <!-- Admin only notice -->
+    <div class="admin-notice" *ngIf="!isAdminOrOwner() && !searchQuery && !loading">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <span>Only community admins can see all members</span>
+    </div>
+  </ion-list>
+
+</ion-content>

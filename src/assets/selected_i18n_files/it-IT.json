@@ -1,0 +1,752 @@
+{
+  "meta": {
+    "generatedAt": "2025-09-25T06:49:05.846991Z",
+    "note": "Translations for email-edit page.",
+    "translated": true,
+    "locale": "it-IT"
+  },
+  "emailEdit": {
+    "title": "Indirizzo e-mail",
+    "description": "L’e-mail ti aiuta ad accedere al tuo account. Non è visibile agli altri.",
+    "label": "E-mail",
+    "verified": "Verificato",
+    "placeholder": "you@example.com",
+    "edit": "Modifica",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "savedSuccess": "L’e-mail è stata salvata con successo.",
+    "validation": {
+      "required": "L’e-mail è obbligatoria.",
+      "invalid": "Per favore, inserisci un indirizzo e-mail valido.",
+      "maxlength": "L’e-mail è troppo lunga (massimo 254 caratteri)."
+    }
+  },
+  "helpPage": {
+    "title": "Aiuto",
+    "helpCenter": {
+      "title": "Centro assistenza",
+      "description": "Ottieni aiuto, FAQ e opzioni di contatto."
+    },
+    "terms": {
+      "title": "Termini e Informativa sulla privacy",
+      "description": "Leggi i nostri termini e la policy sui dati."
+    },
+    "channelReports": {
+      "title": "Segnalazioni canale",
+      "description": "Gestisci e visualizza le segnalazioni."
+    },
+    "appInfo": {
+      "title": "Info app",
+      "description": "Versione, dettagli legali e tecnici."
+    }
+  },
+ "common": { "ok": "OK", "cancel": "Annulla", "logout": "Disconnetti", "reset": "Reimposta" },
+  "settingsPage": {
+  "title": "Impostazioni",
+  "account": {
+    "title": "Account",
+    "description": "Privacy, sicurezza, cambia numero"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "description": "Gestisci le impostazioni di privacy"
+  },
+  "avatar": {
+    "title": "Foto del profilo",
+    "description": "Cambia la tua foto del profilo"
+  },
+  "chats": {
+    "title": "Chat",
+    "description": "Tema, sfondo, backup"
+  },
+  "accessibility": {
+    "title": "Accessibilità",
+    "description": "Regola dimensione testo e opzioni di visualizzazione"
+  },
+  "notifications": {
+    "title": "Notifiche",
+    "description": "Gestisci notifiche messaggi, gruppi e chiamate"
+  },
+  "storage": {
+    "title": "Archiviazione e dati",
+    "description": "Gestisci archiviazione e uso rete"
+  },
+  "appLanguage": {
+    "title": "Lingua app",
+    "description": "Scegli la lingua dell'app"
+  },
+  "help": {
+    "title": "Aiuto",
+    "description": "Centro assistenza, contattaci, info app"
+  },
+  "updates": {
+    "title": "Aggiornamenti app",
+    "description": "Controlla aggiornamenti e abilita auto-aggiornamento"
+  },
+  "invite": {
+    "title": "Invita un amico",
+    "description": "Condividi l'app con i tuoi contatti"
+  },
+  "logout": {
+    "title": "Disconnetti",
+    "description": "Cancella dati app e disconnettiti",
+    "confirmHeader": "Conferma disconnessione",
+    "confirmMessage": "Sei sicuro di voler disconnetterti e cancellare i dati dell'app?",
+    "loadingHeader": "Disconnessione in corso",
+    "loadingMessage": "Attendere prego...",
+    "successHeader": "Disconnesso",
+    "successMessage": "Ti sei disconnesso con successo."
+  },
+  "defaultStatus": "Disponibile"
+}
+,
+  "appUpdates": {
+    "title": "Aggiornamenti app",
+    "version": "Versione",
+    "latestAvailable": "Ultima disponibile",
+    "status": "Stato",
+    "statusMessages": {
+      "updateAvailable": "È disponibile un aggiornamento.",
+      "upToDate": "Stai usando l’ultima versione."
+    },
+    "badge": {
+      "updateAvailable": "Aggiornamento disponibile",
+      "upToDate": "Aggiornato"
+    },
+    "checkForUpdates": {
+      "title": "Controlla aggiornamenti",
+      "description": "Controlla manualmente se è disponibile una nuova versione"
+    },
+    "checking": "Verifica…",
+    "toast": {
+      "latest": "Stai usando l’ultima versione.",
+      "updateAvailable": "Aggiornamento disponibile: {{version}}",
+      "error": "Impossibile verificare gli aggiornamenti. Riprova più tardi."
+    }
+  },
+  "accountPage": {
+    "title": "Account",
+    "securityNotifications": "Notifiche di sicurezza",
+    "passkeys": "Passkey",
+    "emailAddress": "Indirizzo email",
+    "twoStep": "Verifica in due passaggi",
+    "changeNumber": "Cambia numero",
+    "requestInfo": "Richiedi informazioni account",
+    "addAccount": "Aggiungi account",
+    "deleteAccount": "Elimina account",
+    "confirmDelete": {
+      "title": "Eliminare l’account?",
+      "message": "Questa azione eliminerà definitivamente il tuo account e i tuoi dati.",
+      "confirm": "Elimina",
+      "cancel": "Annulla",
+      "log": "Finestra di eliminazione account aperta"
+    }
+  },
+  "accessibility": {
+    "title": "Accessibilità",
+    "groups": {
+      "displayMotion": "Schermo e movimento",
+      "interaction": "Interazione"
+    },
+    "increaseContrast": {
+      "title": "Aumenta il contrasto",
+      "desc": "Scurisci i colori principali per migliorare la leggibilità in modalità chiara."
+    },
+    "reduceMotion": {
+      "title": "Riduci i movimenti",
+      "desc": "Riduci adesivi animati, GIF e transizioni."
+    },
+    "largeText": {
+      "title": "Testo grande",
+      "desc": "Aumenta la dimensione del carattere di sistema per una lettura più agevole."
+    },
+    "simpleAnimations": {
+      "title": "Animazioni semplificate",
+      "desc": "Riduci le animazioni complesse per un’interazione più fluida."
+    },
+    "grayscale": {
+      "title": "Modalità in scala di grigi",
+      "desc": "Converti tutti i colori dell’interfaccia in tonalità di grigio per ridurre l’affaticamento visivo."
+    }
+  },
+  "privacyPage": {
+    "title": "Privacy",
+    "groups": {
+      "whoCanSee": "Chi può vedere le mie info",
+      "other": "Altro"
+    },
+    "lastSeen": {
+      "title": "Ultimo accesso e online",
+      "desc": "Controlla chi può vedere il tuo ultimo accesso e lo stato online"
+    },
+    "profilePhoto": {
+      "title": "Foto profilo",
+      "desc": "Scegli chi può vedere la tua foto"
+    },
+    "about": {
+      "title": "Info",
+      "desc": "Controlla chi può vedere le tue informazioni"
+    },
+    "status": {
+      "title": "Stato",
+      "desc": "Gestisci chi può vedere i tuoi aggiornamenti di stato"
+    },
+    "blocked": {
+      "title": "Contatti bloccati",
+      "desc": "Visualizza e gestisci gli utenti bloccati"
+    },
+    "options": {
+      "everyone": "Tutti",
+      "contacts": "I miei contatti",
+      "nobody": "Nessuno"
+    }
+  },
+  "avatarPage": {
+    "title": "Crea il tuo Avatar",
+    "previewAlt": "Anteprima avatar",
+    "sections": {
+      "customization": "Opzioni di personalizzazione"
+    },
+    "fields": {
+      "hair": "Capelli",
+      "accessories": "Accessori",
+      "hairColor": "Colore dei capelli",
+      "eyes": "Occhi",
+      "mouth": "Bocca",
+      "clothes": "Vestiti",
+      "skin": "Pelle"
+    },
+    "placeholders": {
+      "hair": "Seleziona lo stile di capelli",
+      "accessories": "Seleziona accessori",
+      "hairColor": "Seleziona colore dei capelli",
+      "eyes": "Seleziona stile degli occhi",
+      "mouth": "Seleziona stile della bocca",
+      "clothes": "Seleziona i vestiti",
+      "skin": "Seleziona il tono della pelle"
+    },
+    "buttons": {
+      "download": "Scarica",
+      "downloading": "Scaricamento…",
+      "save": "Salva"
+    },
+    "toast": {
+      "saved": "Le scelte dell'avatar sono state salvate localmente.",
+      "downloadError": "Download non riuscito. Riprova."
+    }
+  },
+  "notifications": {
+    "title": "Notifiche",
+    "highPriority": {
+      "title": "Usa notifiche ad alta priorità",
+      "desc": "Ricevi notifiche con suono e anteprima anche quando Non disturbare è attivo"
+    },
+    "message": {
+      "title": "Notifiche messaggi",
+      "desc": "Personalizza gli avvisi per i messaggi"
+    },
+    "group": {
+      "title": "Notifiche chat di gruppo",
+      "desc": "Gestisci le notifiche per le chat di gruppo"
+    },
+    "call": {
+      "title": "Notifiche chiamate",
+      "desc": "Impostazioni di suonerie e vibrazione"
+    }
+  },
+  "storage": {
+    "title": "Archiviazione e dati",
+    "totalUsedHuman": "{{used}} MB di {{total}} MB",
+    "cards": {
+      "usage": {
+        "title": "Utilizzo archiviazione",
+        "used": "{{mb}} MB usati",
+        "total": "{{mb}} MB totali"
+      }
+    },
+    "sections": {
+      "network": "Utilizzo rete",
+      "manage": "Gestisci"
+    },
+    "network": {
+      "sent": {
+        "title": "Dati inviati",
+        "subtitle": "{{val}}"
+      },
+      "received": {
+        "title": "Dati ricevuti",
+        "subtitle": "{{val}}"
+      }
+    },
+    "manage": {
+      "title": "Gestisci archiviazione",
+      "desc": "Rivedi ed elimina file di grandi dimensioni, chat e media"
+    },
+    "autoDownload": {
+      "title": "Download automatico media",
+      "desc": "Controlla cosa scaricare su mobile/Wi-Fi/roaming"
+    },
+    "actions": {
+      "analyze": "Analizza",
+      "clearCache": "Svuota cache",
+      "resetStats": "Reimposta statistiche"
+    },
+    "toast": {
+      "cleared": "Cancellati {{mb}} MB di cache",
+      "statsReset": "Statistiche di rete reimpostate"
+    }
+  },
+  
+  "chats": {
+    "title": "Chat",
+    "sections": {
+      "appearance": "Aspetto",
+      "behavior": "Comportamento dei messaggi",
+      "management": "Gestione chat",
+      "translation": "Traduzione"
+    },
+    "items": {
+      "theme": {
+        "title": "Tema",
+        "sub": "Predefinito di sistema"
+      },
+      "chatTheme": {
+        "title": "Tema chat predefinito",
+        "sub": "Scegli sfondo o tema"
+      },
+      "fontSize": {
+        "title": "Dimensione del carattere",
+        "sub": "Media"
+      },
+      "enterToSend": {
+        "title": "Invia con Enter",
+        "sub": "Premi Enter per inviare i messaggi"
+      },
+      "mediaVisibility": {
+        "title": "Visibilità dei media",
+        "sub": "Mostra i media scaricati di recente nella tua galleria"
+      },
+      "keepArchived": {
+        "title": "Mantieni chat archiviate",
+        "sub": "Le chat archiviate rimangono tali anche quando arrivano nuovi messaggi"
+      },
+      "transcripts": {
+        "title": "Trascrizione messaggi vocali",
+        "sub": "Trascrivi automaticamente i nuovi messaggi vocali"
+      },
+      "translation": {
+        "title": "Abilita traduzione",
+        "sub": "Traduci i messaggi che invii",
+        "notice": "I messaggi tradotti possono essere elaborati da servizi esterni per garantirne l'accuratezza. I tuoi dati restano privati e non vengono archiviati.",
+        "reset": {
+          "title": "Reimposta consenso",
+          "sub": "Cancella il consenso alla traduzione e disabilita la funzione"
+        }
+      },
+      "backup": {
+        "title": "Backup chat",
+        "sub": "Backup dei messaggi sul cloud"
+      },
+      "transfer": {
+        "title": "Trasferisci chat",
+        "sub": "Sposta le chat tra dispositivi"
+      },
+      "history": {
+        "title": "Cronologia chat",
+        "sub": "Esporta, archivia, cancella o elimina tutte le chat"
+      }
+    },
+    "toasts": {
+      "enter": {
+        "enabled": "Invio con Enter attivato",
+        "disabled": "Invio con Enter disattivato"
+      },
+      "media": {
+        "on": "Visibilità dei media attivata",
+        "off": "Visibilità dei media disattivata"
+      },
+      "archived": {
+        "enabled": "Mantieni archiviate attivato",
+        "disabled": "Mantieni archiviate disattivato"
+      },
+      "transcripts": {
+        "enabled": "Trascrizione vocale attivata",
+        "disabled": "Trascrizione vocale disattivata"
+      },
+      "translation": {
+        "enabled": "Traduzione attivata",
+        "disabled": "Traduzione disattivata",
+        "consentDeclined": "Consenso alla traduzione rifiutato",
+        "consentReset": "Consenso alla traduzione reimpostato"
+      },
+      "backup": {
+        "starting": "Avvio del backup…",
+        "done": "Backup completato"
+      }
+    },
+    "dialogs": {
+      "translationConsent": {
+        "header": "La traduzione richiede l'invio del testo del messaggio a un servizio esterno",
+        "message": "Per fornire la traduzione dei messaggi, inviamo il testo del messaggio a un servizio di traduzione di terze parti. Non raccogliamo alcun dato personale dell'account. Viene inviato solo il testo del messaggio. Se acconsenti, le traduzioni verranno recuperate e memorizzate localmente. Puoi revocare il consenso in qualsiasi momento.",
+        "decline": "Rifiuta",
+        "accept": "Accetta"
+      },
+      "resetTranslationConsent": {
+        "header": "Reimposta consenso di traduzione",
+        "message": "Questo cancellerà il tuo consenso alla traduzione dei messaggi e disabiliterà la funzione. Potrai riattivarla in seguito."
+      }
+    }
+  }
+
+,
+  "profilePage": {
+    "title": "Profilo",
+    "imageAlt": "Immagine del profilo",
+    "buttons": {
+      "edit": "Modifica",
+      "addLinks": "Aggiungi link",
+      "cancel": "Annulla"
+    },
+    "fields": {
+      "name": "Nome",
+      "about": "Informazioni",
+      "phone": "Telefono",
+      "links": "Link"
+    },
+    "actions": {
+      "source": {
+        "header": "Seleziona origine immagine",
+        "camera": "Fotocamera",
+        "gallery": "Galleria",
+        "cancel": "Annulla"
+      }
+    },
+    "loading": {
+      "openingCamera": "Apertura fotocamera...",
+      "processing": "Elaborazione immagine...",
+      "updating": "Aggiornamento immagine profilo..."
+    },
+    "validation": {
+      "size": "La dimensione dell’immagine deve essere inferiore a 5 MB",
+      "type": "Seleziona un file immagine valido (JPEG, PNG, WebP)"
+    },
+    "toast": {
+      "loadFailed": "Impossibile caricare i dati del profilo",
+      "imageLoadFailed": "Impossibile caricare l’immagine del profilo",
+      "selectFailed": "Impossibile selezionare l’immagine. Riprova.",
+      "processFailed": "Errore durante l’elaborazione dell’immagine. Riprova.",
+      "noUser": "ID utente non trovato",
+      "updated": "Immagine profilo aggiornata con successo!",
+      "updateFailed": "Impossibile aggiornare l’immagine del profilo"
+    }
+  },
+  "footerTabs": {
+    "chat": "Chat",
+    "updates": "Aggiornamenti",
+    "communities": "Comunità",
+    "calls": "Chiamate",
+    "badges": {
+      "unreadChats": "{{count}} Chat non letti",
+      "unreadUpdates": "{{count}} Aggiornamenti"
+    }
+  },
+  "socialLinks": {
+    "title": "Link",
+    "intro": "Aggiungere link al tuo profilo aiuta i contatti a visitare facilmente gli altri tuoi profili.",
+    "instagram": {
+      "title": "Instagram",
+      "add": "Aggiungi il tuo Instagram"
+    },
+    "actions": {
+      "add": "Aggiungi",
+      "edit": "Modifica",
+      "cancel": "Annulla"
+    },
+    "privacy": {
+      "note": "Per gestire chi può vedere i tuoi link, vai a",
+      "link": "impostazioni sulla privacy"
+    }
+  },
+  "addInstagram": {
+    "title": "Aggiungi Instagram",
+    "loading": "Caricamento...",
+    "saving": "Salvataggio...",
+    "usernameLabel": "Nome utente Instagram",
+    "usernamePlaceholder": "username",
+    "hint": {
+      "text": "Aggiungendo un nome utente Instagram, questo sarà visibile nel profilo.",
+      "learnMore": "Scopri di più"
+    },
+    "save": "Salva",
+    "validation": {
+      "required": "Inserisci il tuo nome utente Instagram",
+      "invalid": "Inserisci un nome utente valido (niente spazi, max 30 caratteri)"
+    },
+    "toast": {
+      "fetchFailed": "Impossibile recuperare il link Instagram",
+      "saved": "Instagram salvato con successo!",
+      "saveFailed": "Impossibile aggiornare il link Instagram. Riprova."
+    }
+  },
+  "home": {
+    "search": {
+      "placeholder": "Chiedi o Cerca"
+    },
+    "filters": {
+      "all": "TUTTI",
+      "read": "Letto",
+      "unread": "Non letto",
+      "groups": "Gruppi"
+    },
+    "groupCreator": {
+      "placeholder": "Inserisci Nome Gruppi"
+    },
+    "typing": "sta digitando...",
+    "time": {
+      "yesterday": "Ieri"
+    },
+    "preview": {
+      "deleted": "Questo messaggio è stato eliminato",
+      "encrypted": "[Crittografato]",
+      "media": {
+        "photo": "PicTell (Foto)",
+        "video": "ClipTell (Video)",
+        "audio": "VoiceTell (Audio)",
+        "file": "FileTell (Allegato)",
+        "generic": "[Media]"
+      }
+    },
+    "actions": {
+      "scan": "Scansiona DemmCode",
+      "camera": "Apri fotocamera",
+      "menu": "Apri menu",
+      "contacts": "DemmList (Contatti)"
+    },
+    "scan": {
+      "onlyDevice": "La scansione del codice a barre funziona solo su un dispositivo reale.",
+      "permission": "È necessario il permesso della fotocamera per scansionare i codici a barre.",
+      "notFound": "Nessun codice a barre trovato.",
+      "error": "Qualcosa è andato storto durante la scansione."
+    },
+    "logout": {
+      "header": "Disconnetti",
+      "message": "Sessione scaduta/scaduta."
+    },
+    "alt": {
+      "profile": "Profilo"
+    }
+  },
+  "menu": {
+    "newGroup": "Nuovo gruppo",
+    "newCommunity": "Nuova community",
+    "newBroadcast": "Nuova trasmissione (WIP)",
+    "starred": "Speciali (WIP)",
+    "readAll": "Segna tutto come letto (WIP)",
+    "settings": "Impostazioni",
+    "createChannels": "Crea canali (WIP)",
+    "statusPrivacy": "Privacy stato (WIP)",
+    "clearCallLogs": "Cancella registro chiamate (WIP)"
+  },
+  "userabout": {
+    "members": "Membri",
+    "group": "Gruppo",
+    "groups": "Gruppi",
+    "inCommon": "In comune",
+    "toolbar": {
+      "message": "Messaggio",
+      "call": "Chiamata",
+      "video": "Video",
+      "add": "Aggiungi"
+    },
+    "defaults": {
+      "heyThere": "Ciao! Sto usando Telldemm.",
+      "noGroupDescription": "Nessuna descrizione del gruppo.",
+      "unknown": "Sconosciuto",
+      "unknownDate": "Data sconosciuta",
+      "unnamedGroup": "Gruppo senza nome"
+    },
+    "updatedOn": "Aggiornato il",
+    "createdByOn": "Creato da {{name}} il",
+    "media": {
+      "title": "Media, link e documenti"
+    },
+    "notifications": "Notifiche",
+    "mediaVisibility": "Visibilità dei media",
+    "encryption": {
+      "title": "Crittografia",
+      "subtitle": "Messaggi e chiamate sono crittografati end-to-end. Tocca per verificare."
+    },
+    "disappearing": "Messaggi effimeri",
+    "chatLock": {
+      "title": "Blocco chat",
+      "subtitle": "Blocca e nascondi questa chat su questo dispositivo."
+    },
+    "advancedPrivacy": {
+      "title": "Privacy chat avanzata",
+      "off": "Disattivato"
+    },
+    "createGroupWith": "Crea gruppo con {{name}}",
+    "commonGroupWith": "Gruppo in comune con {{name}}",
+    "groupMembers": "Membri del gruppo",
+    "addMembers": "Aggiungi membri",
+    "groupAdmin": "Amministratore del gruppo",
+    "viewPastMembers": "Visualizza ex membri",
+    "addToFavourites": "Aggiungi ai preferiti",
+    "addToList": "Aggiungi alla lista",
+    "block": "Blocca {{name}}",
+    "unblock": "Sblocca {{name}}",
+    "report": "Segnala {{name}}",
+    "actions": {
+      "message": "Messaggio",
+      "dismissAdmin": "Rimuovi da Admin",
+      "makeAdmin": "Rendi Admin",
+      "removeFromGroup": "Rimuovi dal gruppo"
+    },
+    "toasts": {
+      "madeAdmin": "{{name}} è ora admin",
+      "dismissedAdmin": "{{name}} non è più admin",
+      "removedFromGroup": "{{name}} è stato rimosso dal gruppo",
+      "blocked": "{{name}} è stato bloccato.",
+      "unblocked": "{{name}} è stato sbloccato.",
+      "reported": "{{name}} è stato segnalato.",
+      "reportedAndBlocked": "{{name}} è stato segnalato e bloccato."
+    },
+    "errors": {
+      "makeAdmin": "Impossibile rendere {{name}} admin",
+      "dismissAdmin": "Impossibile rimuovere {{name}} come admin",
+      "removeMember": "Errore durante la rimozione del membro"
+    },
+    "alerts": {
+      "block": {
+        "header": "Blocca contatto",
+        "message": "Non riceverai più messaggi o chiamate da {{name}}.",
+        "cta": "Blocca"
+      },
+      "unblock": {
+        "header": "Sblocca contatto",
+        "message": "Sei sicuro di voler sbloccare {{name}}?"
+      },
+      "report": {
+        "header": "Segnala contatto",
+        "message": "Gli ultimi 5 messaggi da {{name}} saranno segnalati. Vuoi anche bloccare questo utente?",
+        "alsoBlock": "Blocca anche il contatto",
+        "cta": "Segnala"
+      }
+    }
+  },
+  "invite": {
+    "header": "Invita un amico",
+    "actions": {
+      "search": "Cerca contatti",
+      "shareLink": "Condividi link app",
+      "fromContacts": "Invita dai contatti",
+      "invite": "Invita"
+    },
+    "share": {
+      "title": "Unisciti a me su questa app!",
+      "subtitle": "Invia il link per scaricare l’app tramite qualsiasi app",
+      "body": "Guarda questa fantastica app. Scaricala qui:",
+      "button": "Condividi",
+      "success": "Link condiviso",
+      "copied": "Link copiato"
+    },
+    "contacts": {
+      "title": "Dai contatti",
+      "subtitle": "Invita direttamente dalla tua rubrica",
+      "header": "Dai contatti",
+      "notOnApp": "Non ancora sull’app"
+    },
+    "title": "Unisciti a me su questa app!",
+    "text": "Guarda questa fantastica app. Scaricala qui:",
+    "dialogTitle": "Condividi link app",
+    "toasts": {
+      "openContacts": "Apertura contatti...",
+      "searchContacts": "Ricerca contatti toccata.",
+      "invited": "Invito inviato a {{phone}}"
+    },
+    "errors": {
+      "shareFailed": "Impossibile aprire il foglio di condivisione."
+    }
+  },
+  "community": {
+    "manageGroups": {
+      "title": "Gestisci gruppi",
+      "groups": "gruppi",
+      "createNew": "Crea nuovo gruppo",
+      "addExisting": "Aggiungi gruppi esistenti",
+      "info": "I membri possono suggerire gruppi esistenti per l’approvazione dell’admin e aggiungere nuovi gruppi direttamente. Visualizza in",
+      "settingsLink": "Impostazioni della community",
+      "listHeader": "Gruppi in questa community",
+      "loading": "Caricamento gruppi...",
+      "empty": "Nessun gruppo trovato per questa community",
+      "members": "membri",
+      "unnamedGroup": "Gruppo senza nome",
+      "remove": {
+        "header": "Rimuovi gruppo dalla community",
+        "message": "Vuoi rimuovere questo gruppo dalla community? Il gruppo rimarrà ma non farà più parte della community.",
+        "alsoRemoveMembers": "Rimuovi anche i membri di questo gruppo dalla community e dal gruppo",
+        "cta": "Rimuovi",
+        "aria": "Rimuovi gruppo dalla community"
+      },
+      "toasts": {
+        "removed": "Gruppo rimosso dalla community e membri aggiornati",
+        "removeFailed": "Impossibile rimuovere il gruppo. Riprova."
+      }
+    },
+    "title": "Comunità",
+    "actions": {
+      "qr": "Apri azioni QR",
+      "menu": "Apri menu"
+    },
+    "newCommunity": "Nuova comunità",
+    "unnamedCommunity": "Comunità senza nome",
+    "viewAll": "Vedi tutto",
+    "groupType": {
+      "normal": "Gruppo normale",
+      "announcement": "Gruppo annunci",
+      "general": "Gruppo generale"
+    },
+    "newGroup": {
+      "header": "Nuovo gruppo",
+      "placeholder": "Nome del gruppo",
+      "create": "Crea"
+    },
+    "toasts": {
+      "groupCreated": "Gruppo creato"
+    }
+  },
+  "community_menu_component": {
+    "info": "Info comunità",
+    "invite": "Invita membri",
+    "settings": "Impostazioni comunità"
+  },
+  "group_preview_modal_component": {
+    "close": "Chiudi",
+    "groupIcon": "Icona del gruppo",
+    "createdBy": "Creato da {{name}}",
+    "noMembers": "Ancora nessun membro",
+    "noDescription": "Nessuna descrizione",
+    "communityLabel": "Comunità:",
+    "joinNote": "Unendoti diventi subito un membro.",
+    "joinCta": "Unisciti al gruppo"
+  },
+  "add_existing_groups_page": {
+    "header": "Aggiungi gruppi esistenti",
+    "actions": {
+      "search": "Cerca gruppi",
+      "confirm": "Conferma selezione",
+      "removeChip": "Rimuovi gruppo selezionato"
+    },
+    "of": "di",
+    "selected": "selezionato/i",
+    "banner": "Tutti i membri dei gruppi verranno aggiunti alla comunità.",
+    "listHeader": "Gruppi di cui sei amministratore",
+    "loading": "Caricamento gruppi...",
+    "empty": "Nessun gruppo amministrato trovato",
+    "checkboxLabel": "Seleziona gruppo",
+    "unnamedGroup": "Gruppo senza nome",
+    "toasts": {
+      "selectAtLeastOne": "Seleziona almeno un gruppo"
+    }
+  }
+}

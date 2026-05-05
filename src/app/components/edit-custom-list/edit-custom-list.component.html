@@ -1,0 +1,83 @@
+<div class="modal-handle"></div>
+
+<!-- ── Top Bar: × | Edit | ✓ ─────────────────────────────────────────────── -->
+<div class="top-bar">
+  <button class="top-btn cancel-btn" (click)="cancel()">
+    <ion-icon name="close-outline"></ion-icon>
+  </button>
+
+  <span class="top-title">Edit</span>
+
+  <button
+    class="top-btn confirm-btn"
+    (click)="confirm()"
+  >
+    <ion-icon name="checkmark-outline"></ion-icon>
+  </button>
+</div>
+
+<!-- ── Loading ────────────────────────────────────────────────────────────── -->
+<div *ngIf="isLoading" class="loading-wrap">
+  <ion-spinner name="crescent" color="primary"></ion-spinner>
+</div>
+
+<!-- ── Content ────────────────────────────────────────────────────────────── -->
+<div *ngIf="!isLoading" class="content-wrap">
+
+  <!-- Name input row -->
+  <div class="name-row">
+    <div class="name-input-wrap">
+      <input
+        class="name-input"
+        type="text"
+        [(ngModel)]="editedName"
+        placeholder="List name"
+        maxlength="50"
+      />
+      <!-- green underline cursor indicator -->
+      <!-- <div class="name-underline"></div> -->
+    </div>
+    <!-- Emoji button → opens emoji picker -->
+    <button class="emoji-btn" (click)="openEmojiPicker()">
+      <!-- Show selected emoji OR default icon -->
+      <span *ngIf="selectedEmoji" class="selected-emoji">{{ selectedEmoji }}</span>
+      <ion-icon *ngIf="!selectedEmoji" name="happy-outline"></ion-icon>
+    </button>
+  </div>
+
+  <!-- ── Included Section ───────────────────────────────────────────────── -->
+  <div class="section-label">Included</div>
+
+  <!-- Add people row -->
+  <div class="add-row" (click)="addPeople()">
+    <div class="add-circle">
+      <ion-icon name="add"></ion-icon>
+    </div>
+    <span class="add-label">Add people or groups</span>
+  </div>
+
+  <!-- Chat list -->
+  <div class="chat-list">
+    <div
+      *ngFor="let chat of visibleChats"
+      class="chat-row"
+    >
+      <!-- Avatar -->
+      <div class="avatar-wrap">
+        <img *ngIf="chat.image" [src]="chat.image" class="avatar-img" />
+        <div *ngIf="!chat.image" class="avatar-initials">
+          {{ chat.name?.charAt(0)?.toUpperCase() || '?' }}
+        </div>
+      </div>
+
+      <!-- Name -->
+      <span class="chat-name">{{ chat.name }}</span>
+
+      <!-- Delete icon -->
+      <button class="delete-btn" (click)="markRemove(chat)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+
+</div>

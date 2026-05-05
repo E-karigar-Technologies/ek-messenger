@@ -1,0 +1,32 @@
+<ion-list>
+  <ion-item button (click)="selectOption('info')" *ngIf="showInfo">
+    <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+    Info
+  </ion-item>
+
+  <ion-item button (click)="selectOption('copy')" *ngIf="showCopy">
+    <ion-icon slot="start" name="copy-outline"></ion-icon>
+    Copy
+  </ion-item>
+
+  <ion-item button (click)="selectOption('share')" *ngIf="showShare">
+    <ion-icon slot="start" name="share-social-outline"></ion-icon>
+    Share
+  </ion-item>
+
+  <ion-item button (click)="selectOption('pin')" *ngIf="showPin">
+    <ion-icon slot="start" name="pin-outline"></ion-icon>
+    Pin
+  </ion-item>
+
+  <ion-item button (click)="selectOption('unpin')" *ngIf="showUnpin">
+    <ion-icon slot="start" name="pin-outline"></ion-icon>
+    Unpin
+  </ion-item>
+
+  <ion-item button (click)="selectOption('edit')" *ngIf="showEdit">
+    <ion-icon slot="start" name="create-outline"></ion-icon>
+    Edit
+  </ion-item>
+</ion-list>
+

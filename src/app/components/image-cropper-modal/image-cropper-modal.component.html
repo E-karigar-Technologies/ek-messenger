@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crop Image</ion-title>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="cancel()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="resetCropArea()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="crop-content">
+  <div class="crop-container">
+    <div class="image-container">
+      <img 
+        #imageElement
+        [src]="imageUrl" 
+        alt="Image to crop"
+        (load)="onImageLoad()"
+        class="crop-image"
+      />
+      
+      <!-- Crop overlay -->
+      <div 
+        class="crop-overlay" 
+        [class.visible]="showCropArea"
+        [style.left.px]="cropArea.x"
+        [style.top.px]="cropArea.y"
+        [style.width.px]="cropArea.width"
+        [style.height.px]="cropArea.height"
+        (mousedown)="startDrag($event)"
+        (touchstart)="startDrag($event)"
+      >
+        <!-- Corner resize handles -->
+        <div class="resize-handle corner top-left" 
+             (mousedown)="startResize($event, 'top-left')" 
+             (touchstart)="startResize($event, 'top-left')">
+        </div>
+        <div class="resize-handle corner top-right" 
+             (mousedown)="startResize($event, 'top-right')" 
+             (touchstart)="startResize($event, 'top-right')">
+        </div>
+        <div class="resize-handle corner bottom-left" 
+             (mousedown)="startResize($event, 'bottom-left')" 
+             (touchstart)="startResize($event, 'bottom-left')">
+        </div>
+        <div class="resize-handle corner bottom-right" 
+             (mousedown)="startResize($event, 'bottom-right')" 
+             (touchstart)="startResize($event, 'bottom-right')">
+        </div>
+        
+        <!-- Center drag indicator -->
+        <div class="drag-indicator">
+          <ion-icon name="move" class="drag-icon"></ion-icon>
+        </div>
+      </div>
+      
+      <!-- Loading state -->
+      <div class="loading-overlay" *ngIf="!showCropArea">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Loading image...</p>
+      </div>
+    </div>
+    
+    <!-- Instructions -->
+    <div class="instructions">
+      <p class="instruction-text">
+        <ion-icon name="information-circle" class="info-icon"></ion-icon>
+        Drag to move, use corners to resize
+      </p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <div class="footer-buttons">
+      <ion-button 
+        fill="outline" 
+        color="medium" 
+        size="default"
+        (click)="cancel()"
+        class="cancel-btn"
+      >
+        <ion-icon name="close" slot="start"></ion-icon>
+        Cancel
+      </ion-button>
+      
+      <ion-button 
+        fill="solid" 
+        color="primary" 
+        size="default"
+        (click)="cropImage()"
+        class="ok-btn"
+        [disabled]="!showCropArea"
+      >
+        <ion-icon name="checkmark" slot="start"></ion-icon>
+        OK
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

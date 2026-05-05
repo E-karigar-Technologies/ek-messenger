@@ -1,0 +1,250 @@
+$primary: var(--ion-color-primary);
+$primary-light: rgba(188, 140, 44, 0.12);
+$primary-lighter: rgba(188, 140, 44, 0.07);
+
+// ── Header ───────────────────────────────────────────────────────────────────
+ion-toolbar.header-toolbar {
+  --background: #{$primary};
+  --color: #fff;
+
+  ion-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  ion-back-button {
+    --color: #fff;
+  }
+}
+
+.header-icon {
+  color: #fff;
+  font-size: 17px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 50px;
+  height: 34px;
+  width: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ── Content background ────────────────────────────────────────────────────────
+ion-content {
+  --background: #f5f5f5;
+}
+
+// ── Info Text ─────────────────────────────────────────────────────────────────
+.info-text {
+  padding: 12px 16px 4px;
+  font-size: 13px;
+  color: #888;
+  background: #f5f5f5;
+}
+
+// ── Section Title ─────────────────────────────────────────────────────────────
+.section-title {
+  padding: 16px 16px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: $primary;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: #f5f5f5;
+}
+
+// ── Mute Item ─────────────────────────────────────────────────────────────────
+.mute-item {
+  --background: #fff;
+  --inner-padding-end: 16px;
+  margin: 0 0 2px;
+  border-radius: 0;
+
+  h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+    margin: 0;
+  }
+
+  .mute-until-label {
+    font-size: 12px;
+    color: $primary;
+    margin: 2px 0 0;
+    font-weight: 500;
+  }
+
+  ion-toggle {
+    --track-background-checked: #{$primary};
+    --handle-background-checked: #fff;
+  }
+}
+
+// ── Add Item ──────────────────────────────────────────────────────────────────
+.add-item {
+  --background: #fff;
+  --inner-padding-end: 16px;
+  margin: 0 0 2px;
+
+  ion-label {
+    font-size: 16px;
+    color: $primary;
+    font-weight: 500;
+  }
+}
+
+.add-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+
+  ion-icon {
+    color: #fff;
+    font-size: 24px;
+  }
+}
+
+// ── Chat Item ─────────────────────────────────────────────────────────────────
+ion-list {
+  background: #fff;
+  padding: 0;
+}
+
+.chat-item {
+  --background: #fff;
+  --inner-padding-end: 16px;
+  --min-height: 64px;
+  border-bottom: 0.5px solid #f0f0f0;
+
+  ion-label {
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      margin: 0 0 2px;
+    }
+
+    p {
+      font-size: 13px;
+      color: #888;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  ion-button[color="danger"] {
+    --color: #e53935;
+  }
+}
+
+// ── Avatar ────────────────────────────────────────────────────────────────────
+ion-avatar {
+  --border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  margin-right: 4px;
+  background: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.avatar-initials {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: $primary;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+// ── Edit Toggle Row ───────────────────────────────────────────────────────────
+.edit-toggle-row {
+  text-align: center;
+  padding: 16px;
+  cursor: pointer;
+  background: #fff;
+  border-top: 0.5px solid #eee;
+  margin-top: 2px;
+
+  span {
+    color: $primary;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+// ── Empty State ───────────────────────────────────────────────────────────────
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 32px 40px;
+  text-align: center;
+
+  .empty-icon {
+    font-size: 72px;
+    color: #ddd;
+    margin-bottom: 16px;
+  }
+
+  .empty-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 8px;
+  }
+
+  .empty-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+
+  .add-first-btn {
+    --background: #{$primary};
+    --color: #fff;
+    --border-radius: 10px;
+    width: 100%;
+    font-weight: 600;
+    height: 48px;
+  }
+}
+
+// ── Footer Text ───────────────────────────────────────────────────────────────
+.footer-text {
+  text-align: center;
+  padding: 20px 16px 32px;
+  font-size: 12px;
+  color: #aaa;
+  background: #f5f5f5;
+}
+.edit-list-sheet-modal {
+  --border-radius: 18px 18px 0 0;
+}

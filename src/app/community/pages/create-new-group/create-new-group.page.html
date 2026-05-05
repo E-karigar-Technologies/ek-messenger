@@ -1,0 +1,531 @@
+<ion-header class="gold-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/add-group-community" style="color: #fff;" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>New group</ion-title>
+  </ion-toolbar>
+  <div class="community-tag-bar">
+    <span class="community-tag-text">{{ communityName || 'Community' }}</span>
+  </div>
+</ion-header>
+
+<ion-content class="gold-content">
+
+  <!-- ── Top: Avatar + Name + Description ── -->
+  <div class="top-form-card">
+
+    <!-- Camera / Avatar — tap to pick DP -->
+    <div class="avatar-col">
+      <div class="avatar-circle" (click)="openDpSheet()">
+
+        <!-- ✅ Show selected image preview if available -->
+        <ng-container *ngIf="groupDpPreview; else cameraIconTpl">
+          <img
+            [src]="groupDpPreview"
+            class="dp-preview-img"
+            alt="Group DP"
+            (error)="groupDpPreview = null"
+          />
+          <!-- Pencil overlay on top of preview -->
+          <div class="dp-edit-overlay">
+            <ion-icon name="pencil-outline" class="pencil-icon"></ion-icon>
+          </div>
+        </ng-container>
+
+        <!-- Default: camera icon when no DP selected -->
+        <ng-template #cameraIconTpl>
+          <ion-icon name="camera-outline" class="cam-icon"></ion-icon>
+        </ng-template>
+
+      </div>
+    </div>
+
+    <!-- Inputs col -->
+    <div class="inputs-col">
+
+      <!-- Group Name row -->
+      <div class="name-row">
+        <ion-input
+          placeholder="Enter group name"
+          class="group-name-input"
+          [(ngModel)]="groupName"
+          maxlength="100"
+        ></ion-input>
+        <ion-icon name="happy-outline" class="emoji-btn" (click)="openEmojiPickerForName()"></ion-icon>
+      </div>
+      <div class="thin-divider"></div>
+
+      <!-- Description -->
+      <ion-textarea
+        placeholder="Group description (optional)"
+        class="group-desc-input"
+        [(ngModel)]="groupDescription"
+        [autoGrow]="true"
+        rows="3"
+      ></ion-textarea>
+      <div class="thin-divider"></div>
+
+      <p class="desc-hint">
+        Describe what your group is about to help people know what to expect and whether to join.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── Options List ── -->
+  <div class="options-card">
+
+    <!-- Disappearing Messages -->
+    <ion-item lines="none" class="opt-item" button detail="false" (click)="openDisappearingSheet()">
+      <div class="opt-icon-wrap" slot="start">
+        <ion-icon name="timer-outline"></ion-icon>
+      </div>
+      <ion-label>
+        <p class="opt-title">Disappearing messages</p>
+        <p class="opt-sub">{{ disappearingLabel }}</p>
+      </ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="chev"></ion-icon>
+    </ion-item>
+
+    <div class="row-divider"></div>
+
+    <!-- Group Visibility -->
+    <ion-item
+      lines="none"
+      class="opt-item"
+      button
+      detail="false"
+     (click)="openVisibilityModal()"
+    >
+      <div class="opt-icon-wrap" slot="start">
+        <ion-icon [name]="visibility === 'Visible' ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+      </div>
+      <ion-label>
+        <p class="opt-title">Group visibility</p>
+        <p class="opt-sub">{{ visibility }}</p>
+      </ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="chev"></ion-icon>
+    </ion-item>
+
+    <div class="row-divider"></div>
+
+    <!-- Group Permissions -->
+    <ion-item lines="none" class="opt-item" button detail="false" (click)="openPermissionsSheet()">
+      <div class="opt-icon-wrap" slot="start">
+        <ion-icon name="settings-outline"></ion-icon>
+      </div>
+      <ion-label>
+        <p class="opt-title">Group permissions</p>
+        <p class="opt-sub">{{ permissionsLabel }}</p>
+      </ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="chev"></ion-icon>
+    </ion-item>
+
+  </div>
+
+  <!-- ── Members Section ── -->
+  <div class="members-card">
+
+    <p class="members-header-label">Members: {{ members.length > 0 ? members.length : 'None' }}</p>
+
+    <!-- Add Member Button -->
+    <ion-item lines="none" class="add-member-item" button detail="false" (click)="addMemberPrompt()">
+      <div class="add-member-circle" slot="start">
+        <ion-icon name="person-add-outline"></ion-icon>
+      </div>
+      <ion-label class="add-label">Add</ion-label>
+    </ion-item>
+
+    <!-- Member List -->
+    <ion-item
+      *ngFor="let m of members; let i = index"
+      lines="none"
+      class="member-item"
+    >
+      <ion-avatar slot="start" class="member-avatar">
+        <!-- ✅ Home screen jaisi logic: DP hai → img, nahi hai → initial letter -->
+        <ng-container *ngIf="m.profile && m.userId !== currentUserId; else memberInitialTpl">
+          <img
+            [src]="m.profile"
+            [alt]="m.username"
+            (error)="onImgError($event)"
+          />
+        </ng-container>
+        <ng-template #memberInitialTpl>
+          <div class="member-initial-avatar">
+            {{ (m.username || m.userId || '?').charAt(0).toUpperCase() }}
+          </div>
+        </ng-template>
+      </ion-avatar>
+      <ion-label>
+        <p class="member-name">{{ m.username || m.userId }}</p>
+        <p class="member-phone">{{ m.phoneNumber || '' }}</p>
+      </ion-label>
+      <ion-button fill="clear" slot="end" class="remove-btn" (click)="removeMember(i)">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+  </div>
+
+</ion-content>
+
+<!-- ── FAB: Create Group ── -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button class="gold-fab" (click)="createGroupAndLink()" [disabled]="creating || isDpUpdating">
+    <ion-icon name="checkmark-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<!-- ═══════════════════════════════════════════════════════════
+     DP Picker Bottom Sheet Modal
+     ═══════════════════════════════════════════════════════════ -->
+<ion-modal
+  [isOpen]="showDpSheet"
+  (didDismiss)="closeDpSheet()"
+  [breakpoints]="[0, 0.55]"
+  [initialBreakpoint]="0.55"
+  [backdropDismiss]="true"
+  cssClass="dp-sheet-modal"
+>
+  <ng-template>
+    <ion-header class="dp-sheet-header">
+      <ion-toolbar>
+        <ion-title class="dp-sheet-title">Group icon</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeDpSheet()" class="dp-sheet-close">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="dp-sheet-content">
+      <ion-list lines="none" class="dp-sheet-list">
+
+        <ion-item button detail="false" class="dp-sheet-item" (click)="pickDpOption('camera')">
+          <div class="sheet-icon-wrap gold-icon" slot="start">
+            <ion-icon name="camera-outline"></ion-icon>
+          </div>
+          <ion-label class="sheet-label">Camera</ion-label>
+        </ion-item>
+
+        <ion-item button detail="false" class="dp-sheet-item" (click)="pickDpOption('gallery')">
+          <div class="sheet-icon-wrap green-icon" slot="start">
+            <ion-icon name="image-outline"></ion-icon>
+          </div>
+          <ion-label class="sheet-label">Gallery</ion-label>
+        </ion-item>
+
+        <ion-item button detail="false" class="dp-sheet-item" (click)="pickDpOption('emoji')">
+          <div class="sheet-icon-wrap orange-icon" slot="start">
+            <ion-icon name="happy-outline"></ion-icon>
+          </div>
+          <ion-label class="sheet-label">Emoji &amp; Stickers</ion-label>
+        </ion-item>
+
+        <ion-item button detail="false" class="dp-sheet-item" (click)="pickDpOption('ai-images')">
+          <div class="sheet-icon-wrap purple-icon" slot="start">
+            <ion-icon name="sparkles-outline"></ion-icon>
+          </div>
+          <ion-label class="sheet-label">AI Images</ion-label>
+        </ion-item>
+
+        <ion-item button detail="false" class="dp-sheet-item" (click)="pickDpOption('search-web')">
+          <div class="sheet-icon-wrap blue-icon" slot="start">
+            <ion-icon name="search-outline"></ion-icon>
+          </div>
+          <ion-label class="sheet-label">Search Web</ion-label>
+        </ion-item>
+
+        <!-- Remove option — only if a DP is already selected -->
+        <ion-item
+          *ngIf="hasDp"
+          button
+          detail="false"
+          class="dp-sheet-item remove-item"
+          (click)="pickDpOption('remove')"
+        >
+          <div class="sheet-icon-wrap red-icon" slot="start">
+            <ion-icon name="trash-outline"></ion-icon>
+          </div>
+          <ion-label class="sheet-label remove-label">Remove photo</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     Disappearing Messages Bottom Sheet
+     ═══════════════════════════════════════════════════════════ -->
+<ion-modal
+  [isOpen]="showDisappearingSheet"
+  (didDismiss)="closeDisappearingSheet()"
+  [breakpoints]="[0, 0.55]"
+  [initialBreakpoint]="0.55"
+  [backdropDismiss]="true"
+  cssClass="dp-sheet-modal"
+>
+  <ng-template>
+    <ion-header class="dp-sheet-header">
+      <ion-toolbar>
+        <ion-title class="dp-sheet-title">Disappearing messages</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeDisappearingSheet()" class="dp-sheet-close">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="dp-sheet-content">
+      <ion-list lines="none" class="dp-sheet-list">
+
+        <!-- Off -->
+        <ion-item
+          button
+          detail="false"
+          class="dp-sheet-item"
+          (click)="selectDisappearing('off')"
+        >
+          <ion-icon
+            slot="start"
+            [name]="disappearingDuration === 'off' ? 'radio-button-on-outline' : 'radio-button-off-outline'"
+            [color]="disappearingDuration === 'off' ? 'primary' : 'medium'"
+            style="margin-right: 12px;"
+          ></ion-icon>
+          <ion-label class="sheet-label">Off</ion-label>
+        </ion-item>
+
+        <!-- 2 minutes -->
+        <ion-item
+          button
+          detail="false"
+          class="dp-sheet-item"
+          (click)="selectDisappearing('2')"
+        >
+          <ion-icon
+            slot="start"
+            [name]="disappearingDuration === '2' ? 'radio-button-on-outline' : 'radio-button-off-outline'"
+            [color]="disappearingDuration === '2' ? 'primary' : 'medium'"
+            style="margin-right: 12px;"
+          ></ion-icon>
+          <ion-label class="sheet-label">2 minutes</ion-label>
+        </ion-item>
+
+        <!-- 7 days -->
+        <ion-item
+          button
+          detail="false"
+          class="dp-sheet-item"
+          (click)="selectDisappearing('7')"
+        >
+          <ion-icon
+            slot="start"
+            [name]="disappearingDuration === '7' ? 'radio-button-on-outline' : 'radio-button-off-outline'"
+            [color]="disappearingDuration === '7' ? 'primary' : 'medium'"
+            style="margin-right: 12px;"
+          ></ion-icon>
+          <ion-label class="sheet-label">7 days</ion-label>
+        </ion-item>
+
+        <!-- 90 days -->
+        <ion-item
+          button
+          detail="false"
+          class="dp-sheet-item"
+          (click)="selectDisappearing('90')"
+        >
+          <ion-icon
+            slot="start"
+            [name]="disappearingDuration === '90' ? 'radio-button-on-outline' : 'radio-button-off-outline'"
+            [color]="disappearingDuration === '90' ? 'primary' : 'medium'"
+            style="margin-right: 12px;"
+          ></ion-icon>
+          <ion-label class="sheet-label">90 days</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     Group Permissions Bottom Sheet
+     ═══════════════════════════════════════════════════════════ -->
+<ion-modal
+  [isOpen]="showPermissionsSheet"
+  (didDismiss)="closePermissionsSheet()"
+  [breakpoints]="[0, 0.70]"
+  [initialBreakpoint]="0.70"
+  [backdropDismiss]="true"
+  cssClass="dp-sheet-modal"
+>
+  <ng-template>
+    <ion-header class="dp-sheet-header">
+      <ion-toolbar>
+        <ion-title class="dp-sheet-title">Group permissions</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closePermissionsSheet()" class="dp-sheet-close">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="dp-sheet-content">
+      <ion-list lines="none" class="dp-sheet-list">
+
+        <!-- Send Messages -->
+        <ion-item lines="none" class="dp-sheet-item">
+          <ion-icon name="chatbox-outline" slot="start" style="margin-right: 12px; color: var(--ion-color-medium);"></ion-icon>
+          <ion-label>
+            <p class="sheet-label" style="margin: 0;">Send messages</p>
+            <p style="font-size: 12px; color: var(--ion-color-medium); margin: 2px 0 0;">Allow all members to send messages</p>
+          </ion-label>
+          <ion-toggle
+            slot="end"
+            [(ngModel)]="groupPermissions.sendMessages"
+            color="primary"
+          ></ion-toggle>
+        </ion-item>
+
+        <div class="row-divider"></div>
+
+        <!-- Add Members -->
+        <ion-item lines="none" class="dp-sheet-item">
+          <ion-icon name="person-add-outline" slot="start" style="margin-right: 12px; color: var(--ion-color-medium);"></ion-icon>
+          <ion-label>
+            <p class="sheet-label" style="margin: 0;">Add members</p>
+            <p style="font-size: 12px; color: var(--ion-color-medium); margin: 2px 0 0;">Allow all members to add new members</p>
+          </ion-label>
+          <ion-toggle
+            slot="end"
+            [(ngModel)]="groupPermissions.addMembers"
+            color="primary"
+          ></ion-toggle>
+        </ion-item>
+
+        <div class="row-divider"></div>
+
+        <!-- Edit Group Settings -->
+        <ion-item lines="none" class="dp-sheet-item">
+          <ion-icon name="create-outline" slot="start" style="margin-right: 12px; color: var(--ion-color-medium);"></ion-icon>
+          <ion-label>
+            <p class="sheet-label" style="margin: 0;">Edit group settings</p>
+            <p style="font-size: 12px; color: var(--ion-color-medium); margin: 2px 0 0;">Allow all members to edit group info</p>
+          </ion-label>
+          <ion-toggle
+            slot="end"
+            [(ngModel)]="groupPermissions.editGroupSettings"
+            color="primary"
+          ></ion-toggle>
+        </ion-item>
+
+        <div class="row-divider"></div>
+
+        <!-- Invite via Link -->
+        <ion-item lines="none" class="dp-sheet-item">
+          <ion-icon name="link-outline" slot="start" style="margin-right: 12px; color: var(--ion-color-medium);"></ion-icon>
+          <ion-label>
+            <p class="sheet-label" style="margin: 0;">Invite via link</p>
+            <p style="font-size: 12px; color: var(--ion-color-medium); margin: 2px 0 0;">Allow all members to invite via link</p>
+          </ion-label>
+          <ion-toggle
+            slot="end"
+            [(ngModel)]="groupPermissions.inviteViaLink"
+            color="primary"
+          ></ion-toggle>
+        </ion-item>
+
+        <div class="row-divider"></div>
+
+        <!-- Approve New Members -->
+        <!-- <ion-item lines="none" class="dp-sheet-item">
+          <ion-icon name="shield-checkmark-outline" slot="start" style="margin-right: 12px; color: var(--ion-color-medium);"></ion-icon>
+          <ion-label>
+            <p class="sheet-label" style="margin: 0;">Approve new members</p>
+            <p style="font-size: 12px; color: var(--ion-color-medium); margin: 2px 0 0;">Admin approval required to join</p>
+          </ion-label>
+          <ion-toggle
+            slot="end"
+            [(ngModel)]="groupPermissions.approveNewMembers"
+            color="primary"
+          ></ion-toggle>
+        </ion-item> -->
+
+        <!-- Save Button -->
+        <div style="padding: 16px;">
+          <ion-button expand="block" color="primary" (click)="savePermissions()">
+            Done
+          </ion-button>
+        </div>
+
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GROUP VISIBILITY MODAL (WhatsApp-style popup)
+     ═══════════════════════════════════════════════════════════ -->
+<ion-modal
+  [isOpen]="showVisibilityModal"
+  (didDismiss)="closeVisibilityModal()"
+  [breakpoints]="[0, 0.55]"
+  [initialBreakpoint]="0.55"
+  [backdropDismiss]="true"
+  cssClass="visibility-sheet-modal"
+>
+  <ng-template>
+    <ion-content class="visibility-modal-content">
+      <div class="vis-modal-inner">
+
+        <h2 class="vis-modal-title">Group visibility</h2>
+
+        <p class="vis-modal-desc">
+          To protect member privacy, this setting can't be changed once the group is added to the community.
+          <span class="vis-learn-more" (click)="onLearnMoreVisibility()">Learn more about group visibility</span>
+        </p>
+
+        <div class="vis-options">
+
+          <div
+            class="vis-option"
+            (click)="selectVisibility('Visible')"
+          >
+            <div class="vis-radio-wrap">
+              <div class="vis-radio-outer" [class.vis-radio-active]="visibility === 'Visible'">
+                <div class="vis-radio-inner" *ngIf="visibility === 'Visible'"></div>
+              </div>
+            </div>
+            <div class="vis-option-text">
+              <p class="vis-option-title">Visible</p>
+              <p class="vis-option-sub">Anyone in the community can see this group.</p>
+            </div>
+          </div>
+
+          <div
+            class="vis-option"
+            (click)="selectVisibility('Hidden')"
+          >
+            <div class="vis-radio-wrap">
+              <div class="vis-radio-outer" [class.vis-radio-active]="visibility === 'Hidden'">
+                <div class="vis-radio-inner" *ngIf="visibility === 'Hidden'"></div>
+              </div>
+            </div>
+            <div class="vis-option-text">
+              <p class="vis-option-title">Hidden</p>
+              <p class="vis-option-sub">Only invited members and community admins can see this group.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

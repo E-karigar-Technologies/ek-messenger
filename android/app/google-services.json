@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "959220685103",
+    "firebase_url": "https://telldemmstaging-default-rtdb.firebaseio.com",
+    "project_id": "telldemmstaging",
+    "storage_bucket": "telldemmstaging.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959220685103:android:d7a3b086b2abfc772da9da",
+        "android_client_info": {
+          "package_name": "com.ekarigar.telldemm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADgPVsmR_AUsqMG2SlkFLJTMRZKqOefpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,221 @@
+<ion-header>
+  <ion-toolbar class="asc-toolbar">
+
+    <!-- ── Normal header (search bar hidden) ── -->
+    <ng-container *ngIf="!showSearch">
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()" class="asc-icon-btn">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <!-- Dynamic title: invite mode vs normal -->
+      <ion-title class="asc-title-text">
+        {{ isInviteMode ? 'Send Invite Link' : 'Add to list' }}
+      </ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="openSearch()" class="asc-icon-btn">
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ng-container>
+
+    <!-- ── Search mode header ── -->
+    <ng-container *ngIf="showSearch">
+      <ion-buttons slot="start">
+        <ion-button (click)="closeSearch()" class="asc-icon-btn">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <div class="asc-search-wrap">
+        <input
+          #searchInputRef
+          class="asc-search-input"
+          [(ngModel)]="searchText"
+          (ngModelChange)="onSearch()"
+          placeholder="Search name or number"
+        />
+        <ion-icon
+          *ngIf="searchText"
+          name="close-circle"
+          class="asc-search-clear"
+          (click)="clearSearch()"
+        ></ion-icon>
+      </div>
+    </ng-container>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="asc-content">
+
+  <!-- ── LOADING ── -->
+  <ng-container *ngIf="isLoading">
+    <div class="asc-loading">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!isLoading">
+
+    <!-- ══════════════════════════════════════════
+         INVITE MODE BANNER
+         Shown only when navigated from shareInviteLink()
+    ══════════════════════════════════════════ -->
+    <div class="invite-banner" *ngIf="isInviteMode">
+      <div class="invite-banner-row">
+        <ion-icon name="link-outline" class="invite-banner-icon"></ion-icon>
+        <div class="invite-banner-text">
+          <span class="invite-banner-title">Inviting to "{{ inviteGroupName }}"</span>
+          <span class="invite-banner-link">{{ inviteLink }}</span>
+        </div>
+      </div>
+      <p class="invite-banner-hint">
+        Select the people or groups you want to send this invite to.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         SELECTED CHIPS — horizontal scroll
+    ══════════════════════════════════════════ -->
+    <div class="selected-row" *ngIf="selected.length > 0">
+      <div class="selected-scroll">
+        <div class="selected-chip" *ngFor="let chat of selected">
+          <div class="chip-avatar-wrap">
+            <ng-container *ngIf="chat.avatar; else chipInitials">
+              <img [src]="chat.avatar" class="chip-avatar-img" />
+            </ng-container>
+            <ng-template #chipInitials>
+              <div class="chip-avatar-initials">{{ getInitial(chat.title) }}</div>
+            </ng-template>
+            <button class="chip-remove" (click)="removeSelected(chat)">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+          <p class="chip-name">{{ chat.title }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chips-divider" *ngIf="selected.length > 0"></div>
+
+    <!-- ── Helper text (normal mode only, when nothing selected) ── -->
+    <p class="helper-text" *ngIf="selected.length === 0 && !isInviteMode">
+      Add as many people or groups as you want.
+      Only you can see who's included on your lists.
+    </p>
+
+    <!-- ══════════════════════════════════════════
+         FREQUENTLY CONTACTED
+    ══════════════════════════════════════════ -->
+    <ng-container *ngIf="filteredFrequent.length > 0">
+      <div class="section-label">
+        {{ isInviteMode ? 'Chats' : 'Frequently contacted' }}
+      </div>
+
+      <ion-list lines="none" class="asc-list">
+        <ion-item
+          *ngFor="let chat of filteredFrequent"
+          class="asc-item"
+          (click)="toggleSelect(chat)"
+        >
+          <div slot="start" class="asc-avatar-wrap">
+            <ng-container *ngIf="chat.avatar; else freqInitials">
+              <img [src]="chat.avatar" class="asc-avatar-img" />
+            </ng-container>
+            <ng-template #freqInitials>
+              <div class="asc-avatar-initials">{{ getInitial(chat.title) }}</div>
+            </ng-template>
+            <div class="asc-check-overlay" *ngIf="isSelected(chat)">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <ion-label class="asc-label">{{ chat.title }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+
+    <!-- ══════════════════════════════════════════
+         OTHER CONTACTS
+    ══════════════════════════════════════════ -->
+    <ng-container *ngIf="filteredOther.length > 0">
+      <div class="section-label">Other contacts</div>
+
+      <ion-list lines="none" class="asc-list">
+        <ion-item
+          *ngFor="let chat of filteredOther"
+          class="asc-item"
+          (click)="toggleSelect(chat)"
+        >
+          <div slot="start" class="asc-avatar-wrap">
+            <ng-container *ngIf="chat.avatar; else otherInitials">
+              <img [src]="chat.avatar" class="asc-avatar-img" />
+            </ng-container>
+            <ng-template #otherInitials>
+              <div class="asc-avatar-initials">{{ getInitial(chat.title) }}</div>
+            </ng-template>
+            <div class="asc-check-overlay" *ngIf="isSelected(chat)">
+              <ion-icon name="checkmark-outline"></ion-icon>
+            </div>
+          </div>
+
+          <ion-label class="asc-label">{{ chat.title }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+
+    <!-- ── Empty state ── -->
+    <div
+      class="empty-state"
+      *ngIf="filteredFrequent.length === 0 && filteredOther.length === 0"
+    >
+      <ion-icon name="people-outline"></ion-icon>
+      <p>No contacts found</p>
+    </div>
+
+    <!-- Bottom padding so FAB never overlaps last item -->
+    <div style="height: 88px;"></div>
+
+  </ng-container>
+
+</ion-content>
+
+<!-- ══════════════════════════════════════════
+     DONE / SEND FAB
+     • Normal mode  → circular checkmark, shown when something is selected
+     • Invite mode  → pill with send icon + count, shown when something is selected
+══════════════════════════════════════════ -->
+<ion-fab
+  vertical="bottom"
+  horizontal="end"
+  slot="fixed"
+  *ngIf="selected.length > 0"
+>
+  <!-- Invite mode: pill-shaped send button with count -->
+  <div
+    *ngIf="isInviteMode"
+    class="done-fab invite-send-fab"
+    (click)="onDone()"
+    [class.done-fab-saving]="isSaving"
+  >
+    <ng-container *ngIf="!isSaving">
+      <ion-icon name="send-outline" class="fab-icon"></ion-icon>
+      <span class="fab-send-label">Send to {{ selected.length }}</span>
+    </ng-container>
+    <ion-spinner *ngIf="isSaving" name="crescent" class="fab-spinner"></ion-spinner>
+  </div>
+
+  <!-- Normal mode: original circular checkmark button -->
+  <div
+    *ngIf="!isInviteMode"
+    class="done-fab"
+    (click)="onDone()"
+    [class.done-fab-saving]="isSaving"
+  >
+    <ion-spinner *ngIf="isSaving" name="crescent" class="fab-spinner"></ion-spinner>
+    <ion-icon *ngIf="!isSaving" name="checkmark-outline" class="fab-icon"></ion-icon>
+  </div>
+</ion-fab>

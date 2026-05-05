@@ -1,0 +1,23 @@
+ion-toggle {
+  --handle-background-checked: var(--ion-color-primary-tint);
+  --background-checked: var(--ion-color-primary);
+}
+
+.alert-radio-label {
+  color: #333;
+}
+
+.alert-button {
+  color: var(--ion-color-primary);
+}
+
+.section-header {
+  ion-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-top: 16px;
+  }
+}

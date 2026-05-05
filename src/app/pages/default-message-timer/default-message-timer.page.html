@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/disappearing-messages"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Default message timer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="top-text">
+    Start new chats with a disappearing message timer set to
+  </div>
+
+  <!-- ✅ (ngModelChange) se onTimerChange() call hoga -->
+  <ion-radio-group [(ngModel)]="selectedTimer" (ngModelChange)="onTimerChange()">
+
+    <ion-item lines="none">
+      <ion-radio slot="start" value="2"></ion-radio>
+      <ion-label>2 minutes <span style="font-size:11px; color:gray;">(test)</span></ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-radio slot="start" value="24"></ion-radio>
+      <ion-label>24 hours</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-radio slot="start" value="7"></ion-radio>
+      <ion-label>7 days</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-radio slot="start" value="90"></ion-radio>
+      <ion-label>90 days</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-radio slot="start" value="off"></ion-radio>
+      <ion-label>Off</ion-label>
+    </ion-item>
+
+  </ion-radio-group>
+
+  <div class="bottom-text">
+    When turned on, all new individual chats will start with disappearing
+    messages set to the duration you select. This setting will not affect
+    your existing chats.
+    <span class="learn">Learn more</span>
+  </div>
+
+</ion-content>

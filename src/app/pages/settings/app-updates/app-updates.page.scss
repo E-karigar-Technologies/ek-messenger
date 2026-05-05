@@ -1,0 +1,52 @@
+
+
+page-app-updates {
+  /* Base list surface */
+  ion-list {
+    background: var(--ion-background-color);
+    --ion-item-background: var(--ion-item-background, var(--ion-background-color));
+    --ion-item-color: var(--ion-text-color);
+  }
+
+  /* Version text (secondary) */
+  .version {
+    font-size: 0.9em;
+    color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+  }
+
+  /* Description text (slightly lighter) */
+  .description {
+    font-size: 0.8em;
+    color: color-mix(in srgb, var(--ion-text-color) 55%, transparent);
+    max-width: 60%;
+    margin-right: 10px;
+  }
+
+  /* Align toggle flush right */
+  ion-item {
+    --inner-padding-end: 0;
+  }
+
+  /* Toggle styles */
+  ion-toggle {
+    margin-left: -10px;
+
+    /* Use Ionic blue (or fallback to system default) */
+    --handle-background: var(--ion-color-primary, var(--ion-color-primary));
+    --handle-background-checked: var(--ion-color-primary, var(--ion-color-primary));
+
+    /* Optional: track color */
+    --track-background: color-mix(in srgb, var(--ion-color-primary) 15%, transparent);
+    --track-background-checked: color-mix(in srgb, var(--ion-color-primary) 25%, transparent);
+  }
+
+  /* Focus accessibility */
+  ion-toggle:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 999px;
+  }
+}
+.itemHeader{
+  color:var(--ion-text-color) ;
+}

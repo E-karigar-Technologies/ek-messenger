@@ -1,0 +1,152 @@
+/* =========================
+   Add Instagram — tokenized
+   ========================= */
+
+/* Optional theme hook for this page */
+.header-red {
+  /* use page-scoped primary; falls back to global */
+  --page-primary: var(--ion-color-primary, var(--ion-color-primary));
+  --page-primary-rgb: var(--ion-color-primary-rgb, 183, 28, 28);
+  --page-contrast: var(--ion-color-primary-contrast, #fff);
+}
+
+/* Header */
+.header-red ion-toolbar {
+  --background: var(--ion-background-color);
+  --color: var(--ion-color-primary);
+  // padding-top: 28px;
+}
+
+/* Page content */
+.add-instagram-content {
+  --background: var(--ion-background-color);
+  background: var(--background);
+  padding: 20px 16px calc(90px + env(safe-area-inset-bottom, 0));
+}
+
+/* Label */
+.input-label {
+  color: var(--page-primary);
+  margin-bottom: 10px;
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Input row */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--page-primary);
+  padding: 8px 6px;
+  margin-bottom: 18px;
+  gap: 8px;
+}
+
+/* @ circle */
+.at-icon {
+  width: 40px; height: 40px;
+  line-height: 40px; text-align: center;
+  border-radius: 50%;
+  background: rgba(var(--page-primary-rgb), .08);
+  color: var(--page-primary);
+  font-weight: 800;
+  font-size: 18px;
+  border: 1px solid color-mix(in srgb, var(--page-primary) 28%, transparent);
+}
+
+/* Ion input */
+ion-input {
+  --padding-start: 0;
+  --padding-end: 0;
+  --highlight-color-focused: transparent;
+  --background: transparent;
+  flex: 1;
+  font-size: 18px;
+  color: var(--ion-text-color);
+}
+ion-input::part(native) {
+  padding: 0; margin: 0; line-height: normal; border: 0; box-shadow: none;
+}
+
+/* Hint + Learn more */
+.hint {
+  margin-top: 6px;
+  color: color-mix(in srgb, var(--ion-text-color) 65%, transparent);
+  font-size: 14px;
+  line-height: 1.45;
+  padding: 0px 20px 0px 20px;
+}
+.learn-more {
+  color: var(--ion-color-primary, #0b6ef9);
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 6px;
+
+  &:hover { text-decoration: underline; }
+  &:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: 6px; }
+}
+
+/* Save button bar */
+.save-bar {
+  position: fixed;
+  left: 16px; right: 16px;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0));
+  z-index: 20;
+}
+.save-bar ion-button {
+  --background: var(--page-primary);
+  --background-hover: color-mix(in srgb, var(--page-primary) 88%, black);
+  --color: var(--page-contrast);
+  --border-radius: 999px;
+  height: 52px;
+  font-size: 16px;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--page-primary) 22%, transparent);
+}
+
+/* Accessibility */
+:where(.at-icon, .save-bar ion-button, .input-wrapper):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 10px;
+}
+
+/* Small screens */
+@media (max-width: 420px) {
+  .at-icon { width: 36px; height: 36px; line-height: 36px; font-size: 16px; }
+  .input-wrapper { padding: 6px 4px; }
+  .save-bar ion-button { height: 50px; font-size: 15px; }
+}
+
+/* Dark mode nudges */
+@media (prefers-color-scheme: dark) {
+  .at-icon {
+    background: rgba(var(--page-primary-rgb), .16);
+    border-color: color-mix(in srgb, var(--page-primary) 38%, transparent);
+  }
+}
+
+
+
+.form-row {
+    padding: 20px 20px 0px 20px;
+}
+
+
+.save_button {
+  background: var(--ion-color-primary) !important;
+  width: 100%;
+  padding: 11px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+
+
+.ion-valid.sc-ion-input-md-h {
+    --highlight-color: var(--ion-color-primary) !important;
+}

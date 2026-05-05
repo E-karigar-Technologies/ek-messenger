@@ -1,0 +1,109 @@
+/* ===== Utilities ===== */
+
+/* Remove padding and margin from ion-title */
+.no-padding {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Group count */
+.group-count {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+}
+
+/* Info text */
+.info-text {
+  font-size: 14px;
+  margin: 15px 15px;
+  color: color-mix(in srgb, var(--ion-text-color) 70%, transparent);
+}
+
+/* Highlighted link text */
+.link-text {
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.link-text:hover { text-decoration: underline; }
+.link-text:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 6px;
+}
+
+/* Divider line */
+.divider {
+  border: 0;
+  border-top: 1px solid var(--ion-border-color);
+  margin: 10px 0;
+}
+
+/* ===== Avatars & Icons ===== */
+
+/* Set a common, easily-tweakable size */
+:root {
+  --avatar-size: 44px;
+  --avatar-radius: 50%;
+  --avatar-gap: 8px;
+}
+
+/* Avatar containers (works with ion-avatar or divs) */
+.avatar-green,
+.avatar-gray {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--avatar-radius);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--ion-border-color);
+  color: var(--ion-text-color);
+}
+
+/* Brand-tinted “green” surface (without hardcoding green) */
+.avatar-green {
+  background:
+    color-mix(in srgb, var(--ion-color-primary) 10%, var(--ion-item-background));
+}
+
+/* Neutral gray surface */
+.avatar-gray {
+  background:
+    color-mix(in srgb, var(--ion-text-color) 6%, var(--ion-item-background));
+}
+
+/* Works for any circular icon badge */
+.custom-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--avatar-radius);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  border: 1px solid var(--ion-border-color);
+  background:
+    color-mix(in srgb, var(--ion-color-primary) 10%, var(--ion-card-background));
+  color: var(--ion-text-color);
+}
+
+/* Icon sizing helper */
+.multiple {
+  /* responsive: ~22–28px depending on viewport */
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1;
+}
+
+/* ===== Accessibility polish ===== */
+:where(.link-text, .custom-icon, .avatar-green, .avatar-gray):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ===== Optional: compact variant for tight lists ===== */
+.compact .group-count { font-size: 13px; }
+.compact .info-text { font-size: 13px; margin: 10px 0; }
+.compact .custom-icon { width: 44px; height: 44px; }

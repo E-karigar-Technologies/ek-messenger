@@ -1,0 +1,100 @@
+/* =========================
+   Chats list (tokenized)
+   ========================= */
+
+/* Page surface */
+.chats-content {
+  --background: var(--ion-background-color);
+  color: var(--ion-text-color);
+  background: var(--background);
+}
+
+/* Header / toolbar */
+.chats-toolbar {
+  --background: var(--ion-toolbar-background, var(--ion-background-color));
+  --color: var(--ion-toolbar-color, var(--ion-text-color));
+  box-shadow: none;
+  border-bottom: 1px solid var(--ion-border-color);
+}
+
+/* Icons & labels */
+.item-icon {
+  color: color-mix(in srgb, var(--ion-text-color) 75%, transparent);
+  font-size: 22px;
+}
+
+.label-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ion-text-color);
+}
+
+.label-sub {
+  display: block;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+  margin-top: 4px;
+}
+
+/* List headers */
+ion-list-header {
+  font-weight: 700;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--ion-text-color) 70%, transparent);
+  padding-top: 18px;
+  padding-bottom: 8px;
+  text-transform: uppercase; /* optional */
+  letter-spacing: .02em;     /* optional */
+}
+
+/* Compact item padding */
+ion-item {
+  --inner-padding-start: 12px;
+  --inner-padding-end: 12px;
+  --background: var(--ion-item-background);
+  --color: var(--ion-text-color);
+  --inner-border-width: 0;
+}
+
+/* Focus accessibility */
+:where(ion-item, .item-icon):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 10px;
+}
+
+/* Subtle divider helper (optional) */
+.chats-divider {
+  height: 1px;
+  background: var(--ion-border-color);
+  margin: 8px 12px;
+}
+
+
+
+
+.setting_icons{
+    background: var(--ion-color-primary);
+    color: white;
+    padding: 4px;
+    border-radius: 50px;
+    font-size: 26px;
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.ion_toolbar{
+    // --background: #ffffff;
+    background: var(--ion-color-primary);
+
+    --color:  var(--ion-color-primary);
+    // padding-top: 28px !important;
+}  
+.ion_title{
+    color: var(--ion-color-primary) !important;
+    padding: 0px;
+}

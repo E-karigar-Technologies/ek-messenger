@@ -1,0 +1,193 @@
+.selected-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+  max-height: 200px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--ion-text-color) 14%, transparent);
+    border-radius: 999px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+// Chip styling with cross button always visible
+ion-chip {
+  --background: color-mix(in srgb, var(--ion-color-primary) 12%, var(--ion-item-background));
+  --color: var(--ion-text-color);
+  --border-color: color-mix(in srgb, var(--ion-color-primary) 28%, var(--ion-border-color));
+  --ripple-color: color-mix(in srgb, var(--ion-color-primary) 30%, transparent);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: transform .12s ease, background-color .12s ease, border-color .12s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    --background: color-mix(in srgb, var(--ion-color-primary) 16%, var(--ion-item-background));
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ion-color-primary);
+    border-radius: 999px;
+  }
+
+  ion-icon[name="close-circle"] {
+    margin-left: 4px;
+    font-size: 20px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+      color: var(--ion-color-danger);
+    }
+  }
+}
+
+// De-emphasize already-added members
+.already-member {
+  opacity: .55;
+}
+
+.already-text {
+  font-style: italic;
+  color: color-mix(in srgb, var(--ion-text-color) 60%, transparent);
+}
+
+// Add Button - Original gradient style
+.add-btn {
+  --color: var(--ion-color-primary-contrast, #fff);
+  --border-radius: 999px;
+  font-weight: 700;
+  text-transform: none;
+  font-size: 16px;
+  padding: 5px 50px;
+  height: 48px;
+  margin: 8px 16px;
+
+  background: linear-gradient(
+    175deg,
+    color-mix(in srgb, var(--ion-color-primary) 55%, #ffffff) 0%,
+    color-mix(in srgb, var(--ion-color-primary) 95%, #ffffff) 50%
+  );
+
+  color: var(--color);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--ion-color-primary) 20%, transparent);
+  transition: all 0.3s ease;
+
+  &:hover:not([disabled]) {
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--ion-color-primary) 25%, transparent);
+    transform: translateY(-2px);
+  }
+
+  &:active:not([disabled]) {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--ion-color-primary) 20%, transparent);
+  }
+
+  &[disabled] {
+    opacity: 0.4;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ion-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Footer styling
+ion-footer {
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+  box-shadow: none !important;
+  --background: var(--ion-toolbar-background, var(--ion-background-color));
+  --color: var(--ion-toolbar-color, var(--ion-text-color));
+}
+
+// Loading spinner centering
+ion-spinner[name="dots"] {
+  display: block;
+  margin: 40px auto;
+  --color: var(--ion-color-primary);
+}
+
+// Search bar spacing
+ion-searchbar {
+  padding-bottom: 8px;
+}
+
+// List item hover effect
+ion-item {
+  --transition: background-color 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    --background: color-mix(in srgb, var(--ion-color-primary) 5%, var(--ion-item-background));
+  }
+}
+
+.invite-link-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ion-color-light);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--ion-color-primary);
+
+  .link-icon {
+    font-size: 28px;
+    color: var(--ion-color-primary);
+    flex-shrink: 0;
+  }
+
+  .link-info {
+    flex: 1;
+
+    .link-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin: 0;
+      color: var(--ion-text-color);
+    }
+
+    .link-subtitle {
+      font-size: 12px;
+      color: var(--ion-color-medium);
+      margin: 2px 0 0;
+    }
+  }
+
+  ion-button {
+    --padding-start: 6px;
+    --padding-end: 6px;
+  }
+}
+
+.selected-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.add-btn {
+  --border-radius: 12px;
+  margin: 8px 16px;
+}

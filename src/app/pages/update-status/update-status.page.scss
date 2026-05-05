@@ -1,0 +1,102 @@
+/* =========================
+   Update Status (tokenized)
+   ========================= */
+.update-status-page {
+  --ion-background-color: var(--ion-background-color);
+
+  /* current status label + chip */
+  .current-label {
+    margin-bottom: 12px;
+
+    h3 {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: color-mix(in srgb, var(--ion-text-color) 80%, transparent);
+    }
+
+    .current-chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: 8px;
+
+      /* tokenized surface + border + light elevation */
+      background: var(--ion-card-background);
+      border: 1px solid var(--ion-border-color);
+      box-shadow: 0 1px 2px rgba(0,0,0,.06);
+
+      span {
+        font-size: 16px;
+        color: var(--ion-text-color);
+      }
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: var(--focus-ring);
+      }
+    }
+  }
+
+  /* status input container */
+  .status-input-item {
+    --background: var(--ion-item-background);
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--ion-border-color);
+    padding: 4px 8px;
+
+    &:focus-within { box-shadow: var(--focus-ring); }
+  }
+
+  /* primary destructive action (red) */
+  ion-button[color="danger"] {
+    --background: var(--ion-color-danger, #ff1414);
+    --background-hover: var(--ion-color-danger-shade, color-mix(in srgb, var(--ion-color-danger) 90%, black));
+    --color: var(--ion-color-danger-contrast, #fff);
+    --box-shadow: 0 6px 14px color-mix(in srgb, var(--ion-color-danger) 18%, transparent);
+    margin-bottom: 16px;
+    --border-radius: 10px;
+
+    &:focus-visible { box-shadow: var(--focus-ring); }
+  }
+
+  /* section divider text */
+  .divider {
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 14px;
+    color: color-mix(in srgb, var(--ion-text-color) 65%, transparent);
+  }
+
+  /* list rows */
+  ion-list ion-item {
+    --min-height: 56px;
+    --background: var(--ion-item-background);
+    --color: var(--ion-text-color);
+    font-size: 16px;
+    border-bottom: 1px solid var(--ion-border-color);
+  }
+}
+
+
+
+.ion_title{
+    color: var(--ion-color-primary);
+    padding: 0px !important;
+}
+
+.save_button {
+  /* background: --background: var(--ion-color-primary); */
+
+  background: var(--ion-color-primary) !important;
+  width: 100%;
+  padding: 11px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}

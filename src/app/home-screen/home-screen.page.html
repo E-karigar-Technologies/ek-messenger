@@ -1,0 +1,953 @@
+<ion-header [translucent]="true">
+  <!-- ✅ Selection Mode Header -->
+  <ion-toolbar *ngIf="isSelectionMode; else normalHomeHeader">
+    <ion-buttons slot="start">
+      <ion-button (click)="clearChatSelection()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{ selectedChats.length }}</ion-title>
+
+    <ion-buttons slot="end">
+      <!-- ✅ Single PINNED Private Chat -->
+      <ng-container *ngIf="selectionMeta.isSinglePrivatePinned">
+        <ion-button (click)="onUnpinSelected()">
+          <i class="fa-solid fa-thumbtack-slash homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="deleteMultipleChats()">
+          <i class="fa-solid fa-trash homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onArchievedSelected()">
+          <i class="fa-solid fa-box-archive homemainicons"></i>
+        </ion-button>
+        <!-- ★ FAVOURITE BUTTON -->
+        <!-- <ion-button (click)="onAddToFavourite(selectedChats[0], $event)">
+        <ion-icon
+          [name]="chatListFilterService.isFavourite(selectedChats[0]?.roomId) ? 'heart' : 'heart-outline'"
+          [color]="chatListFilterService.isFavourite(selectedChats[0]?.roomId) ? 'danger' : ''"
+        ></ion-icon>
+      </ion-button> -->
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+
+      <!-- ✅ Single UNPINNED Private Chat -->
+      <ng-container *ngIf="selectionMeta.isSinglePrivateUnpinned">
+        <ion-button (click)="onPinSelected()">
+          <i class="fa-solid fa-thumbtack homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="deleteMultipleChats()">
+          <i class="fa-solid fa-trash homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onArchievedSelected()">
+          <i class="fa-solid fa-box-archive homemainicons"></i>
+        </ion-button>
+        <!-- ★ FAVOURITE BUTTON -->
+        <!-- <ion-button (click)="onAddToFavourite(selectedChats[0], $event)">
+        <ion-icon
+          [name]="chatListFilterService.isFavourite(selectedChats[0]?.roomId) ? 'heart' : 'heart-outline'"
+          [color]="chatListFilterService.isFavourite(selectedChats[0]?.roomId) ? 'danger' : ''"
+        ></ion-icon>
+      </ion-button> -->
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+
+      <!-- ✅ Single PINNED Group Chat -->
+      <ng-container *ngIf="selectionMeta.isSingleGroupPinned">
+        <ion-button (click)="onUnpinSelected()">
+          <i class="fa-solid fa-thumbtack-slash homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onArchievedSelected()">
+          <i class="fa-solid fa-box-archive homemainicons"></i>
+        </ion-button>
+        <!-- ★ FAVOURITE BUTTON -->
+        <!-- <ion-button (click)="onAddToFavourite(selectedChats[0], $event)">
+        <ion-icon
+          [name]="chatListFilterService.isFavourite(selectedChats[0]?.roomId) ? 'heart' : 'heart-outline'"
+          [color]="chatListFilterService.isFavourite(selectedChats[0]?.roomId) ? 'danger' : ''"
+        ></ion-icon>
+      </ion-button> -->
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+
+      <!-- ✅ Single UNPINNED Group Chat -->
+      <ng-container *ngIf="selectionMeta.isSingleGroupUnpinned">
+        <ion-button (click)="onPinSelected()">
+          <i class="fa-solid fa-thumbtack homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onArchievedSelected()">
+          <i class="fa-solid fa-box-archive homemainicons"></i>
+        </ion-button>
+        <!-- ★ FAVOURITE BUTTON -->
+        <!-- <ion-button (click)="onAddToFavourite(selectedChats[0], $event)">
+        <ion-icon
+          [name]="chatListFilterService.isFavourite(selectedChats[0]?.roomId) ? 'heart' : 'heart-outline'"
+          [color]="chatListFilterService.isFavourite(selectedChats[0]?.roomId) ? 'danger' : ''"
+        ></ion-icon>
+      </ion-button> -->
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+
+      <!-- ✅ Multiple Private Chats -->
+      <ng-container *ngIf="selectionMeta.isMultiPrivateOnly">
+        <ion-button (click)="onPinSelected()">
+          <i class="fa-solid fa-thumbtack homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="deleteMultipleChats()">
+          <i class="fa-solid fa-trash homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onArchievedSelected()">
+          <i class="fa-solid fa-box-archive homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+
+      <!-- ✅ Multiple Groups -->
+      <ng-container *ngIf="selectionMeta.isMultiGroupsOnly">
+        <ion-button (click)="onPinSelected()">
+          <i class="fa-solid fa-thumbtack homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onArchievedSelected()">
+          <i class="fa-solid fa-box-archive homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+
+      <!-- ✅ Mixed: Private + Groups -->
+      <ng-container *ngIf="selectionMeta.isMixedPrivateAndGroups">
+        <ion-button (click)="onPinSelected()">
+          <i class="fa-solid fa-thumbtack homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onArchievedSelected()">
+          <i class="fa-solid fa-box-archive homemainicons"></i>
+        </ion-button>
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+
+      <!-- ✅ Community (Pinned) -->
+      <ng-container *ngIf="selectionMeta.isSingleCommunityPinned">
+        <ion-button (click)="onUnpinSelected()">
+          <i class="fa-solid fa-thumbtack-slash homemainicons"></i>
+        </ion-button>
+        <!-- <ion-button (click)="onArchievedSelected()">
+        <i class="fa-solid fa-box-archive homemainicons"></i>
+      </ion-button> -->
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+
+      <!-- ✅ Single UNPINNED Community -->
+      <ng-container *ngIf="selectionMeta.isSingleCommunityUnpinned">
+        <ion-button (click)="onPinSelected()">
+          <i class="fa-solid fa-thumbtack homemainicons"></i>
+        </ion-button>
+        <!-- <ion-button (click)="onArchievedSelected()">
+        <i class="fa-solid fa-box-archive homemainicons"></i>
+      </ion-button> -->
+        <ion-button (click)="onMoreSelected($event)">
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ng-container>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- 🔁 Normal header -->
+  <ng-template #normalHomeHeader>
+    <ion-toolbar class="telldemm">
+      <ion-title>
+         <img *ngIf="!isDarkMode" src="assets/images/new_header_logo.svg" class="homeScreenlogo" alt="Logo" />
+         <img *ngIf="isDarkMode" src="assets/images/header_dark.svg" class="homeScreenlogo" alt="Logo" />
+      </ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button
+          (click)="openCamera()"
+          [attr.aria-label]="'home.actions.camera' | translate"
+        >
+          <i class="fa-solid fa-camera homemainicons"></i>
+        </ion-button>
+
+        <ion-button
+          (click)="presentPopover($event)"
+          [attr.aria-label]="'home.actions.menu' | translate"
+        >
+          <i class="fa-solid fa-ellipsis-vertical homemainicons"></i>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ng-template>
+
+  <!-- 🔎 Search + filters row -->
+  <ion-toolbar>
+    <div
+      class="main-header"
+      [class.disabled-ui]="isSelectionMode"
+      [style.opacity]="isSelectionMode ? 0.55 : 1"
+    >
+      <div class="container">
+        <ion-icon name="search-outline"></ion-icon>
+        <input
+          type="text"
+          id="searchInput"
+          [(ngModel)]="searchText"
+          [placeholder]="'home.search.placeholder' | translate"
+          [attr.aria-label]="'home.search.placeholder' | translate"
+          [readonly]="isSelectionMode"
+          [disabled]="isSelectionMode"
+        />
+      </div>
+    </div>
+
+    <div
+      class="main-filters"
+      [class.disabled-ui]="isSelectionMode"
+      [style.opacity]="isSelectionMode ? 0.55 : 1"
+    >
+      <div class="filters">
+        <!-- ✅ Existing filter: All -->
+        <button
+          class="filter-link"
+          [ngClass]="{ 'active-filter': selectedFilter === 'all' && !activeListFilterId }"
+          (click)="!isSelectionMode && setFilter('all')"
+          [disabled]="isSelectionMode"
+        >
+          {{ 'home.filters.all' | translate }}
+        </button>
+
+        <!-- ✅ Existing filter: Read -->
+        <button
+          class="filter-link"
+          [ngClass]="{ 'active-filter': selectedFilter === 'read' && !activeListFilterId }"
+          (click)="!isSelectionMode && setFilter('read')"
+          [disabled]="isSelectionMode"
+        >
+          {{ 'home.filters.read' | translate }}
+        </button>
+
+        <!-- ✅ Existing filter: Unread -->
+        <button
+          class="filter-link"
+          [ngClass]="{ 'active-filter': selectedFilter === 'unread' && !activeListFilterId }"
+          (click)="!isSelectionMode && setFilter('unread')"
+          [disabled]="isSelectionMode"
+        >
+          {{ 'home.filters.unread' | translate }}
+        </button>
+
+        <!-- ✅ Existing filter: Groups -->
+        <button
+          class="filter-link"
+          [ngClass]="{ 'active-filter': selectedFilter === 'groups' && !activeListFilterId }"
+          (click)="!isSelectionMode && setFilter('groups')"
+          [disabled]="isSelectionMode"
+        >
+          {{ 'home.filters.groups' | translate }}
+        </button>
+
+        <!-- ★ NEW: Favourites filter pill -->
+        <button
+          class="filter-link"
+          [ngClass]="{ 'active-filter': activeListFilterId === 'favourites' }"
+          (click)="!isSelectionMode && setListFilter(activeListFilterId === 'favourites' ? null : 'favourites')"
+          [disabled]="isSelectionMode"
+        >
+          Favourites
+        </button>
+
+        <!-- ★ NEW: Dynamic custom list pills -->
+        <button
+          *ngFor="let list of chatListFilterService.customLists$ | async"
+          class="filter-link"
+          [ngClass]="{ 'active-filter': activeListFilterId === list.listId }"
+          (click)="!isSelectionMode && setListFilter(activeListFilterId === list.listId ? null : list.listId)"
+          [disabled]="isSelectionMode"
+        >
+          {{ list.name }}
+        </button>
+
+        <!-- ★ NEW: + button to create new list -->
+        <button
+          class="filter-link filter-link-plus"
+          (click)="!isSelectionMode && openNewListModal()"
+          [disabled]="isSelectionMode"
+          aria-label="Create new list"
+        >
+          +
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="toggleGroupCreator" class="group-creator">
+      <ion-input
+        [(ngModel)]="newGroupName"
+        [placeholder]="'home.groupCreator.placeholder' | translate"
+      >
+      </ion-input>
+      <ion-list>
+        <ng-container *ngFor="let user of chatList">
+          <ion-item *ngIf="!user.group">
+            <ion-label>{{ user.name }}</ion-label>
+            <ion-checkbox [(ngModel)]="user.selected"></ion-checkbox>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Loader skeleton -->
+  <ion-list *ngIf="isLoading" aria-busy="true" aria-live="polite">
+    <ion-item *ngFor="let i of [1,2,3,4,5,6,7,8,9]" class="for_top">
+      <ion-avatar slot="start">
+        <ion-skeleton-text
+          animated
+          style="width: 40px; height: 40px; border-radius: 50%"
+        ></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="isLoading" class="no-chat-container">
+    <ion-icon name="chatbubbles-outline"></ion-icon>
+    <h2>No chats Yet</h2>
+    <p>start new chat click on start button</p>
+    <ion-button (click)="goToContact()" expand="block">
+      <ion-icon slot="start" name="person-add-outline"></ion-icon>
+      Start Button
+    </ion-button>
+  </div>
+
+  <!-- Meta rows: Locked (always top) & Archived (top only when keepArchivedChats=true) -->
+  <ion-list
+    *ngIf="!isLoading && (lockedCount > 0 || (archievedCount > 0 && keepArchivedChats))"
+    lines="none"
+    class="meta-list"
+  >
+    <ion-item
+      *ngIf="lockedCount > 0"
+      button
+      detail="true"
+      (click)="openLockedChats()"
+    >
+      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+      <ion-label>Locked chats</ion-label>
+      <ion-badge slot="end" color="medium">{{ lockedCount }}</ion-badge>
+    </ion-item>
+
+    <ion-item
+      *ngIf="archievedCount > 0 && keepArchivedChats"
+      button
+      detail="true"
+      (click)="openArchived()"
+    >
+      <ion-icon class="iconColor" name="archive-outline" slot="start"></ion-icon>
+      <ion-label>Archived</ion-label>
+      <ion-badge slot="end" color="medium">{{ archievedCount }}</ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <ng-container *ngIf="!isLoading">
+    <!-- Non-virtual list (<=30 chats) -->
+    <ion-list *ngIf="filteredChats.length <= 30">
+      <ion-item
+        *ngFor="let chat of filteredChats"
+        [class.selected]="isChatSelected(chat)"
+        [class.archived]="chat.isArchived"
+        (click)="onChatRowClick(chat, $event)"
+        (touchstart)="startHomeLongPress(chat)"
+        (touchend)="cancelHomeLongPress()"
+        (touchmove)="cancelHomeLongPress()"
+      >
+        <!-- ✅ Selection checkbox with disable logic -->
+        <ion-checkbox
+          *ngIf="hasSelection"
+          slot="start"
+          [checked]="isConvSelected(chat.roomId)"
+          [disabled]="!canSelectChat(chat)"
+          [class.disabled-checkbox]="!canSelectChat(chat)"
+          (click)="onCheckboxClick(chat, $event)"
+        >
+        </ion-checkbox>
+
+        <!-- ✅ Avatar -->
+        <ion-avatar
+          slot="start"
+          (click)="
+            selectedChats.length
+              ? toggleChatSelection(chat, $event)
+              : openImagePopup(chat);
+            $event.stopPropagation()
+          "
+        >
+          <!-- ✅ Avatar with fallback to initial letter (Hidden if blocked) -->
+          <ng-container
+            *ngIf="chat.avatar && !chat.theyBlocked; else initialsTpl"
+          >
+            <img
+              [src]="chat.avatar"
+              [alt]="getChatAlt(chat)"
+              (error)="onAvatarError(chat)"
+            />
+          </ng-container>
+          <ng-template #initialsTpl>
+            <div class="avatar">
+              <ion-icon
+                *ngIf="chat.theyBlocked"
+                name="person-circle-outline"
+                style="font-size: 40px; color: var(--ion-color-medium)"
+              ></ion-icon>
+              <span *ngIf="!chat.theyBlocked">{{ chat.title?.charAt(0) }}</span>
+            </div>
+          </ng-template>
+        </ion-avatar>
+
+        <!-- ✅ Chat Label -->
+        <ion-label>
+          <p
+            class="chat-message"
+            style="
+              font-weight: 600;
+              margin: 0;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+            "
+          >
+            {{ chat.title }}
+
+            <!-- (You) badge for self-chats -->
+            <span *ngIf="chat.isSelfChat || isSelfChat(chat)" class="self-you">
+              (You)
+            </span>
+
+            <!-- Pin icon -->
+            <ion-icon
+              *ngIf="chat.isPinned"
+              name="pin"
+              style="margin-left: 6px; opacity: 0.7"
+            ></ion-icon>
+
+            <!-- ★ NEW: Favourite heart indicator -->
+            <ion-icon
+              *ngIf="chatListFilterService.isFavourite(chat.roomId)"
+              name="heart"
+              color="danger"
+              style="font-size: 11px; vertical-align: middle"
+            ></ion-icon>
+
+            <!-- Archive badge -->
+            <ion-badge
+              *ngIf="chat.isArchived"
+              (onclick)="onArchievedSelected()"
+              color="medium"
+              style="margin-left: 4px; font-size: 10px"
+            >
+              Archived
+            </ion-badge>
+          </p>
+
+          <!-- Message preview with typing indicator -->
+          <p style="margin: 0; display: flex; align-items: center; gap: 6px">
+            <ng-container
+              *ngIf="(getTypingStatusForConv(chat.roomId) | async) as users"
+            >
+              <ng-container *ngIf="users.length > 0">
+                <span
+                  *ngIf="chat.type === 'private'"
+                  style="color: var(--ion-color-primary); font-style: italic"
+                >
+                  typing…
+                </span>
+                <span
+                  *ngIf="chat.type !== 'private'"
+                  style="color: var(--ion-color-primary); font-style: italic"
+                >
+                  {{ users.length }} {{ users.length === 1 ? 'person is' :
+                  'people are' }} typing…
+                </span>
+              </ng-container>
+            </ng-container>
+
+            <ng-container
+              *ngIf="!(getTypingStatusForConv(chat.roomId) | async)?.length"
+            >
+              <span
+                style="
+                  color: #666;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
+              >
+                {{ getPreviewText(chat) }}
+              </span>
+            </ng-container>
+          </p>
+        </ion-label>
+
+        <div slot="end" class="chat-meta">
+          <p class="time">{{ getTimeStamp(chat?.lastMessageAt) }}</p>
+
+          <ion-badge
+            *ngIf="(+ (chat?.unreadCount ?? 0)) > 0"
+            color="danger"
+            class="unread-badge"
+          >
+            {{ chat.unreadCount }}
+          </ion-badge>
+
+          <ion-icon
+            *ngIf="chat.type==='community'"
+            name="chevron-forward-outline"
+            style="color: #bdbdbd; margin-left: 8px"
+          ></ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div
+      *ngIf="filteredChats.length <= 30 && activeListFilterId === 'favourites' && filteredChats.length === 0"
+      class="fav-empty-state"
+    >
+      <ion-icon name="heart-outline" class="fav-empty-icon"></ion-icon>
+      <p class="fav-empty-text">No favourite chats yet</p>
+      <ion-button
+        fill="clear"
+        class="fav-view-all-btn"
+        (click)="setListFilter(null)"
+      >
+        View all chats
+      </ion-button>
+    </div>
+
+    <!-- ★ Manage Favorites — sirf non-virtual case mein -->
+    <div
+      *ngIf="filteredChats.length <= 30 && activeListFilterId === 'favourites' && filteredChats.length > 0"
+      class="manage-favourites-banner"
+      (click)="goToManageFavorites()"
+    >
+      <span>Manage Favorites</span>
+    </div>
+
+    <!-- ★ Custom list empty state — non-virtual -->
+    <div
+      *ngIf="filteredChats.length <= 30 && activeListFilterId && activeListFilterId !== 'favourites' && filteredChats.length === 0"
+      class="fav-empty-state"
+    >
+      <ion-icon name="list-outline" class="fav-empty-icon"></ion-icon>
+      <p class="fav-empty-text">No chats in "{{ getActiveListName() }}"</p>
+      <ion-button
+        fill="clear"
+        class="fav-view-all-btn"
+        (click)="setListFilter(null)"
+      >
+        View all chats
+      </ion-button>
+    </div>
+
+    <div
+      *ngIf="filteredChats.length <= 30 && activeListFilterId && activeListFilterId !== 'favourites' && filteredChats.length > 0"
+      class="manage-favourites-banner"
+      (click)="goToManageList(activeListFilterId)"
+    >
+      <span>Manage {{ getActiveListName() }}</span>
+    </div>
+
+    <!-- Virtual scroll list (>30 chats) -->
+    <cdk-virtual-scroll-viewport
+      *ngIf="filteredChats.length > 30"
+      itemSize="72"
+      style="height: calc(100vh - 200px); width: 100%"
+    >
+      <ion-item
+        *cdkVirtualFor="let chat of filteredChats; trackBy: trackByRoomId"
+        [class.selected]="isChatSelected(chat)"
+        [class.archived]="chat.isArchived"
+        (click)="onChatRowClick(chat, $event)"
+        (touchstart)="startHomeLongPress(chat)"
+        (touchend)="cancelHomeLongPress()"
+        (touchmove)="cancelHomeLongPress()"
+      >
+        <!-- ✅ Selection checkbox with disable logic -->
+        <ion-checkbox
+          *ngIf="hasSelection"
+          slot="start"
+          [checked]="isConvSelected(chat.roomId)"
+          [disabled]="!canSelectChat(chat)"
+          [class.disabled-checkbox]="!canSelectChat(chat)"
+          (click)="onCheckboxClick(chat, $event)"
+        >
+        </ion-checkbox>
+
+        <!-- ✅ Avatar -->
+        <ion-avatar
+          slot="start"
+          (click)="
+            selectedChats.length
+              ? toggleChatSelection(chat, $event)
+              : openImagePopup(chat);
+            $event.stopPropagation()
+          "
+        >
+          <!-- ✅ Avatar with fallback to initial letter (Hidden if blocked) -->
+          <ng-container
+            *ngIf="chat.avatar && !chat.theyBlocked; else initialsTpl"
+          >
+            <img
+              [src]="chat.avatar"
+              [alt]="getChatAlt(chat)"
+              (error)="onAvatarError(chat)"
+            />
+          </ng-container>
+          <ng-template #initialsTpl>
+            <div class="avatar">
+              <ion-icon
+                *ngIf="chat.theyBlocked"
+                name="person-circle-outline"
+                style="font-size: 40px; color: var(--ion-color-medium)"
+              ></ion-icon>
+              <span *ngIf="!chat.theyBlocked">{{ chat.title?.charAt(0) }}</span>
+            </div>
+          </ng-template>
+        </ion-avatar>
+
+        <!-- ✅ Chat Label -->
+        <ion-label>
+          <p
+            class="chat-message"
+            style="
+              font-weight: 600;
+              margin: 0;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+            "
+          >
+            {{ chat.title }}
+
+            <!-- (You) badge -->
+            <span *ngIf="chat.isSelfChat || isSelfChat(chat)" class="self-you">
+              (You)
+            </span>
+
+            <!-- Pin icon -->
+            <ion-icon
+              *ngIf="chat.isPinned"
+              name="pin"
+              style="margin-left: 6px; opacity: 0.7"
+            ></ion-icon>
+
+            <!-- ★ NEW: Favourite heart indicator -->
+            <ion-icon
+              *ngIf="chatListFilterService.isFavourite(chat.roomId)"
+              name="heart"
+              color="danger"
+              style="font-size: 11px; vertical-align: middle"
+            ></ion-icon>
+
+            <!-- Archive badge -->
+            <ion-badge
+              *ngIf="chat.isArchived"
+              (onclick)="onArchievedSelected()"
+              color="medium"
+              style="margin-left: 4px; font-size: 10px"
+            >
+              Archived
+            </ion-badge>
+          </p>
+
+          <!-- Message preview with typing indicator -->
+          <p style="margin: 0; display: flex; align-items: center; gap: 6px">
+            <ng-container
+              *ngIf="(getTypingStatusForConv(chat.roomId) | async) as users"
+            >
+              <ng-container *ngIf="users.length > 0">
+                <span
+                  *ngIf="chat.type === 'private'"
+                  style="color: var(--ion-color-primary); font-style: italic"
+                >
+                  typing…
+                </span>
+                <span
+                  *ngIf="chat.type !== 'private'"
+                  style="color: var(--ion-color-primary); font-style: italic"
+                >
+                  {{ users.length }} {{ users.length === 1 ? 'person is' :
+                  'people are' }} typing…
+                </span>
+              </ng-container>
+            </ng-container>
+
+            <ng-container
+              *ngIf="!(getTypingStatusForConv(chat.roomId) | async)?.length"
+            >
+              <span
+                style="
+                  color: #666;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
+              >
+                {{ getPreviewText(chat) }}
+              </span>
+            </ng-container>
+          </p>
+        </ion-label>
+
+        <div slot="end" class="chat-meta">
+          <p class="time">{{ getTimeStamp(chat?.lastMessageAt) }}</p>
+
+          <ion-badge
+            *ngIf="(+ (chat?.unreadCount ?? 0)) > 0"
+            color="danger"
+            class="unread-badge"
+          >
+            {{ chat.unreadCount }}
+          </ion-badge>
+
+          <ion-icon
+            *ngIf="chat.type==='community'"
+            name="chevron-forward-outline"
+            style="color: #bdbdbd; margin-left: 8px"
+          ></ion-icon>
+        </div>
+      </ion-item>
+    </cdk-virtual-scroll-viewport>
+    <div
+      *ngIf="filteredChats.length > 30 && activeListFilterId === 'favourites' && filteredChats.length === 0"
+      class="fav-empty-state"
+    >
+      <ion-icon name="heart-outline" class="fav-empty-icon"></ion-icon>
+      <p class="fav-empty-text">No favourite chats yet</p>
+      <ion-button
+        fill="clear"
+        class="fav-view-all-btn"
+        (click)="setListFilter(null)"
+      >
+        View all chats
+      </ion-button>
+    </div>
+
+    <!-- ★ Manage Favorites — sirf virtual scroll case mein -->
+    <div
+      *ngIf="filteredChats.length > 30 && activeListFilterId === 'favourites' && filteredChats.length > 0"
+      class="manage-favourites-banner"
+      (click)="goToManageFavorites()"
+    >
+      <span>Manage Favorites</span>
+    </div>
+
+    <!-- ★ Custom list empty state — virtual -->
+    <div
+      *ngIf="filteredChats.length > 30 && activeListFilterId && activeListFilterId !== 'favourites' && filteredChats.length === 0"
+      class="fav-empty-state"
+    >
+      <ion-icon name="list-outline" class="fav-empty-icon"></ion-icon>
+      <p class="fav-empty-text">No chats in "{{ getActiveListName() }}"</p>
+      <ion-button
+        fill="clear"
+        class="fav-view-all-btn"
+        (click)="setListFilter(null)"
+      >
+        View all chats
+      </ion-button>
+    </div>
+
+    <!-- ★ Manage custom list banner — virtual -->
+    <div
+      *ngIf="filteredChats.length > 30 && activeListFilterId && activeListFilterId !== 'favourites' && filteredChats.length > 0"
+      class="manage-favourites-banner"
+      (click)="goToManageList(activeListFilterId)"
+    >
+      <span>Manage {{ getActiveListName() }}</span>
+    </div>
+
+    <!-- Archived at BOTTOM when keepArchivedChats is OFF -->
+    <ion-list
+      *ngIf="archievedCount > 0 && !keepArchivedChats"
+      lines="none"
+      class="meta-list"
+    >
+      <ion-item
+        button
+        detail="true"
+        (click)="openArchived()"
+      >
+        <ion-icon name="archive-outline" slot="start"></ion-icon>
+        <ion-label>Archived</ion-label>
+        <ion-badge slot="end" color="medium">{{ archievedCount }}</ion-badge>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <div
+      class="icon-image"
+      (click)="goToContact()"
+      [attr.aria-label]="'home.actions.contacts' | translate"
+    >
+      <img src="assets/images/user.svg" alt="" />
+    </div>
+  </ion-fab>
+
+  <!-- Image Popup Modal -->
+  <ion-modal
+    [isOpen]="showPopup"
+    (didDismiss)="closeImagePopup()"
+    [backdropDismiss]="true"
+    cssClass="custom-blur-modal"
+  >
+    <ng-template>
+      <div class="popup-container">
+        <div class="user-name">
+          <p>{{ selectedChat?.title || 'Unknown' }}</p>
+        </div>
+
+        <ng-container
+          *ngIf="selectedImage && selectedImage !== 'assets/images/user.jfif'; else modalInitialsTpl"
+        >
+          <img
+            [src]="selectedImage"
+            [alt]="'home.alt.profile' | translate"
+            class="popup-image"
+            (click)="openProfileFromModal()"
+          />
+        </ng-container>
+
+        <ng-template #modalInitialsTpl>
+          <div class="popup-avatar">
+            {{ selectedChat?.title?.charAt(0)?.toUpperCase() || '?' }}
+          </div>
+        </ng-template>
+
+        <div class="icon-row">
+          <ion-icon
+            name="chatbox-ellipses-outline"
+            class="popup-icon"
+            (click)="goToUserchat()"
+          ></ion-icon>
+          <ion-icon
+            name="call-outline"
+            class="popup-icon"
+            (click)="goToUsercall()"
+          ></ion-icon>
+          <ion-icon
+            name="videocam-outline"
+            class="popup-icon"
+            (click)="goToUservideocall()"
+          ></ion-icon>
+          <ion-icon
+            name="alert-circle-outline"
+            class="popup-icon"
+            (click)="goToUserAbout()"
+          ></ion-icon>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <!-- 📸 Camera Preview Modal -->
+  <ion-modal
+    [isOpen]="showPreviewModal"
+    (didDismiss)="showPreviewModal = false"
+  >
+    <ng-template>
+      <ion-header [translucent]="true" class="model-header">
+        <ion-toolbar class="model-toll">
+          <ion-buttons slot="start">
+            <ion-icon
+              (click)="cancelAttachment()"
+              name="close"
+              style="font-size: 25px"
+            ></ion-icon>
+          </ion-buttons>
+          <ion-buttons slot="end" class="pre-icons">
+            <img
+              *ngIf="selectedAttachment?.type === 'image'"
+              src="assets/images/crop-simple-solid-full.svg"
+              alt="pencil"
+              (click)="openCropperModal(selectedAttachment)"
+              style="cursor: pointer"
+            />
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="">
+        <div class="pre-model">
+          <div class="mine2">
+            <div
+              *ngIf="selectedAttachment?.type === 'image'"
+              class="cropped-image"
+            >
+              <img
+                [src]="selectedAttachment?.previewUrl"
+                class="preview-image"
+              />
+            </div>
+            <div *ngIf="selectedAttachment?.type === 'video'">
+              <video
+                controls
+                [src]="selectedAttachment?.previewUrl"
+                class="preview-video"
+              ></video>
+            </div>
+            <div
+              *ngIf="selectedAttachment?.type === 'file'"
+              class="preview-file"
+            >
+              <ion-icon
+                name="document-attach-outline"
+                style="font-size: 48px"
+              ></ion-icon>
+              <p>{{ selectedAttachment?.fileName }}</p>
+            </div>
+          </div>
+          <div class="mine ion-padding">
+            <ion-textarea
+              [(ngModel)]="messageText"
+              placeholder="Type your message here..."
+              class="pre-message"
+            ></ion-textarea>
+            <div class="sendbtn">
+              <ion-icon
+                name="send-outline"
+                (click)="goToContactList()"
+                class="mediasend"
+                [class.sending]="isSending"
+                [style.pointer-events]="isSending ? 'none' : 'auto'"
+                [style.opacity]="isSending ? '0.5' : '1'"
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<app-footer-tabs [totalUnreadCount]="totalUnreadCount"></app-footer-tabs>

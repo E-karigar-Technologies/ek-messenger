@@ -1,0 +1,187 @@
+// ═══════════════════════════════════════════════════════
+// Group Invite Modal — Complete Styles
+// ═══════════════════════════════════════════════════════
+
+:host {
+  display: block;
+}
+
+.group-invite-modal-content {
+  --background: #f5f5f5;
+}
+
+// ─── Loading State ────────────────────────────────────
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: #666;
+  font-size: 14px;
+}
+
+// ─── Modal Body ───────────────────────────────────────
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 24px 0;
+  min-height: 100%;
+  background: #f5f5f5;
+}
+
+// ─── Close Button Row ─────────────────────────────────
+.close-btn-row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 8px 0 8px;
+
+  .close-btn {
+    --color: #555;
+    --padding-start: 8px;
+    --padding-end: 8px;
+
+    ion-icon {
+      font-size: 22px;
+    }
+  }
+}
+
+// ─── Top Card (DP + Name + Members) ──────────────────
+.dp-wrapper {
+  margin-top: 4px;
+  margin-bottom: 16px;
+  position: relative;
+
+  .group-dp {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+    background: #e0e0e0;
+    display: block;
+  }
+}
+
+.group-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+  text-align: center;
+  padding: 0 24px;
+  letter-spacing: -0.2px;
+}
+
+.member-count {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #777;
+  margin: 0 0 12px 0;
+
+  .count-icon {
+    font-size: 16px;
+    color: #aaa;
+  }
+}
+
+// ─── Description ──────────────────────────────────────
+.group-desc {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  margin: 0 0 12px 0;
+  padding: 0 28px;
+  line-height: 1.5;
+}
+
+// ─── Already Member Badge ─────────────────────────────
+.member-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+
+  span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #2e7d32;
+  }
+
+  ion-icon {
+    font-size: 17px;
+  }
+}
+
+// ─── Divider ──────────────────────────────────────────
+.divider {
+  width: calc(100% - 32px);
+  height: 1px;
+  background: #e0e0e0;
+  margin: 0 16px 24px 16px;
+}
+
+// ─── Action Buttons ───────────────────────────────────
+.action-buttons {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .action-btn {
+    --border-radius: 14px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    height: 52px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    margin: 0;
+  }
+
+  // Join Button — golden/primary
+  .join-btn {
+    --background: #c9982a;
+    --background-hover: #b5871f;
+    --background-activated: #a37519;
+    --color: #fff;
+    --box-shadow: 0 4px 14px rgba(201, 152, 42, 0.35);
+  }
+
+  // View/Open Button — same golden
+  .view-btn {
+    --background: #c9982a;
+    --background-hover: #b5871f;
+    --background-activated: #a37519;
+    --color: #fff;
+    --box-shadow: 0 4px 14px rgba(201, 152, 42, 0.30);
+  }
+
+  // Cancel Button — subtle
+  .cancel-btn {
+    --color: #888;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    height: 44px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+// ─── Spinner inside button ────────────────────────────
+ion-button ion-spinner {
+  color: #fff;
+}

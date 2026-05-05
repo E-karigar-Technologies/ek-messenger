@@ -1,0 +1,504 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+// @import "theme/variables.scss"; /* Import custom theme variables */
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+// @import "@ionic/angular/css/palettes/dark.system.css";
+
+@font-face {
+    font-family: Montserrat-bold;
+    src: url('./assets/fonts/Montserrat-Bold.eot') format('eot'),
+        url('./assets/fonts/Montserrat-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Montserrat-Bold.woff') format('woff'),
+        url('./assets/fonts/Montserrat-Bold.ttf') format('ttf'),
+        url('./assets/fonts/Montserrat-Bold.otf') format('otf');
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url('./assets/fonts/Montserrat-Medium.eot') format('eot'),
+        url('./assets/fonts/Montserrat-Medium.woff2') format('woff2'),
+        url('./assets/fonts/Montserrat-Medium.woff') format('woff'),
+        url('./assets/fonts/Montserrat-Medium.ttf') format('ttf'),
+        url('./assets/fonts/Montserrat-Medium.otf') format('otf');
+}
+
+@font-face {
+    font-family: Montserrat-SemiBold;
+    src: url('./assets/fonts/Montserrat-SemiBold.eot') format('eot'),
+        url('./assets/fonts/Montserrat-SemiBold.woff2') format('woff2'),
+        url('./assets/fonts/Montserrat-SemiBold.woff') format('woff'),
+        url('./assets/fonts/Montserrat-SemiBold.ttf') format('ttf'),
+        url('./assets/fonts/Montserrat-SemiBold.otf') format('otf');
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('./assets/fonts/Montserrat-Regular.eot') format('eot'),
+        url('./assets/fonts/Montserrat-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Montserrat-Regular.woff') format('woff'),
+        url('./assets/fonts/Montserrat-Regular.ttf') format('ttf'),
+        url('./assets/fonts/Montserrat-Regular.otf') format('otf');
+}
+
+@font-face {
+    font-family: OpenSans-SemiBold;
+    src: url('./assets/fonts/OpenSans-SemiBold.eot') format('eot'),
+        url('./assets/fonts/OpenSans-SemiBold.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans-SemiBold.woff') format('woff'),
+        url('./assets/fonts/OpenSans-SemiBold.ttf') format('ttf'),
+        url('./assets/fonts/OpenSans-SemiBold.otf') format('otf');
+}
+
+
+// ion-toolbar {
+//   padding-top: env(safe-area-inset-top);
+// }
+
+
+// app-footer-tabs {
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+
+//   // Make sure it sits above Android/iOS navigation bar
+//   padding-bottom: env(safe-area-inset-bottom);
+
+//   // Optional: style so it doesn’t get clipped
+//   background: #fff; // adjust to your footer bg
+//   z-index: 999;
+// }
+
+
+/* ====================================
+   ACCESSIBILITY GLOBAL STYLES
+   ==================================== */
+
+/* High Contrast Mode */
+// body.accessibility-high-contrast {
+//   --ion-background-color: #000 !important;
+//   --ion-text-color: #fff !important;
+//   --ion-color-primary: #ffcc00 !important;
+//   --ion-toolbar-background: #111 !important;
+//   --ion-card-background: #000 !important;
+//   --ion-item-background: #111 !important;
+//   --ion-border-color: #666 !important;
+// }
+
+// /* High Contrast Mode via body class */
+// body.accessibility-high-contrast {
+//   --ion-background-color: #ffffff;   /* pure black */
+//   --ion-text-color: #000000;         /* pure white */
+
+//   --ion-toolbar-background: #ffffff;
+//   --ion-toolbar-color: #000000;
+
+//   --ion-item-background: #000000;
+//   --ion-card-background: #000000;
+//   --ion-border-color: #ffffff;       /* strong separators */
+
+//   --ion-color-primary: #ff1414;      /* brand red */
+//   --ion-color-primary-contrast: #000000;
+//   --ion-color-primary-shade: #d81212;
+//   --ion-color-primary-tint: #ff4a4a;
+
+//   /* Chat bubbles */
+//   --chat-bubble-sent: #a80606;       /* solid red bubble */
+//   --chat-bubble-received: #ffffff;   /* solid white bubble */
+//   --chat-bubble-text: #000000;       /* max readable */
+
+//   --chat-input-bg: #000000;
+//   --chat-input-text: #ffffff;
+//   --chat-input-icon: #a80606;
+
+//   /* Strong focus outline */
+//   --focus-ring: 0 0 0 3px #a80606, 0 0 0 5px #ffffff;
+// }
+
+
+/* Reduce Motion */
+// body.accessibility-reduced-motion * {
+//   animation: none !important;
+//   transition: none !important;
+//   scroll-behavior: auto !important;
+// }
+
+/* Toast Global Styles */
+
+/* Material color variables */
+:root {
+  --md-success: #4CAF50;
+  --md-warning: #FFC107;
+  --md-error:   #F44336;
+  --md-info:    #2196F3;
+  --md-primary: #6200EE;
+  --md-secondary: #03DAC6;
+  --md-medium: #9E9E9E;
+  --md-light:  #E0E0E0;
+  --md-dark:   #212121;
+}
+
+/* Base toast styling */
+ion-toast.md-toast {
+  --border-radius: 14px;
+  --max-width: 90%;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+}
+
+/* Material color mappings */
+ion-toast.md-toast.success { --background: var(--md-success); }
+ion-toast.md-toast.warning { --background: var(--md-warning); }
+ion-toast.md-toast.error   { --background: var(--md-error); }
+ion-toast.md-toast.info    { --background: var(--md-info); }
+ion-toast.md-toast.primary { --background: var(--md-primary); }
+ion-toast.md-toast.secondary { --background: var(--md-secondary); }
+ion-toast.md-toast.medium { --background: var(--md-medium); }
+
+/* Force Shadow DOM piercing - try different selectors */
+ion-toast.md-toast::part(container),
+ion-toast.md-toast::part(message) {
+  position: relative;
+}
+
+/* Direct Shadow DOM piercing */
+ion-toast.md-toast {
+  &::part(container)::before,
+  &::part(container)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.45) 2px, transparent 3px);
+    background-size: 6px 6px;
+    opacity: 0.15;
+    animation: dustMove 4s linear infinite;
+    filter: blur(1px);
+    mix-blend-mode: overlay;
+  }
+  
+  &::part(container)::after {
+    background-size: 8px 8px;
+    opacity: 0.10;
+    animation-duration: 6s;
+  }
+}
+
+@keyframes dustMove {
+  0% {
+    transform: translate(-4px, -4px) scale(1);
+  }
+  50% {
+    transform: translate(4px, 4px) scale(1.1);
+  }
+  100% {
+    transform: translate(-4px, -4px) scale(1);
+  }
+}
+
+/* Accessibility: Large Text Mode */
+body.accessibility-large-text {
+  font-size: 1.2rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Headings inside ion-labels */
+body.accessibility-large-text ion-label h2 {
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+}
+
+/* Paragraphs inside ion-labels */
+body.accessibility-large-text ion-label p {
+  font-size: 1.1rem !important;
+}
+
+/* Optional: Increase tab text size for large text mode */
+body.accessibility-large-text p.tabtext {
+  font-size: 16px !important;
+}
+
+/* Optional: Increase chat message font size for large text mode */
+body.accessibility-large-text .chat-message {
+  font-size: 19px !important;
+}
+
+/* Optional: Increase search input font size */
+body.accessibility-large-text #searchInput {
+  font-size: 18px !important;
+}
+
+
+/* Simple Animations */
+// body.accessibility-simple-animations * {
+//   animation-duration: 0.3s !important;
+//   transition-duration: 0.2s !important;
+// }
+
+/* Grayscale Mode */
+body.accessibility-grayscale {
+  filter: grayscale(100%) !important;
+}
+
+
+
+
+.custom-toast {
+  --background: #323232;               /* Neutral dark background */
+  --color: #ffffff;                    /* Bright white text */
+  --border-radius: 10px;               /* Slightly more rounded */
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* More depth */
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 14px;
+  min-height: 48px;
+  margin-top: 16px;                    /* More breathing space */
+}
+
+/* Layout: message + action button */
+ion-toast.custom-toast .toast-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0;
+}
+
+/* Message styling */
+ion-toast.custom-toast .toast-message {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.3;
+  margin: 0;
+  color: #ffffff;
+  overflow-wrap: break-word;
+}
+
+/* Native-style "View" button */
+ion-toast.custom-toast button {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: none;
+  background: #ffffff;                  /* White button */
+  color: #000000;                       /* Black text */
+  border-radius: 6px;
+  padding: 6px 14px;
+  height: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: background 0.2s;
+}
+
+ion-toast.custom-toast button:hover {
+  background: #f0f0f0;
+}
+
+.setting_icons{
+    background: var(--ion-color-primary);
+    color: white;
+    padding: 4px;
+    border-radius: 50px;
+    font-size: 26px;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ion_toolbar{
+    --background: var(--ion-toolbar-background);
+    --color:  var(--ion-color-primary);
+}  
+.ion_title{
+    color: var(--ion-color-primary) !important;
+    padding: 0px;
+}
+
+.emoji-picker-modal {
+  --height: 75%;
+  --border-radius: 16px 16px 0 0;
+  --box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+
+  ion-backdrop {
+    --backdrop-opacity: 0.4;
+  }
+}
+
+.emoji-button {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.choose-list-sheet-modal {
+  --border-radius: 16px 16px 0 0;
+}
+.new-list-sheet-modal {
+  --border-radius: 16px 16px 0 0;
+}
+/* Emoji Picker sheet */
+.emoji-picker-sheet {
+  --border-radius: 18px 18px 0 0;
+  --backdrop-opacity: 0.4;
+}
+ 
+/* Edit Custom List sheet */
+.edit-list-sheet-modal {
+  --border-radius: 18px 18px 0 0;
+  --backdrop-opacity: 0.4;
+}
+.group-invite-modal {
+  --border-radius: 20px 20px 0 0;
+  --box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+ 
+  &::part(content) {
+    border-radius: 20px 20px 0 0;
+  }
+}
+/* global.scss */
+.mute-alert .alert-radio-label {
+  color: var(--ion-text-color);
+}
+
+.mute-alert .alert-radio-icon {
+  border-color: var(--ion-text-color);
+}
+.reaction-action-sheet  {
+  color:var(--ion-text-color);
+}
+/* LIGHT THEME */
+.reaction-action-sheet {
+ 
+  --color: var(--ion-text-color);
+  --button-color: var(--ion-text-color);
+  --button-background: transparent;
+  // --button-background-hover: #f2f2f2;
+
+  .action-sheet-group {
+    // border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .action-sheet-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ion-text-color);
+  }
+
+  .action-sheet-button {
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  .action-sheet-icon {
+    color: var(--ion-text-color);
+  }
+}
+.reaction-action-sheet .action-sheet-destructive {
+  color: #ff4d4f !important;
+}
+
+.custom-loading {
+  --background: var(--ion-background-color);
+  --spinner-color:var(--ion-color-primary-tint);
+  --border-radius: 16px;
+  backdrop-filter: blur(6px);
+ 
+}
+.custom-loading .loading-content {
+  color: var(--ion-text-color) !important;
+}
+.custom-loading .loading-wrapper {
+  color: var(--ion-text-color) !important;
+}
+// .footer-btn{
+//   --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-tint)) !important;
+//   --color: var(--ion-text-color) !important;
+//   --box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+// }
+ion-footer {
+  ion-toolbar {
+    padding: 8px 16px 12px;
+  }
+   .footer-btn {
+    --border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    --color: var(--ion-text-color) !important;
+    --box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  
+  }
+ 
+}
+
+// alert type select with custom css 
+/* Base overlay */
+.custom-select-overlay {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+/* Default text */
+.custom-select-overlay .alert-radio-label {
+  color: var(--ion-text-color) !important;
+}
+
+/*  Selected option text (CORRECT FIX) */
+.custom-select-overlay 
+.alert-radio-button[aria-checked="true"] 
+.alert-radio-label {
+  color: var(--ion-color-primary) !important;
+  font-weight: 600;
+}
+
+/*  Also apply on inner wrapper (important) */
+.custom-select-overlay 
+.alert-radio-button[aria-checked="true"] 
+.alert-button-inner {
+  color: var(--ion-color-primary) !important;
+}
+
+/*  Radio dot */
+.custom-select-overlay 
+.alert-radio-button[aria-checked="true"] 
+.alert-radio-inner {
+  background-color: var(--ion-color-primary) !important;
+}

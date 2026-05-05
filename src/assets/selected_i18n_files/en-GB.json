@@ -1,0 +1,750 @@
+{
+  "meta": {
+    "generatedAt": "2025-09-25T06:49:05.846991Z",
+    "note": "Translations for email-edit page in British English.",
+    "translated": true,
+    "locale": "en-GB"
+  },
+  "emailEdit": {
+    "title": "Email address",
+    "description": "Email helps you access your account. It isn’t visible to others.",
+    "label": "Email",
+    "verified": "Verified",
+    "placeholder": "you@example.com",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "savedSuccess": "Email saved successfully.",
+    "validation": {
+      "required": "Email is required.",
+      "invalid": "Please enter a valid email address.",
+      "maxlength": "Email is too long (maximum 254 characters)."
+    }
+  },
+  "helpPage": {
+    "title": "Help",
+    "helpCenter": {
+      "title": "Help Centre",
+      "description": "Get help, FAQs, and contact options."
+    },
+    "terms": {
+      "title": "Terms & Privacy Policy",
+      "description": "Read our terms and data policy."
+    },
+    "channelReports": {
+      "title": "Channel Reports",
+      "description": "Manage and view reports."
+    },
+    "appInfo": {
+      "title": "App Info",
+      "description": "Version, legal and technical details."
+    }
+  },
+ "common": { "ok": "OK", "cancel": "Cancel", "logout": "Log Out", "reset": "Reset" },
+  "settingsPage": {
+    "title": "Settings",
+    "account": {
+      "title": "Account",
+      "description": "privacy, security, change number"
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Control your privacy settings"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "description": "Change your Avatar"
+    },
+    "chats": {
+      "title": "Chats",
+      "description": "Theme, wallpaper, Storage & Data"
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "description": "Adjust text size and display options"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Manage chats, group and Connect alerts"
+    },
+    "storage": {
+      "title": "Storage & Data",
+      "description": "Manage storage and network usage"
+    },
+    "appLanguage": {
+      "title": "App Language",
+      "description": "Choose  app language"
+    },
+    "help": {
+      "title": "Help",
+      "description": "Help Centre, contact us, App Info"
+    },
+    "updates": {
+      "title": "App Updates",
+      "description": "Check for updates and enable auto-update"
+    },
+    "invite": {
+      "title": "Invite a Friend",
+      "description": "Share  app with your ContactList"
+    },
+    "logout": {
+      "title": "Log Out",
+      "description": "Clear app data and sign out",
+      "confirmHeader": "Confirm Log Out",
+      "confirmMessage": "Are you sure you want to log out and clear app data?",
+      "loadingHeader": "Logging Out",
+      "loadingMessage": "Please wait...",
+      "successHeader": "Logged Out",
+      "successMessage": "You have successfully logged out."
+    },
+    "defaultStatus": "Available"
+  },
+  "appUpdates": {
+    "title": "App Updates",
+    "version": "Version",
+    "latestAvailable": "Latest Available",
+    "status": "Status",
+    "statusMessages": {
+      "updateAvailable": "An update is available.",
+      "upToDate": "You are on the latest version."
+    },
+    "badge": {
+      "updateAvailable": "Update available",
+      "upToDate": "Up to date"
+    },
+    "checkForUpdates": {
+      "title": "Check for Updates",
+      "description": "Manually check if a new version is available"
+    },
+    "checking": "Checking…",
+    "toast": {
+      "latest": "You are using the latest version.",
+      "updateAvailable": "Update available: {{version}}",
+      "error": "Could not check updates. Please try again later."
+    }
+  },
+  "accountPage": {
+    "title": "Account",
+    "securityNotifications": "Security notifications",
+    "passkeys": "Passkeys",
+    "emailAddress": "Email address",
+    "twoStep": "Two-step verification",
+    "changeNumber": "Change number",
+    "requestInfo": "Request account information",
+    "addAccount": "Add account",
+    "deleteAccount": "Delete account",
+    "confirmDelete": {
+      "title": "Delete account?",
+      "message": "This action will permanently delete your account and data.",
+      "confirm": "Delete",
+      "cancel": "Cancel",
+      "log": "Delete account modal opened"
+    }
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "groups": {
+      "displayMotion": "Display & motion",
+      "interaction": "Interaction"
+    },
+    "increaseContrast": {
+      "title": "Increase contrast",
+      "desc": "Darken key colours to improve readability in light mode."
+    },
+    "reduceMotion": {
+      "title": "Reduce motion",
+      "desc": "Minimise animated stickers, GIFs and transitions."
+    },
+    "largeText": {
+      "title": "Large text",
+      "desc": "Increase system font scale for easier reading."
+    },
+    "simpleAnimations": {
+      "title": "Simplified animations",
+      "desc": "Reduce complex animations for easier interaction."
+    },
+    "grayscale": {
+      "title": "Grayscale mode",
+      "desc": "Convert all interface colours to shades of grey to reduce visual strain."
+    }
+  },
+  "privacyPage": {
+    "title": "Privacy",
+    "groups": {
+      "whoCanSee": "Who can see my info",
+      "other": "Other"
+    },
+    "lastSeen": {
+      "title": "Last Seen & Online",
+      "desc": "Control who can see your last seen and online status"
+    },
+    "profilePhoto": {
+      "title": "Profile Photo",
+      "desc": "Choose who can view your photo"
+    },
+    "about": {
+      "title": "About",
+      "desc": "Control who can see your about info"
+    },
+    "status": {
+      "title": "Status",
+      "desc": "Manage who can see your status updates"
+    },
+    "blocked": {
+      "title": "Blocked Contacts",
+      "desc": "View and manage blocked users"
+    },
+    "options": {
+      "everyone": "Everyone",
+      "contacts": "My Contacts",
+      "nobody": "Nobody"
+    }
+  },
+  "avatarPage": {
+    "title": "Create your Avatar",
+    "previewAlt": "Avatar preview",
+    "sections": {
+      "customization": "Customisation Options"
+    },
+    "fields": {
+      "hair": "Hair",
+      "accessories": "Accessories",
+      "hairColor": "Hair colour",
+      "eyes": "Eyes",
+      "mouth": "Mouth",
+      "clothes": "Clothes",
+      "skin": "Skin"
+    },
+    "placeholders": {
+      "hair": "Select hairstyle",
+      "accessories": "Select accessories",
+      "hairColor": "Select hair colour",
+      "eyes": "Select eye style",
+      "mouth": "Select mouth style",
+      "clothes": "Select clothing",
+      "skin": "Select skin tone"
+    },
+    "buttons": {
+      "download": "Download",
+      "downloading": "Downloading…",
+      "save": "Save"
+    },
+    "toast": {
+      "saved": "Avatar choices saved locally.",
+      "downloadError": "Download failed. Please try again."
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "highPriority": {
+      "title": "Use high priority notifications",
+      "desc": "Get notifications with sound and preview even when Do Not Disturb is on"
+    },
+    "message": {
+      "title": "Message notifications",
+      "desc": "Customise alerts for messages"
+    },
+    "group": {
+      "title": "Group chat notifications",
+      "desc": "Manage notifications for group chats"
+    },
+    "call": {
+      "title": "Call notifications",
+      "desc": "Ringtones and vibration settings"
+    }
+  },
+  "storage": {
+    "title": "Storage & Data",
+    "totalUsedHuman": "{{used}} MB of {{total}} MB",
+    "cards": {
+      "usage": {
+        "title": "Storage Usage",
+        "used": "{{mb}} MB used",
+        "total": "{{mb}} MB total"
+      }
+    },
+    "sections": {
+      "network": "Network Usage",
+      "manage": "Manage"
+    },
+    "network": {
+      "sent": {
+        "title": "Data sent",
+        "subtitle": "{{val}}"
+      },
+      "received": {
+        "title": "Data received",
+        "subtitle": "{{val}}"
+      }
+    },
+    "manage": {
+      "title": "Manage Storage",
+      "desc": "Review and delete large files, chats and media"
+    },
+    "autoDownload": {
+      "title": "Media Auto-download",
+      "desc": "Control what downloads on mobile/Wi-Fi/roaming"
+    },
+    "actions": {
+      "analyze": "Analyse",
+      "clearCache": "Clear Cache",
+      "resetStats": "Reset statistics"
+    },
+    "toast": {
+      "cleared": "Cleared {{mb}} MB cache",
+      "statsReset": "Network statistics reset"
+    }
+  },
+  "chats": {
+    "title": "Chats",
+    "sections": {
+      "appearance": "Appearance",
+      "behavior": "Message behaviour",
+      "management": "Chat management",
+      "translation": "Translation"
+    },
+    "items": {
+      "theme": {
+        "title": "Theme",
+        "sub": "System default"
+      },
+      "chatTheme": {
+        "title": "Default chat theme",
+        "sub": "Choose wallpaper or theme"
+      },
+      "fontSize": {
+        "title": "Font size",
+        "sub": "Medium"
+      },
+      "enterToSend": {
+        "title": "Enter is send",
+        "sub": "Press Enter to send messages"
+      },
+      "mediaVisibility": {
+        "title": "Media visibility",
+        "sub": "Show newly downloaded media in your gallery"
+      },
+      "keepArchived": {
+        "title": "Keep chats archived",
+        "sub": "Archived chats stay archived when new messages arrive"
+      },
+      "transcripts": {
+        "title": "Voice message transcripts",
+        "sub": "Automatically transcribe new voice messages"
+      },
+      "translation": {
+        "title": "Enable Translation",
+        "sub": "Translate messages you send",
+        "notice": "Translated messages may be processed by external services for accuracy. Your data remains private and is not stored.",
+        "reset": {
+          "title": "Reset Consent",
+          "sub": "Clear translation consent and disable the feature"
+        }
+      },
+      "backup": {
+        "title": "Chat backup",
+        "sub": "Back up messages to cloud storage"
+      },
+      "transfer": {
+        "title": "Transfer chats",
+        "sub": "Move chats between devices"
+      },
+      "history": {
+        "title": "Chat history",
+        "sub": "Export, archive, clear or delete all chats"
+      }
+    },
+    "toasts": {
+      "enter": {
+        "enabled": "Enter-to-send enabled",
+        "disabled": "Enter-to-send disabled"
+      },
+      "media": {
+        "on": "Media visibility on",
+        "off": "Media visibility off"
+      },
+      "archived": {
+        "enabled": "Keep archived enabled",
+        "disabled": "Keep archived disabled"
+      },
+      "transcripts": {
+        "enabled": "Voice message transcripts enabled",
+        "disabled": "Voice message transcripts disabled"
+      },
+      "translation": {
+        "enabled": "Translation enabled",
+        "disabled": "Translation disabled",
+        "consentDeclined": "Translation consent declined",
+        "consentReset": "Translation consent reset"
+      },
+      "backup": {
+        "starting": "Starting backup…",
+        "done": "Backup completed"
+      }
+    },
+    "dialogs": {
+      "translationConsent": {
+        "header": "Translation requires sending message text to an external service",
+        "message": "To provide message translations we send the message text to a third-party translation service. We do not collect personal account details. Only the message text is sent. If you agree, translations will be fetched and cached locally. You can revoke this permission anytime.",
+        "decline": "Decline",
+        "accept": "Accept"
+      },
+      "resetTranslationConsent": {
+        "header": "Reset Translation Consent",
+        "message": "This will clear your consent for message translation and disable the feature. You can re-enable it later."
+      }
+    }
+  },
+  "profilePage": {
+    "title": "Profile",
+    "imageAlt": "Profile Image",
+    "buttons": {
+      "edit": "Edit",
+      "addLinks": "Add links",
+      "cancel": "Cancel"
+    },
+    "fields": {
+      "name": "Name",
+      "about": "About",
+      "phone": "Phone",
+      "links": "Links"
+    },
+    "actions": {
+      "source": {
+        "header": "Select Image Source",
+        "camera": "Camera",
+        "gallery": "Gallery",
+        "cancel": "Cancel"
+      }
+    },
+    "loading": {
+      "openingCamera": "Opening camera...",
+      "processing": "Processing image...",
+      "updating": "Updating profile picture..."
+    },
+    "validation": {
+      "size": "Image size should be less than 5MB",
+      "type": "Please select a valid image file (JPEG, PNG, WebP)"
+    },
+    "toast": {
+      "loadFailed": "Failed to load profile data",
+      "imageLoadFailed": "Failed to load profile image",
+      "selectFailed": "Failed to select image. Please try again.",
+      "processFailed": "Error processing image. Please try again.",
+      "noUser": "User ID not found",
+      "updated": "Profile picture updated successfully!",
+      "updateFailed": "Failed to update profile picture"
+    }
+  },
+  "footerTabs": {
+    "chat": "Chats",
+    "updates": "Updates",
+    "communities": "Communities",
+    "calls": "Calls",
+    "badges": {
+      "unreadChats": "{{count}} unread Chats",
+      "unreadUpdates": "{{count}} Updates"
+    }
+  },
+  "socialLinks": {
+    "title": "Links",
+    "intro": "Adding links to your profile helps your contacts easily visit your other profiles.",
+    "instagram": {
+      "title": "Instagram",
+      "add": "Add your Instagram"
+    },
+    "actions": {
+      "add": "Add",
+      "edit": "Edit",
+      "cancel": "Cancel"
+    },
+    "privacy": {
+      "note": "To manage who can see your links, go to",
+      "link": "privacy settings"
+    }
+  },
+  "addInstagram": {
+    "title": "Add Instagram",
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "usernameLabel": "Instagram username",
+    "usernamePlaceholder": "username",
+    "hint": {
+      "text": "Adding an Instagram username will make it visible on your profile.",
+      "learnMore": "Learn more"
+    },
+    "save": "Save",
+    "validation": {
+      "required": "Please enter your Instagram username",
+      "invalid": "Enter a valid username (no spaces, max 30 chars)"
+    },
+    "toast": {
+      "fetchFailed": "Failed to fetch Instagram link",
+      "saved": "Instagram saved successfully!",
+      "saveFailed": "Failed to update Instagram link. Try again."
+    }
+  },
+  "home": {
+    "search": {
+      "placeholder": "Ask or Search"
+    },
+    "filters": {
+      "all": "ALL",
+      "read": "Read",
+      "unread": "Unread",
+      "groups": "Groups"
+    },
+    "groupCreator": {
+      "placeholder": "Enter Group Name"
+    },
+    "typing": "typing...",
+    "time": {
+      "yesterday": "Yesterday"
+    },
+    "preview": {
+      "deleted": "This message was deleted",
+      "encrypted": "[Encrypted]",
+      "media": {
+        "photo": "PicTell (Photo)",
+        "video": "ClipTell (Video)",
+        "audio": "VoiceTell (Audio)",
+        "file": "FileTell (Attachment)",
+        "generic": "[Media]"
+      }
+    },
+    "actions": {
+      "scan": "Scan DemmCode (QR)",
+      "camera": "Open camera",
+      "menu": "Open menu",
+      "contacts": "DemmList (Contacts)"
+    },
+    "scan": {
+      "onlyDevice": "Barcode scanning only works on a real device.",
+      "permission": "Camera permission is required to scan barcodes.",
+      "notFound": "No barcode found.",
+      "error": "Something went wrong during scanning."
+    },
+    "logout": {
+      "header": "Logout",
+      "message": "Session timed out/expired."
+    },
+    "alt": {
+      "profile": "Profile"
+    }
+  },
+  "menu": {
+    "newGroup": "New Group",
+    "newCommunity": "New Community",
+    "newBroadcast": "New Broadcast (WIP)",
+    "starred": "Starred Messages (WIP)",
+    "readAll": "Read All (WIP)",
+    "settings": "Settings",
+    "createChannels": "Create Channels (WIP)",
+    "statusPrivacy": "Status Privacy (WIP)",
+    "clearCallLogs": "Call Logs (WIP)"
+  },
+"userabout": {
+  "members": "Members",
+  "group": "Group",
+  "groups": "Groups",
+  "inCommon": "In Common",
+  "toolbar": {
+    "message": "Message",
+    "call": "Call",
+    "video": "Video",
+    "add": "Add "
+  },
+  "defaults": {
+    "heyThere": "Hey there! I am using Telldemm.",
+    "noGroupDescription": "No group description.",
+    "unknown": "Unknown (Not available)",
+    "unknownDate": "Unknown Date (Date missing)",
+    "unnamedGroup": "Unnamed Group (Unnamed DemmRoom)"
+  },
+  "updatedOn": "Updated on (Last Modified)",
+  "createdByOn": "Created by {{name}} on",
+  "media": {
+    "title": "Media, Links, and Docs (DemmVault)"
+  },
+  "notifications": "Notifications",
+  "mediaVisibility": "Media Visibility (Auto-Save Media)",
+  "encryption": {
+    "title": "Encryption",
+    "subtitle": "Messages and calls are end-to-end encrypted. Tap to verify. (Secure DemmRoom)"
+  },
+  "disappearing": "Disappearing messages (Auto-Vanish)",
+  "chatLock": {
+    "title": "Chat lock",
+    "subtitle": "Lock and hide this chat on this device. (Secure this DemmRoom)"
+  },
+  "advancedPrivacy": {
+    "title": "Advanced Chat Privacy",
+    "off": "Off (Disabled)"
+  },
+  "createGroupWith": "Create group with {{name}}",
+  "commonGroupWith": "Common group with {{name}}",
+  "groupMembers": "Group Members",
+  "addMembers": "Add Members",
+  "groupAdmin": "Group Admin",
+  "viewPastMembers": "View Past Members",
+  "addToFavourites": "Add to Favourites",
+  "addToList": "Add to list",
+  "block": "Block {{name}}",
+  "unblock": "Unblock {{name}}",
+  "report": "Report {{name}}",
+  "actions": {
+    "message": "Message (Send DemmMessage)",
+    "dismissAdmin": "Dismiss as Admin (Remove Admin Rights)",
+    "makeAdmin": "Make Admin (Grant DemmRoom Admin)",
+    "removeFromGroup": "Remove from Group (Remove from DemmRoom)"
+  },
+  "toasts": {
+    "madeAdmin": "{{name}} is now an Admin (DemmRoom Admin Added)",
+    "dismissedAdmin": "{{name}} is no longer an Admin (Admin Removed)",
+    "removedFromGroup": "{{name}} removed from group (Removed from DemmRoom)",
+    "blocked": "{{name}} has been blocked. (Demmian Blocked)",
+    "unblocked": "{{name}} has been unblocked. (Demmian Unblocked)",
+    "reported": "{{name}} has been reported. (Report Submitted)",
+    "reportedAndBlocked": "{{name}} has been reported and blocked. (Reported + Blocked)"
+  },
+  "errors": {
+    "makeAdmin": "Failed to make {{name}} admin (Admin Grant Failed)",
+    "dismissAdmin": "Failed to dismiss {{name}} as admin (Admin Removal Failed)",
+    "removeMember": "Error removing member (Demmian Removal Failed)"
+  },
+  "alerts": {
+    "block": {
+      "header": "Block Contact",
+      "message": "You will no longer receive messages or calls from {{name}}. (Communication Disabled)",
+      "cta": "Block (Confirm)"
+    },
+    "unblock": {
+      "header": "Unblock Contact",
+      "message": "Are you sure you want to unblock {{name}}? (Unblock Demmian)"
+    },
+    "report": {
+      "header": "Report Contact",
+      "message": "The last 5 messages from {{name}} will be reported. Do you also want to block this user? (Report + Optional Block)",
+      "alsoBlock": "Also block contact (Block Demmian)",
+      "cta": "Report (Submit)"
+    }
+  }
+}
+
+,
+  "invite": {
+    "header": "Invite a Friend",
+    "actions": {
+      "search": "Search contacts",
+      "shareLink": "Share app link",
+      "fromContacts": "Invite from contacts",
+      "invite": "Invite"
+    },
+    "share": {
+      "title": "Join me on this app!",
+      "subtitle": "Send app download link via any app",
+      "body": "Check out this brilliant app. Download it here:",
+      "button": "Share",
+      "success": "Link shared",
+      "copied": "Link copied"
+    },
+    "contacts": {
+      "title": "From Contacts",
+      "subtitle": "Invite directly from your phonebook",
+      "header": "From contacts",
+      "notOnApp": "Not on the app yet"
+    },
+    "title": "Join me on this app!",
+    "text": "Check out this brilliant app. Download it here:",
+    "dialogTitle": "Share App Link",
+    "toasts": {
+      "openContacts": "Opening contacts...",
+      "searchContacts": "Search contacts tapped.",
+      "invited": "Invitation sent to {{phone}}"
+    },
+    "errors": {
+      "shareFailed": "Could not open share sheet."
+    }
+  },
+  "community": {
+    "manageGroups": {
+      "title": "Manage groups",
+      "groups": "groups",
+      "createNew": "Create new group",
+      "addExisting": "Add existing groups",
+      "info": "Members can suggest existing groups for admin approval and add new groups directly. View in",
+      "settingsLink": "Community settings",
+      "listHeader": "Groups in this community",
+      "loading": "Loading groups...",
+      "empty": "No groups found for this community",
+      "members": "members",
+      "unnamedGroup": "Unnamed group",
+      "remove": {
+        "header": "Remove group from community",
+        "message": "Do you want to remove this group from the community? The group will remain but will no longer belong to the community.",
+        "alsoRemoveMembers": "Also remove members of this group from the community and from the group",
+        "cta": "Remove",
+        "aria": "Remove group from community"
+      },
+      "toasts": {
+        "removed": "Group removed from community and members updated",
+        "removeFailed": "Failed to remove group. Try again."
+      }
+    },
+    "title": "Communities",
+    "actions": {
+      "qr": "Open QR actions",
+      "menu": "Open menu"
+    },
+    "newCommunity": "New Community",
+    "unnamedCommunity": "Unnamed Community",
+    "viewAll": "View all",
+    "groupType": {
+      "normal": "Normal Group",
+      "announcement": "Announcement Group",
+      "general": "General Group"
+    },
+    "newGroup": {
+      "header": "New Group",
+      "placeholder": "Group Name",
+      "create": "Create"
+    },
+    "toasts": {
+      "groupCreated": "Group created"
+    }
+  },
+  "community_menu_component": {
+    "info": "Community info",
+    "invite": "Invite members",
+    "settings": "Community settings"
+  },
+  "group_preview_modal_component": {
+    "close": "Close",
+    "groupIcon": "Group icon",
+    "createdBy": "Created by {{name}}",
+    "noMembers": "No members yet",
+    "noDescription": "No description",
+    "communityLabel": "Community:",
+    "joinNote": "By joining you become a member immediately.",
+    "joinCta": "Join Group"
+  },
+  "add_existing_groups_page": {
+    "header": "Add existing groups",
+    "actions": {
+      "search": "Search groups",
+      "confirm": "Confirm selection",
+      "removeChip": "Remove selected group"
+    },
+    "of": "of",
+    "selected": "selected",
+    "banner": "Everyone in the groups will be added to the community.",
+    "listHeader": "Groups you're an admin of",
+    "loading": "Loading groups...",
+    "empty": "No admin groups found",
+    "checkboxLabel": "Select group",
+    "unnamedGroup": "Unnamed group",
+    "toasts": {
+      "selectAtLeastOne": "Select at least one group"
+    }
+  }
+}

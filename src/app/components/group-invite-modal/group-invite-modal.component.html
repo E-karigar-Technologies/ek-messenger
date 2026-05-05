@@ -1,0 +1,93 @@
+<ion-content class="group-invite-modal-content">
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading-wrapper" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;gap:16px">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <p style="margin:0;font-size:14px;color:var(--ion-color-medium)">
+      Loading {{ inviteType === 'community' ? 'community' : 'group' }} info...
+    </p>
+  </div>
+
+  <!-- Loaded -->
+  <div *ngIf="!isLoading" class="modal-body" style="display:flex;flex-direction:column;align-items:center;padding:16px 24px 24px">
+
+    <!-- Close button -->
+    <div style="width:100%;display:flex;justify-content:flex-end">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Type badge -->
+    <div style="margin-bottom:12px">
+      <ion-chip [color]="inviteType === 'community' ? 'tertiary' : 'primary'" style="font-size:12px">
+        <ion-icon [name]="inviteType === 'community' ? 'globe-outline' : 'people-outline'" style="margin-right:4px"></ion-icon>
+        {{ inviteType === 'community' ? 'Community' : 'Group' }} invite
+      </ion-chip>
+    </div>
+
+    <!-- DP -->
+    <div style="margin-bottom:14px">
+      <ng-container *ngIf="inviteType === 'community'; else groupDpTpl">
+        <!-- Community SVG icon (same as community-detail header) -->
+        <div style="width:72px;height:72px;border-radius:50%;background:var(--ion-color-tertiary);display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <ng-container *ngIf="displayDp && displayDp !== 'assets/images/user.jfif'; else svgIconTpl">
+            <img [src]="displayDp" style="width:100%;height:100%;object-fit:cover" (error)="onImageError($event)" />
+          </ng-container>
+          <ng-template #svgIconTpl>
+            <img [src]="'assets/images/community_icon.svg'" alt="Profile Picture"/>
+          </ng-template>
+        </div>
+      </ng-container>
+      <ng-template #groupDpTpl>
+        <ion-avatar style="width:72px;height:72px">
+          <img [src]="displayDp" alt="DP" (error)="onImageError($event)" />
+        </ion-avatar>
+      </ng-template>
+    </div>
+
+    <!-- Name -->
+    <h2 style="margin:0 0 6px;font-size:20px;font-weight:600;text-align:center">{{ displayName }}</h2>
+
+    <!-- Member count -->
+    <p style="margin:0 0 8px;font-size:13px;color:var(--ion-color-medium);display:flex;align-items:center;gap:4px">
+      <ion-icon name="people-outline"></ion-icon>
+      {{ memberCount }} {{ memberCount === 1 ? 'member' : 'members' }}
+    </p>
+
+    <!-- Description -->
+    <p *ngIf="displayDescription" style="margin:0 0 14px;font-size:13px;text-align:center;color:var(--ion-color-medium)">
+      {{ displayDescription }}
+    </p>
+
+    <!-- Already member badge -->
+    <div *ngIf="isCurrentUserMember" style="display:flex;align-items:center;gap:6px;background:var(--ion-color-success-tint);border-radius:20px;padding:6px 14px;margin-bottom:14px">
+      <ion-icon name="checkmark-circle" color="success"></ion-icon>
+      <span style="font-size:13px;color:var(--ion-color-success-shade)">
+        You're already a member
+      </span>
+    </div>
+
+    <div style="width:100%;height:1px;background:var(--ion-color-light);margin:8px 0 16px"></div>
+
+    <!-- Actions -->
+    <div style="width:100%;display:flex;flex-direction:column;gap:10px">
+
+      <!-- Open (already member) -->
+      <ion-button *ngIf="isCurrentUserMember" expand="block" (click)="viewAction()" style="--border-radius:12px">
+        <ion-icon [name]="inviteType === 'community' ? 'globe-outline' : 'chatbubbles-outline'" slot="start"></ion-icon>
+        Open {{ inviteType === 'community' ? 'Community' : 'Group' }}
+      </ion-button>
+
+      <!-- Join (not a member) -->
+      <ion-button *ngIf="!isCurrentUserMember" expand="block" [disabled]="isJoining" (click)="joinAction()" style="--border-radius:12px">
+        <ion-spinner *ngIf="isJoining" name="crescent" slot="start" style="width:18px;height:18px;margin-right:8px"></ion-spinner>
+        <ion-icon *ngIf="!isJoining" name="person-add-outline" slot="start"></ion-icon>
+        {{ isJoining ? 'Joining...' : ('Join ' + (inviteType === 'community' ? 'Community' : 'Group')) }}
+      </ion-button>
+
+      <ion-button expand="block" fill="clear" (click)="dismiss()" style="--border-radius:12px">
+        Cancel
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

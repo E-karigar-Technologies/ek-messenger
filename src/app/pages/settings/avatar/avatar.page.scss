@@ -1,0 +1,144 @@
+/* =========================
+   Avatar preview
+   ========================= */
+.preview {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+ion-avatar {
+  width: 200px;
+  height: 200px;
+  // border: 1px solid var(--ion-border-color);
+  // background: var(--ion-item-background);
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+/* Responsive avatar */
+@media (max-width: 420px) {
+  ion-avatar { width: 160px; height: 160px; }
+}
+
+/* =========================
+   Unified buttons
+   ========================= */
+.buttons-row {
+  margin: 8px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.unified-btn {
+  --border-radius: 10px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: none;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --box-shadow: 0 6px 14px rgba(0,0,0,.06);
+
+  /* interactions */
+  transition: transform .08s ease, filter .12s ease, box-shadow .12s ease;
+  &:hover { filter: brightness(0.98); }
+  &:active { transform: translateY(1px); }
+  &:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+}
+
+/* Icon + text */
+.unified-btn .btn-icon {
+  font-size: 20px;
+  margin-right: 8px;
+  opacity: .98;
+}
+.unified-btn .btn-text {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Variants */
+.unified-btn.download {
+  --background: var(--ion-color-primary);
+  --background-focused: var(--ion-color-primary-shade);
+  --color: var(--ion-color-primary-contrast);
+}
+
+.unified-btn.save {
+  --background: var(--ion-color-secondary, color-mix(in srgb, var(--ion-color-primary) 65%, #ffffff));
+  --color: var(--ion-color-secondary-contrast, var(--ion-color-primary-contrast));
+}
+
+/* Optional outline + ghost */
+.unified-btn.outline {
+  --background: transparent;
+  --color: var(--ion-color-primary);
+  border: 1px solid var(--ion-color-primary);
+}
+.unified-btn.ghost {
+  --background: transparent;
+  --color: var(--ion-color-primary);
+  border: 1px solid transparent;
+}
+
+/* Disabled */
+.unified-btn[disabled],
+.unified-btn:disabled {
+  opacity: .6;
+  transform: none;
+  filter: none;
+  pointer-events: none;
+}
+
+/* Small screens */
+@media (max-width: 400px) {
+  .unified-btn { height: 44px; font-size: 14px; }
+  .unified-btn .btn-icon { font-size: 18px; margin-right: 6px; }
+}
+.setting_icons{
+    background: var(--ion-color-primary);
+    color: white;
+    padding: 4px;
+    border-radius: 50px;
+    font-size: 26px;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.ion_toolbar{
+    // --background: #ffffff;
+    background: var(--ion-color-primary);
+
+    --color:  var(--ion-color-primary);
+    // padding-top: 28px !important;
+}  
+.ion_title{
+    color: var(--ion-color-primary) !important;
+    padding: 0px;
+}
+
+
+ion-list-header{
+  background: var(--ion-color-primary) !important;
+}
+.itemHeader{
+  color:var(--ion-text-color) ;
+}
+.itemIcon{
+  color: var(--ion-color-primary);
+}

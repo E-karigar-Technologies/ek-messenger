@@ -1,0 +1,150 @@
+<ion-header class="broadcast-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" class="back-btn">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <div class="header-title-area" *ngIf="!showSearchBar">
+      <div class="title">New broadcast</div>
+      <div class="subtitle">{{ selectedContacts.length }} of 256 selected</div>
+    </div>
+
+    <div class="search-bar-area" *ngIf="showSearchBar">
+      <ion-input
+        #searchInput
+        [(ngModel)]="searchTerm"
+        (ionInput)="filterContactsWithDebounce()"
+        placeholder="Search name or number"
+        class="search-input"
+        clearInput="true"
+        (ionClear)="clearSearch()"
+      ></ion-input>
+    </div>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSearch()" class="search-btn">
+        <ion-icon [name]="showSearchBar ? 'close' : 'search'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Selected contacts chips row -->
+  <div class="selected-chips-bar" *ngIf="selectedContacts.length > 0">
+    <div class="chips-scroll">
+      <div class="chip" *ngFor="let contact of selectedContacts">
+        <div class="chip-avatar">
+          <img *ngIf="contact.profile" [src]="contact.profile" />
+          <div *ngIf="!contact.profile" class="chip-avatar-placeholder">
+            {{ getInitial(contact.username) }}
+          </div>
+        </div>
+        <span class="chip-name">{{ contact.username | slice:0:8 }}</span>
+        <div class="chip-remove" (click)="removeContact(contact)">
+          <ion-icon name="close-circle"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="broadcast-content">
+
+  <!-- Info banner -->
+  <div class="info-banner">
+    <p>Only contacts with <strong>{{ currentUserPhone }}</strong> in their address book will receive your broadcast messages.</p>
+  </div>
+
+  <!-- Loading state -->
+  <div class="loading-state" *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <!-- Contacts list -->
+  <div *ngIf="!isLoading">
+    <div class="section-label" *ngIf="filteredContacts.length > 0">
+      Contacts on app
+    </div>
+
+    <div class="empty-state" *ngIf="filteredContacts.length === 0">
+      <ion-icon name="search-outline"></ion-icon>
+      <p>No contacts found</p>
+    </div>
+
+    <ion-list lines="none" class="contacts-list">
+      <ion-item
+        *ngFor="let contact of filteredContacts"
+        class="contact-item"
+        [class.selected]="contact.selected"
+        (click)="toggleSelect(contact)"
+        detail="false"
+        button
+      >
+        <div class="contact-avatar-wrap" slot="start">
+          <!-- Selection circle/checkmark -->
+          <div class="select-indicator" [class.checked]="contact.selected">
+            <ion-icon *ngIf="contact.selected" name="checkmark"></ion-icon>
+          </div>
+          <!-- Avatar -->
+          <div class="avatar-circle">
+            <img *ngIf="contact.profile" [src]="contact.profile" class="avatar-img" />
+            <div *ngIf="!contact.profile" class="avatar-placeholder">
+              {{ getInitial(contact.username) }}
+            </div>
+          </div>
+        </div>
+
+        <ion-label class="contact-label">
+          <div class="contact-name">{{ contact.username }}</div>
+          <div class="contact-phone">{{ contact.phoneNumber }}</div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Invite to app Section -->
+    <ng-container *ngIf="filteredNonPlatformContacts.length > 0">
+      <div class="section-label invite-section-label">Invite to app</div>
+
+      <ion-list lines="none" class="contacts-list">
+        <ion-item
+          *ngFor="let contact of filteredNonPlatformContacts"
+          class="contact-item"
+          detail="false"
+        >
+          <div class="contact-avatar-wrap" slot="start">
+            <div class="avatar-circle">
+              <div class="avatar-placeholder">
+                {{ getInitial(contact.username) }}
+              </div>
+            </div>
+          </div>
+
+          <ion-label class="contact-label">
+            <div class="contact-name">{{ contact.username }}</div>
+            <div class="contact-phone">{{ contact.phoneNumber }}</div>
+          </ion-label>
+
+          <ion-button
+            slot="end"
+            fill="outline"
+            size="small"
+            color="success"
+            class="invite-btn"
+            (click)="inviteContact(contact); $event.stopPropagation()"
+          >
+            INVITE
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+  </div>
+
+</ion-content>
+
+<!-- FAB done button -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="selectedContacts.length > 0">
+  <ion-fab-button class="done-fab" (click)="createBroadcast()">
+    <ion-icon name="checkmark"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -1,0 +1,76 @@
+/* Header */
+// ion-toolbar {
+//   // --background: var(--ion-color-primary);
+//   // --color: var(--ion-color-primary-contrast);
+//   // border-bottom: 1px solid var(--ion-border-color);
+//   // box-shadow: none;
+//   padding-top: 28px !important;
+// }
+
+/* Name input container */
+.name-input-item {
+  // margin-top: 20px;
+  border: 1px solid var(--ion-border-color);
+  border-radius: 8px;
+  padding: 8px;
+  --background: var(--ion-item-background);
+  background: var(--background);
+
+  &:focus-within {
+    box-shadow: var(--focus-ring);
+  }
+
+  ion-input {
+    --background: transparent;
+    --color: var(--ion-text-color);
+    --placeholder-color: var(--ion-color-medium);
+    --highlight-color: transparent;
+    --highlight-color-focused: transparent;
+
+    &::part(native) {
+      --background: transparent;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      line-height: 1.4;
+      font: inherit;
+      color: var(--ion-text-color);
+    }
+  }
+}
+
+/* Character counter */
+.char-count {
+  text-align: right;
+  font-size: 12px;
+  margin: 4px 8px;
+  color: var(--ion-color-medium);
+}
+
+/* Note / helper text */
+.note {
+  font-size: 13px;
+  margin: 12px 0 20px 4px;
+  color: var(--ion-color-step-600);
+}
+
+button.save_button {
+  /* background: --background: var(--ion-color-primary); */
+
+  background: var(--ion-color-primary) !important;
+  width: 100%;
+  padding: 11px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+
+
+.ion_title{
+    color: var(--ion-color-primary);
+    padding: 0px !important;
+}

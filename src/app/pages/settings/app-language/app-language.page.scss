@@ -1,0 +1,26 @@
+page-app-language {
+  ion-list {
+    background: var(--ion-background-color);
+    --ion-item-background: var(--ion-item-background, var(--ion-background-color));
+    --ion-item-color: var(--ion-text-color);
+  }
+
+  /* Optional: highlight current language row */
+  ion-item.current {
+    font-weight: 600;
+    --color: var(--ion-color-primary);
+  }
+
+  /* Accessibility: focus ring */
+  ion-item:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 8px;
+  }
+}
+.itemHeader{
+  color:var(--ion-text-color) ;
+}
+.searchBarClass{
+  --color: var(--ion-text-color);
+}

@@ -1,0 +1,310 @@
+/** GLOBAL VARIABLES USAGE **/
+
+ion-toolbar {
+  --background: var(--ion-toolbar-background);
+  color: var(--ion-toolbar-color);
+}
+
+ion-title {
+  color: var(--ion-color-primary);
+}
+
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+/* Layout */
+.main-header,
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-header {
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* Search Input */
+#searchInput {
+  width: 92%;
+  height: 46px;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: var(--ion-background-color);
+  background-image: url(https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png);
+  background-position: 10px 13px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  padding: 8px 20px 8px 40px;
+  color: var(--ion-text-color);
+  border: 1px solid var(--ion-text-color);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 10px;
+  color: var(--ion-text-color);
+}
+
+.filter-link {
+  background: #444343;
+  color: #AEACAC;
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-family: Montserrat-Medium;
+  font-size: 14px;
+  margin: 15px 0 10px 0;
+}
+
+.active-filter {
+  background-color: #FFD2D2 !important;
+  color: var(--ion-color-primary) !important;
+}
+
+/* Lists */
+ion-list {
+  background: var(--ion-background-color);
+}
+
+ion-item {
+  --padding-start: 10px;
+  --inner-padding-end: 10px;
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+  --inner-border-width: 0;
+  --border-style: none;
+}
+
+/* Chat meta/message */
+.chat-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chat-meta .time {
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  margin: 0;
+}
+
+.chat-message {
+  color: var(--ion-text-color);
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  font-family: Montserrat-Regular;
+}
+
+/* Badge */
+ion-badge,
+.unread-badge {
+  font-size: 10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 3px 6px;
+  color: #fff;
+  background: var(--ion-color-primary);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  box-sizing: border-box;
+}
+
+/* ICON STYLING (UPDATED FOR ION-ICON) */
+.footericons {
+  font-size: 22px;
+  color: var(--ion-color-medium);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Icon container */
+.icon-bg {
+  width: 50px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+/* Active state */
+.icon-bg.active {
+  background-color: rgba(var(--ion-color-primary-rgb), 0.15);
+}
+
+.icon-bg.active .footericons {
+  color: var(--ion-color-primary);
+  transform: scale(1.1);
+}
+
+/* Footer / Tab Bar */
+ion-tab-bar {
+  background: var(--ion-background-color);
+  justify-content: space-evenly;
+  align-items: baseline;
+  // border-top: 1px solid var(--ion-border-color);
+   border:none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Compact Footer Style */
+.mineclass {
+  background: var(--ion-background-color);
+  padding: 0px 10px 14px 10px !important;
+  transition: padding-bottom 0.2s;
+}
+
+/* Tab text */
+p.tabtext {
+  color: var(--ion-text-color);
+  margin: 2px 0 0 0;
+  font-size: 12.5px;
+  font-family: Montserrat-Medium;
+  transition: color 0.2s ease;
+}
+
+/* Active tab text */
+button.active .tabtext {
+  color: var(--ion-color-primary);
+  font-weight: 600;
+}
+
+/* Button reset */
+button {
+  padding: 4px;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Avatars */
+ion-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2c2a2a;
+  background-color: #f5afaf;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+ion-avatar img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Typing text */
+.typing-text {
+  color: var(--ion-color-primary);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Gallery scroll */
+.gallery-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  gap: 10px;
+  background: var(--ion-background-color);
+}
+
+.thumb {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Scanner & popups */
+.scanner-active {
+  background: transparent !important;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.popup-image {
+  width: 250px;
+  height: 250px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.icon-row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 0;
+  background-color: var(--ion-background-color);
+}
+
+.popup-icon {
+  font-size: 28px;
+  color: var(--ion-color-primary);
+}
+
+/* Selected items */
+ion-item.selected { 
+  --background: #e7bebe; 
+}
+
+.select-tick {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+/* Meta list */
+.meta-list {
+  margin: 0;
+}
+
+.meta-list ion-item {
+  --inner-padding-end: 8px;
+  --min-height: 40px;
+}
+
+.meta-list ion-icon {
+  opacity: 0.9;
+}
+
+.meta-list ion-badge {
+  border-radius: 10px;
+}
+
+/* Disable UI */
+.disabled-ui {
+  pointer-events: none;
+}
+
+/* Host background fix */
+:host {
+  display: block;
+  background: var(--ion-background-color);
+  padding-bottom: env(safe-area-inset-bottom, 6px);
+}

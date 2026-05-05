@@ -1,0 +1,299 @@
+<ion-header [translucent]="true" [class.scrolled]="isScrolled">
+  <ion-toolbar style="padding-top: 30px">
+    <ion-button
+      slot="start"
+      fill="clear"
+      (click)="goBackToChat()"
+      class="backbutton"
+    >
+      <ion-icon name="arrow-back-outline" class="back-icon"></ion-icon>
+    </ion-button>
+
+    <div class="profile-container">
+      <ion-avatar class="profile-avatar">
+        <img
+          [src]="'assets/images/community_icon.svg'"
+          alt="Profile Picture"
+          (error)="setDefaultAvatar($event)"
+        />
+      </ion-avatar>
+      <ion-label class="profile-name">
+        <h2>{{ community.title }}</h2>
+        <ion-label class="usernumber">
+          Community · {{ groupCount }} groups
+        </ion-label>
+      </ion-label>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  [fullscreen]="true"
+  (ionScroll)="onScroll($event)"
+  scrollEvents="true"
+>
+  <div class="center-content">
+    <ion-label class="username"> {{ community.title }} </ion-label>
+    <ion-label class="usernumber">
+      Community · {{ groupCount }} groups
+    </ion-label>
+  </div>
+
+  <div class="message-toolbar" style="margin-top: 15px; margin-bottom: 15px">
+    <div class="message-item" (click)="invite()" *ngIf="isCreator">
+      <ion-avatar class="centered-avatar">
+        <ion-icon name="chatbox-ellipses-outline" class="mess-icon"></ion-icon>
+      </ion-avatar>
+      <ion-label>Invite</ion-label>
+    </div>
+
+    <div class="message-item" (click)="addMembers()" *ngIf="canAddMembers">
+      <ion-avatar class="centered-avatar">
+        <ion-icon name="person-add-outline" class="mess-icon"></ion-icon>
+      </ion-avatar>
+      <ion-label>Add members</ion-label>
+    </div>
+
+    <div class="message-item" (click)="onAddGroups()">
+      <ion-avatar class="centered-avatar">
+        <ion-icon name="person-add-outline" class="mess-icon"></ion-icon>
+      </ion-avatar>
+      <ion-label>Add Groups</ion-label>
+    </div>
+  </div>
+
+  <!-- Tab Headers -->
+  <div class="tab-header">
+    <div
+      class="tab-item"
+      [class.active]="activeSection === 'community'"
+      (click)="setActiveSection('community')"
+    >
+      <ion-label>Community</ion-label>
+    </div>
+    <div
+      class="tab-item"
+      [class.active]="activeSection === 'announcements'"
+      (click)="setActiveSection('announcements')"
+    >
+      <ion-label>Announcements</ion-label>
+    </div>
+  </div>
+
+  <!-- Community Section -->
+  <section
+    id="section-community"
+    class="section"
+    *ngIf="activeSection === 'community'"
+  >
+    <!-- description / community text -->
+    <ion-card class="comm-desc">
+      <ion-card-content> {{ community.description }} </ion-card-content>
+    </ion-card>
+
+    <!-- Options list - Only for Creator -->
+    <ion-list *ngIf="isCreator">
+      <ion-item button (click)="editCommunity()">
+        <ion-icon slot="start" name="pencil-outline"></ion-icon>
+        <ion-label>Edit community info</ion-label>
+      </ion-item>
+
+      <ion-item button (click)="onAddGroups()">
+        <ion-icon slot="start" name="people-outline"></ion-icon>
+        <ion-label>Manage groups</ion-label>
+      </ion-item>
+
+      <ion-item button (click)="communitySettings()">
+        <ion-icon slot="start" name="settings-outline"></ion-icon>
+        <ion-label>Community settings</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item button (click)="viewGroups()">
+        <ion-icon slot="start" name="people-circle-outline"></ion-icon>
+        <ion-label>View groups ({{ groupCount }})</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Community members section with click handler -->
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Community members ({{ memberCount }})</ion-label>
+      </ion-list-header>
+
+      <ion-item button (click)="addMembers()" *ngIf="canAddMembers">
+        <ion-button fill="clear" slot="start">
+          <ion-icon
+            name="person-add-outline"
+            slot="start"
+            class="all-icon1"
+          ></ion-icon>
+        </ion-button>
+        <ion-label>Add members</ion-label>
+      </ion-item>
+
+      <!-- Members list with click handler -->
+      <ng-container>
+        <ion-item
+          *ngFor="let member of communityMembers"
+          [class.hidden]="member.user_id === currentUserId"
+          button
+          (click)="openMemberActionSheet(member)"
+        >
+          <ion-avatar slot="start">
+            <img
+              [src]="member.avatar || 'assets/images/community_icon.svg'"
+              (error)="setDefaultAvatar($event)"
+            />
+          </ion-avatar>
+          <ion-label>
+            <div class="Encry">{{ member.username }}</div>
+          </ion-label>
+
+          <!-- ✅ Show badges based on ownerId and adminIds -->
+          <!-- Community Owner badge (based on ownerId) -->
+          <ion-badge
+            *ngIf="member.isOwner"
+            class="admin-badge"
+            style="
+              margin-left: 6px;
+              font-size: 10px;
+              color: red;
+              background-color: #ffd4d4;
+            "
+          >
+            Community Owner
+          </ion-badge>
+
+          <!-- Community Admin badge (based on adminIds, excluding owner) -->
+          <ion-badge
+            *ngIf="!member.isOwner && isAdmin(member.user_id)"
+            class="admin-badge"
+            style="
+              margin-left: 6px;
+              font-size: 10px;
+              color: blue;
+              background-color: #d4e4ff;
+            "
+          >
+            Community Admin
+          </ion-badge>
+        </ion-item>
+      </ng-container>
+
+      <!-- Message for non-creators/non-admins -->
+      <ion-item *ngIf="!isCreator && !isAdmin(currentUserId)">
+        <ion-label class="ion-text-center">
+          <p class="muted">Only community admins can see all members</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Creator-only options -->
+    <ion-list *ngIf="isCreator">
+      <ion-item button (click)="assignNewOwner()">
+        <ion-icon slot="start" name="people-outline"></ion-icon>
+        <ion-label>Assign new owner</ion-label>
+      </ion-item>
+
+      <ion-item button (click)="exitCommunity()">
+        <ion-icon
+          slot="start"
+          name="log-out-outline"
+          color="primary"
+        ></ion-icon>
+        <ion-label class="danger">Exit community</ion-label>
+      </ion-item>
+
+      <ion-item button (click)="reportCommunity()">
+        <ion-icon
+          slot="start"
+          name="warning-outline"
+          color="primary"
+        ></ion-icon>
+        <ion-label class="danger">Report community</ion-label>
+      </ion-item>
+
+      <ion-item button (click)="deactivateCommunity()">
+        <ion-icon
+          slot="start"
+          name="close-circle-outline"
+          color="primary"
+        ></ion-icon>
+        <ion-label class="danger">Deactivate community</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Non-creator options -->
+    <ion-list *ngIf="!isCreator">
+      <ion-item button (click)="exitCommunity()">
+        <ion-icon
+          slot="start"
+          name="log-out-outline"
+          color="primary"
+        ></ion-icon>
+        <ion-label class="danger">Exit community</ion-label>
+      </ion-item>
+
+      <ion-item button (click)="reportCommunity()">
+        <ion-icon
+          slot="start"
+          name="warning-outline"
+          color="primary"
+        ></ion-icon>
+        <ion-label class="danger">Report community</ion-label>
+      </ion-item>
+    </ion-list>
+  </section>
+
+  <!-- Announcements Section -->
+  <section
+    id="section-announcements"
+    class="section"
+    *ngIf="activeSection === 'announcements'"
+  >
+    <ion-list>
+      <ion-item (click)="notifications()" button>
+        <ion-icon slot="start" name="notifications-outline"></ion-icon>
+        <ion-label>
+          <h3>Notifications</h3>
+          <p class="muted">Manage announcement notifications</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item (click)="mediaVisibility()" button>
+        <ion-icon slot="start" name="images-outline"></ion-icon>
+        <ion-label>
+          <h3>Media visibility</h3>
+          <p class="muted">Show media from announcements in gallery</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item (click)="disappearingMessages()" button>
+        <ion-icon slot="start" name="timer-outline"></ion-icon>
+        <ion-label>
+          <h3>Disappearing messages</h3>
+          <p class="muted">Off</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item (click)="chatLock()" button>
+        <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+        <ion-label>
+          <h3>Chat lock</h3>
+          <p class="muted">Lock announcements on this device</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item (click)="phoneNumberPrivacy()" button>
+        <ion-icon slot="start" name="phone-portrait-outline"></ion-icon>
+        <ion-label>
+          <h3>Phone number privacy</h3>
+          <p class="muted">Your phone number is visible in this chat</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </section>
+  <div class="bottom-space"></div>
+</ion-content>

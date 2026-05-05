@@ -1,0 +1,53 @@
+<!-- src/app/components/new-list-modal/new-list-modal.component.html -->
+
+<div class="modal-root">
+
+  <div class="drag-handle"></div>
+
+  <div class="modal-header">
+    <button class="close-btn" (click)="close()">
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+    <h2 class="modal-title">New list</h2>
+    <div style="width: 36px;"></div>
+  </div>
+
+  <div class="modal-body">
+
+    <p class="field-label">List name</p>
+
+    <div class="input-row" [class.input-error]="!!nameError">
+      <input
+        class="name-input"
+        [(ngModel)]="listName"
+        (ngModelChange)="onInput()"
+        placeholder="Example: Work, Friends"
+        maxlength="30"
+        autofocus
+        (keyup.enter)="goToAddContacts()"
+      />
+      <button class="emoji-btn" (click)="openEmojiPicker()">
+        <ion-icon name="happy-outline" class="emoji-icon"></ion-icon>
+      </button>
+    </div>
+
+    <p *ngIf="nameError" class="error-text">{{ nameError }}</p>
+
+    <p class="helper-text">
+      Any list you create becomes a filter at the top of your Chats tab.
+    </p>
+
+  </div>
+
+  <!-- Footer — always "Add people or groups" -->
+  <div class="modal-footer">
+    <button
+      class="create-btn"
+      [class.create-btn-active]="listName.trim().length > 0"
+      (click)="goToAddContacts()"
+    >
+      Add people or groups
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar class="toolbar-light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'emailEdit.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-content" [ngClass]="{ 'blurred': showOtpPopup }">
+  <div class="container">
+    <div class="card center-card">
+      <div class="icon-section">
+        <ion-icon name="mail" class="email-icon"></ion-icon>
+      </div>
+
+      <p class="muted center-text">
+        {{ 'emailEdit.description' | translate }}
+      </p>
+
+      <!-- View Mode -->
+      <div class="email-info" *ngIf="!isEditing">
+        <label>{{ 'emailEdit.label' | translate }}</label>
+        <div class="email-row">
+          <strong>{{ emailForm.value.email }}</strong>
+
+          <ion-button
+            fill="clear"
+            size="small"
+            (click)="editEmail()"
+            [attr.aria-label]="'emailEdit.edit' | translate">
+            <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <div class="verified" *ngIf="isEmailVerified">
+          <ion-icon name="checkmark-circle" class="verified-icon"></ion-icon>
+          <span>{{ 'emailEdit.verified' | translate }}</span>
+        </div>
+
+        <div class="not-verified" *ngIf="!isEmailVerified && emailForm.value.email !== 'you@example.com'">
+          <ion-icon name="alert-circle-outline" class="not-verified-icon"></ion-icon>
+          <span>Not Verified</span>
+        </div>
+      </div>
+
+      <!-- Edit Mode -->
+      <form *ngIf="isEditing" [formGroup]="emailForm" (ngSubmit)="saveEmail()" class="edit-form">
+        <ion-item lines="full">
+          <ion-input
+            type="email"
+            formControlName="email"
+            [placeholder]="'emailEdit.placeholder' | translate"
+            [attr.aria-label]="'emailEdit.label' | translate">
+          </ion-input>
+        </ion-item>
+
+        <!-- validation -->
+        <div class="validation" aria-live="polite" *ngIf="(emailControl.invalid && (emailControl.dirty || emailControl.touched))">
+          <small class="error" *ngIf="emailControl.hasError('required')">
+            {{ 'emailEdit.validation.required' | translate }}
+          </small>
+          <small class="error" *ngIf="emailControl.hasError('email')">
+            {{ 'emailEdit.validation.invalid' | translate }}
+          </small>
+          <small class="error" *ngIf="emailControl.hasError('maxlength')">
+            {{ 'emailEdit.validation.maxlength' | translate }}
+          </small>
+        </div>
+
+        <div class="actions">
+          <ion-button fill="outline" expand="block" (click)="cancelEdit()" [attr.aria-label]="'emailEdit.cancel' | translate">
+            {{ 'emailEdit.cancel' | translate }}
+          </ion-button>
+
+          <ion-button type="submit" color="primary" expand="block" [disabled]="emailForm.invalid || isSendingOtp">
+            <ng-container *ngIf="!isSendingOtp">Send OTP</ng-container>
+            <ion-spinner *ngIf="isSendingOtp" name="crescent"></ion-spinner>
+          </ion-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>
+
+<!-- OTP Verification Popup Overlay -->
+<div *ngIf="showOtpPopup" class="otp-popup-wrapper">
+  <div class="backgrounds">
+
+    <div class="otp-header">
+      <p>Verify Your Email</p>
+      <p class="otp-sub">Enter the 6-digit OTP sent to<br><strong>{{ pendingEmail }}</strong></p>
+    </div>
+
+    <div class="otp-input-wrapper">
+      <ion-input-otp
+        #otpInput
+        length="6"
+        [value]="otpValue"
+        (ionInput)="onOtpChange($event)"
+        class="custom-otp-input">
+      </ion-input-otp>
+    </div>
+
+    <div class="submit">
+      <button [disabled]="!isOtpComplete || isVerifyingOtp" (click)="verifyOtp()">
+        <ng-container *ngIf="!isVerifyingOtp">Verify</ng-container>
+        <ion-spinner *ngIf="isVerifyingOtp" name="crescent"></ion-spinner>
+      </button>
+    </div>
+
+    <div class="resend-section">
+      <p>Didn't receive code?</p>
+      <p>
+        <span
+          [style.color]="timer === 0 ? 'var(--ion-color-primary)' : '#888'"
+          [style.pointerEvents]="timer === 0 ? 'auto' : 'none'"
+          (click)="resendOtp()">
+          Resend
+        </span>
+        <span *ngIf="timer > 0"> &mdash; {{ getFormattedTime() }}</span>
+      </p>
+    </div>
+
+    <div class="dismiss-row">
+      <button class="dismiss-btn" (click)="dismissOtp()">Cancel</button>
+    </div>
+
+  </div>
+</div>
+

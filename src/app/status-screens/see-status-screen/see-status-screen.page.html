@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+    <!-- ✅ Timeline inside toolbar -->
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+    </div>
+
+    <ion-buttons slot="start" style="color: black; width: 8%;margin-top: 15px;">
+      <ion-back-button defaultHref="/home-screen" style="font-size: 20px;"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons>
+      <ion-item lines="none" style="--padding-start: 0;" detail="false"
+        style="--background: white; color:black;margin-top: 15px;">
+        <ion-avatar slot="start">
+          <img src="assets/images/user.jfif" alt="User Avatar" />
+        </ion-avatar>
+        <ion-label style="width: auto;">
+          <h2 style="margin: 0; font-size: 16px;font-family: Montserrat-bold;">Priyanshu Pal</h2>
+          <p style="margin: 0; font-size: 14px;font-family: Montserrat-Medium;color:#000000">Today, 09:23 am</p>
+        </ion-label>
+      </ion-item>
+    </ion-buttons>
+
+    <ion-buttons slot="end" style="margin-top: 15px;">
+
+      <ion-button style="color: black;">
+        <ion-icon name="ellipsis-vertical-outline" style="font-size: 28px;"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding chat-background" scroll-y="true">
+  <div>
+    <div style="display: flex;justify-content: center;">
+      <ion-row style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 91%;
+    gap: 5px;
+    position: absolute;
+    bottom: 20px;
+    position: fixed;
+  ">
+
+        <ion-col style="
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 18px;
+      font-family: Montserrat-Medium;
+      padding: 0px 15px 0px 15px;
+      height: 50px;
+    ">
+          <ion-input type="text" placeholder="Write comment...…."
+            style="border: none; flex: 1; outline: none; background: none; color: black;text-align: center;">
+          </ion-input>
+        </ion-col>
+
+        <ion-col size="auto">
+          <ion-button style="--background: #FF1414;height: 50px;width: 50px;" shape="round">
+            <ion-icon slot="icon-only" name="heart-outline" style="color: white;font-size: 35px;"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

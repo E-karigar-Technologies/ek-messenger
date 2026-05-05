@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Edit Channel Detail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="saveChanges()">
+    
+    <!-- Display Picture Section -->
+    <div class="dp-section">
+      <div class="dp-container">
+        <div class="dp-wrapper">
+          <img
+            *ngIf="previewUrl; else placeholder"
+            [src]="previewUrl"
+            class="dp-image"
+            alt="Channel Display Picture"
+          />
+          <ng-template #placeholder>
+            <div class="dp-placeholder">
+              <ion-icon name="chatbubble-outline" class="placeholder-icon"></ion-icon>
+            </div>
+          </ng-template>
+
+          <!-- Edit Button Overlay -->
+          <div class="edit-overlay" (click)="selectImageSource()">
+            <ion-icon name="camera" class="camera-icon"></ion-icon>
+          </div>
+        </div>
+      </div>
+      <p class="dp-hint">Tap to change channel photo</p>
+    </div>
+
+    <!-- Channel Name -->
+    <ion-item class="form-item">
+      <ion-label position="stacked">Channel Name</ion-label>
+      <ion-input
+        placeholder="Enter channel name"
+        [(ngModel)]="channel_name"
+        name="channel_name"
+        required
+        [disabled]="loading"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Description -->
+    <ion-item class="form-item">
+      <ion-label position="stacked">Description</ion-label>
+      <ion-textarea
+        placeholder="Describe your channel"
+        [(ngModel)]="description"
+        name="description"
+        rows="4"
+        [disabled]="loading"
+      ></ion-textarea>
+    </ion-item>
+
+    <!-- Category -->
+    <ion-item class="form-item">
+      <ion-label position="stacked">Category</ion-label>
+      <ion-select
+        placeholder="Select category"
+        [(ngModel)]="category_id"
+        name="category_id"
+        [disabled]="loading"
+      >
+        <ion-select-option *ngFor="let c of categories" [value]="c.id">
+          {{ c.category_name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Region -->
+    <ion-item class="form-item">
+      <ion-label position="stacked">Region</ion-label>
+      <ion-select
+        placeholder="Select region"
+        [(ngModel)]="region_id"
+        name="region_id"
+        [disabled]="loading"
+      >
+        <ion-select-option *ngFor="let r of regions" [value]="r.region_id">
+          {{ r.region_name }} <ng-container *ngIf="r.country_code">({{ r.country_code }})</ng-container>
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Save Button -->
+    <div class="button-container">
+      <ion-button
+        type="submit"
+        expand="block"
+        color="primary"
+        [disabled]="loading || !channel_name.trim() || !description.trim()"
+      >
+        <ion-spinner *ngIf="loading" name="crescent" slot="start"></ion-spinner>
+        <ion-icon *ngIf="!loading" name="checkmark-outline" slot="start"></ion-icon>
+        Save Changes
+      </ion-button>
+    </div>
+
+  </form>
+</ion-content>

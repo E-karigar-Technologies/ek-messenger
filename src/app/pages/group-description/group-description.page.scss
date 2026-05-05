@@ -1,0 +1,145 @@
+/* =========================
+   Button row + Textarea (tokenized)
+   ========================= */
+
+/* Row that centers buttons and wraps nicely on tiny screens */
+.button-row {
+  display: flex;
+  gap: 12px;
+  padding: 0 16px;
+  justify-content: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+/* Base ion-button tweaks */
+ion-button {
+  flex: 1 1 160px;               /* grows but won’t get too tiny */
+  height: 44px;
+  --border-radius: 10px;
+  font-weight: 700;               /* bold */
+  letter-spacing: .2px;
+
+  /* focus accessibility */
+  &:focus-visible { box-shadow: var(--focus-ring); }
+}
+
+/* Optional: semantic variants you can apply with class */
+ion-button.primary {
+  --background: var(--ion-color-primary);
+  --background-hover: var(--ion-color-primary-shade);
+  --color: var(--ion-color-primary-contrast);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--ion-color-primary) 20%, transparent);
+}
+ion-button.outline {
+  --background: transparent;
+  --border-color: var(--ion-color-primary);
+  --color: var(--ion-color-primary);
+  border: 1px solid var(--ion-color-primary);
+}
+ion-button.ghost {
+  --background: transparent;
+  --color: var(--ion-color-primary);
+}
+
+/* Disabled state consistency */
+ion-button[disabled],
+ion-button:disabled {
+  opacity: .6;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* =========================
+   Textarea wrapper (tokenized)
+   ========================= */
+
+.textarea-wrapper {
+  background: color-mix(in srgb, var(--ion-text-color) 6%, var(--ion-item-background));
+  border: 1px solid var(--ion-border-color);
+  border-radius: 12px;
+  padding: 10px;
+  transition: box-shadow .15s ease, border-color .15s ease;
+
+  /* highlight on focus-within */
+  &:focus-within {
+    box-shadow: var(--focus-ring);
+    border-color: var(--ion-color-primary);
+  }
+
+  /* ion-textarea styling without ::ng-deep */
+  ion-textarea {
+    --background: transparent;
+    --color: var(--ion-text-color);
+    --placeholder-color: color-mix(in srgb, var(--ion-text-color) 50%, transparent);
+    --padding-start: 8px;
+    --padding-end: 8px;
+    --padding-top: 6px;
+    --padding-bottom: 6px;
+    --highlight-color: transparent;
+    --highlight-color-focused: transparent;
+
+    /* remove any internal border/shadow */
+    border: 0;
+
+    /* style the actual native element */
+    &::part(native) {
+      --background: transparent;
+      border: 0;
+      outline: 0;
+      padding: 0;
+      margin: 0;
+      line-height: 1.45;
+      font: inherit;
+    }
+  }
+}
+
+/* Compact density variant (apply .dense on a parent if needed) */
+.dense {
+  .button-row { gap: 8px; }
+  ion-button { height: 40px; }
+  .textarea-wrapper { padding: 8px; }
+}
+
+/* Dark-mode polish */
+@media (prefers-color-scheme: dark) {
+  .textarea-wrapper {
+    background: color-mix(in srgb, var(--ion-text-color) 9%, var(--ion-item-background));
+    border-color: color-mix(in srgb, var(--ion-border-color) 85%, transparent);
+  }
+}
+
+.footer-buttons {
+  position: fixed;
+  left: 0; width: 100%;
+  background: var(--ion-background-color);
+  padding: 20px 24px;
+  // border-top: 1px solid var(--ion-border-color);
+  box-shadow: none !important;
+  bottom: max(0px, env(safe-area-inset-bottom));
+}
+@media (max-width: 420px) {
+  .footer-buttons { padding: 16px 16px; }
+}
+
+.cancel-btn {
+  font-weight: 700;
+  text-transform: none;
+  border: 1px solid;
+    border-radius: 12px;
+
+  &:focus-visible { box-shadow: var(--focus-ring); }
+}
+
+.ok-btn {
+  --border-radius: 12px;
+  &:hover { filter: brightness(1.03); }
+
+  &:disabled,
+  &[disabled] {
+    opacity: .6;
+    pointer-events: none;
+    filter: none;
+  }
+}

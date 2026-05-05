@@ -1,0 +1,988 @@
+/* =========================
+   Complete Updated CSS File
+   ========================= */
+
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+/* page shell */
+.background {
+  --background: var(--ion-card-background);
+  --background-color: var(--ion-card-background);
+  box-shadow: 0 0 8px 8px
+    color-mix(in srgb, var(--ion-text-color) 6%, transparent);
+}
+
+/* Toolbar / titles */
+ion-toolbar {
+  --background: var(--ion-toolbar-background);
+  color: var(--ion-text-color);
+}
+ion-title {
+  text-align: center;
+  font-size: 20px;
+  font-family: Montserrat-bold;
+}
+
+
+
+/* Country + phone input row */
+.main-country {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.country-code {
+  width: 11%;
+  margin-top: 2px;
+}
+
+.count-code {
+  color: var(--ion-text-color);
+  margin: 0;
+  font-family: Montserrat-bold;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* underlines for inputs */
+.underline-country {
+  border-bottom: 2px solid var(--ion-color-primary);
+  margin: 0;
+}
+
+/* Modern country dropdown */
+.country-wrapper {
+  width: 30%;
+}
+
+.modern-select {
+  flex: 1;
+  background: transparent;
+  color: var(--ion-text-color);
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: Montserrat-Medium;
+  font-weight: 500;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  z-index: 1;
+
+  &::placeholder {
+    color: color-mix(in srgb, var(--ion-text-color) 50%, transparent);
+    font-family: Montserrat-Medium;
+    font-size: 14px;
+  }
+
+  option {
+    background: var(--ion-card-background);
+    color: var(--ion-text-color);
+    font-family: Montserrat-Medium;
+    font-size: 14px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    line-height: 1.5;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: var(--ion-color-primary);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* ========================= 
+   MODERN INPUT FIELDS
+   ========================= */
+
+.modern-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--ion-border-color);
+  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--ion-color-primary) 2%, var(--ion-card-background)),
+    var(--ion-card-background)
+  );
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--ion-text-color) 5%, transparent);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      color-mix(in srgb, var(--ion-color-primary) 3%, transparent), 
+      transparent
+    );
+    transition: left 0.5s ease;
+    pointer-events: none;
+  }
+
+  &:focus-within::before {
+    left: 100%;
+  }
+
+  &:focus-within {
+    border-color: var(--ion-color-primary);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--ion-color-primary) 15%, transparent);
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--ion-color-primary) 4%, var(--ion-card-background)),
+      var(--ion-card-background)
+    );
+  }
+
+  &.error {
+    border-color: var(--ion-color-danger);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--ion-color-danger) 12%, transparent);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: var(--ion-color-primary);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    min-width: 24px;
+
+    ion-icon {
+      font-size: 22px;
+    }
+  }
+
+  &:focus-within .input-icon {
+    opacity: 1;
+    transform: scale(1.1);
+    color: var(--ion-color-primary);
+  }
+
+  &.error .input-icon {
+    color: var(--ion-color-danger);
+    opacity: 0.9;
+  }
+}
+
+.modern-input {
+  flex: 1;
+  background: transparent;
+  color: var(--ion-text-color);
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: Montserrat-Medium;
+  font-weight: 500;
+  padding: 4px 0;
+  transition: all 0.3s ease;
+
+  &::placeholder {
+    color: color-mix(in srgb, var(--ion-text-color) 50%, transparent);
+    font-family: Montserrat-Medium;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  &:focus::placeholder {
+    color: color-mix(in srgb, var(--ion-text-color) 35%, transparent);
+  }
+
+  &:autofill,
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--ion-card-background) inset !important;
+    -webkit-text-fill-color: var(--ion-text-color) !important;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* Phone wrapper */
+.phone-wrapper {
+  width: 49%;
+}
+
+/* Email wrapper */
+.email-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.email-wrapper {
+  width: 65%;
+}
+
+/* remove spin buttons */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Updated validation for modern inputs */
+.required-line {
+  color: var(--ion-color-danger);
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0px;
+  font-size: 13px;
+  font-family: Montserrat-Medium;
+  animation: slideInDown 0.3s ease;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Agree & Continue button area */
+.agree-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.agree-div button {
+  height: 55px;
+  width: 90%;
+  border-radius: 30px;
+  font-family: Montserrat-bold;
+  font-weight: bold;
+  color: var(--ion-color-primary-contrast);
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+  background:var(--ion-color-primary) !important;
+}
+.agree-div button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Card style for OTP modal */
+.backgrounds {
+  background: var(--ion-card-background);
+  width: 90%;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px
+    color-mix(in srgb, var(--ion-text-color) 20%, transparent);
+  padding: 14px;
+}
+
+/* OTP title */
+.opt {
+  text-align: center;
+  height: 65px;
+  color: var(--ion-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.opt p {
+  margin: 0;
+  font-size: 18px;
+  font-family: Montserrat-bold;
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+
+/* subtle divider */
+.border-line {
+  border: 1px solid
+    color-mix(in srgb, var(--ion-color-primary) 18%, var(--ion-border-color));
+  margin: 8px 0;
+}
+
+/* OTP input wrapper */
+.otp-input-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* =========================
+   Responsive OTP inputs
+   ========================= */
+
+/* Container that holds each OTP input cell */
+.custom-otp-input,
+.custom-otp-input .otp-input,
+ion-input-otp {
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 1.6vw, 14px);
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+}
+
+/* Individual input cells */
+.custom-otp-input input,
+.custom-otp-input .otp-input input,
+ion-input-otp input,
+.custom-otp-input ::ng-deep input {
+  width: clamp(38px, 6vw, 56px);
+  height: clamp(38px, 6vw, 56px);
+  font-size: clamp(20px, 3.2vw, 30px);
+  line-height: 1;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid var(--ion-border-color);
+  background: transparent;
+  color: var(--ion-text-color) !important;
+  -webkit-text-fill-color: var(--ion-text-color) !important;
+  caret-color: var(--ion-color-primary);
+  box-sizing: border-box;
+  transition: border-color 160ms ease, box-shadow 160ms ease,
+    transform 120ms ease;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.custom-otp-input input[type="number"]::-webkit-inner-spin-button,
+.custom-otp-input input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-otp-input input:focus,
+.custom-otp-input ::ng-deep input:focus {
+  border-color: color-mix(in srgb, var(--ion-color-primary) 65%, transparent);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--ion-color-primary) 12%, transparent);
+  transform: translateY(-1px);
+}
+
+.custom-otp-input input.filled,
+.custom-otp-input ::ng-deep input.filled {
+  background: color-mix(in srgb, var(--ion-color-primary) 6%, transparent);
+  border-color: color-mix(in srgb, var(--ion-color-primary) 45%, transparent);
+}
+
+.custom-otp-input input.invalid,
+.custom-otp-input ::ng-deep input.invalid {
+  border-color: var(--ion-color-danger);
+  box-shadow: 0 3px 10px
+    color-mix(in srgb, var(--ion-color-danger) 12%, transparent);
+  animation: wobble 220ms ease;
+}
+
+.custom-otp-input input:disabled,
+.custom-otp-input ::ng-deep input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.custom-otp-input input {
+  backdrop-filter: blur(0.5px);
+  animation: otpAppear 220ms ease both;
+}
+
+@keyframes otpAppear {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Submit button inside OTP popup */
+.submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.submit button {
+  height: 45px;
+  width: 76%;
+  border-radius: 30px;
+  font-family: Montserrat-bold;
+  font-weight: bold;
+  color: var(--ion-color-primary-contrast);
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+  background: var(--ion-color-primary);
+}
+.submit button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Fullpage OTP overlay */
+.otp-popup-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in srgb, var(--ion-text-color) 10%, transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Blur class applied to background when OTP modal open */
+.blurred {
+  filter: blur(1px);
+  pointer-events: none;
+  user-select: none;
+  background-color: color-mix(
+    in srgb,
+    var(--ion-card-background) 30%,
+    transparent
+  );
+}
+
+/* Resend section */
+.resend-section {
+  text-align: center;
+  color: var(--ion-color-medium);
+  margin-top: 10px;
+}
+.resend-section span {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--ion-color-primary) !important;
+}
+
+/* Confirm popup */
+.confirm-popup::part(backdrop) {
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--ion-text-color) 12%, transparent);
+}
+.confirm-popup::part(content) {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  position: relative;
+}
+
+.popup-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--ion-popup-background) !important;
+  padding: 24px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 20px
+    color-mix(in srgb, var(--ion-text-color) 18%, transparent);
+  animation: fadeInScale 0.3s ease;
+}
+.popup-message {
+  font-size: 16px;
+  color: color-mix(in srgb, var(--ion-text-color) 70%, transparent);
+}
+.popup-number {
+  font-size: 20px;
+  margin: 12px 0;
+  font-weight: 600;
+  color: var(--ion-text-color);
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+.popup-btn {
+  flex: 1;
+  padding: 10px 0;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.popup-btn.edit {
+  background: var(--chat-input-icon);
+  color: var(--ion-text-color);
+}
+.popup-btn.ok {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+
+/* Background */
+.forbg {
+  // --background: url(/assets/images/ion-background-2.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat;
+  // position: relative;
+}
+
+.darkbg {
+  // position: absolute;
+  position: relative;
+  // background: rgba(0, 0, 0, 0.63);
+  width: 100%;
+  height: 100%;
+  // z-index: 9;
+  text-align: center;
+}
+
+.logoimg {
+  // width: 80%;
+      max-width: 100%;
+    height: 43%;
+  top: 20px;
+  padding-top: 120px;
+  
+}
+// .innerDiv{
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//    z-index: 9;
+//   transform: translate(-50%, -50%);
+
+// }
+
+
+/* =========================
+   RESPONSIVE Lorem-main Block
+   ========================= */
+
+.Lorem-main {
+  display: flex;
+  flex-direction: column;
+  background: var(--ion-background-color-dark);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 99999999 !important;
+  
+  /* Dynamic height based on content with constraints */
+  min-height: 50vh;
+  max-height: 85vh;
+  height: auto;
+  
+  /* Flexible padding that scales */
+  padding: clamp(20px, 4vh, 40px) clamp(12px, 3vw, 24px) clamp(30px, 6vh, 60px);
+  
+  /* Enable scrolling if content exceeds max-height */
+  overflow-y: auto;
+  
+  /* Smooth transitions */
+  transition: height 0.3s ease;
+}
+
+.Lorem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Lorem h2 {
+  color: var(--ion-color-primary);
+  margin: 8px 0;
+}
+
+.Lorem p {
+  text-align: center;
+  font-size: 18px;
+  width: 94%;
+  font-family: "Montserrat-Medium";
+  color: var(--ion-text-color);
+}
+.dropdownOptions{
+  color: var(--ion-text-color);
+  background-color: var(--ion-background-color-dark);
+}
+
+/* =========================
+   RESPONSIVE BREAKPOINTS
+   ========================= */
+
+/* Small phones (320px - 480px) */
+@media (max-width: 480px) {
+  .Lorem-main {
+    min-height: 55vh;
+    max-height: 88vh;
+    padding: 16px 12px 40px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+  
+  .Lorem h2 {
+    font-size: clamp(18px, 5vw, 22px);
+    margin: 8px 0;
+  }
+  
+  .Lorem p {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+  
+  .modern-input-wrapper {
+    padding: 12px 14px;
+    border-radius: 10px;
+    gap: 10px;
+
+    .input-icon {
+      font-size: 20px;
+      min-width: 22px;
+    }
+  }
+
+  .modern-input {
+    font-size: 14px;
+
+    &::placeholder {
+      font-size: 13px;
+    }
+  }
+
+  .phone-wrapper {
+    width: 50%;
+  }
+
+  .country-wrapper {
+    width: 40%;
+  }
+
+  .email-wrapper {
+    width: 94%;
+  }
+  
+  .agree-div {
+    margin-top: 20px;
+  }
+  
+  .count-code {
+    font-size: 14px;
+  }
+  
+  .custom-otp-input input,
+  .custom-otp-input .otp-input input {
+    width: 38px;
+    height: 38px;
+    font-size: 24px;
+  }
+}
+
+/* Medium screens (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .modern-input-wrapper {
+    padding: 13px 15px;
+    border-radius: 11px;
+
+    .input-icon {
+      font-size: 21px;
+    }
+  }
+
+  .modern-input {
+    font-size: 15px;
+
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+
+  .phone-wrapper {
+    width: 48%;
+  }
+
+  .country-wrapper {
+    width: 32%;
+  }
+
+  .email-wrapper {
+    width: 68%;
+  }
+}
+
+/* OTP inputs for small screens */
+@media (max-width: 420px) {
+  .custom-otp-input,
+  .custom-otp-input .otp-input,
+  ion-input-otp {
+    gap: 8px;
+    padding: 4px 6px;
+  }
+
+  .custom-otp-input input,
+  .custom-otp-input ::ng-deep input {
+    width: clamp(36px, 8vw, 46px);
+    height: clamp(36px, 8vw, 46px);
+    font-size: clamp(18px, 4.2vw, 24px);
+    border-radius: 6px;
+  }
+}
+
+/* Medium phones (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .Lorem-main {
+    min-height: 52vh;
+    max-height: 82vh;
+    padding: 24px 16px 50px;
+  }
+  
+  .Lorem h2 {
+    font-size: clamp(20px, 4.5vw, 24px);
+  }
+}
+
+/* Tablets portrait (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .Lorem-main {
+    min-height: 48vh;
+    max-height: 75vh;
+    padding: 32px 24px 55px;
+    max-width: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Larger devices: OTP inputs */
+@media (min-width: 900px) {
+  .custom-otp-input input,
+  .custom-otp-input ::ng-deep input {
+    width: clamp(44px, 4.2vw, 56px);
+    height: clamp(44px, 4.2vw, 56px);
+    font-size: clamp(22px, 2.2vw, 30px);
+  }
+}
+
+/* Tablets landscape & small desktops (1025px+) */
+@media (min-width: 1025px) {
+  .Lorem-main {
+    min-height: 45vh;
+    max-height: 70vh;
+    padding: 36px 32px 60px;
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Very small devices (iPhone SE, etc.) - Height based */
+@media (max-height: 667px) {
+  .Lorem-main {
+    min-height: 58vh;
+    max-height: 90vh;
+    padding: 14px 10px 35px;
+  }
+  
+  .agree-div {
+    margin-top: 15px;
+  }
+}
+
+/* Large screens in portrait */
+@media (min-width: 768px) and (orientation: portrait) {
+  .Lorem-main {
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Ensure content inside doesn't break */
+.Lorem-main > div {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+  .Lorem-main {
+    padding-bottom: max(30px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Small phones (320px - 480px) */
+@media (max-width: 480px) {
+  .Lorem-main {
+    min-height: 55vh;
+    max-height: 88vh;
+    padding: 16px 12px 40px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+  
+  .Lorem h2 {
+    font-size: clamp(18px, 5vw, 22px);
+    margin: 8px 0;
+  }
+  
+  .Lorem p {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+}
+
+/* Medium phones (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .Lorem-main {
+    min-height: 52vh;
+    max-height: 82vh;
+    padding: 24px 16px 50px;
+  }
+  
+  .Lorem h2 {
+    font-size: clamp(20px, 4.5vw, 24px);
+  }
+}
+
+/* Tablets portrait (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .Lorem-main {
+    min-height: 48vh;
+    max-height: 75vh;
+    padding: 32px 24px 55px;
+    max-width: 600px; /* Center on larger screens */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Tablets landscape & small desktops (1025px+) */
+@media (min-width: 1025px) {
+  .Lorem-main {
+    min-height: 45vh;
+    max-height: 70vh;
+    padding: 36px 32px 60px;
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Very small devices (iPhone SE, etc.) */
+@media (max-height: 667px) {
+  .Lorem-main {
+    min-height: 58vh;
+    max-height: 90vh;
+    padding: 14px 10px 35px;
+  }
+  
+  .agree-div {
+    margin-top: 15px;
+  }
+}
+
+/* Large screens in portrait */
+@media (min-width: 768px) and (orientation: portrait) {
+  .Lorem-main {
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Ensure content inside doesn't break */
+.Lorem-main > div {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+  .Lorem-main {
+    padding-bottom: max(30px, env(safe-area-inset-bottom));
+  }
+}
+.ion-color-primary {
+  --ion-color-base: var(--ion-color-primary);
+}

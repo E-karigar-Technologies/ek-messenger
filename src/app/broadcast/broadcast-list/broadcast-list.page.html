@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Broadcasts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Monthly Stats -->
+  <div class="stats-container">
+
+    <div class="stats-header">
+      <div>
+        <h3>This month</h3>
+      </div>
+
+      <div>
+        <h3>01 Mar - 31 Mar</h3>
+      </div>
+    </div>
+
+    <div class="stats-row">
+
+      <div class="sent">
+        <h1>{{sentCount}}</h1>
+        <p>Sent</p>
+      </div>
+
+      <div class="remaining">
+        <h1>{{remainingCount}}</h1>
+        <p>Remaining</p>
+      </div>
+
+    </div>
+
+    <ion-progress-bar [value]="sentCount / totalLimit"></ion-progress-bar>
+
+    <p class="limit-text">
+      Send up to {{totalLimit}} broadcasts per month.
+      <span class="learn">Learn more</span>
+    </p>
+
+  </div>
+
+
+  <!-- Broadcast List -->
+  <ion-list>
+
+    <ion-list-header>
+      Your broadcasts
+    </ion-list-header>
+
+    <ion-item lines = "none" *ngFor="let item of broadcasts">
+
+      <ion-label>
+        <h2>{{item.names}}</h2>
+        <p>{{item.count}} recipients</p>
+      </ion-label>
+
+    </ion-item>
+
+  </ion-list>
+
+
+  <!-- Floating Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="fab-btn" (click)="createBroadcast()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

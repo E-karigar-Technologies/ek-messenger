@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    namespace "com.ekarigar.telldemm"
+    namespace "com.ekarigar.ekmessenger"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.ekarigar.telldemm"
+        applicationId "com.ekarigar.ekmessenger"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 32

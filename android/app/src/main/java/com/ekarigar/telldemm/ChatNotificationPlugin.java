@@ -1,4 +1,4 @@
-package com.ekarigar.telldemm;
+package com.ekarigar.ekmessenger;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;

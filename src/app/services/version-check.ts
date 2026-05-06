@@ -93,7 +93,7 @@ export class VersionCheck {
       const data: any = await this.http.get(url).toPromise();
 
       //console.log(data);
-      // {"packageName":"com.ekarigar.telldemm","latestVersion":"13 (12.1)"}
+      // {"packageName":"com.ekarigar.ekmessenger","latestVersion":"13 (12.1)"}
 
       // accept either raw string or { latestVersion: string }
       const raw = typeof data === 'string' ? data : data?.latestVersion;

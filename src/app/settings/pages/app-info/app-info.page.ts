@@ -46,7 +46,7 @@ export class AppInfoPage implements OnInit {
     this.currentVersion  = localStorage.getItem(CURRENT_VERSION_KEY) || this.currentVersion;
     this.latestVersion   = localStorage.getItem(LATEST_VERSION_KEY)  || null;
     this.updateAvailable = localStorage.getItem(UPDATE_AVAILABLE_KEY) === 'true';
-    this.packageName     = localStorage.getItem(PKG_KEY)             || 'com.ekarigar.telldemm';
+    this.packageName     = localStorage.getItem(PKG_KEY)             || 'com.ekarigar.ekmessenger';
   }
 
   async checkForUpdates() {

@@ -1,4 +1,4 @@
-package com.ekarigar.telldemm;
+package com.ekarigar.ekmessenger;
 
 import android.content.Intent;
 import android.os.Bundle;

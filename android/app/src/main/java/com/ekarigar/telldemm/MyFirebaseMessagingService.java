@@ -1,4 +1,4 @@
-// package com.ekarigar.telldemm;
+// package com.ekarigar.ekmessenger;
 
 // import android.app.*;
 // import android.content.*;
@@ -187,7 +187,7 @@
 
 //         // ✅ Create intent that Capacitor can intercept
 //         Intent intent = new Intent(this, MainActivity.class);
-//         intent.setAction("com.ekarigar.telldemm.NOTIFICATION_TAP");
+//         intent.setAction("com.ekarigar.ekmessenger.NOTIFICATION_TAP");
 //         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
 //         // ✅ Add payload data as extras
@@ -417,7 +417,7 @@
 //     }
 // }
 
-package com.ekarigar.telldemm;
+package com.ekarigar.ekmessenger;
 
 import android.app.*;
 import android.content.*;
@@ -589,7 +589,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         Intent intent = new Intent(this, MainActivity.class);
-        intent.setAction("com.ekarigar.telldemm.NOTIFICATION_TAP");
+        intent.setAction("com.ekarigar.ekmessenger.NOTIFICATION_TAP");
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         Iterator<String> keys = payload.keys();

@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "959220685103",
-    "firebase_url": "https://telldemmstaging-default-rtdb.firebaseio.com",
-    "project_id": "telldemmstaging",
-    "storage_bucket": "telldemmstaging.firebasestorage.app"
+    "project_number": "210625067976",
+    "firebase_url": "https://ek-messenger-default-rtdb.firebaseio.com",
+    "project_id": "ek-messenger",
+    "storage_bucket": "ek-messenger.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:959220685103:android:d7a3b086b2abfc772da9da",
+        "mobilesdk_app_id": "1:210625067976:android:4998b5b5f39df07d88defd",
         "android_client_info": {
           "package_name": "com.ekarigar.ekmessenger"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyADgPVsmR_AUsqMG2SlkFLJTMRZKqOefpA"
+          "current_key": "AIzaSyB7KSi6nDsCaBpld51H1G5Rz48_0VivRmY"
         }
       ],
       "services": {

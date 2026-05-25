@@ -13,6 +13,7 @@ import { SecureStorageService } from '../services/secure-storage/secure-storage.
 import { ApiService } from '../services/api/api.service';
 import { AuthService } from '../auth/auth.service';
 import { ChatPouchDb } from '../services/chat-pouch-db';
+import { LocalContactsService } from '../services/local-contacts.service';
 
 interface PlatformContact {
   isOnPlatform: true;
@@ -44,11 +45,11 @@ type ContactItem = PlatformContact | NonPlatformContact;
 export class ContactsPage implements OnInit, ViewWillEnter {
   @ViewChild('searchInput', { static: false }) searchInput!: IonInput;
 
-  // Platform users (on app)
+  // Platform users (on TellDemm)
   allUsers: PlatformContact[] = [];
   filteredContacts: PlatformContact[] = [];
 
-  // Non-platform users (device contacts not on app)
+  // Non-platform users (device contacts not on TellDemm)
   nonPlatformContacts: NonPlatformContact[] = [];
   filteredNonPlatformContacts: NonPlatformContact[] = [];
 
@@ -62,6 +63,9 @@ export class ContactsPage implements OnInit, ViewWillEnter {
 
   isLoading = true;
   private searchDebounce: any = null;
+  pouchdbContactsLoaded = false;
+  matchedContacts: any[] = [];
+  noContactsFound = false;
 
   constructor(
     private router: Router,
@@ -75,6 +79,7 @@ export class ContactsPage implements OnInit, ViewWillEnter {
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     private chatPouchDb: ChatPouchDb,
+    private localContactsService: LocalContactsService,
   ) {}
 
   ngOnInit() {
@@ -85,6 +90,7 @@ export class ContactsPage implements OnInit, ViewWillEnter {
 
   ionViewWillEnter() {
     this.loadDeviceMatchedContacts();
+    this.localDbContacts();
   }
 
   async loadDeviceMatchedContacts(): Promise<void> {
@@ -305,10 +311,10 @@ export class ContactsPage implements OnInit, ViewWillEnter {
     const name = contact.username || 'your friend';
     try {
       await Share.share({
-        title: 'Join me on app!',
-        text: `Hey! I'm using app to chat. Join me here:`,
-        url: 'https://play.google.com/store/apps/details?id=com.ekarigar.ekmessenger',
-        dialogTitle: 'Invite to app',
+        title: 'Join me on TellDemm!',
+        text: `Hey! I'm using TellDemm to chat. Join me here:`,
+        url: 'https://play.google.com/store/apps/details?id=com.ekarigar.telldemm',
+        dialogTitle: 'Invite to TellDemm',
       });
     } catch (error) {
       console.error('Error sharing invite:', error);
@@ -498,10 +504,10 @@ export class ContactsPage implements OnInit, ViewWillEnter {
   async shareInviteLink(): Promise<void> {
     try {
       await Share.share({
-        title: 'Join me on app!',
-        text: `I'm using app to chat. Join me here:`,
-        url: 'https://play.google.com/store/apps/details?id=com.ekarigar.ekmessenger',
-        dialogTitle: 'Invite to app',
+        title: 'Join me on TellDemm!',
+        text: `I'm using TellDemm to chat. Join me here:`,
+        url: 'https://play.google.com/store/apps/details?id=com.ekarigar.telldemm',
+        dialogTitle: 'Invite to TellDemm',
       });
     } catch (error) {
       console.error('Error sharing invite:', error);
@@ -550,5 +556,61 @@ export class ContactsPage implements OnInit, ViewWillEnter {
   }
    goToAddContact(){
     this.router.navigate(['/add-contact']);
+  }
+  localDbContacts() {
+    const userId = this.authService.authData?.userId;
+//     this.localContactsService.getAllContacts().then((contacts) => {
+
+//   this.matchedContacts = contacts.filter(c => c._id);
+
+//   if (this.matchedContacts.length > 0) {
+
+//     this.userProfile = {
+//       userId,
+//       firstName: this.matchedContacts[0].firstName,
+//       lastName: this.matchedContacts[0].lastName,
+//       phone: this.matchedContacts[0].fullPhone,
+//     };
+
+//     this.pouchdbContactsLoaded = true;
+//   }
+
+//   console.log('Loaded local contacts on init:', contacts);
+
+// });
+ this.localContactsService.getAllContacts().then((contacts) => {
+
+    this.matchedContacts = contacts.filter(c => c._id);
+
+    if (this.matchedContacts.length > 0) {
+
+      this.userProfile = {
+        userId: this.matchedContacts[0]._id,
+        firstName: this.matchedContacts[0].firstName,
+        lastName: this.matchedContacts[0].lastName,
+        phone: this.matchedContacts[0].fullPhone,
+      };
+
+      this.noContactsFound = false;
+
+    } else {
+
+      // fallback
+      this.noContactsFound = true;
+
+    }
+
+    this.pouchdbContactsLoaded = true;
+
+    console.log('Loaded local contacts:', contacts);
+
+  }).catch((error) => {
+
+    console.error('Error loading contacts', error);
+
+    this.noContactsFound = true;
+    this.pouchdbContactsLoaded = true;
+
+  });
   }
 }

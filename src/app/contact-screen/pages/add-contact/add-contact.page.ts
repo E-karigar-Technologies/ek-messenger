@@ -143,111 +143,328 @@ if (isPhoneNumber) {
   this.isChecked = isChecked;
   }
 
+// async save() {
+
+//   if (this.form.invalid || this.saving) return;
+ 
+//   this.saving = true;
+
+//   const loading = await this.loadingCtrl.create({ message: 'Saving contact…' });
+
+//   await loading.present();
+ 
+//   try {
+
+//     const { firstName, lastName, countryCode, phone } = this.form.value;
+
+//     const fullPhone = `${countryCode}${phone}`;
+
+   
+ 
+//     let deviceContactId: string | undefined;
+
+//     let isPlatformUser = false;
+ 
+//     // ✅ Prepare hash
+
+//     const normalizedPhone = this.hashService.normalizeForHash(fullPhone);
+
+//     const phoneHash = this.hashService.hashPhone(normalizedPhone);
+ 
+//     // ✅ STEP 1: Check platform user (ONLY for DB decision)
+//     if(this.editContact){
+//       isPlatformUser = true;
+//     } 
+//     else {
+//     try {
+
+//       const response = await firstValueFrom(
+
+//         this.apiService.checkPlatformUserWhileAddingContact(phoneHash)
+
+//       );
+
+//       isPlatformUser = response?.found ?? false;
+
+//     } catch (err) {
+
+//       console.error('Platform check failed:', err);
+
+//       // 👉 don't block device save if API fails
+
+//     }
+//   }
+//     // ✅ STEP 2: Save to device (independent)
+
+//     if (this.isChecked) {
+
+//       try {
+
+//         const permission = await Contacts.requestPermissions();
+ 
+//         if (permission.contacts !== 'granted') {
+
+//           // throw new Error('Permission denied for contacts');
+//           await this.showPermissionAlert();
+
+//         }
+//         else{
+ 
+//          const result = await Contacts.createContact({
+
+//           contact: {
+
+//             name: { given: firstName, family: lastName || undefined },
+
+//             phones: [
+
+//               {
+
+//                 type: PhoneType.Mobile,
+
+//                 number: fullPhone,
+
+//                 isPrimary: true,
+
+//               },
+
+//             ],
+
+//           },
+
+//         });
+ 
+//         deviceContactId = result.contactId;
+//         // console.log(fullPhone  );
+//         this.deviceSaved = true;
+//       }
+
+//       } catch (err) {
+
+//         console.error('Device save failed:', err);
+
+//         // 👉 don't block DB save
+
+//       }
+
+//     }
+ 
+//     // ✅ STEP 3: Save to local DB (ONLY if platform user)
+
+//     if (isPlatformUser) {
+
+//       await this.localContacts.saveContact({
+
+//         firstName,
+
+//         lastName: lastName ?? '',
+
+//         countryCode,
+
+//         phone,
+
+//         fullPhone,
+
+//         deviceContactId,
+
+//       });
+//       console.log("inside local db logic",isPlatformUser);
+//       // console.log(fullPhone);
+//        this.dbSaved = true;
+//        console.log(this.dbSaved);
+
+//     }
+//     // if (isPlatformUser) {
+//     //   // Check before save
+//     //   const alreadyExists = await this.localContacts.contactExists(fullPhone);
+
+//     //   if (!alreadyExists) {
+//     //     await this.localContacts.saveContact({
+//     //       firstName,
+//     //       lastName: lastName ?? '',
+//     //       countryCode,
+//     //       phone,
+//     //       fullPhone,
+//     //       deviceContactId,
+//     //     });
+
+//     //     console.log('New contact saved in local DB');
+//     //   } else {
+//     //     // Optional: update existing contact in edit case
+//     //     await this.localContacts.saveContact({
+//     //       firstName,
+//     //       lastName: lastName ?? '',
+//     //       countryCode,
+//     //       phone,
+//     //       fullPhone,
+//     //       deviceContactId,
+//     //     });
+
+//     //     console.log('Existing contact updated');
+//     //   }
+
+//     //   this.dbSaved = true;
+//     //   console.log(this.dbSaved);
+//     // }
+    
+    
+ 
+   
+   
+
+//     // this.navCtrl.back();
+ 
+//   } catch (err: any) {
+
+//     console.error('Save flow error:', err);
+
+   
+
+//   } finally {
+
+//     this.saving = false;
+
+//     await loading.dismiss();
+
+//   }
+//   if (this.deviceSaved && this.dbSaved) {
+//   await this.showSuccessAlertBoth();
+// } else if (this.deviceSaved) {
+//   await this.showSuccessAlert();
+// } else if (this.dbSaved) {
+//   await this.showSuccessAlertLocally();
+// } else {
+//   await this.showErrorAlert();
+// }
+
+//   }
 async save() {
 
   if (this.form.invalid || this.saving) return;
- 
+
   this.saving = true;
 
-  const loading = await this.loadingCtrl.create({ message: 'Saving contact…' });
+  const loading = await this.loadingCtrl.create({
+    message: 'Saving contact…',
+  });
 
   await loading.present();
- 
+
   try {
 
     const { firstName, lastName, countryCode, phone } = this.form.value;
 
     const fullPhone = `${countryCode}${phone}`;
 
-   
- 
     let deviceContactId: string | undefined;
 
     let isPlatformUser = false;
- 
-    // ✅ Prepare hash
 
+    // ✅ Normalize helper
+    const normalizeNumber = (num: string) =>
+      num.replace(/\D/g, '').slice(-10);
+
+    // ✅ Prepare hash
     const normalizedPhone = this.hashService.normalizeForHash(fullPhone);
 
     const phoneHash = this.hashService.hashPhone(normalizedPhone);
- 
-    // ✅ STEP 1: Check platform user (ONLY for DB decision)
-    if(this.editContact){
+
+    // ✅ STEP 1: Check platform user
+    if (this.editContact) {
+
       isPlatformUser = true;
-    } 
-    else {
-    try {
 
-      const response = await firstValueFrom(
+    } else {
 
-        this.apiService.checkPlatformUserWhileAddingContact(phoneHash)
+      try {
 
-      );
+        const response = await firstValueFrom(
+          this.apiService.checkPlatformUserWhileAddingContact(phoneHash)
+        );
 
-      isPlatformUser = response?.found ?? false;
+        isPlatformUser = response?.found ?? false;
 
-    } catch (err) {
+      } catch (err) {
 
-      console.error('Platform check failed:', err);
+        console.error('Platform check failed:', err);
 
-      // 👉 don't block device save if API fails
-
+      }
     }
-  }
-    // ✅ STEP 2: Save to device (independent)
 
+    // ✅ STEP 2: Save to device
     if (this.isChecked) {
 
       try {
 
         const permission = await Contacts.requestPermissions();
- 
+
         if (permission.contacts !== 'granted') {
 
-          throw new Error('Permission denied for contacts');
+          await this.showPermissionAlert();
 
-        }
- 
-        const result = await Contacts.createContact({
+        } else {
 
-          contact: {
+          // ✅ Get existing contacts
+          const existingContacts = await Contacts.getContacts({
+            projection: {
+              name: true,
+              phones: true,
+            },
+          });
 
-            name: { given: firstName, family: lastName || undefined },
+          const newNumber = normalizeNumber(fullPhone);
 
-            phones: [
+          // ✅ Check duplicate number
+          const alreadyExists = existingContacts.contacts.find(contact =>
+            contact.phones?.some(phone =>
+              normalizeNumber(phone.number || '') === newNumber
+            )
+          );
 
-              {
+          if (alreadyExists) {
 
-                type: PhoneType.Mobile,
+            console.log('Contact already exists in device');
 
-                number: fullPhone,
+            // Use existing device contact id
+            deviceContactId = alreadyExists.contactId;
 
-                isPrimary: true,
+            this.deviceSaved = true;
 
+          } else {
+
+            // ✅ Create contact
+            const result = await Contacts.createContact({
+              contact: {
+                name: {
+                  given: firstName,
+                  family: lastName || undefined,
+                },
+                phones: [
+                  {
+                    type: PhoneType.Mobile,
+                    number: fullPhone,
+                    isPrimary: true,
+                  },
+                ],
               },
+            });
 
-            ],
+            deviceContactId = result.contactId;
 
-          },
+            this.deviceSaved = true;
 
-        });
- 
-        deviceContactId = result.contactId;
-        // console.log(fullPhone  );
-        this.deviceSaved = true;
+            console.log('Contact saved in device');
+          }
+        }
 
       } catch (err) {
 
         console.error('Device save failed:', err);
 
-        // 👉 don't block DB save
-
       }
-
     }
- 
-    // ✅ STEP 3: Save to local DB (ONLY if platform user)
 
+    // ✅ STEP 3: Save to local DB
     if (isPlatformUser) {
 
       await this.localContacts.saveContact({
@@ -265,44 +482,62 @@ async save() {
         deviceContactId,
 
       });
-      // console.log(fullPhone);
 
+      console.log('inside local db logic', isPlatformUser);
+
+      this.dbSaved = true;
     }
- 
-   
-    this.dbSaved = true;
 
-    this.navCtrl.back();
- 
   } catch (err: any) {
 
     console.error('Save flow error:', err);
-
-   
 
   } finally {
 
     this.saving = false;
 
     await loading.dismiss();
-
   }
+
+  // ✅ Alerts
   if (this.deviceSaved && this.dbSaved) {
-  await this.showSuccessAlert();
-} else if (this.deviceSaved) {
-  await this.showSuccessAlert();
-} else if (this.dbSaved) {
-  await this.showSuccessAlert();
-} else {
-  await this.showErrorAlert();
-}
 
+    await this.showSuccessAlertBoth();
+
+  } else if (this.deviceSaved) {
+
+    await this.showSuccessAlert();
+
+  } else if (this.dbSaved) {
+
+    await this.showSuccessAlertLocally();
+
+  } else {
+
+    await this.showErrorAlert();
   }
+}
 
   private async showSuccessAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Contact saved',
-      message: `Contact  has been added .`,
+      message: `Contact added in Device.`,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+  private async showSuccessAlertBoth() {
+    const alert = await this.alertCtrl.create({
+      header: 'Contact saved',
+      message: `Contact added in Device and TellDemm.`,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+   private async showSuccessAlertLocally() {
+    const alert = await this.alertCtrl.create({
+      header: 'Contact saved',
+      message: `Contact added in TellDemm.`,
       buttons: ['OK'],
     });
     await alert.present();
@@ -310,8 +545,16 @@ async save() {
 
   private async showErrorAlert() {
     const alert = await this.alertCtrl.create({
-      header: 'Error',
-      message: `Could not save contact. Please try again.`,
+      header: `Can't save contact`,
+      message: `This phone number is not on TellDemm.`,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+  private async showPermissionAlert() {
+    const alert = await this.alertCtrl.create({
+      header: `Can't save contact`,
+      message: ` Contact permission not given.`,
       buttons: ['OK'],
     });
     await alert.present();

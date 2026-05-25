@@ -10,7 +10,7 @@
         style="--padding-start: 0; margin-top: 2px; margin-left: 20px;">
         <ion-label class="user-name">
           <h2 class="user-real-name headerTitle">Select Contacts</h2>
-          <h5>{{ allUsers.length }} contacts found on app</h5>
+          <h5>{{ allUsers.length }} contacts found on TellDemm</h5>
         </ion-label>
       </ion-item>
     </ion-buttons>
@@ -108,11 +108,11 @@
     </ion-item>
   </ion-list>
 
-  <!-- ── Platform Contacts (On app) ────────────────────────────────── -->
+  <!-- ── Platform Contacts (On TellDemm) ────────────────────────────────── -->
   <ng-container *ngIf="!creatingGroup && !isLoading">
 
     <ion-list-header *ngIf="filteredContacts.length > 0">
-      <ion-label>Contacts On app</ion-label>
+      <ion-label>Contacts On TellDemm</ion-label>
     </ion-list-header>
 
     <ion-list class="list2" lines="none" *ngIf="filteredContacts.length > 0">
@@ -140,12 +140,12 @@
       </ion-item>
     </ion-list>
 
-    <!-- ── Invite Section (Not on app) ─────────────────────────────── -->
+    <!-- ── Invite Section (Not on TellDemm) ─────────────────────────────── -->
     <ng-container *ngIf="filteredNonPlatformContacts.length > 0">
 
       <ion-list-header>
         <ion-label style="font-size: 14px; color: var(--ion-color-medium);">
-          Invite to app
+          Invite to TellDemm
         </ion-label>
       </ion-list-header>
 
@@ -180,6 +180,64 @@
       </ion-list>
 
     </ng-container>
+<div *ngIf="pouchdbContactsLoaded">
+
+  <!-- Contacts List -->
+  <div *ngIf="matchedContacts.length > 0">
+
+    <ion-list-header>
+      <ion-label>Contacts On TellDemm (in app storage)</ion-label>
+    </ion-list-header>
+
+    <ion-list class="list2" lines="none">
+
+      <ion-item *ngFor="let contact of matchedContacts">
+
+        <ion-avatar slot="start">
+
+          <img
+            *ngIf="contact.profile"
+            [src]="contact.profile"
+            [alt]="contact.firstName"
+            (error)="contact.profile = ''"
+          />
+
+          <div *ngIf="!contact.profile" class="avatar">
+            {{ contact.firstName?.charAt(0) | uppercase }}
+          </div>
+
+        </ion-avatar>
+
+        <ion-label>
+          <h2>
+            {{ contact.firstName }} {{ contact.lastName }}
+          </h2>
+
+          <p style="font-size: 12px; color: var(--ion-color-medium);">
+            {{ contact.fullPhone }}
+          </p>
+        </ion-label>
+
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+  <!-- Fallback -->
+  <div *ngIf="noContactsFound" class="empty-state">
+
+    <ion-icon name="people-outline" size="large"></ion-icon>
+
+    <!-- <h3>No Contacts Found</h3> -->
+
+    <p>
+      No TellDemm contacts are stored locally.
+    </p>
+
+  </div>
+
+</div>
 
     <!-- ── Empty State ───────────────────────────────────────────────────── -->
     <div

@@ -5,7 +5,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard';
 const config: CapacitorConfig = {
   appId: 'com.ekarigar.ekmessenger',
-  appName: 'Ekarigar Messenger',
+  appName: 'ConvoIQ',
   webDir: 'www',
   server: {
   cleartext: true

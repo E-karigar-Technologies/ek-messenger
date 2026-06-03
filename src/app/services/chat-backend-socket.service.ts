@@ -53,7 +53,7 @@ export class ChatBackendSocketService {
     // return (environment as any).chatBackendSocketUrl || 'http://localhost:5001';
      private getSocketConnectionConfig(): { url: string; path: string } {
     const configuredUrl =
-      (environment as any).chatBackendSocketUrl || 'http://localhost:4000';
+      (environment as any).chatBackendSocketUrl || 'http://localhost:7001';
     const explicitPath = (environment as any).chatBackendSocketPath;
 
     try {

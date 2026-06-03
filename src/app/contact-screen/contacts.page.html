@@ -10,7 +10,7 @@
         style="--padding-start: 0; margin-top: 2px; margin-left: 20px;">
         <ion-label class="user-name">
           <h2 class="user-real-name headerTitle">Select Contacts</h2>
-          <h5>{{ allUsers.length }} contacts found on TellDemm</h5>
+          <h5>{{ allUsers.length }} contacts found on ConvoIQ</h5>
         </ion-label>
       </ion-item>
     </ion-buttons>
@@ -112,7 +112,7 @@
   <ng-container *ngIf="!creatingGroup && !isLoading">
 
     <ion-list-header *ngIf="filteredContacts.length > 0">
-      <ion-label>Contacts On TellDemm</ion-label>
+      <ion-label>Contacts On ConvoIQ</ion-label>
     </ion-list-header>
 
     <ion-list class="list2" lines="none" *ngIf="filteredContacts.length > 0">
@@ -145,7 +145,7 @@
 
       <ion-list-header>
         <ion-label style="font-size: 14px; color: var(--ion-color-medium);">
-          Invite to TellDemm
+          Invite to ConvoIQ
         </ion-label>
       </ion-list-header>
 
@@ -186,7 +186,7 @@
   <div *ngIf="matchedContacts.length > 0">
 
     <ion-list-header>
-      <ion-label>Contacts On TellDemm (in app storage)</ion-label>
+      <ion-label>Contacts On ConvoIQ (in app storage)</ion-label>
     </ion-list-header>
 
     <ion-list class="list2" lines="none">
@@ -225,14 +225,15 @@
   </div>
 
   <!-- Fallback -->
-  <div *ngIf="noContactsFound" class="empty-state">
+  <div *ngIf="noContactsFound" class="empty-state"
+  style="text-align: center; margin-top: 2rem;">
 
     <ion-icon name="people-outline" size="large"></ion-icon>
 
     <!-- <h3>No Contacts Found</h3> -->
 
     <p>
-      No TellDemm contacts are stored locally.
+      No ConvoIQ contacts are stored locally.
     </p>
 
   </div>

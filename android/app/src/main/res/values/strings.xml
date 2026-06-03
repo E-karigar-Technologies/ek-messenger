@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Ekmessenger</string>
-    <string name="title_activity_main">Ekmessenger</string>
+    <string name="app_name">ConvoIQ</string>
+    <string name="title_activity_main">ConvoIQ</string>
     <string name="package_name">com.ekarigar.ekmessenger</string>
     <string name="custom_url_scheme">com.ekarigar.ekmessenger</string>
 </resources>

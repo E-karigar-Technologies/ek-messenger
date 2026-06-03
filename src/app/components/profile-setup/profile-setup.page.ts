@@ -419,7 +419,7 @@ export class ProfileSetupPage implements OnInit, OnDestroy {
       await this.submitProfileData(formData);
 
       // Save additional data
-      await this.saveAdditionalData();
+      // await this.saveAdditionalData();
 
       // Navigate based on user rooms
       await this.handleNavigation();
@@ -474,7 +474,7 @@ export class ProfileSetupPage implements OnInit, OnDestroy {
     const snapshot = await get(userRef);
     let finalFcmToken: string | null = null;
 
-    //console.log('🔄 Refreshing FCM token for user:', this.userID);
+    console.log('🔄 Refreshing FCM token for user:', this.userID);
     
     try {
       await this.fcmService.updateFcmToken(this.userID);

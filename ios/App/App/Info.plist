@@ -6,7 +6,7 @@
     <string>en</string>
 
     <key>CFBundleDisplayName</key>
-    <string>Telldemm</string>
+    <string>ConvoIQ</string>
 
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>

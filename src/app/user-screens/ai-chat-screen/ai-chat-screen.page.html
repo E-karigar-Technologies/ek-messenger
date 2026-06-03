@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ConvoIQ Assistant</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="clearChat()">Clear</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="light">
+  
+  <div class="chat-container">
+    <div *ngFor="let msg of messages" class="message-wrapper py-2 flex flex-col" 
+         [ngClass]="msg.role === 'user' ? 'items-end' : 'items-start'">
+      
+      <!-- AI Message -->
+      <div *ngIf="msg.role === 'ai'" class="ai-msg bg-white shadow-sm border border-gray-200 text-gray-800 p-3 rounded-2xl rounded-bl-sm max-w-[85%] text-sm">
+        <span [innerHTML]="formatAiMessage(msg.content)"></span>
+        <span *ngIf="msg.isStreaming" class="typing-indicator ml-1">▋</span>
+      </div>
+
+      <!-- User Message -->
+      <div *ngIf="msg.role === 'user'" class="user-msg bg-blue-500 text-white p-3 rounded-2xl rounded-br-sm max-w-[85%] text-sm shadow-sm">
+        {{ msg.content }}
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border bg-white shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+  
+  <!-- Presets List (Horizontal Scrolling) -->
+  <div class="presets-container flex overflow-x-auto whitespace-nowrap p-2 gap-2 no-scrollbar border-t border-gray-100">
+    <ion-chip *ngFor="let preset of quickPresets" (click)="usePreset(preset)" color="primary" class="h-8 shadow-sm" [disabled]="isSending">
+      <ion-label class="text-xs">{{ preset }}</ion-label>
+    </ion-chip>
+  </div>
+
+  <ion-toolbar class="input-toolbar p-2 pb-safe border-t border-gray-100 h-16">
+    <div class="flex items-center gap-2">
+      <ion-input 
+        [(ngModel)]="newMessage" 
+        (keyup.enter)="sendMessage()"
+        placeholder="Message ConvoIQ..." 
+        class="bg-gray-100 rounded-full px-4 h-10 border border-gray-200"
+        [disabled]="isSending">
+      </ion-input>
+      
+      <ion-button (click)="sendMessage()" fill="clear" shape="round" color="primary" [disabled]="!newMessage.trim() || isSending" class="m-0 h-10 w-10">
+        <ion-icon name="send" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+
+</ion-footer>

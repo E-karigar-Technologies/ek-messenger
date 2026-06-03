@@ -1,0 +1,34 @@
+/* Typing cursor blink animation */
+.typing-indicator {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+  color: #1e88e5; /* Primary blue for cursor */
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.pb-safe {
+  /* Handle iOS safe areas natively in Ionic using CSS variables but just for safety */
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+}
+
+.message-wrapper {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

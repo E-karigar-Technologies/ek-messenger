@@ -555,7 +555,7 @@
       "add": "যোগ করুন"
     },
     "defaults": {
-      "heyThere": "হ্যালো! আমি Telldemm ব্যবহার করছি।",
+      "heyThere": "হ্যালো! আমি Convo ব্যবহার করছি।",
       "noGroupDescription": "কোনো গ্রুপ বিবরণ নেই।",
       "unknown": "অজানা",
       "unknownDate": "অজানা তারিখ",

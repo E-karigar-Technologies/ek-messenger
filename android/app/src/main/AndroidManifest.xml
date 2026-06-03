@@ -53,12 +53,12 @@
                 <action android:name="MAIN_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <!-- App Links: open https://telldemm.app/channel/* directly in app -->
+            <!-- App Links: open https://convo.app/channel/* directly in app -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="telldemm.app" android:pathPrefix="/channel/" />
+                <data android:scheme="https" android:host="convo.app" android:pathPrefix="/channel/" />
             </intent-filter>
         </activity>
 

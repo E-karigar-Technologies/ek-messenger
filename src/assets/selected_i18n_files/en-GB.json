@@ -555,7 +555,7 @@
     "add": "Add "
   },
   "defaults": {
-    "heyThere": "Hey there! I am using Telldemm.",
+    "heyThere": "Hey there! I am using Convo.",
     "noGroupDescription": "No group description.",
     "unknown": "Unknown (Not available)",
     "unknownDate": "Unknown Date (Date missing)",

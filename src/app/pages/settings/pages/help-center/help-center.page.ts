@@ -36,9 +36,9 @@ export class HelpCenterPage {
 
   allArticles: Article[] = [
     { title: 'How to make a video call' },
-    { title: 'How to stay safe on Telldemm' },
+    { title: 'How to stay safe on Convo' },
     { title: 'About temporarily banned accounts' },
-    { title: 'About ads in Telldemm Status and Channels' },
+    { title: 'About ads in Convo Status and Channels' },
     { title: 'How to send photos and videos' },
     { title: 'How to create and manage groups' },
     { title: 'How to use disappearing messages' },

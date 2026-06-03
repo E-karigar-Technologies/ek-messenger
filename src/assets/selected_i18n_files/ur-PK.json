@@ -73,7 +73,7 @@
   },
   "appLanguage": {
     "title": "ایپ کی زبان",
-    "description": "TellDemm ایپ کی زبان منتخب کریں"
+    "description": "Convo ایپ کی زبان منتخب کریں"
   },
   "help": {
     "title": "مدد",
@@ -85,7 +85,7 @@
   },
   "invite": {
     "title": "دوستوں کو مدعو کریں",
-    "description": "TellDemm ایپ اپنے رابطوں کے ساتھ شیئر کریں"
+    "description": "Convo ایپ اپنے رابطوں کے ساتھ شیئر کریں"
   },
   "logout": {
     "title": "لاگ آؤٹ",
@@ -534,7 +534,7 @@
       "add": "شامل کریں"
     },
     "defaults": {
-      "heyThere": "ہیلو! میں Telldemm استعمال کر رہا ہوں۔",
+      "heyThere": "ہیلو! میں Convo استعمال کر رہا ہوں۔",
       "noGroupDescription": "گروپ کی کوئی وضاحت نہیں۔",
       "unknown": "نامعلوم",
       "unknownDate": "نامعلوم تاریخ",

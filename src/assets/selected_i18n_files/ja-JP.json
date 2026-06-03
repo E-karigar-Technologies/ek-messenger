@@ -558,7 +558,7 @@
       "add": "追加"
     },
     "defaults": {
-      "heyThere": "こんにちは！Telldemmを使っています。",
+      "heyThere": "こんにちは！Convoを使っています。",
       "noGroupDescription": "グループの説明はありません。",
       "unknown": "不明",
       "unknownDate": "不明な日付",

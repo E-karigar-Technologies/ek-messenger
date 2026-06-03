@@ -108,7 +108,7 @@
     </ion-item>
   </ion-list>
 
-  <!-- ── Platform Contacts (On TellDemm) ────────────────────────────────── -->
+  <!-- ── Platform Contacts (On Convo) ────────────────────────────────── -->
   <ng-container *ngIf="!creatingGroup && !isLoading">
 
     <ion-list-header *ngIf="filteredContacts.length > 0">
@@ -140,7 +140,7 @@
       </ion-item>
     </ion-list>
 
-    <!-- ── Invite Section (Not on TellDemm) ─────────────────────────────── -->
+    <!-- ── Invite Section (Not on Convo) ─────────────────────────────── -->
     <ng-container *ngIf="filteredNonPlatformContacts.length > 0">
 
       <ion-list-header>

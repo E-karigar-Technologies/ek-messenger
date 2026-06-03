@@ -100,7 +100,7 @@ export class ForwardmessagePage implements OnInit, OnDestroy {
           isContact: false,
         }));
 
-      // Contacts on Telldemm: platform users without an existing chat
+      // Contacts on Convo: platform users without an existing chat
       const chattedUserIds = new Set<string>();
       conversations.forEach(c => {
         if (c.type === 'private') {

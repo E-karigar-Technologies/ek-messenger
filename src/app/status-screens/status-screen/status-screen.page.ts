@@ -779,7 +779,7 @@ export class StatusScreenPage implements OnInit, OnDestroy {
       // Local cache: only platform users.
       const sqliteContacts = (await this.sqliteService.getContacts(true)) || [];
 
-      // Network source: matched users from contact sync (Telldemm users only).
+      // Network source: matched users from contact sync (Convo users only).
       let matchedContacts: any[] = [];
       const shouldSyncMatchedContacts =
         this.networkService.isOnline.value &&
@@ -802,7 +802,7 @@ export class StatusScreenPage implements OnInit, OnDestroy {
       const byUid = new Map<string, StatusContactOption>();
 
       for (const contact of merged) {
-        // Strictly keep only Telldemm users.
+        // Strictly keep only Convo users.
         if ((contact as any)?.isOnPlatform === false) {
           continue;
         }

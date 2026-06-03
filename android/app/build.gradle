@@ -19,11 +19,11 @@ android {
     }
   signingConfigs {
     release {
-      storeFile file("/Users/karan/Desktop/Telldemm/Telldemm_with_cache/telldemm-release-key.jks")  // fixed path with forward slashes
+      storeFile file("/Users/e-karigar22/Desktop/ConvoIQ/convo-release-key.jks")  // fixed path with forward slashes
       
-      storePassword "telldemm123"                                  // your actual keystore password
-      keyAlias "telldemm-key-alias"                                       // your key alias
-      keyPassword "telldemm123"                                   // your key password
+      storePassword "convo123"                                  // your actual keystore password
+      keyAlias "convo-key-alias"                                       // your key alias
+      keyPassword "convo123"                                   // your key password
     }
   }
 

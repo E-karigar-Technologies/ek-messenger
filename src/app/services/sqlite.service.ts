@@ -338,7 +338,7 @@ export interface CreateConversationInput extends IConversation {
   ownerId: string;
 }
 
-const DB_NAME = 'telldemm.db';
+const DB_NAME = 'convoiq.db';
 
 /** ----------------- SCHEMAS ----------------- **/
 const TABLE_SCHEMAS = {

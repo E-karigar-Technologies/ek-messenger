@@ -555,7 +555,7 @@
       "add": "சேர்"
     },
     "defaults": {
-      "heyThere": "வணக்கம்! நான் Telldemm பயன்படுத்துகிறேன்.",
+      "heyThere": "வணக்கம்! நான் Convo பயன்படுத்துகிறேன்.",
       "noGroupDescription": "குழுவிற்கு விவரணம் இல்லை.",
       "unknown": "தெரியாதது",
       "unknownDate": "தெரியாத தேதி",

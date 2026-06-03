@@ -73,7 +73,7 @@
   },
   "appLanguage": {
     "title": "Ngôn ngữ ứng dụng",
-    "description": "Chọn ngôn ngữ ứng dụng TellDemm"
+    "description": "Chọn ngôn ngữ ứng dụng Convo"
   },
   "help": {
     "title": "Trợ giúp",
@@ -85,7 +85,7 @@
   },
   "invite": {
     "title": "Mời bạn bè",
-    "description": "Chia sẻ ứng dụng TellDemm với danh bạ của bạn"
+    "description": "Chia sẻ ứng dụng Convo với danh bạ của bạn"
   },
   "logout": {
     "title": "Đăng xuất",
@@ -534,7 +534,7 @@
       "add": "Thêm"
     },
     "defaults": {
-      "heyThere": "Xin chào! Tôi đang sử dụng Telldemm.",
+      "heyThere": "Xin chào! Tôi đang sử dụng Convo.",
       "noGroupDescription": "Không có mô tả nhóm.",
       "unknown": "Không rõ",
       "unknownDate": "Ngày không rõ",

@@ -558,7 +558,7 @@
       "add": "जोडा"
     },
     "defaults": {
-      "heyThere": "हाय! मी Telldemm वापरत आहे.",
+      "heyThere": "हाय! मी Convo वापरत आहे.",
       "noGroupDescription": "गटाचे वर्णन नाही.",
       "unknown": "अज्ञात",
       "unknownDate": "अज्ञात तारीख",

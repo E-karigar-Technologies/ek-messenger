@@ -2427,7 +2427,7 @@ export class FirebaseChatService {
       console.warn('Failed to get device contacts', e);
     }
  
-    // ── Platform users (matched contacts on TellDemm) ─────────────────────
+    // ── Platform users (matched contacts on Convo) ─────────────────────
     const pfUsers = await this.contactsyncService.getMatchedUsers();
  
     // Save platform users to PouchDB (existing behaviour)
@@ -2436,7 +2436,7 @@ export class FirebaseChatService {
     this._deviceContacts$.next([...normalizedContacts]);
     this._platformUsers$.next([...pfUsers]);
  
-    // ── Non-platform users (device contacts NOT on TellDemm) ─────────────
+    // ── Non-platform users (device contacts NOT on Convo) ─────────────
     // Build a set of phones that are already on the platform
     const pfUserPhoneLast10 = new Set<string>();
  
@@ -6201,7 +6201,7 @@ const offMessageEdited = this.chatBackendSocket.onMessageEdited(async (data) => 
   //     await this.chatBackendSocket.createGroup({
   //       groupId,
   //       name: groupName,
-  //       description: 'Hey I am using Telldemm',
+  //       description: 'Hey I am using Convo',
   //       members: memberIds
   //     });
 
@@ -6295,7 +6295,7 @@ const offMessageEdited = this.chatBackendSocket.onMessageEdited(async (data) => 
     const groupDataForRTDB: IGroup = {
       roomId: groupId,
       title: groupName,
-      description: 'Hey I am using Telldemm',
+      description: 'Hey I am using Convo',
       adminIds: [this.senderId],
       createdBy: this.senderId,
       createdByName: this.senderName,
@@ -6712,7 +6712,7 @@ const offMessageEdited = this.chatBackendSocket.onMessageEdited(async (data) => 
       const communityData: ICommunity = {
         roomId: communityId,
         title: communityName,
-        description: description || 'Hey, I am using Telldemm',
+        description: description || 'Hey, I am using Convo',
         avatar,
         adminIds: [],
         createdBy,

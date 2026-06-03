@@ -8887,11 +8887,11 @@ export class ChattingScreenPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /**
-   * ✅ Check if message text contains a Telldemm invite link
+   * ✅ Check if message text contains a Convo invite link
    */
   getInviteLinkFromText(text: string): string | null {
     if (!text) return null;
-    const match = text.match(/https?:\/\/telldemm\.com\/join\/\S+/);
+    const match = text.match(/https?:\/\/convo\.com\/join\/\S+/);
     return match ? match[0] : null;
   }
 
@@ -8905,7 +8905,7 @@ export class ChattingScreenPage implements OnInit, AfterViewInit, OnDestroy {
   } {
     if (!text) return { before: '', link: null, after: '' };
     const match = text.match(
-      /([\s\S]*?)(https?:\/\/telldemm\.com\/join\/\S+)([\s\S]*)/
+      /([\s\S]*?)(https?:\/\/convo\.com\/join\/\S+)([\s\S]*)/
     );
     if (!match) return { before: text, link: null, after: '' };
     return {
@@ -8921,7 +8921,7 @@ export class ChattingScreenPage implements OnInit, AfterViewInit, OnDestroy {
   // async onInviteLinkTap(link: string, event?: Event): Promise<void> {
   //   if (event) event.stopPropagation();
 
-  //   // Extract groupId from the link: https://telldemm.com/join/group_XXXXX
+  //   // Extract groupId from the link: https://convo.com/join/group_XXXXX
   //   const match = link.match(/\/join\/(group_\d+|\d+)$/);
   //   if (!match) {
   //     const toast = await this.toastCtrl.create({

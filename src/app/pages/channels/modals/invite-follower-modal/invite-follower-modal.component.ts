@@ -32,7 +32,7 @@ export class InviteFollowerModalComponent implements OnInit {
   ngOnInit() {
     // Generate a deep link or web link for the channel
     // In a real app, this might be your domain + channel ID
-    this.channelLink = `https://telldemm.app/channel/${this.channel.channel_id}`;
+    this.channelLink = `https://convo.app/channel/${this.channel.channel_id}`;
   }
 
   dismiss() {
@@ -40,14 +40,14 @@ export class InviteFollowerModalComponent implements OnInit {
   }
 
   /**
-   * Send link via Telldemm (Internal)
+   * Send link via Convo (Internal)
    * This redirects to the forward/select contact screen
    */
   async sendViaApp() {
     // Create a mock message to "forward"
     const inviteMessage: any = {
       type: 'channel_invite',
-      text: `Check out this channel on Telldemm: ${this.channel.channel_name}\n${this.channelLink}`,
+      text: `Check out this channel on Convo: ${this.channel.channel_name}\n${this.channelLink}`,
       sender_phone: this.authService.authData?.phone_number,
       sender_name: this.authService.authData?.name,
       channel_invite: {
@@ -90,7 +90,7 @@ export class InviteFollowerModalComponent implements OnInit {
   async systemShare() {
     await Share.share({
       title: this.channel.channel_name,
-      text: `Follow my channel ${this.channel.channel_name} on Telldemm!`,
+      text: `Follow my channel ${this.channel.channel_name} on Convo!`,
       url: this.channelLink,
       dialogTitle: 'Share Channel'
     });

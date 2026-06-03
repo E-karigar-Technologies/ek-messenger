@@ -51,7 +51,7 @@
 // export class SocketService {
 //   private socket: Socket;
 //   // private readonly serverUrl = 'http://localhost:3000';
-//   private readonly serverUrl = 'https://telldemm-backend.onrender.com/';
+//   private readonly serverUrl = 'https://convo-backend.onrender.com/';
 
 //   constructor() {
 //     const userId = localStorage.getItem('userId');
@@ -96,7 +96,7 @@
 //   //   throw new Error('Method not implemented.');
 //   // }
 //   private socket: Socket;
-//   private readonly serverUrl = 'https://telldemm-backend.onrender.com/';
+//   private readonly serverUrl = 'https://convo-backend.onrender.com/';
 
 //   constructor() {
 //     this.socket = io(this.serverUrl);
@@ -177,7 +177,7 @@ import { io, Socket } from 'socket.io-client';
 })
 export class SocketService {
   private socket: Socket;
-  private readonly serverUrl = 'https://telldemm-backend.onrender.com';
+  private readonly serverUrl = 'https://convo-backend.onrender.com';
 
   constructor() {
     const userId = localStorage.getItem('userId');

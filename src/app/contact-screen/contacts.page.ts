@@ -45,11 +45,11 @@ type ContactItem = PlatformContact | NonPlatformContact;
 export class ContactsPage implements OnInit, ViewWillEnter {
   @ViewChild('searchInput', { static: false }) searchInput!: IonInput;
 
-  // Platform users (on TellDemm)
+  // Platform users (on Convo)
   allUsers: PlatformContact[] = [];
   filteredContacts: PlatformContact[] = [];
 
-  // Non-platform users (device contacts not on TellDemm)
+  // Non-platform users (device contacts not on Convo)
   nonPlatformContacts: NonPlatformContact[] = [];
   filteredNonPlatformContacts: NonPlatformContact[] = [];
 
@@ -311,10 +311,10 @@ export class ContactsPage implements OnInit, ViewWillEnter {
     const name = contact.username || 'your friend';
     try {
       await Share.share({
-        title: 'Join me on TellDemm!',
-        text: `Hey! I'm using TellDemm to chat. Join me here:`,
-        url: 'https://play.google.com/store/apps/details?id=com.ekarigar.telldemm',
-        dialogTitle: 'Invite to TellDemm',
+        title: 'Join me on ConvoIQ!',
+        text: `Hey! I'm using ConvoIQ to chat. Join me here:`,
+        url: 'https://play.google.com/store/apps/details?id=com.ekarigar.ekmessenger',
+        dialogTitle: 'Invite to ConvoIQ',
       });
     } catch (error) {
       console.error('Error sharing invite:', error);
@@ -504,10 +504,10 @@ export class ContactsPage implements OnInit, ViewWillEnter {
   async shareInviteLink(): Promise<void> {
     try {
       await Share.share({
-        title: 'Join me on TellDemm!',
-        text: `I'm using TellDemm to chat. Join me here:`,
-        url: 'https://play.google.com/store/apps/details?id=com.ekarigar.telldemm',
-        dialogTitle: 'Invite to TellDemm',
+        title: 'Join me on ConvoIQ!',
+        text: `I'm using ConvoIQ to chat. Join me here:`,
+        url: 'https://play.google.com/store/apps/details?id=com.ekarigar.ekmessenger',
+        dialogTitle: 'Invite to ConvoIQ',
       });
     } catch (error) {
       console.error('Error sharing invite:', error);

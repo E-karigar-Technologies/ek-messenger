@@ -52,7 +52,7 @@ export function initAuth(authService: AuthService) {
     }),
     // IonicStorageModule.forRoot(),
     IonicStorageModule.forRoot({
-      name: '_telldemm_firedb',
+      name: '_convoiq_firedb',
       driverOrder: ['indexeddb', 'localstorage']
     }),
 

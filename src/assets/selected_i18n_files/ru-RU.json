@@ -555,7 +555,7 @@
       "add": "Добавить"
     },
     "defaults": {
-      "heyThere": "Привет! Я использую Telldemm.",
+      "heyThere": "Привет! Я использую Convo.",
       "noGroupDescription": "Описание группы отсутствует.",
       "unknown": "Неизвестно",
       "unknownDate": "Неизвестная дата",

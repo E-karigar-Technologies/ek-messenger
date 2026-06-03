@@ -49,7 +49,7 @@ export interface CommunityGroup {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Non-platform contact interface (device contacts NOT on TellDemm)
+// Non-platform contact interface (device contacts NOT on Convo)
 // ─────────────────────────────────────────────────────────────────────────────
 export interface NonPlatformUser {
   username: string;
@@ -631,13 +631,13 @@ export class ChatPouchDb {
 
   /* =========================
      NON-PLATFORM USERS  ← NEW
-     Device contacts NOT on TellDemm — saved separately so they
+     Device contacts NOT on Convo — saved separately so they
      survive app restart and work offline (just like platform users).
      Doc key: 'non_platform_users'
      ========================= */
 
   /**
-   * Save device contacts that are NOT on TellDemm.
+   * Save device contacts that are NOT on Convo.
    * Overwrites the entire list (same pattern as savePlatformUsers).
    */
   async saveNonPlatformUsers(users: NonPlatformUser[]): Promise<void> {

@@ -529,7 +529,7 @@ async save() {
   private async showSuccessAlertBoth() {
     const alert = await this.alertCtrl.create({
       header: 'Contact saved',
-      message: `Contact added in Device and TellDemm.`,
+      message: `Contact added in Device and Convo.`,
       buttons: ['OK'],
     });
     await alert.present();
@@ -537,7 +537,7 @@ async save() {
    private async showSuccessAlertLocally() {
     const alert = await this.alertCtrl.create({
       header: 'Contact saved',
-      message: `Contact added in TellDemm.`,
+      message: `Contact added in Convo.`,
       buttons: ['OK'],
     });
     await alert.present();
@@ -546,7 +546,7 @@ async save() {
   private async showErrorAlert() {
     const alert = await this.alertCtrl.create({
       header: `Can't save contact`,
-      message: `This phone number is not on TellDemm.`,
+      message: `This phone number is not on Convo.`,
       buttons: ['OK'],
     });
     await alert.present();

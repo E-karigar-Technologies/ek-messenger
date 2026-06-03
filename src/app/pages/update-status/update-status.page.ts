@@ -28,7 +28,7 @@
 //     "At the movies",
 //     "At work",
 //     "Battery about to die",
-//     "Can\'t talk, Telldemm only",
+//     "Can\'t talk, Convo only",
 //     "In a meeting",
 //     "At the gym",
 //     "Sleeping",

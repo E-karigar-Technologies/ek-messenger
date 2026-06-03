@@ -1300,11 +1300,11 @@ console.log('Type:', typeof this.currentUserId);
 
       case 'Share':
         if (this.channel?.channel_id) {
-          const channelLink = `https://telldemm.app/channel/${this.channel.channel_id}`;
+          const channelLink = `https://convo.app/channel/${this.channel.channel_id}`;
           try {
             await Share.share({
               title: this.channel.channel_name,
-              text: `Check out this channel on Telldemm: ${this.channel.channel_name}`,
+              text: `Check out this channel on Convo: ${this.channel.channel_name}`,
               url: channelLink,
               dialogTitle: 'Share Channel',
             });

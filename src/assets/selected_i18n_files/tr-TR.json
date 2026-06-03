@@ -534,7 +534,7 @@
       "add": "Ekle"
     },
     "defaults": {
-      "heyThere": "Merhaba! Telldemm kullanıyorum.",
+      "heyThere": "Merhaba! Convo kullanıyorum.",
       "noGroupDescription": "Grup açıklaması yok.",
       "unknown": "Bilinmiyor",
       "unknownDate": "Bilinmeyen Tarih",

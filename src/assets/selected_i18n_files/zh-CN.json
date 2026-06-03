@@ -73,7 +73,7 @@
   },
   "appLanguage": {
     "title": "应用语言",
-    "description": "选择 TellDemm 应用语言"
+    "description": "选择 Convo 应用语言"
   },
   "help": {
     "title": "帮助",
@@ -85,7 +85,7 @@
   },
   "invite": {
     "title": "邀请朋友",
-    "description": "与您的联系人分享 TellDemm 应用"
+    "description": "与您的联系人分享 Convo 应用"
   },
   "logout": {
     "title": "退出登录",
@@ -555,7 +555,7 @@
       "add": "添加"
     },
     "defaults": {
-      "heyThere": "嗨！我正在使用 Telldemm。",
+      "heyThere": "嗨！我正在使用 Convo。",
       "noGroupDescription": "没有群组描述。",
       "unknown": "未知",
       "unknownDate": "未知日期",

@@ -3081,7 +3081,7 @@ export class UseraboutPage implements OnInit {
 
       // Encode the groupId so raw ID is not visible in the link
       const encoded = btoa(`grp_${groupId}`);
-      const inviteLink = `https://telldemm.com/join/g_${encoded}`;
+      const inviteLink = `https://convo.com/join/g_${encoded}`;
 
       // Navigate to add-select-contact-in-list with the invite link
       this.router.navigate(['/add-selected-contact-in-list'], {

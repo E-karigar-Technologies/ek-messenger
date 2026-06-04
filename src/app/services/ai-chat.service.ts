@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/auth.service';
 
 export interface AiMessage {
   role: 'user' | 'ai';
@@ -14,7 +15,7 @@ export interface AiMessage {
 export class AiChatService {
   private apiUrl = `${environment.apiBaseUrl}/api/ai`; // Wait, need to check environment
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   /**
    * Temporary getter to get API URL since environments can vary.
@@ -26,7 +27,7 @@ export class AiChatService {
   }
 
   getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token') || '';
+    const token = this.authService.authData?.app_token || '';
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -63,7 +64,7 @@ export class AiChatService {
     onComplete: () => void,
     onError: (err: any) => void
   ) {
-    const token = localStorage.getItem('token') || '';
+    const token = this.authService.authData?.app_token || '';
     
     try {
       const response = await fetch(`${this.getApiUrl()}/chat/stream`, {

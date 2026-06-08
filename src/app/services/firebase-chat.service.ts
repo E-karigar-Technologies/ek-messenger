@@ -5408,7 +5408,7 @@ const offMessageEdited = this.chatBackendSocket.onMessageEdited(async (data) => 
         ...message,
         status: isSelfChat ? 'read' : 'sent',
         roomId,
-        text: hasText ? msg.text : '',
+        text: encryptedText || '',
         translations: translations || undefined,
         expiresAt: expiresAt || null,
         receipts: isSelfChat

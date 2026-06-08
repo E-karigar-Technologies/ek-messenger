@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import PouchDB from 'pouchdb';
 import { IConversation, IMessage, IAttachment } from './sqlite.service';
+import { EncryptionService } from './encryption.service';
 
 export interface CachedMessage extends IMessage {
   isPending?: boolean;
@@ -103,8 +104,26 @@ export class ChatPouchDb {
   private saveTimers: Map<string, any> = new Map();
   private writeQueue: Map<string, Promise<void>> = new Map();
 
-  constructor() {
+  constructor(private encryptionService: EncryptionService) {
     this.db = new PouchDB('chat_unified_db');
+  }
+
+  private normalizeRoomId(roomId: string): string {
+    const id = String(roomId ?? '').trim();
+    if (!id) return id;
+    if (id.startsWith('group_') || id.startsWith('community_')) return id;
+    if (!id.includes('_')) return id;
+
+    const parts = id.split('_');
+    if (parts.length !== 2) return id;
+
+    const a = Number(parts[0]);
+    const b = Number(parts[1]);
+    if (!isNaN(a) && !isNaN(b) && a > 0 && b > 0) {
+      return a < b ? `${a}_${b}` : `${b}_${a}`;
+    }
+
+    return parts[0] < parts[1] ? `${parts[0]}_${parts[1]}` : `${parts[1]}_${parts[0]}`;
   }
 
   private enqueueWrite(docId: string, fn: () => Promise<void>): Promise<void> {
@@ -269,7 +288,7 @@ export class ChatPouchDb {
   }
 
   async saveConversation(conversation: CachedConversation, immediate: boolean = false): Promise<void> {
-    const docId = `conversation_${conversation.roomId}`;
+    const docId = `conversation_${this.normalizeRoomId(conversation.roomId)}`;
 
     const doSave = () =>
       this.enqueueWrite(docId, () =>
@@ -293,7 +312,7 @@ export class ChatPouchDb {
 
   async getConversation(conversationId: string): Promise<CachedConversation | null> {
     try {
-      const doc: any = await this.db.get(`conversation_${conversationId}`);
+      const doc: any = await this.db.get(`conversation_${this.normalizeRoomId(conversationId)}`);
       const { _id, _rev, timestamp, ...conversation } = doc;
       return conversation as CachedConversation;
     } catch (err: any) {
@@ -307,13 +326,73 @@ export class ChatPouchDb {
      MESSAGES - ENHANCED
      ========================= */
 
+  private async encryptMessage(msg: IMessage): Promise<IMessage> {
+    const encrypted = { ...msg };
+    if (encrypted.text && typeof encrypted.text === 'string') {
+      try {
+        encrypted.text = await this.encryptionService.encrypt(encrypted.text);
+      } catch (e) {
+        // If encryption fails, keep plain text
+      }
+    }
+    if (encrypted.translations?.original?.text) {
+      try {
+        encrypted.translations = {
+          ...encrypted.translations,
+          original: {
+            ...encrypted.translations.original,
+            text: await this.encryptionService.encrypt(encrypted.translations.original.text)
+          }
+        };
+      } catch (e) {
+        // If encryption fails, keep plain text
+      }
+    }
+    return encrypted;
+  }
+
+  private async decryptMessage(msg: CachedMessage): Promise<CachedMessage> {
+    const decrypted = { ...msg };
+    if (decrypted.text && typeof decrypted.text === 'string') {
+      try {
+        decrypted.text = await this.encryptionService.decrypt(decrypted.text);
+      } catch (e) {
+        // If decryption fails, keep as-is
+      }
+    }
+    if (decrypted.translations?.original?.text) {
+      try {
+        decrypted.translations = {
+          ...decrypted.translations,
+          original: {
+            ...decrypted.translations.original,
+            text: await this.encryptionService.decrypt(decrypted.translations.original.text)
+          }
+        };
+      } catch (e) {
+        // If decryption fails, keep as-is
+      }
+    }
+    return decrypted;
+  }
+
+  private async encryptMessages(messages: IMessage[]): Promise<IMessage[]> {
+    return Promise.all(messages.map(msg => this.encryptMessage(msg)));
+  }
+
+  private async decryptMessages(messages: CachedMessage[]): Promise<CachedMessage[]> {
+    return Promise.all(messages.map(msg => this.decryptMessage(msg)));
+  }
+
   async saveMessages(
     roomId: string,
     messages: IMessage[],
     immediate = false
   ): Promise<void> {
-    const docId = `messages_${roomId}`;
-    return this.enqueueWrite(docId, () => this._doSaveMessages(docId, messages));
+    const normalized = this.normalizeRoomId(roomId);
+    const docId = `messages_${normalized}`;
+    const encryptedMessages = await this.encryptMessages(messages);
+    return this.enqueueWrite(docId, () => this._doSaveMessages(docId, encryptedMessages));
   }
 
   private async _doSaveMessages(docId: string, messages: IMessage[]): Promise<void> {
@@ -322,9 +401,10 @@ export class ChatPouchDb {
 
   async getMessages(conversationId: string): Promise<CachedMessage[]> {
     try {
-      const doc: any = await this.db.get(`messages_${conversationId}`);
+      const doc: any = await this.db.get(`messages_${this.normalizeRoomId(conversationId)}`);
       const messages: CachedMessage[] = doc.messages || [];
-      return messages.sort((a: any, b: any) => {
+      const decryptedMessages = await this.decryptMessages(messages);
+      return decryptedMessages.sort((a: any, b: any) => {
         return new Date(a.timestamp ?? 0).getTime() - new Date(b.timestamp ?? 0).getTime();
       });
     } catch (err: any) {
@@ -400,6 +480,7 @@ export class ChatPouchDb {
       }
       messages.sort((a, b) => (a.timestamp as any) - (b.timestamp as any));
       await this.saveMessages(conversationId, messages, true);
+      console.log("local db message",messages);
     } catch (error) {
       console.error('❌ Failed to add message:', error);
     }

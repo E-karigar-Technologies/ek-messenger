@@ -3146,6 +3146,11 @@ export class HomeScreenPage implements OnInit, OnDestroy {
     this.router.navigate(['/contact-screen']);
   }
 
+  goToAiChat() {
+    this.router.navigate(['/ai-chat']);
+  }
+
+
   // ========================================
   // 🎯 CAMERA & ATTACHMENTS
   // ========================================

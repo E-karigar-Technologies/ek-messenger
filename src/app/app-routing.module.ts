@@ -30,7 +30,11 @@ const routes: Routes = [
     loadChildren: () => import('./home-screen/home-screen.module').then(m => m.HomeScreenPageModule)
    
     //  loadChildren: () => import('./contact-sync/pages/contact-sync-test/contact-sync-test.module').then( m => m.ContactSyncTestPageModule)
-
+  },
+  {
+    path: 'ai-chat',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./user-screens/ai-chat-screen/ai-chat-screen.module').then(m => m.AiChatScreenPageModule)
   },
   {
     path: 'chatting-screen',

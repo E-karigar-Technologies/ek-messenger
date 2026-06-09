@@ -805,6 +805,21 @@
   </ng-container>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <!-- AI Chatbot Button -->
+    <div
+      class="ai-chat-btn"
+      (click)="goToAiChat()"
+      [attr.aria-label]="'home.actions.aiChat' | translate"
+    >
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.477 2 2 6.477 2 12C2 14.823 3.17 17.37 5.053 19.199L4.053 21.699C3.901 22.079 4.258 22.464 4.646 22.328L7.547 21.313C8.903 21.758 10.375 22 11.912 22C17.435 22 21.912 17.523 21.912 12C21.912 6.477 17.435 2 12 2ZM12 4C16.418 4 20 7.582 20 12C20 16.418 16.418 20 12 20C10.74 20 9.539 19.708 8.468 19.183C8.256 19.079 8.007 19.083 7.799 19.155L5.787 19.856L6.441 18.219C6.529 17.997 6.495 17.742 6.347 17.554C4.856 15.65 4 13.882 4 12C4 7.582 7.582 4 12 4Z" fill="white"/>
+        <path d="M12 7L13.1 9.4L15.5 10.5L13.1 11.6L12 14L10.9 11.6L8.5 10.5L10.9 9.4L12 7Z" fill="white"/>
+        <path d="M8 7L8.5 8.1L9.6 8.6L8.5 9.1L8 10.2L7.5 9.1L6.4 8.6L7.5 8.1L8 7Z" fill="white"/>
+        <path d="M16 13L16.3 13.7L17 14L16.3 14.3L16 15L15.7 14.3L15 14L15.7 13.7L16 13Z" fill="white"/>
+      </svg>
+    </div>
+
+    <!-- Contact Button -->
     <div
       class="icon-image"
       (click)="goToContact()"
@@ -813,6 +828,7 @@
       <img src="assets/images/user.svg" alt="" />
     </div>
   </ion-fab>
+
 
   <!-- Image Popup Modal -->
   <ion-modal

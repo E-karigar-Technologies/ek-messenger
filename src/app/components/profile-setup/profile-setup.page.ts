@@ -419,7 +419,7 @@ export class ProfileSetupPage implements OnInit, OnDestroy {
       await this.submitProfileData(formData);
 
       // Save additional data
-      // await this.saveAdditionalData();
+      await this.saveAdditionalData();
 
       // Navigate based on user rooms
       await this.handleNavigation();

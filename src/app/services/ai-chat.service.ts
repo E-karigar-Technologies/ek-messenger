@@ -23,7 +23,7 @@ export class AiChatService {
    */
   private getApiUrl(): string {
      // Defaulting to the expected URL based on common structure
-    return 'http://localhost:7000/api/ai'; 
+    return this.apiUrl; 
   }
 
   getHeaders(): HttpHeaders {
